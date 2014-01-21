@@ -1,0 +1,1 @@
+{{ Form::password($component->name, $component->attributes) }}

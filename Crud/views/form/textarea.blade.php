@@ -1,0 +1,1 @@
+{{ Form::textarea($component->name, Input::old($component->name, $component->value()), $component->attributes) }}

@@ -1,0 +1,1 @@
+{{ str_repeat('—', $component->row->level) }} {{ $component->value() }}

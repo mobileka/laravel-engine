@@ -1,0 +1,54 @@
+<?php namespace Mobileka\L3\Engine\Grid\Components;
+
+class Date extends BaseComponent {
+
+	protected $template = 'crud::grid.column';
+
+	protected $inputFormat = 'Y-m-d H:i:s';
+
+	protected $format = array(
+		'lang' => 'ru',
+		'delimiter' => ' ',
+		'dayIndex' => 0,
+		'monthIndex' => 1,
+	);
+
+	public function value()
+	{
+		$value = $this->row;
+		$tokens = explode('.', $this->name);
+
+		foreach ($tokens as $token)
+		{
+			$value = $value->{$token};
+		}
+
+		if (is_array($this->format))
+		{
+			//ыы
+			$format = array();
+
+			$lang = \Arr::getItem($this->format, 'lang', 'ru');
+			$delimiter = \Arr::getItem($this->format, 'delimiter', '.');
+			$dayIndex = \Arr::getItem($this->format, 'dayIndex', '01');
+			$monthIndex = \Arr::getItem($this->format, 'monthIndex', '01');
+			$yearIndex = $dayIndex ? 0 : 2;
+
+			$format[$dayIndex] = '%d';
+			$format[$monthIndex] = '%m';
+			$format[$yearIndex] = '%Y';
+
+			$format = implode($delimiter, $format);
+
+			$value = \Carbon::createFromFormat($this->inputFormat, $value)->formatLocalized($format);
+			$value = \Date::translate($value, $lang, $delimiter, $dayIndex, $monthIndex);
+		}
+		else
+		{
+			$value = \Carbon::createFromFormat($this->inputFormat, $value)->formatLocalized($this->format);
+		}
+
+		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
+	}
+
+}

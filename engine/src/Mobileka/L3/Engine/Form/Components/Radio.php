@@ -1,0 +1,12 @@
+<?php namespace Mobileka\L3\Engine\Form\Components;
+
+class Radio extends Checkbox {
+
+	protected $template = 'crud::form.radio';
+	protected $options = array();
+
+	protected $requiredAttributes = array(
+		'class' => 'icheck-me',
+	);
+
+}

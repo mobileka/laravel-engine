@@ -3,8 +3,13 @@
 use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Router,
 	Mobileka\L3\Engine\Laravel\Redirect,
+	Mobileka\L3\Engine\Laravel\Input,
 	Mobileka\L3\Engine\Laravel\Lang,
+	Mobileka\L3\Engine\Laravel\Config,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
+use Mobileka\L3\Engine\Grid\Grid,
+	Mobileka\L3\Engine\Form\Form;
 
 use Laravel\Event,
 	Laravel\Request,
@@ -76,6 +81,13 @@ class Controller extends \Laravel\Routing\Controller {
 		}
 
 		static::$route = Misc::currentRoute();
+
+		$this->pageTitle = Lang::findLine('default.controllers.' . static::$route['controller'] . '.titles', static::$route['action']);
+
+		$this->crudConfig = array(
+			'form' => Misc::filePath('default.form'),
+			'grid' => Misc::filePath('default.grid'),
+		);
 	}
 
 	/**
@@ -112,6 +124,114 @@ class Controller extends \Laravel\Routing\Controller {
 	 */
 	public function after($response)
 	{}
+
+	public function get_index($format = 'html')
+	{
+		$data = $this->model->buildQuery(
+			$this->with,
+			$this->conditions,
+			$this->order_by,
+			$this->per_page
+		);
+
+		return $this->layout->renderView(
+				array(
+					'title' => $this->pageTitle,
+					'format' => $format,
+					'data' => $data,
+					'content' => Grid::make(
+						$this->model,
+						Config::get($this->crudConfig['grid']),
+						$data
+					)->render()
+				)
+			)
+		;
+	}
+
+	public function get_view($id, $format = 'html')
+	{
+		if ($this->with)
+		{
+			$this->model = $this->model->with(static::$with);
+		}
+
+		if (!$data = $this->model->find($id))
+		{
+			return Response::error('404');
+		}
+
+		return $this->layout->renderView(
+				array(
+					'title' => $this->pageTitle,
+					'format' => $format,
+					'data' => $data,
+					'viewData' => array(
+						'item' => $data
+					)
+				)
+			)
+		;
+	}
+
+	public function get_add()
+	{
+		$this->layout->renderView(
+			array(
+				'title' => $this->pageTitle,
+				'content' => Form::make(
+					$this->model,
+					Config::get($this->crudConfig['form'])
+				)->render()
+			)
+		);
+	}
+
+	public function get_edit($id)
+	{
+		if (!$data = $this->model->find($id))
+		{
+			return Response::error('404');
+		}
+
+		$this->layout->renderView(
+			array(
+				'title' => $this->pageTitle,
+				'content' => Form::make(
+					$data,
+					Config::get($this->crudConfig['form'])
+				)->render()
+			)
+		);
+	}
+
+	public function post_create()
+	{
+		$this->data = Input::allBut(array('_method', 'successUrl', 'errorUrl', 'upload_token'));
+		return $this->_save();
+	}
+
+	public function put_update($id)
+	{
+		$this->data = Input::allBut(array('_method', 'successUrl', 'errorUrl', 'upload_token'));
+
+		if (!$this->model = $this->model->find($id))
+		{
+			return Response::error('404');
+		}
+
+		return $this->_save();
+	}
+
+	public function delete_destroy($id)
+	{
+		if (!$this->model = $this->model->find($id))
+		{
+			return Response::error('404');
+		}
+
+		return $this->_destroy();
+	}
 
 	/**
 	 * Delete a single model

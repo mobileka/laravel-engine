@@ -2,7 +2,7 @@
 
 use \Helpers\Arr;
 
-class HTML extends Laravel\HTML {
+class HTML extends \Laravel\HTML {
 
 	/**
 	 * Build a list of HTML attributes from an array.
@@ -85,7 +85,7 @@ class HTML extends Laravel\HTML {
 	 */
 	public static function link_to_route($name, $title = null, $parameters = array(), $attributes = array(), $entities = true)
 	{
-		return static::link(URL::to_route($name, $parameters), $title, $attributes, null, $entities);
+		return static::link(\URL::to_route($name, $parameters), $title, $attributes, null, $entities);
 	}
 
 	/**
@@ -108,7 +108,7 @@ class HTML extends Laravel\HTML {
 	 */
 	public static function link($url, $title = null, $attributes = array(), $https = null, $entities = true)
 	{
-		$url = URL::to($url, $https);
+		$url = \URL::to($url, $https);
 
 		if (is_null($title)) $title = $url;
 
@@ -133,7 +133,7 @@ class HTML extends Laravel\HTML {
 	{
 		$params = array($params);
 
-		$route = Arr::getItem($params, 'route', \Router::requestId(\Controller::$route, $action));
+		$route = \Arr::getItem($params, 'route', \Router::requestId(\Controller::$route, $action));
 		unset($params['route']);
 
 		return array($route, $params);
@@ -143,19 +143,19 @@ class HTML extends Laravel\HTML {
 	{
 		list($route, $params) = static::parse_params($params, 'view');
 
-		return HTML::link_to_existing_route($route, '<i class="icon-eye-open"></i>', $params, array('title' => ___($languageFile, 'view'), 'class' => 'crud-view-button btn btn-darkblue'), false);
+		return static::link_to_existing_route($route, '<i class="icon-eye-open"></i>', $params, array('title' => ___($languageFile, 'view'), 'class' => 'crud-view-button btn btn-darkblue'), false);
 	}
 
 	public static function edit_button($params = array(), $languageFile = 'default')
 	{
 		list($route, $params) = static::parse_params($params, 'edit');
 
-		return HTML::link_to_existing_route($route, '<i class="icon-edit"></i>', $params, array('title' => ___($languageFile, 'edit'), 'class' => 'crud-edit-button btn btn-darkblue'), false);
+		return static::link_to_existing_route($route, '<i class="icon-edit"></i>', $params, array('title' => ___($languageFile, 'edit'), 'class' => 'crud-edit-button btn btn-darkblue'), false);
 	}
 
 	public static function delete_button($delete_url)
 	{
-		return HTML::link('#', '<i class="icon-remove-sign"></i>', array('title' => ___('default', 'destroy'), 'class' => 'btn btn-red delete-toggle', 'data-url' => $delete_url), null, false);
+		return static::link('#', '<i class="icon-remove-sign"></i>', array('title' => ___('default', 'destroy'), 'class' => 'btn btn-red delete-toggle', 'data-url' => $delete_url), null, false);
 	}
 
 }

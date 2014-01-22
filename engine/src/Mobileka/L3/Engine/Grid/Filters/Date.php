@@ -1,8 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
-use \Helpers\Arr;
-
-class DateFilter extends DateRangeFilter {
+class Date extends DateRangeFilter {
 
 	protected $template = 'crud::grid.filters.date';
 

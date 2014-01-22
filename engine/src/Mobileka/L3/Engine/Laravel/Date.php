@@ -10,11 +10,11 @@ class Date {
 		$yearIndex = $dayIndex ? 0 : 2;
 		$date = explode($delimiter, $date);
 
-		$result[$dayIndex] = Arr::getItem($date, $dayIndex, '01');
-		$result[$yearIndex] = Arr::getItem($date, $yearIndex, '1970');
+		$result[$dayIndex] = \Arr::getItem($date, $dayIndex, '01');
+		$result[$yearIndex] = \Arr::getItem($date, $yearIndex, '1970');
 
-		$month = (int)Arr::getItem($date, $monthIndex, 1);
-		$result[$monthIndex] = Lang::line('months.'.($month - 1), array(), $lang)->get();
+		$month = (int)\Arr::getItem($date, $monthIndex, 1);
+		$result[$monthIndex] = \Lang::line('months.'.($month - 1), array(), $lang)->get();
 		ksort($result);
 
 		return implode($delimiter, $result);

@@ -19,9 +19,9 @@ class Config extends \Laravel\Config {
 			return static::$cache[$key];
 		}
 
-		$bundle = Bundle::name($key);
+		$bundle = \Bundle::name($key);
 
-		$segments = explode('.', Bundle::element($key));
+		$segments = explode('.', \Bundle::element($key));
 
 		// If there are not at least two segments in the array, it means that the
 		// developer is requesting the entire configuration array to be returned.
@@ -60,7 +60,7 @@ class Config extends \Laravel\Config {
 	 */
 	public static function find($key, $default = null)
 	{
-		if (strpos($key, '::') === false and $bundle = Controller::$route['bundle'])
+		if (strpos($key, '::') === false and $bundle = \Controller::$route['bundle'])
 		{
 			$result = static::get($bundle . '::' . $key, 'blah________________blah');
 

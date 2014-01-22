@@ -41,7 +41,7 @@ class Router extends \Laravel\Routing\Router {
 	 */
 	public static function requestId(Array $route, $action = false)
 	{
-		$route = $route ? : Controller::$route;
+		$route = $route ? : \Controller::$route;
 
 		$result = str_replace('.', '_', $route['controller']);
 

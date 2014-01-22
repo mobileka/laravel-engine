@@ -1,6 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-class RestfulRouter extends BaseClass {
+class RestfulRouter {
 
 	public $actions = array(
 		'index',
@@ -52,7 +52,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function index($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::get(
+		\Route::get(
 			array(
 				$uri,
 				$uri . '.(json)',
@@ -67,7 +67,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function view($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::get(
+		\Route::get(
 			array(
 				$uri . '/(:num)',
 				$uri . '/(:num).(json)',
@@ -82,7 +82,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function add($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::get(
+		\Route::get(
 			array(
 				$uri . '/add',
 			),
@@ -95,7 +95,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function edit($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::get(
+		\Route::get(
 			$uri . '/(:num)/edit',
 			array(
 				'as' => $as . __FUNCTION__,
@@ -106,7 +106,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function create($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::post(
+		\Route::post(
 			$uri,
 			array(
 				'as' => $as . __FUNCTION__,
@@ -117,7 +117,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function update($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::put(
+		\Route::put(
 			$uri . '/(:num)',
 			array(
 				'as' => $as . __FUNCTION__,
@@ -128,7 +128,7 @@ class RestfulRouter extends BaseClass {
 
 	protected function destroy($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::delete(
+		\Route::delete(
 			$uri . '/(:num)',
 			array(
 				'as' => $as . __FUNCTION__,
@@ -142,7 +142,7 @@ class RestfulRouter extends BaseClass {
 	 */
 	protected function uploads($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::get(
+		\Route::get(
 			array(
 				$uri . '/(:num)/uploads',
 				$uri . '/(:num)/uploads.(json)',
@@ -160,7 +160,7 @@ class RestfulRouter extends BaseClass {
 	 */
 	protected function upload($bundle, $controller, $uri, $as, $uses)
 	{
-		Route::post(
+		\Route::post(
 			$uri . '/(:num)/uploads',
 			array(
 				'as' => $as . __FUNCTION__,
@@ -187,7 +187,7 @@ class RestfulRouter extends BaseClass {
 
 		if ($method == 'with')
 		{
-			if (Arr::haveIntersections($args, array('images', 'uploads')))
+			if (\Arr::haveIntersections($args, array('images', 'uploads')))
 			{
 				$this->actions[] = 'uploads';
 				$this->actions[] = 'upload';

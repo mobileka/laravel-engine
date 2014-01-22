@@ -15,8 +15,8 @@ class Validator extends \Laravel\Validator {
 	{
 		$message = str_replace(
 			':attribute',
-			Str::wrap(
-				Lang::translateIfPossible(
+			\Str::wrap(
+				\Lang::translateIfPossible(
 					'default.labels',
 					str_replace(' ', '_', $this->attribute($attribute))
 				),

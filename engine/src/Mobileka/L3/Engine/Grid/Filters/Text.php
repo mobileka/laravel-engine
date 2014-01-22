@@ -1,14 +1,12 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
-use \Helpers\Arr;
-
-class TextFilter extends BaseComponent {
+class Text extends BaseComponent {
 
 	protected $template = 'crud::grid.filters.text';
 
 	public function value()
 	{
-		return Arr::searchRecursively($this->filters, 'where', $this->name);
+		return \Arr::searchRecursively($this->filters, 'where', $this->name);
 	}
 
 }

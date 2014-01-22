@@ -1,10 +1,6 @@
 <?php
 
-use Laravel\Config,
-	Mobileka\L3\Engine\Base\Controller,
-	Mobileka\L3\Engine\Helpers\Arr;
-
-class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bclass {
+class Mobileka\L3\Engine\Laravel\Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 	public $aliases = array();
 	public $except = array();
@@ -12,16 +8,16 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 	public static function make()
 	{
 		$self = new static;
-		$self->permissions = Config::get('acl.permissions', array());
-		$self->defaultResult = Config::get('acl.defaultResult', false);
+		$self->permissions = \Config::get('acl.permissions', array());
+		$self->defaultResult = \Config::get('acl.defaultResult', false);
 
-		foreach (Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
+		foreach (\Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
 		{
-			$self->aliases[Router::wildcards($key)] = $value;
+			$self->aliases[\Router::wildcards($key)] = $value;
 		}
 
-		$self->paths = Arr::getItem($self->permissions, 'paths', array());
-		$self->route = Controller::$route;
+		$self->paths = \Arr::getItem($self->permissions, 'paths', array());
+		$self->route = \Controller::$route;
 		$self->bundle = $self->route['bundle'];
 		$self->controller = $self->route['controller'];
 		$self->action = $self->route['action'];
@@ -58,7 +54,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 		/**
 		 * Если доступ был заблокирован, запишем url, чтобы после авторизации вернуться назад.
 		 */
-		Session::put('acl: last_blocked_url', URL::current());
+		\Session::put('acl: last_blocked_url', \URL::current());
 
 		return false;
 	}
@@ -77,7 +73,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 		//если есть прямое совпадение, то отдаем ему приоритет
 		if (in_array($alias, $aliases))
 		{
-			return Arr::haveIntersections(
+			return \Arr::haveIntersections(
 				static::userAclGroups(),
 				$this->aliases[$alias]
 			);
@@ -88,7 +84,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 		{
 			if (preg_match('#^' . $a . '#u', $alias))
 			{
-				return Arr::haveIntersections(
+				return \Arr::haveIntersections(
 					static::userAclGroups(),
 					$this->aliases[$a]
 				);
@@ -109,7 +105,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 	{
 		if (isset($this->paths[$path]))
 		{
-			return Arr::haveIntersections(
+			return \Arr::haveIntersections(
 				static::userAclGroups(),
 				$this->paths[$path]
 			);
@@ -128,10 +124,10 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 	 */
 	public static function can($action, $group = null)
 	{
-		if ($action = Arr::getItem(Config::get('acl.actions', array()), $action, array()))
+		if ($action = \Arr::getItem(\Config::get('acl.actions', array()), $action, array()))
 		{
-			$allow = Arr::getItem($action, 'allow', array());
-			$deny = Arr::getItem($action, 'deny', array());
+			$allow = \Arr::getItem($action, 'allow', array());
+			$deny = \Arr::getItem($action, 'deny', array());
 			$group = static::userAclGroups($group);
 
 			/**
@@ -159,7 +155,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 			}
 		}
 
-		return Config::get('acl.defaultResult', false);
+		return \Config::get('acl.defaultResult', false);
 	}
 
 	public static function userAclGroups($group = null)
@@ -176,12 +172,12 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 
 	public function wildcardToLaravel($alias)
 	{
-		foreach (Router::$optional as $key => $pattern)
+		foreach (\Router::$optional as $key => $pattern)
 		{
 			$alias = str_replace($pattern, $key, $alias);
 		}
 
-		foreach (Router::$patterns as $key => $pattern)
+		foreach (\Router::$patterns as $key => $pattern)
 		{
 			$alias = str_replace($pattern, $key, $alias);
 		}
@@ -193,7 +189,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 	{
 		if ($method == 'except')
 		{
-			$arguments = Arr::getItem($args, 0, false);
+			$arguments = \Arr::getItem($args, 0, false);
 			$this->except = is_array($arguments) ? $arguments : $args;
 			return $this;
 		}

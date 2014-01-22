@@ -1,5 +1,4 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
-use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Lang extends \Laravel\Lang {
 
@@ -16,7 +15,7 @@ class Lang extends \Laravel\Lang {
 		$file = $file . '.' . $word;
 		$route = \Controller::$route;
 
-		if ($bundle = Arr::getItem($route, 'bundle'))
+		if ($bundle = \Arr::getItem($route, 'bundle'))
 		{
 			return $key = $bundle . '::' . $file;
 		}

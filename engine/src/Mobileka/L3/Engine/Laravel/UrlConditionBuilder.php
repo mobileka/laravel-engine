@@ -139,8 +139,8 @@ class UrlConditionBuilder {
 		}
 		elseif ($relation_type == 'Laravel\Database\Eloquent\Relationships\Has_Many_And_Belongs_To')
 		{
-			$pivot_table = Misc::propertyValue($model, 'joining');
-			$second_fk = Misc::truthyValue($model->foreign,  Str::singular(Str::lower($relation)) . '_id');
+			$pivot_table = \Misc::propertyValue($model, 'joining');
+			$second_fk = \Misc::truthyValue($model->foreign,  \Str::singular(\Str::lower($relation)) . '_id');
 
 			$master_key = $first_table . 'id';
 			$first_key = $pivot_table . '.' . $foreign_key;
@@ -181,7 +181,7 @@ class UrlConditionBuilder {
 
 			$column = $tmp[0];
 
-			$direction = Arr::getItem($tmp, 1, 'asc');
+			$direction = \Arr::getItem($tmp, 1, 'asc');
 
 			//проверим, не относится ли сортировка к связанной таблице
 			if (strpos($column, '.') !== false)

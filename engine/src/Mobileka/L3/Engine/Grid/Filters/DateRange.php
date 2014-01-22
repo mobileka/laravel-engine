@@ -1,8 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
-use \Helpers\Arr;
-
-class DateRangeFilter extends BaseComponent {
+class DateRange extends BaseComponent {
 
 	protected $template = 'crud::grid.filters.date_range';
 	protected $from, $to;
@@ -18,11 +16,11 @@ class DateRangeFilter extends BaseComponent {
 
 	public function fromValue()
 	{
-		return Arr::searchRecursively($this->filters, 'from', $this->from);
+		return \Arr::searchRecursively($this->filters, 'from', $this->from);
 	}
 
 	public function toValue()
 	{
-		return Arr::searchRecursively($this->filters, 'to', $this->to);
+		return \Arr::searchRecursively($this->filters, 'to', $this->to);
 	}
 }

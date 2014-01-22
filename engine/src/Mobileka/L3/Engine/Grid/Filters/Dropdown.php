@@ -1,14 +1,12 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
-use \Helpers\Arr;
-
-class DropdownFilter extends BaseComponent {
+class Dropdown extends BaseComponent {
 
 	protected $template = 'crud::grid.filters.dropdown';
 
 	public function value()
 	{
-		return Arr::searchRecursively($this->filters, 'where', $this->name);
+		return \Arr::searchRecursively($this->filters, 'where', $this->name);
 	}
 
 	public function options($options, $defaultValue = true)

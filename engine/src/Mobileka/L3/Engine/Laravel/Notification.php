@@ -17,10 +17,10 @@ class Notification {
 	 */
 	public static function printAll($view = '_system.notifications')
 	{
-		return View::make(
+		return \View::make(
 			$view,
 			array(
-				'notifications' => Session::get('notifications', array()),
+				'notifications' => \Session::get('notifications', array()),
 				'permittedMessageTypes' => static::$permittedMessageTypes
 			)
 		);
@@ -38,10 +38,10 @@ class Notification {
 	{
 		if (in_array($name, static::$permittedMessageTypes))
 		{
-			return \Session::flash(static::$namespace . $name, $arguments[0]);
+			return \\Session::flash(static::$namespace . $name, $arguments[0]);
 		}
 
-		throw new Exception("Trying to call an undefined static method \"$name\" of a " . __CLASS__ . ' class');
+		throw new \Exception("Trying to call an undefined static method \"$name\" of a " . __CLASS__ . ' class');
 	}
 
 }

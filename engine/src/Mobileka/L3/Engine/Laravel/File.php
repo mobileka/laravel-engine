@@ -6,11 +6,11 @@ class File extends \Laravel\File {
 	{
 		if (!$directory)
 		{
-			$directory = (!File::is(array('jpeg', 'png', 'gif'), $file['tmp_name'])) ? 'docs' : 'images';
+			$directory = (!static::is(array('jpeg', 'png', 'gif'), $file['tmp_name'])) ? 'docs' : 'images';
 		}
 
 		//получаем расширение файла
-		$extension = File::extension($file['name']);
+		$extension = static::extension($file['name']);
 
 		//формируем его название и путь к нему
 		$filename = md5(time() . $file['tmp_name']) . '.' . $extension;
@@ -30,7 +30,7 @@ class File extends \Laravel\File {
 		//Если тип заливаемого файла - картинка, то сжать ее
 		if ($directory == 'images')
 		{
-			Image::make($path.$filename)->
+			\Image::make($path.$filename)->
 				save($path.$filename, 75);
 		}
 

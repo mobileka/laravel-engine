@@ -10,8 +10,8 @@ class Redirect extends \Laravel\Redirect {
 	 */
 	public static function back($status = 302)
 	{
-		$url = Session::get('acl: last_blocked_url', Request::referrer());
-		Session::forget('acl: last_blocked_url');
+		$url = \Session::get('acl: last_blocked_url', \Request::referrer());
+		\Session::forget('acl: last_blocked_url');
 		return static::to($url, $status);
 	}
 

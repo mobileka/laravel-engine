@@ -4,7 +4,7 @@
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 1.0
  */
-class Loader extends BaseClass {
+class Loader extends \BaseClass {
 	/**
 	 * Recursively load (require) files from a given $path
 	 *
@@ -13,9 +13,9 @@ class Loader extends BaseClass {
 	 */
 	public static function requireDirectory($path)
 	{
-		$directory = new RecursiveDirectoryIterator($path);
-		$iterator = new RecursiveIteratorIterator($directory);
-		$files = new RegexIterator($iterator, '/^.+\.php$/i', RecursiveRegexIterator::GET_MATCH);
+		$directory = new \RecursiveDirectoryIterator($path);
+		$iterator = new \RecursiveIteratorIterator($directory);
+		$files = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
 
 		foreach ($files as $file)
 		{

@@ -2,7 +2,7 @@
 
 class MultiUpload extends BaseComponent {
 
-	protected $template = 'crud::form.multiupload';
+	protected $template = 'engine::form.multiupload';
 	protected $featuredImageSelector = false;
 
 	public function __get($name)

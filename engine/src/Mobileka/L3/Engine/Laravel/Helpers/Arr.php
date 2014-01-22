@@ -167,7 +167,6 @@ class Arr {
 		return array_map(function($element) use ($key)
 		{
 			return is_object($element) ? @$element->$key : @$element[$key];
-
 		}, $array);
 	}
 

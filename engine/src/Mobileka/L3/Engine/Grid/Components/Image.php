@@ -2,7 +2,7 @@
 
 class Image extends BaseComponent {
 
-	protected $template = 'crud::grid.image_column';
+	protected $template = 'engine::grid.image_column';
 
 	public function value()
 	{

@@ -2,7 +2,7 @@
 
 class Radio extends Checkbox {
 
-	protected $template = 'crud::form.radio';
+	protected $template = 'engine::form.radio';
 	protected $options = array();
 
 	protected $requiredAttributes = array(

@@ -2,7 +2,7 @@
 
 class Contains extends BaseComponent {
 
-	protected $template = 'crud::grid.filters.contains';
+	protected $template = 'engine::grid.filters.contains';
 
 	public function value()
 	{

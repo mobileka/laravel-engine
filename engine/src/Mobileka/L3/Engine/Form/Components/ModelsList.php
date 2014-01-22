@@ -2,6 +2,6 @@
 
 class ModelsList extends BaseComponent {
 
-	protected $template = 'crud::form.models_list';
+	protected $template = 'engine::form.models_list';
 
 }

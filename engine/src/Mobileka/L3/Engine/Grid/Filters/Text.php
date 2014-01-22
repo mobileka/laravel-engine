@@ -2,7 +2,7 @@
 
 class Text extends BaseComponent {
 
-	protected $template = 'crud::grid.filters.text';
+	protected $template = 'engine::grid.filters.text';
 
 	public function value()
 	{

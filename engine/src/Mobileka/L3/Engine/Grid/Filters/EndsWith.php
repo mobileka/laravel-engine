@@ -2,7 +2,7 @@
 
 class EndsWith extends BaseComponent {
 
-	protected $template = 'crud::grid.filters.ends_with';
+	protected $template = 'engine::grid.filters.ends_with';
 
 	public function value()
 	{

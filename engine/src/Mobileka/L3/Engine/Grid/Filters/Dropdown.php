@@ -2,7 +2,7 @@
 
 class Dropdown extends BaseComponent {
 
-	protected $template = 'crud::grid.filters.dropdown';
+	protected $template = 'engine::grid.filters.dropdown';
 
 	public function value()
 	{

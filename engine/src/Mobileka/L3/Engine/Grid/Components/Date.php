@@ -2,7 +2,7 @@
 
 class Date extends BaseComponent {
 
-	protected $template = 'crud::grid.column';
+	protected $template = 'engine::grid.column';
 
 	protected $inputFormat = 'Y-m-d H:i:s';
 

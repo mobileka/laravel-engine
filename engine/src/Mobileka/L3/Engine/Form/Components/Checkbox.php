@@ -2,7 +2,7 @@
 
 class Checkbox extends BaseComponent {
 
-	protected $template       = 'crud::form.checkbox';
+	protected $template       = 'engine::form.checkbox';
 	protected $skin           = 'square';
 	protected static $skins   = array('minimal', 'square', 'flat');
 	protected $color          = 'blue';

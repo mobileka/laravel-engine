@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @todo перенести в бандл Users
+ */
 use \Users\Models\User,
 	\Users\Models\Group;
 

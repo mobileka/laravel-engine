@@ -1,7 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
-use Laravel\Messages,
-	Larave\Validator;
+use \Laravel\Messages,
+	\Larave\Validator;
 
 /**
  * Self-validating Laravel models
@@ -74,7 +74,7 @@ abstract class Laramodel extends \Eloquent {
 			}
 
 			// construct the validator
-			$validator = Validator::make($data, $rules, $messages);
+			$validator = \Validator::make($data, $rules, $messages);
 			$valid = $validator->valid();
 
 			$this->errors->messages = ($valid && !$this->errors->all())

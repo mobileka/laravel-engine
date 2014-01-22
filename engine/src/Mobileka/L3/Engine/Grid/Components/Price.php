@@ -2,6 +2,6 @@
 
 class Price extends BaseComponent {
 
-	protected $template = 'crud::grid.price_column';
+	protected $template = 'engine::grid.price_column';
 
 }

@@ -1,7 +1,5 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use \Helpers\Arr;
-
 class HTML extends \Laravel\HTML {
 
 	/**
@@ -53,7 +51,7 @@ class HTML extends \Laravel\HTML {
 	 */
 	public static function link_to_existing_route($name, $title = null, $parameters = array(), $attributes = array(), $entities = true)
 	{
-		$aliases = array_pluck(array_values(Router::$routes['GET']), 'as');
+		$aliases = \Arr::permissivePluck(array_values(Router::$routes['GET']), 'as');
 
 		if (in_array($name, $aliases))
 		{
@@ -117,7 +115,7 @@ class HTML extends \Laravel\HTML {
 		return '<a href="'.$url.'"'.static::attributes($attributes).'>'.$title.'</a>';
 	}
 
-	public static function destroy_button($url, $attributes = array(), $languageFile = 'default', $template = 'crud::grid._destroy_button')
+	public static function destroy_button($url, $attributes = array(), $languageFile = 'default', $template = 'engine::grid._destroy_button')
 	{
 		return View::make(
 			$template,

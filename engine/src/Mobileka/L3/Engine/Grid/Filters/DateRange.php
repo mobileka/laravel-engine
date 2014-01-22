@@ -2,7 +2,7 @@
 
 class DateRange extends BaseComponent {
 
-	protected $template = 'crud::grid.filters.date_range';
+	protected $template = 'engine::grid.filters.date_range';
 	protected $from, $to;
 
 	public static function make($name, $attributes = array())

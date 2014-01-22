@@ -2,7 +2,7 @@
 
 class Link extends BaseComponent {
 
-	protected $template = 'crud::grid.link';
+	protected $template = 'engine::grid.link';
 	protected $params   = array();
 	protected $label    = '';
 	protected $route    = '';

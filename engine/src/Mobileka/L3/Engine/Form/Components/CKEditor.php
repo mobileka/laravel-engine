@@ -2,6 +2,6 @@
 
 class CKEditor extends BaseComponent {
 
-	protected $template = 'crud::form.ckeditor';
+	protected $template = 'engine::form.ckeditor';
 
 }

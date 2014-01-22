@@ -2,6 +2,6 @@
 
 class Password extends BaseComponent {
 
-	protected $template = 'crud::form.password';
+	protected $template = 'engine::form.password';
 
 }

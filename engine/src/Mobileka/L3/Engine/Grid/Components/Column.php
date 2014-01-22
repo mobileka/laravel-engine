@@ -2,6 +2,6 @@
 
 class Column extends BaseComponent {
 
-	protected $template = 'crud::grid.column';
+	protected $template = 'engine::grid.column';
 
 }

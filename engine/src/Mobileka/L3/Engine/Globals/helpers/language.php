@@ -1,5 +1,7 @@
 <?php
 
+use \Mobileka\L3\Engine\Laravel\Lang;
+
 function gridLang($file, $word, $replacements = array(), $language = null)
 {
 	return crudLang('grid', $file, $word, $replacements = array(), $language = null);

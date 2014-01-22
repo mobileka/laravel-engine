@@ -2,7 +2,7 @@
 
 function image($filename, $type, $created_at, $directory = 'images')
 {
-	return URL::base() . '/uploads/' . $directory . '/' . $type . '/' .\Date::make($created_at)->get('Y-m') . '/' . $filename;
+	return \URL::base() . '/uploads/' . $directory . '/' . $type . '/' .\Date::make($created_at)->get('Y-m') . '/' . $filename;
 }
 
 function imagePath($filename, $type, $created_at, $directory = 'images')
@@ -12,7 +12,7 @@ function imagePath($filename, $type, $created_at, $directory = 'images')
 
 function document($filename, $type, $created_at, $directory = 'docs')
 {
-	return URL::base() . '/uploads/' . $directory . '/' . $type . '/' .\Date::make($created_at)->get('Y-m') . '/' . $filename;
+	return \URL::base() . '/uploads/' . $directory . '/' . $type . '/' .\Date::make($created_at)->get('Y-m') . '/' . $filename;
 }
 
 function documentPath($filename, $type, $created_at, $directory = 'docs')

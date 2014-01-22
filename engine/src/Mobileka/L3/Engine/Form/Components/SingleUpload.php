@@ -2,6 +2,6 @@
 
 class SingleUpload extends BaseComponent {
 
-	protected $template = 'crud::form.singleupload';
+	protected $template = 'engine::form.singleupload';
 
 }

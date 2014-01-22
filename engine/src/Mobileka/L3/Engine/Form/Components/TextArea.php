@@ -2,6 +2,6 @@
 
 class TextArea extends BaseComponent {
 
-	protected $template = 'crud::form.textarea';
+	protected $template = 'engine::form.textarea';
 
 }

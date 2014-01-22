@@ -2,6 +2,6 @@
 
 class Text extends BaseComponent {
 
-	protected $template = 'crud::form.text';
+	protected $template = 'engine::form.text';
 
 }

@@ -1,4 +1,4 @@
-@include('crud::filters')
+@include('engine::filters')
 
 <div class="modal hide fade" id="delete_modal">
 	<div class="modal-header">

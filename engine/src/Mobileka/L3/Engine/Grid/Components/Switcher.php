@@ -2,7 +2,7 @@
 
 class Switcher extends BaseComponent {
 
-	protected $template       = 'crud::grid.switcher';
+	protected $template       = 'engine::grid.switcher';
 	protected $route          = array();
 	protected $skin           = 'square';
 	protected $color          = 'blue';

@@ -2,6 +2,6 @@
 
 class Datepicker extends BaseComponent {
 
-	protected $template = 'crud::form.datepicker';
+	protected $template = 'engine::form.datepicker';
 
 }

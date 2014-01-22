@@ -2,7 +2,7 @@
 
 class Date extends DateRangeFilter {
 
-	protected $template = 'crud::grid.filters.date';
+	protected $template = 'engine::grid.filters.date';
 
 	public function value()
 	{

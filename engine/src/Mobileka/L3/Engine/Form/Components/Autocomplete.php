@@ -2,7 +2,7 @@
 
 class Autocomplete extends BaseComponent {
 
-	protected $template = 'crud::form.autocomplete';
+	protected $template = 'engine::form.autocomplete';
 
 	protected $requiredAttributes = array(
 		'data-items'   => 4,

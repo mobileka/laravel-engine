@@ -2,7 +2,7 @@
 
 class DualMultiselect extends Dropdown {
 
-	protected $template         = 'crud::form.dual_multiselect';
+	protected $template         = 'engine::form.dual_multiselect';
 
 	protected $requiredAttributes = array(
 		'class'                 => 'multiselect',

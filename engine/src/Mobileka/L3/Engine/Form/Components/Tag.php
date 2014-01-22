@@ -2,7 +2,7 @@
 
 class Tag extends BaseComponent {
 
-	protected $template = 'crud::form.tag';
+	protected $template = 'engine::form.tag';
 	protected $requiredAttributes = array(
 		'class' => 'tagsinput',
 	);

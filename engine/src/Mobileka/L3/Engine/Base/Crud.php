@@ -70,9 +70,9 @@ abstract class Crud {
 	 */
 	public function processComponents($components, $order, $only, $except)
 	{
-		$components = Arr::onlyValues($components, $only);
-		$components = Arr::exceptValues($components, $except);
-		$components = Arr::sortByArray($components, $order);
+		$components = \Arr::onlyValues($components, $only);
+		$components = \Arr::exceptValues($components, $except);
+		$components = \Arr::sortByArray($components, $order);
 		return $components;
 	}
 

@@ -155,18 +155,18 @@ abstract class Component {
 	/**
 	 * Render a view with a "star" if a field is required
 	 *
-	 * @param null | string $view - a view to render. crud::form._star by default
+	 * @param null | string $view - a view to render. engine::form._star by default
 	 * @return string
 	 */
 	public function required($view = null)
 	{
-		$view = ($view) ?: 'crud::form._star';
+		$view = ($view) ?: 'engine::form._star';
 
 		$result = '';
 
 		if ($this->row and $rules = Arr::getItem($this->row->rules, $this->name))
 		{
-			if (Str::contains($rules, 'required'))
+			if (\Str::contains($rules, 'required'))
 			{
 				$result = \View::make($view);
 			}

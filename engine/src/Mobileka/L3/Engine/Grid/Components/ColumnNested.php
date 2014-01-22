@@ -2,6 +2,6 @@
 
 class ColumnNested extends BaseComponent {
 
-	protected $template = 'crud::grid.column_nested';
+	protected $template = 'engine::grid.column_nested';
 
 }

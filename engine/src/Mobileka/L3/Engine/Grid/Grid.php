@@ -6,7 +6,7 @@ use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 
 class Grid extends \Mobileka\L3\Engine\Base\Crud {
 
-	protected $template = 'crud::grid';
+	protected $template = 'engine::grid';
 	protected $items = array();
 	protected $filters = array();
 	protected $sortable = array();

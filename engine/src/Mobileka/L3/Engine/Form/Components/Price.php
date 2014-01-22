@@ -2,7 +2,7 @@
 
 class Price extends BaseComponent {
 
-	protected $template = 'crud::form.price';
+	protected $template = 'engine::form.price';
 
 	protected $requiredAttributes = array(
 		'class' => 'input-medium',

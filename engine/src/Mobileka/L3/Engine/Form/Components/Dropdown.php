@@ -2,7 +2,7 @@
 
 class Dropdown extends BaseComponent {
 
-	protected $template = 'crud::form.dropdown';
+	protected $template = 'engine::form.dropdown';
 	protected $options = array();
 
 	public function options($options, $defaultValue = true)

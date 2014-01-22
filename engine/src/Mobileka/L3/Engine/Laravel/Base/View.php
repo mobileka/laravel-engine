@@ -1,6 +1,8 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Helpers\Arr, Helpers\Misc, Laravel\Config;
+use Mobileka\L3\Engine\Laravel\Helpers\Misc,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Laravel\Config;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>

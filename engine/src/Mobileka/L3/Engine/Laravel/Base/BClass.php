@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
+use Mobileka\L3\Engine\Laravel\Str;
+
 class BClass {
 
 	public static function make()
@@ -19,7 +21,7 @@ class BClass {
 
 	public function __get($name)
 	{
-		$name = \Str::camelToSnake($name);
+		$name = Str::camelToSnake($name);
 
 		if (property_exists($this, $name))
 		{

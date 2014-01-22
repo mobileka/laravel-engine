@@ -1,6 +1,14 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Helpers\Misc, Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Misc,
+	Mobileka\L3\Engine\Laravel\Router,
+	Mobileka\L3\Engine\Laravel\Redirect,
+	Mobileka\L3\Engine\Laravel\Lang,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
+use Laravel\Event,
+	Laravel\Request,
+	Laravel\Response;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
@@ -94,18 +102,13 @@ class Controller extends \Laravel\Routing\Controller {
 	 * Filters for admin panel
 	 */
 	public function _admin_filters()
-	{
-		//$this->filter('before', 'admin_acl');
-	}
+	{}
 
 	/**
 	 * Called before each action execution
 	 */
 	public function before()
-	{
-		\Helpers\Debug::log_pp(static::$route);
-		//Geo::instance()->determine_city();
-	}
+	{}
 
 	/**
 	 * Called after each action execution
@@ -127,16 +130,16 @@ class Controller extends \Laravel\Routing\Controller {
 		$route = Misc::currentRoute();
 		$this->model->delete();
 
-		\Event::fire('Model destroyed: ' . \Router::requestId(Controller::$route), array($this->model));
+		Event::fire('Model destroyed: ' . Router::requestId(static::$route), array($this->model));
 
-		return \Request::ajax()
-			? \Response::json(array(
+		return Request::ajax()
+			? Response::json(array(
 				'status' => 'success',
 				'errors' => array(),
 				'data' => $this->model
 			))
-			: \Redirect::to_action($this->generateUrl($route, $options), $params)
-				->success(\Lang::findLine('default.messages', 'destroy'));
+			: Redirect::to_action($this->generateUrl($route, $options), $params)
+				->success(Lang::findLine('default.messages', 'destroy'));
 	}
 
 	/**
@@ -160,8 +163,8 @@ class Controller extends \Laravel\Routing\Controller {
 			$this->model->find($id)->delete();
 		}
 
-		return \Request::ajax()
-			? \Response::json(array('status' => 'success', 'errors' => array(), 'data' => array()))
+		return Request::ajax()
+			? Response::json(array('status' => 'success', 'errors' => array(), 'data' => array()))
 			: \Redirect::to_action($this->generateUrl($route, $options), $params)
 				->success(\Lang::findLine('default.messages', 'mass_destroy'));
 	}
@@ -181,7 +184,7 @@ class Controller extends \Laravel\Routing\Controller {
 		*/
 		$oldModel = clone $this->model;
 
-		if (\Request::ajax())
+		if (Request::ajax())
 		{
 			return $this->_ajaxSave();
 		}
@@ -273,7 +276,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		\Event::fire('bind-uploads', array($this->model->id, \Input::get('upload_token', null)));
 
-		return \Response::json($result);
+		return Response::json($result);
 	}
 
 	protected function generateUrl($route, $options)
@@ -293,7 +296,7 @@ class Controller extends \Laravel\Routing\Controller {
 	 */
 	public function __call($method, $parameters)
 	{
-		return \Response::error('404');
+		return Response::error('404');
 	}
 
 }

@@ -1,5 +1,9 @@
 <?php
 
+use Laravel\Config,
+	Mobileka\L3\Engine\Base\Controller,
+	Mobileka\L3\Engine\Helpers\Arr;
+
 class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 	public $aliases = array();
@@ -54,7 +58,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 		/**
 		 * Если доступ был заблокирован, запишем url, чтобы после авторизации вернуться назад.
 		 */
-		\Session::put('acl: last_blocked_url', \URL::current());
+		Session::put('acl: last_blocked_url', URL::current());
 
 		return false;
 	}
@@ -190,7 +194,7 @@ class Mobileka\L3\Engine\Laravel\Acl extends Mobileka\L3\Engine\Laravel\Base\Bcl
 		if ($method == 'except')
 		{
 			$arguments = Arr::getItem($args, 0, false);
-			$this->except =  is_array($arguments) ? $arguments : $args;
+			$this->except = is_array($arguments) ? $arguments : $args;
 			return $this;
 		}
 	}

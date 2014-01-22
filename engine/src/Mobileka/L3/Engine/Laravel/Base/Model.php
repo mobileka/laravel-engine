@@ -1,13 +1,13 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 2.0
  * @todo PHPDoc this class
  */
-class Model extends \Aware {
+class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public static $timestamps = true;
 	public static $column_registry = array();

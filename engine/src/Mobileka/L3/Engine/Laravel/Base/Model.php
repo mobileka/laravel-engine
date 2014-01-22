@@ -1,6 +1,8 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+  Mobileka\L3\Engine\Laravel\Helpers,
+  Mobileka\L3\Engine\Laravel\UrlConditionBuilder;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
@@ -187,7 +189,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 		$offset = $per_page * (\Input::get('page', 1) - 1);
 
-		$cb = \UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
+		$cb = UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
 
 		try {
 			foreach ($relations as $relation)
@@ -229,7 +231,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		}
 		catch(\Laravel\Database\Exception $e)
 		{
-			\Helpers\Debug::log_pp($e->getMessage());
+			Helpers\Debug::log_pp($e->getMessage());
 			$results = array();
 		}
 
@@ -264,7 +266,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return $this;
 		}
 
-		$query = \UrlConditionBuilder::make($query, $this)->get();
+		$query = UrlConditionBuilder::make($query, $this)->get();
 
 		if ($order_by and $query)
 		{

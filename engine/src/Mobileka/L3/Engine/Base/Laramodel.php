@@ -3,7 +3,11 @@
 use Laravel\Messages,
 	Larave\Validator;
 
-class Laramodel extends \Laravel\Database\Eloquent\Model {
+/**
+ * Self-validating Laravel models
+ * Improved and fixed Aware Laravel bundle
+ */
+abstract Laramodel extends \Laravel\Database\Eloquent\Model {
 	/**
 	 * Validation Rules
 	 *
@@ -26,7 +30,7 @@ class Laramodel extends \Laravel\Database\Eloquent\Model {
 	public $errors;
 
 	/**
-	 * Create new Aware instance
+	 * Create new instance
 	 *
 	 * @param array $attributes
 	 * @return void

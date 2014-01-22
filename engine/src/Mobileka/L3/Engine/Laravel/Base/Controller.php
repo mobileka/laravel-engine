@@ -27,11 +27,6 @@ class Controller extends \Laravel\Routing\Controller {
 	public $restful = true;
 
 	/**
-	 * Sets a default page layout
-	 */
-	public $layout = '_system.layouts.mikhalych_inner';
-
-	/**
 	 * Holds an instance of a main model of a current contorller
 	 */
 	protected $model;

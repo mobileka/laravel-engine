@@ -2,8 +2,11 @@
 
 use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Router,
+	Mobileka\L3\Engine\Laravel\URL,
+	Mobileka\L3\Engine\Laravel\File,
 	Mobileka\L3\Engine\Laravel\Redirect,
 	Mobileka\L3\Engine\Laravel\Input,
+	Mobileka\L3\Engine\Laravel\Date,
 	Mobileka\L3\Engine\Laravel\Lang,
 	Mobileka\L3\Engine\Laravel\Config,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
@@ -13,9 +16,12 @@ use Mobileka\L3\Engine\Grid\Grid,
 
 use Laravel\Event,
 	Laravel\Request,
+	Laravel\IoC,
 	Laravel\Response;
 
 /**
+ * A base controller for CRUD
+ *
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 2.0
  */
@@ -280,8 +286,8 @@ class Controller extends \Laravel\Routing\Controller {
 
 		return Request::ajax()
 			? Response::json(array('status' => 'success', 'errors' => array(), 'data' => array()))
-			: \Redirect::to_action($this->generateUrl($route, $options), $params)
-				->success(\Lang::findLine('default.messages', 'mass_destroy'));
+			: Redirect::to_action($this->generateUrl($route, $options), $params)
+				->success(Lang::findLine('default.messages', 'mass_destroy'));
 	}
 
 	/**
@@ -306,18 +312,18 @@ class Controller extends \Laravel\Routing\Controller {
 
 		$route = static::$route;
 
-		$successUrl = \Input::get(
+		$successUrl = Input::get(
 			'successUrl',
-			\URL::to_action($this->generateUrl($route, $options), $params)
+			URL::to_action($this->generateUrl($route, $options), $params)
 		);
 
-		$errorUrl = \Input::get('errorUrl', null);
+		$errorUrl = Input::get('errorUrl', null);
 
-		$message = \Lang::findLine('default.messages', 'create');
+		$message = Lang::findLine('default.messages', 'create');
 
 		if ($this->model->exists)
 		{
-			$message = \Lang::findLine('default.messages', 'update');
+			$message = Lang::findLine('default.messages', 'update');
 		}
 
 		if (!$this->model->saveData($this->data, $this->safeData))
@@ -329,20 +335,20 @@ class Controller extends \Laravel\Routing\Controller {
 			}
 
 			return ($errorUrl)
-				? \Redirect::to($errorUrl)->
+				? Redirect::to($errorUrl)->
 					with_input()->
 					with_errors($this->model->errors)
-				: \Redirect::back()->
+				: Redirect::back()->
 					with_input()->
 					with_errors($this->model->errors)
 			;
 		}
 
-		\Event::fire('Model saved: ' . \Router::requestId(Controller::$route), array($this->model, $oldModel));
-		\Event::fire('Model saved: ' . \Router::requestId(Controller::$route, true), array($this->model, $oldModel));
-		\Event::fire('bind-uploads', array($this->model->id, \Input::get('upload_token', null)));
+		Event::fire('Model saved: ' . Router::requestId(Controller::$route), array($this->model, $oldModel));
+		Event::fire('Model saved: ' . Router::requestId(Controller::$route, true), array($this->model, $oldModel));
+		Event::fire('bind-uploads', array($this->model->id, Input::get('upload_token', null)));
 
-		return \Redirect::to($successUrl)->notify($message, 'success');
+		return Redirect::to($successUrl)->notify($message, 'success');
 	}
 
 	/**
@@ -350,19 +356,21 @@ class Controller extends \Laravel\Routing\Controller {
 	 *
 	 * @return json
 	 */
-	protected function _ajaxSave()
+	protected function _ajaxSave($bindUploads = true, $model = false)
 	{
+		$this->model = $model ? : $this->model;
+
 		/*
 		* Сохраним модель такой, какой она была до сохранения изменения
 		* Старая модель нужна для некоторых событий
 		*/
 		$oldModel = clone $this->model;
 
-		$message = \Lang::findLine('default.messages', 'create');
+		$message = Lang::findLine('default.messages', 'create');
 
 		if ($this->model->exists)
 		{
-			$message = \Lang::findLine('default.messages', 'update');
+			$message = Lang::findLine('default.messages', 'update');
 		}
 
 		$result = array(
@@ -379,20 +387,100 @@ class Controller extends \Laravel\Routing\Controller {
 
 		$result['data'] = $this->model->to_array();
 
-		\Event::fire(
-			'Model saved async: ' . \Router::requestId(Controller::$route),
+		Event::fire(
+			'Model saved async: ' . Router::requestId(Controller::$route),
 			array($this->model, $oldModel, $result)
 		);
 
-		\Event::fire(
-			'Model saved async: ' . \Router::requestId(Controller::$route, true),
+		Event::fire(
+			'Model saved async: ' . Router::requestId(Controller::$route, true),
 			array($this->model, $oldModel, $result)
 		);
 
-		\Event::fire('bind-uploads', array($this->model->id, \Input::get('upload_token', null)));
+		if ($bindUploads)
+		{
+			Event::fire('bind-uploads', array($this->model->id, Input::get('upload_token', null)));
+		}
 
 		return Response::json($result);
 	}
+
+	public function get_uploads()
+	{
+		$this->model = IoC::resolve('uploader');
+		return $this->index('json');
+	}
+
+	public function get_view_file($id, $format = 'html')
+	{
+		$uploader = IoC::resolve('Uploader');
+		$file = $uploader->find($id);
+		$json = array('thumbnail' => \View::make($uploader->template, compact('file'))->render());
+
+		return Response::json($json);
+	}
+
+	/**
+	 * Upload a file / image
+	 *
+	 * @return json
+	 */
+	public function post_upload_file($object_id = 0)
+	{
+		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name'));
+
+
+		/**
+		 * Получаем тип объекта, основываясь на имени роута.
+		 */
+		$this->data['type'] = head(explode('_', static::$route['alias']));
+		$this->data['token'] = Input::get('upload_token');
+		$this->data['object_id'] = $object_id;
+		$this->data['created_at'] = date('Y-m-d H:i:s');
+
+		/**
+		 * Сохраним файл в папку uploads/$type/YEAR-MONTH
+		 */
+		$this->data['filename'] = File::upload(
+			Input::file('file'),
+			$this->data['type'] . '/' . Date::make($this->data['created_at'])->get('Y-m')
+		);
+
+		return $this->_ajaxSave(false, IoC::resolve('Uploader'));
+	}
+
+	public function delete_destroy_file($id)
+	{
+		$uploader = IoC::resolve('Uploader');
+
+		if (!$file = $uploader->find($id))
+		{
+			return Response::error('404');
+		}
+
+		foreach (Config::find('image.aliases') as $alias => $dimensions)
+		{
+			$filename = $alias . '_' . $upload->filename;
+			$path = imagePath($filename, $file->type, $file->created_at);
+
+			if (File::exists($path))
+			{
+				File::delete($path);
+			}
+		}
+
+		$path = $upload->path;
+
+		if (File::exists($path))
+		{
+			File::delete($path);
+		}
+
+		$file->delete();
+
+		return \Response::json(array('status' => 'success', 'errors' => array(), 'data' => compact($file)));
+	}
+
 
 	protected function generateUrl($route, $options)
 	{

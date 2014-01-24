@@ -1,7 +1,5 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
-use \Arr;
-
 abstract class Crud {
 
 	/**

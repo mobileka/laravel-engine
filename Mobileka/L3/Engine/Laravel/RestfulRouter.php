@@ -138,7 +138,7 @@ class RestfulRouter {
 	}
 
 	/**
-	 * Список привязанных к объекту файлов с возможностью удаения
+	 * Список файлов
 	 */
 	protected function uploads($bundle, $controller, $uri, $as, $uses)
 	{
@@ -150,7 +150,25 @@ class RestfulRouter {
 			),
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => 'uploads::admin.default@index'
+				'uses' => $uses . __FUNCTION__
+			)
+		);
+	}
+
+	/**
+	 * Получить файл
+	 */
+	protected function view_file($bundle, $controller, $uri, $as, $uses)
+	{
+		\Route::get(
+			array(
+				$uri . '/(:num)/uploads',
+				$uri . '/(:num)/uploads.(json)',
+				$uri . '/(:num)/uploads.(ajax)'
+			),
+			array(
+				'as' => $as . __FUNCTION__,
+				'uses' => $uses . __FUNCTION__
 			)
 		);
 	}
@@ -158,13 +176,29 @@ class RestfulRouter {
 	/**
 	 * Залить файл и привязать его к объекту
 	 */
-	protected function upload($bundle, $controller, $uri, $as, $uses)
+	protected function upload_file($bundle, $controller, $uri, $as, $uses)
 	{
 		\Route::post(
 			$uri . '/(:num)/uploads',
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => 'uploads::admin.default@' . __FUNCTION__
+				'uses' => $uses . __FUNCTION__
+			)
+		);
+	}
+
+	/**
+	 * Удалить файл
+	 */
+	protected function destroy_file($bundle, $controller, $uri, $as, $uses)
+	{
+		\Route::delete(
+			array(
+				$uri . '/(:num)/uploads',
+			),
+			array(
+				'as' => $as . __FUNCTION__,
+				'uses' => $uses . __FUNCTION__
 			)
 		);
 	}
@@ -187,10 +221,12 @@ class RestfulRouter {
 
 		if ($method == 'with')
 		{
-			if (\Arr::haveIntersections($args, array('images', 'uploads')))
+			if (\Arr::haveIntersections($args, array('images', 'uploads', 'files')))
 			{
 				$this->actions[] = 'uploads';
-				$this->actions[] = 'upload';
+				$this->actions[] = 'upload_file';
+				$this->actions[] = 'destroy_file';
+				$this->actions[] = 'view_file';
 			}
 
 			return $this;

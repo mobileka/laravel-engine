@@ -1,7 +1,5 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
-use Helpers\Arr, \Str;
-
 abstract class Component {
 
 	/**
@@ -164,7 +162,7 @@ abstract class Component {
 
 		$result = '';
 
-		if ($this->row and $rules = Arr::getItem($this->row->rules, $this->name))
+		if ($this->row and $rules = \Arr::getItem($this->row->rules, $this->name))
 		{
 			if (\Str::contains($rules, 'required'))
 			{

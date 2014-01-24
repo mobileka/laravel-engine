@@ -157,7 +157,7 @@ abstract class Laramodel extends \Eloquent {
 			//rollback the transaction and return false
 			\DB::connection()->pdo->rollBack();
 
-			if (in_array($e->getCode(), array(11, 12, 13))
+			if (in_array($e->getCode(), array(11, 12, 13)))
 			{
 				return false;
 			}

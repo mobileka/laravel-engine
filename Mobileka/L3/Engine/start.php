@@ -7,6 +7,8 @@
 //Laravel.Base
 \Laravel\Autoloader::$aliases['BaseClass'] = 'Mobileka\L3\Engine\Laravel\Base\BClass';
 \Laravel\Autoloader::$aliases['Controller'] = 'Mobileka\L3\Engine\Laravel\Base\Controller';
+\Laravel\Autoloader::$aliases['FrontendController'] = 'Mobileka\L3\Engine\Laravel\Base\FrontendController';
+\Laravel\Autoloader::$aliases['BackendController'] = 'Mobileka\L3\Engine\Laravel\Base\BackendController';
 \Laravel\Autoloader::$aliases['Model'] = 'Mobileka\L3\Engine\Laravel\Base\Model';
 \Laravel\Autoloader::$aliases['View'] = 'Mobileka\L3\Engine\Laravel\Base\View';
 

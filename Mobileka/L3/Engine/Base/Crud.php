@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
+use Mobileka\L3\Engine\Laravel\Base\View;
+
 abstract class Crud {
 
 	/**
@@ -81,7 +83,7 @@ abstract class Crud {
 	 */
 	public function render()
 	{
-		return \View::make(
+		return View::make(
 			$this->template,
 			array(
 				'crud' => $this,

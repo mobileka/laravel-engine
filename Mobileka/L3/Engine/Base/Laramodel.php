@@ -135,13 +135,13 @@ abstract class Laramodel extends \Eloquent {
 			}
 
 			//try to save a model
-			if (!parent::$save())
+			if (!parent::save())
 			{
 				throw new \PDOException("Can't save the model", 12);
 			}
 
 			//call and save a result of the afterSave()
-			$aterSave = is_callable($aterSave) ? $aterSave() : $this->afterSave();
+			$afterSave = is_callable($afterSave) ? $afterSave() : $this->afterSave();
 
 			//rollback the transaction if afterSave() fails
 			if (!$afterSave)

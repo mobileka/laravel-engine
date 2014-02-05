@@ -38,7 +38,7 @@ class Notification {
 	{
 		if (in_array($name, static::$permittedMessageTypes))
 		{
-			return \\Session::flash(static::$namespace . $name, $arguments[0]);
+			return \Session::flash(static::$namespace . $name, $arguments[0]);
 		}
 
 		throw new \Exception("Trying to call an undefined static method \"$name\" of a " . __CLASS__ . ' class');

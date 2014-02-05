@@ -87,6 +87,24 @@ abstract class Laramodel extends \Eloquent {
 	}
 
 	/**
+	 * This method is being called everytime before the model is being validated
+	 * @return bool
+	 */
+	public function beforeValidation()
+	{
+		return true;
+	}
+
+	/**
+	 * This method is being called everytime after the model is being validated
+	 * @return bool
+	 */
+	public function afterValidation()
+	{
+		return true;
+	}
+
+	/**
 	 * This method is being called everytime before the model is being saved
 	 * To halt the save(), return false
 	 * @return bool
@@ -111,33 +129,52 @@ abstract class Laramodel extends \Eloquent {
 	 *
 	 * @param array $rules
 	 * @param array $messages
+	 * @param null|closure $beforeValidation
+	 * @param null|closure $afterValidation
 	 * @param null|closure $beforeSave
 	 * @param null|closure $afterSave
 	 * @return bool
 	 */
-	public function save($rules = array(), $messages = array(), $beforeSave = null, $afterSave = null)
+	public function save($rules = array(), $messages = array(), $beforeValidation = null, $afterValidation = null, $beforeSave = null, $afterSave = null)
 	{
 		try
 		{
 			//begin a transaction
 			\DB::connection()->pdo->beginTransaction();
 
+			$beforeValidation = is_callable($beforeValidation) ? $beforeValidation() : $this->beforeValidation();
+
+			if (!$beforeValidation)
+			{
+				$this->throwPdoException(8);
+			}
+
+			//validate a model
+			if (!$this->valid($rules, $messages))
+			{
+				$this->throwPdoException(9);
+			}
+
+			$afterValidation = is_callable($afterValidation) ? $afterValidation() : $this->afterValidation();
+
+			if (!$afterValidation)
+			{
+				$this->throwPdoException(10);
+			}
+
 			//call and save a result of the beforeSave()
 			$beforeSave = is_callable($beforeSave) ? $beforeSave() : $this->beforeSave();
 
-			//validate a model
-			$valid = $this->valid($rules, $messages);
-
 			//don't try to save a model if one of the above fails
-			if (!$beforeSave or !$valid)
+			if (!$beforeSave)
 			{
-				throw new \PDOException("Can't save the model", 11);
+				$this->throwPdoException(11);
 			}
 
 			//try to save a model
 			if (!parent::save())
 			{
-				throw new \PDOException("Can't save the model", 12);
+				$this->throwPdoException(12);
 			}
 
 			//call and save a result of the afterSave()
@@ -146,7 +183,7 @@ abstract class Laramodel extends \Eloquent {
 			//rollback the transaction if afterSave() fails
 			if (!$afterSave)
 			{
-				throw new \PDOException("Can't save the model", 13);
+				$this->throwPdoException(13);
 			}
 
 			//commit the transaction
@@ -157,17 +194,22 @@ abstract class Laramodel extends \Eloquent {
 			//rollback the transaction and return false
 			\DB::connection()->pdo->rollBack();
 
-			if (in_array($e->getCode(), array(11, 12, 13)))
+			if (in_array($e->getCode(), range(8, 13)))
 			{
 				return false;
 			}
 
-			echo "$e->getMessage()\n";
-			\Debug::pp($e);
+			throw $e;
 		}
 
 		return !$this->errors->all();
 	}
+
+	protected function throwPdoException($code = 0, $message = 'Can\'t save model')
+	{
+		throw new \PDOException($message, $code);
+	}
+
 
 	/**
 	 * Ignore unchanged attrbutes

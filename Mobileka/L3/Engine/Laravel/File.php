@@ -1,16 +1,16 @@
-<?php namespace Mobileka\L3\Engine\Laravel;
+<?php
 
 class File extends \Laravel\File {
 
-	public static function upload($file, $type = null, $directory = null)
+	public static function upload($file, $type = null, $directory = null, $cropData = null)
 	{
 		if (!$directory)
 		{
-			$directory = (!static::is(array('jpeg', 'png', 'gif'), $file['tmp_name'])) ? 'docs' : 'images';
+			$directory = (!File::is(array('jpeg', 'png', 'gif'), $file['tmp_name'])) ? 'docs' : 'images';
 		}
 
 		//получаем расширение файла
-		$extension = static::extension($file['name']);
+		$extension = File::extension($file['name']);
 
 		//формируем его название и путь к нему
 		$filename = md5(time() . $file['tmp_name']) . '.' . $extension;
@@ -30,11 +30,31 @@ class File extends \Laravel\File {
 		//Если тип заливаемого файла - картинка, то сжать ее
 		if ($directory == 'images')
 		{
-			\Image::make($path.$filename)->
-				save($path.$filename, 75);
+			$img = Image::make($path.$filename)->
+				save($path.$filename, 100);
+
+			if ($cropData)
+			{
+				static::saveCroppedCopy($img, $cropData);
+			}
 		}
 
 		//возвращаем имя файла
 		return $filename;
+	}
+
+	protected static function saveCroppedCopy($img, $cropData)
+	{
+		$x = $cropData['x'];
+		$y = $cropData['y'];
+		$w = $cropData['w'];
+		$h = $cropData['h'];
+
+		if ($w and $h)
+		{
+			$img = $img->crop($w, $h, $x, $y);
+		}
+
+		$img->save($img->dirname . '/crop_' . $img->basename);
 	}
 }

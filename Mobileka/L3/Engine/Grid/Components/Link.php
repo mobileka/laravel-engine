@@ -6,6 +6,7 @@ class Link extends BaseComponent {
 	protected $params   = array();
 	protected $label    = '';
 	protected $route    = '';
+	protected $query_params = array();
 
 	public function label($value, $translate = false)
 	{
@@ -29,6 +30,28 @@ class Link extends BaseComponent {
 			return $params;
 		}
 
+		if ($name === 'link')
+		{
+			$url = \URL::to_route($this->route, $this->params);
+			if ($this->query_params)
+			{
+				$row = $this->row;
+
+				$label = preg_replace_callback(
+					'/:\w+/',
+					function($matches) use($row)
+					{
+						$property = ltrim ($matches[0], ':');
+						return $row->{$property};
+					},
+					$this->query_params
+				);
+				$url .= "?$label";
+			}
+
+			return $url;
+		}
+
 		if ($name === 'label')
 		{
 			$row = $this->row;
@@ -48,5 +71,4 @@ class Link extends BaseComponent {
 
 		return parent::__get($name);
 	}
-
 }

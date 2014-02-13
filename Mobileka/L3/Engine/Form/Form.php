@@ -1,5 +1,8 @@
 <?php namespace Mobileka\L3\Engine\Form;
 
+use \Helpers\Misc,
+	\Helpers\Arr;
+
 /**
  * Form class of a CRUD bundle
  *
@@ -15,7 +18,7 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 
 	protected $attributes = array(
 		'class' => 'form-horizontal form-bordered form-wysiwyg form-validate',
-		'id'    => 'form_validate',
+		'id'    => 'form_validate'
 	);
 
 	public static function make(\Eloquent $model, $config = array())
@@ -28,6 +31,7 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 		$this->model = $model;
 		$this->rules = $model->rules;
 		$this->requestId = \Router::requestId(\Controller::$route);
+		$this->attributes['data-alias'] = \Controller::$route['alias'];
 
 		foreach ($config as $key => $item)
 		{
@@ -111,12 +115,12 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 	{
 		$method = $this->method;
 
-		if ($config = \Arr::getItem($config, 'action'))
+		if ($config = Arr::getItem($config, 'action'))
 		{
 			/**
 			 * Set a method if specified
 			 */
-			$method = \Arr::getItem($config, 'method', $method);
+			$method = Arr::getItem($config, 'method', $method);
 		}
 
 		return $method;
@@ -137,24 +141,24 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 		 */
 		$result = $this->{$type};
 
-		if ($config = \Arr::getItem($config, $type))
+		if ($config = Arr::getItem($config, $type))
 		{
 			/**
 			 * Params of a route
 			 * This can be specified for urlToRoute or urlToAction
 			 */
-			$params = \Arr::getItem($config, 'params', array());
+			$params = Arr::getItem($config, 'params', array());
 
 			/**
 			 * Set cancel url if specified
 			 */
-			$result = \Arr::getItem($config, 'url', $result);
+			$result = Arr::getItem($config, 'url', $result);
 
 			/**
 			 * If specified, set cancel url with \URL::to_action()
 			 * This has a higher priority than 'url' config parameter
 			 */
-			if ($result = \Arr::getItem($config, 'urlToAction'))
+			if ($result = Arr::getItem($config, 'urlToAction'))
 			{
 				$result = \URL::to_action($result, $params);
 			}
@@ -163,7 +167,7 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 			 * If specified, set cancel url by route alias
 			 * This has a higher priority than 'url' and 'urlToAction' config parameters
 			 */
-			if ($alias = \Arr::getItem($config, 'urlToRoute'))
+			if ($alias = Arr::getItem($config, 'urlToRoute'))
 			{
 				$result = \URL::to_route($alias, $params);
 			}

@@ -2,6 +2,11 @@
 
 use \Mobileka\L3\Engine\Laravel\Lang;
 
+function langs()
+{
+	return array(Config::get('application.language'), 'en') + Config::get('application.languages', array());
+}
+
 function gridLang($file, $word, $replacements = array(), $language = null)
 {
 	return crudLang('grid', $file, $word, $replacements = array(), $language = null);

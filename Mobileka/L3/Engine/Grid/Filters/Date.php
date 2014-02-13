@@ -4,7 +4,7 @@ class Date extends DateRangeFilter {
 
 	protected $template = 'engine::grid.filters.date';
 
-	public function value()
+	public function value($lang = '')
 	{
 		return substr($this->fromValue(), 0, 10);
 	}

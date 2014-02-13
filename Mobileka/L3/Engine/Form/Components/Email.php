@@ -3,9 +3,6 @@
 class Email extends BaseComponent {
 
 	protected $template = 'engine::form.email';
-
-	protected $requiredAttributes = array(
-		'class' => 'input-medium',
-	);
+	protected $requiredAttributes = array('class' => 'input-medium');
 
 }

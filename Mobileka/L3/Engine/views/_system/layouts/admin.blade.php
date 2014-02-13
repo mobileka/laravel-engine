@@ -7,7 +7,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<title>{{ Config::get('application.projectName') . ' | ' . $title }}</title>
+	<title>{{  Config::get('application.projectName') . ' | ' . $title }}</title>
 
 	{{ Asset::container('plugins')->styles() }}
 
@@ -19,10 +19,7 @@
 		var BASE = "{{ URL::base() }}";
 			URL_KEEPER = {
 				upload_url                         : '{{ URL::to_upload(Controller::$route) }}',
-				upload_thumbnail                   : '{{ URL::to_route('uploads_admin_default_view') }}',
-				properties_admin_values_destroy    : '{{ URL::to_route('properties_admin_values_destroy') }}',
-				properties_admin_values_create     : '{{ URL::to_route('properties_admin_values_create') }}',
-				properties_admin_values_step2_data : '{{ URL::to_route('properties_admin_values_step2_data') }}'
+				upload_thumbnail                   : '{{ URL::to_route('uploads_admin_default_view') }}'
 			};
 
 		var app = {
@@ -52,7 +49,7 @@
 	<div id="navigation">
 		<div class="container-fluid">
 			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
-			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ projectName() }} | Панель администратора</a>
+			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ Config::get('application.projectName') . ' | ' . $title }} | Панель администратора</a>
 
 			<div class="user">
 				<ul class="icon-nav">
@@ -83,7 +80,7 @@
 				</div>
 			</form>
 
-			{{ View::make('_system.layouts.inc.subnav', get_defined_vars() )->render() }}
+			{{ View::make('engine::_system.layouts.inc.subnav', get_defined_vars() )->render() }}
 		</div>
 		<div id="main">
 			<div class="container-fluid">

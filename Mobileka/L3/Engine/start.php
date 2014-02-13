@@ -4,6 +4,12 @@
   'Mobileka\L3\Engine' => __DIR__
 ));
 
+IoC::register('i18n', function($injection = null)
+{
+	$injection = $injection ? $injection : new \Mobileka\L3\Engine\Models\i18n;
+	return new \Mobileka\L3\Engine\i18n($injection);
+});
+
 //Laravel.Base
 \Laravel\Autoloader::$aliases['BaseClass'] = 'Mobileka\L3\Engine\Laravel\Base\BClass';
 \Laravel\Autoloader::$aliases['Controller'] = 'Mobileka\L3\Engine\Laravel\Base\Controller';
@@ -54,6 +60,7 @@
 \Laravel\Autoloader::$aliases['CKEditorField'] = 'Mobileka\L3\Engine\Form\Components\CKEditor';
 \Laravel\Autoloader::$aliases['DatepickerField'] = 'Mobileka\L3\Engine\Form\Components\Datepicker';
 \Laravel\Autoloader::$aliases['DropdownField'] = 'Mobileka\L3\Engine\Form\Components\Dropdown';
+\Laravel\Autoloader::$aliases['DropdownChosen'] = 'Mobileka\L3\Engine\Form\Components\DropdownChosen';
 \Laravel\Autoloader::$aliases['ChosenDropdownField'] = 'Mobileka\L3\Engine\Form\Components\DropdownChosen';
 \Laravel\Autoloader::$aliases['DualMultiselectField'] = 'Mobileka\L3\Engine\Form\Components\DualMultiselect';
 \Laravel\Autoloader::$aliases['EmailField'] = 'Mobileka\L3\Engine\Form\Components\Email';
@@ -67,6 +74,7 @@
 \Laravel\Autoloader::$aliases['TagField'] = 'Mobileka\L3\Engine\Form\Components\Tag';
 \Laravel\Autoloader::$aliases['TextField'] = 'Mobileka\L3\Engine\Form\Components\Text';
 \Laravel\Autoloader::$aliases['TextareaField'] = 'Mobileka\L3\Engine\Form\Components\TextArea';
+\Laravel\Autoloader::$aliases['CheckboxField'] = 'Mobileka\L3\Engine\Form\Components\Checkbox';
 
 //Grid Components
 \Laravel\Autoloader::$aliases['TextColumn'] = 'Mobileka\L3\Engine\Grid\Components\Column';
@@ -87,3 +95,4 @@
 \Laravel\Autoloader::$aliases['TextFilter'] = 'Mobileka\L3\Engine\Grid\Filters\Text';
 
 \Mobileka\L3\Engine\Laravel\Loader::requireDirectory(Bundle::path('engine') . 'Globals');
+

@@ -5,4 +5,4 @@ $attributes['class'] = (isset($component->attributes['class'])) ? $component->at
 
 ?>
 
-{{ Form::text($component->name, Input::old($component->name, dateTimeToDate($component->value())), $attributes) }}
+{{ Form::text($component->name, Input::old($component->name, dateTimeToDate($component->value($lang))), $attributes) }}

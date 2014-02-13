@@ -2,9 +2,8 @@
 
 class Tag extends BaseComponent {
 
-	protected $template = 'engine::form.tag';
-	protected $requiredAttributes = array(
-		'class' => 'tagsinput',
-	);
+	protected $template = 'engine::form.tags';
+	protected $htmlElement = 'textarea';
+	protected $requiredAttributes = array('class' => 'tagsinput');
 
 }

@@ -50,10 +50,10 @@
 		@forelse ($crud->items->results as $row)
 			<tr>
 				@foreach ($components as $component)
-					<td>{{ $component->row($row)->render() }}</td>
+					<td>{{ $component->row($row)->render($component->localized) }}</td>
 				@endforeach
 
-				<td>
+				<td class="table-actions">
 					{{-- Подробнее (view / show) --}}
 					{{ HTML::view_button($row->id) }}
 
@@ -61,7 +61,7 @@
 					{{ HTML::edit_button($row->id) }}
 
 					{{-- Удалить (destroy) --}}
-					{{ HTML::delete_button(URL::to_route(Router::requestId(Controller::$route, 'destroy'), $row->id)) }}
+					{{ HTML::delete_button(URL::to_existing_route(Router::requestId(Controller::$route, 'destroy'), $row->id, 'DELETE')) }}
 				</td>
 			</tr>
 		@empty

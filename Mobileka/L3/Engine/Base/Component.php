@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
+use Mobileka\L3\Engine\Laravel\Helpers\Arr, \Str;
+
 abstract class Component {
 
 	/**
@@ -8,6 +10,12 @@ abstract class Component {
 	 * @var string
 	 */
 	protected $name;
+
+	/**
+	 * Type of a HTML element
+	 * @var string
+	 */
+	protected $htmlElement = 'text';
 
 	/**
 	 * A name of a template (view) representing a component
@@ -46,6 +54,11 @@ abstract class Component {
 	);
 
 	/**
+	 * Is i18n enabled for this component?
+	 */
+	protected $localized = false;
+
+	/**
 	 * If set to true, a value will be used as a key for a language file
 	 * @var bool
 	 */
@@ -82,14 +95,22 @@ abstract class Component {
 	 *
 	 * @return mixed
 	 */
-	public function value()
+	public function value($lang = '')
 	{
 		$value = $this->row;
-		$tokens = explode('.', $this->name);
 
-		foreach ($tokens as $token)
+		if ($this->localized)
 		{
-			$value = $value->{$token};
+			$value = $this->row->localized($this->name, $lang);
+		}
+		else
+		{
+			$tokens = explode('.', $this->name);
+
+			foreach ($tokens as $token)
+			{
+				$value = $value->{$token};
+			}
 		}
 
 		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
@@ -127,11 +148,14 @@ abstract class Component {
 	 *
 	 * @return \Laravel\View
 	 */
-	public function render()
+	public function render($lang = '')
 	{
+		$name = $lang ? 'localized['.$lang.']['. $this->name .']' : $this->name;
+		$inputOldName = $lang ? 'localized.'.$lang.'.'.$this->name : $name;
+
 		foreach ($this->requiredAttributes as $key => $value)
 		{
-			if (isset($this->attributes[$key]))
+			if ($attr = Arr::getItem($this->attributes, $key) and $attr !== $value)
 			{
 				$this->attributes[$key] .= " $value";
 			}
@@ -144,7 +168,9 @@ abstract class Component {
 		return \View::make(
 			$this->template,
 			array(
-				'name' => $this->name,
+				'lang' => $lang,
+				'name' => $name,
+				'inputOldName' => $inputOldName,
 				'component' => $this
 			)
 		);
@@ -162,9 +188,14 @@ abstract class Component {
 
 		$result = '';
 
-		if ($this->row and $rules = \Arr::getItem($this->row->rules, $this->name))
+		if ($this->row)
 		{
-			if (\Str::contains($rules, 'required'))
+			$rules = $this->localized
+				? Arr::searchRecursively($this->row->translatable, 'rules', $this->name, '')
+				: Arr::getItem($this->row->rules, $this->name, '')
+			;
+
+			if (Str::contains($rules, 'required'))
 			{
 				$result = \View::make($view);
 			}

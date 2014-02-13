@@ -139,9 +139,6 @@ abstract class Laramodel extends \Eloquent {
 	{
 		try
 		{
-			//begin a transaction
-			\DB::connection()->pdo->beginTransaction();
-
 			$beforeValidation = is_callable($beforeValidation) ? $beforeValidation() : $this->beforeValidation();
 
 			if (!$beforeValidation)
@@ -178,22 +175,17 @@ abstract class Laramodel extends \Eloquent {
 			}
 
 			//call and save a result of the afterSave()
-			$afterSave = is_callable($afterSave) ? $afterSave() : $this->afterSave();
-
-			//rollback the transaction if afterSave() fails
-			if (!$afterSave)
+			if (is_callable($afterSave))
 			{
-				$this->throwPdoException(13);
+				$afterSave();
 			}
-
-			//commit the transaction
-			\DB::connection()->pdo->commit();
+			else
+			{
+				$this->afterSave();
+			}
 		}
-		catch(\PDOException $e)
+		catch(\Exception $e)
 		{
-			//rollback the transaction and return false
-			\DB::connection()->pdo->rollBack();
-
 			if (in_array($e->getCode(), range(8, 13)))
 			{
 				return false;
@@ -207,7 +199,7 @@ abstract class Laramodel extends \Eloquent {
 
 	protected function throwPdoException($code = 0, $message = 'Can\'t save model')
 	{
-		throw new \PDOException($message, $code);
+		throw new \Exception($message, $code);
 	}
 
 

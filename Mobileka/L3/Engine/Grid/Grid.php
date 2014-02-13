@@ -1,8 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Grid;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Misc,
-  Mobileka\L3\Engine\Laravel\Helpers\Arr,
-  Mobileka\L3\Engine\Laravel\Router;
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Grid extends \Mobileka\L3\Engine\Base\Crud {
 
@@ -21,7 +20,7 @@ class Grid extends \Mobileka\L3\Engine\Base\Crud {
 	{
 		$this->model = $model;
 		$this->items = $items;
-		$this->requestId = Router::requestId(\Controller::$route);
+		$this->requestId = \Router::requestId(\Controller::$route);
 
 		foreach ($config as $key => $item)
 		{

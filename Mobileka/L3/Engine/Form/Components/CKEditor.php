@@ -3,5 +3,6 @@
 class CKEditor extends BaseComponent {
 
 	protected $template = 'engine::form.ckeditor';
+	protected $htmlElement = 'textarea';
 
 }

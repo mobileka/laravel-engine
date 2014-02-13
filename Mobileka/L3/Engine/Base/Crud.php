@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
-use Mobileka\L3\Engine\Laravel\Base\View;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Mobileka\L3\Engine\Laravel\Base\View;
 
 abstract class Crud {
 
@@ -70,9 +71,9 @@ abstract class Crud {
 	 */
 	public function processComponents($components, $order, $only, $except)
 	{
-		$components = \Arr::onlyValues($components, $only);
-		$components = \Arr::exceptValues($components, $except);
-		$components = \Arr::sortByArray($components, $order);
+		$components = Arr::onlyValues($components, $only);
+		$components = Arr::exceptValues($components, $except);
+		$components = Arr::sortByArray($components, $order);
 		return $components;
 	}
 

@@ -4,7 +4,7 @@ class Dropdown extends BaseComponent {
 
 	protected $template = 'engine::grid.filters.dropdown';
 
-	public function value()
+	public function value($lang = '')
 	{
 		return \Arr::searchRecursively($this->filters, 'where', $this->name);
 	}

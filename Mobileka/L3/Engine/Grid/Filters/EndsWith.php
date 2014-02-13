@@ -4,7 +4,7 @@ class EndsWith extends BaseComponent {
 
 	protected $template = 'engine::grid.filters.ends_with';
 
-	public function value()
+	public function value($lang = '')
 	{
 		return \Arr::searchRecursively($this->filters, 'ends_with', $this->name);
 	}

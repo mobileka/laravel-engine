@@ -4,7 +4,7 @@ class StartsWith extends BaseComponent {
 
 	protected $template = 'engine::grid.filters.starts_with';
 
-	public function value()
+	public function value($lang = '')
 	{
 		return \Arr::searchRecursively($this->filters, 'starts_with', $this->name);
 	}

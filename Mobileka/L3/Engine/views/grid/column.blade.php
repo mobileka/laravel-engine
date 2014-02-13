@@ -1,1 +1,1 @@
-{{ $component->value() }}
+{{ $component->value($lang) }}

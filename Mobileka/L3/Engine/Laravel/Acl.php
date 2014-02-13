@@ -1,6 +1,6 @@
-<?php
+<?php namespace Mobileka\L3\Engine\Laravel;
 
-class Mobileka\L3\Engine\Laravel\Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
+class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 	public $aliases = array();
 	public $except = array();

@@ -2,11 +2,14 @@
 
 class Checkbox extends BaseComponent {
 
-	protected $template       = 'engine::form.checkbox';
-	protected $skin           = 'square';
+	protected $template = 'engine::form.checkbox';
+	protected $htmlElement = 'checkbox';
+
 	protected static $skins   = array('minimal', 'square', 'flat');
-	protected $color          = 'blue';
 	protected static $colors  = array('blue', 'red', 'green');
+
+	protected $skin           = 'square';
+	protected $color          = 'blue';
 	protected $uncheckedValue = 0;
 	protected $checkedValue   = 1;
 

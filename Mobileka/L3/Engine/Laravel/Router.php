@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
 class Router extends \Laravel\Routing\Router {
 
 	/**
@@ -11,7 +13,7 @@ class Router extends \Laravel\Routing\Router {
 	 */
 	public static function has($alias, $method = 'GET')
 	{
-		$routes = \Arr::permissivePluck(static::$routes[$method], 'as');
+		$routes = Arr::permissivePluck(static::$routes[$method], 'as');
 		return in_array($alias, $routes);
 	}
 
@@ -24,7 +26,7 @@ class Router extends \Laravel\Routing\Router {
 	 */
 	public static function isCurrentRoute($route)
 	{
-		if ($currentRoute = \Arr::getItem(\Controller::$route, 'alias'))
+		if ($currentRoute = Arr::getItem(\Controller::$route, 'alias'))
 		{
 			return $currentRoute === $route;
 		}
@@ -45,7 +47,7 @@ class Router extends \Laravel\Routing\Router {
 
 		$result = str_replace('.', '_', $route['controller']);
 
-		if ($bundle = \Arr::getItem($route, 'bundle'))
+		if ($bundle = Arr::getItem($route, 'bundle'))
 		{
 			$result = $bundle . '_' . $result;
 		}
@@ -71,5 +73,11 @@ class Router extends \Laravel\Routing\Router {
 	public static function wildcards($key)
 	{
 		return parent::wildcards($key);
+	}
+
+	public static function exists($route, $method = 'GET')
+	{
+		$routes = array_pluck(array_values(static::$routes[$method]), 'as');
+		return in_array($route, $routes);
 	}
 }

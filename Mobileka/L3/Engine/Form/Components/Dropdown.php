@@ -3,6 +3,7 @@
 class Dropdown extends BaseComponent {
 
 	protected $template = 'engine::form.dropdown';
+	protected $htmlElement = 'select';
 	protected $options = array();
 
 	public function options($options, $defaultValue = true)
@@ -33,7 +34,7 @@ class Dropdown extends BaseComponent {
 	/**
 	 * Returns a value of a component.
 	 */
-	public function value()
+	public function value($lang = '')
 	{
 		$value = $this->row;
 		$tokens = explode('.', $this->name);

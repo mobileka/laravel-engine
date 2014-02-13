@@ -1,22 +1,61 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr,
-  Mobileka\L3\Engine\Laravel\Helpers,
-  Mobileka\L3\Engine\Laravel\UrlConditionBuilder;
+	Input,
+	File;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 2.0
- * @todo PHPDoc this class
+ * @todo PHPDoc and refactor this class
  */
 class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public static $timestamps = true;
 	public static $column_registry = array();
-	public $columns;
-	public $conditions;
+	public static $translatable = array();
 
-	protected function parseInputData($data = array())
+	public static $data = array(
+		'data' => array(),
+		'safe' => array(),
+		'relatedData' => array(),
+		'safeRelationData' => array(),
+		'translations' => array(),
+		'safeTranslations' => array()
+	);
+
+	public $columns;
+	public $i18n;
+	public $conditions;
+	public static $viewRoute = '';
+
+	/**
+	 * List of polymorphic relations that should be saved differently from normal
+	 * properties. The key is the name of the relationship, the value is
+	 * an array specifying the field name and the value it must store.
+	 *
+	 * Example:
+	 *
+	 * 		array(
+	 * 			'countries' => array(
+	 * 				'polymorphic_id'    => 'item_id',
+	 * 				'polymorphic_field' => 'item_type',
+	 * 				'polymorphic_value' => 'news',
+	 * 			),
+	 * 		)
+	 *
+	 * @var array
+	 */
+	protected static $polymorphicRelations = array();
+	public static $imageFields = array();
+
+	public function __construct($attributes = array(), $exists = false)
+	{
+		$this->i18n = \IoC::resolve('i18n');
+		return parent::__construct($attributes, $exists);
+	}
+
+	protected function parseInputData($data = array(), $safe = false)
 	{
 		$relatedData = array();
 
@@ -40,15 +79,63 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			}
 		}
 
-		return array($data, $relatedData);
+		$translations = Arr::getItem($data, 'localized', array());
+
+		if ($this->exists and !$safe)
+		{
+			foreach ($this->i18n->getTranslationsByModel($this) as $t)
+			{
+				if (isset($translations[$t->lang]) and isset($translations[$t->lang][$t->field]))
+				{
+					continue;
+				}
+
+				$translations[$t->lang][$t->field] = $t->value;
+			}
+		}
+
+		unset($data['localized']);
+
+		return array($data, $relatedData, $translations);
+	}
+
+	/**
+	 * Get an array with the values of a given column.
+	 *
+	 * @param  string  $column
+	 * @param  string  $key
+	 * @return array
+	 */
+	public static function lists($column, $key = null)
+	{
+		$result = array();
+		$models = static::all();
+
+		foreach ($models as $model)
+		{
+			$result[$model->{$key}] = $model->{$column};
+		}
+
+		return $result;
 	}
 
 	public function saveData($data = array(), $safe = array())
 	{
 		$relations = array();
 
-		list($data, $relationData) = $this->parseInputData($data);
-		list($safe, $safeRelationData) = $this->parseInputData($safe);
+		list($data, $relationData, $translations) = $this->parseInputData($data);
+		list($safe, $safeRelationData, $safeTranslations) = $this->parseInputData($safe, true);
+
+		static::$data = array(
+			'data' => $data,
+			'safe' => $safe,
+
+			'relationData' => $relationData,
+			'safeRelationData' => $safeRelationData,
+
+			'translations' => $translations,
+			'safeTranslations' => $safeTranslations
+		);
 
 		foreach ($relationData as $relation => $data)
 		{
@@ -65,27 +152,201 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			$this->{$relation}()->{$key} = $value;
 		}
 
-		foreach (array_unique($relations) as $relation)
+		try
 		{
-			$model = $this->{$relation};
+			\DB::connection()->pdo->beginTransaction();
 
-			if (!$model->save())
+			foreach (array_unique($relations) as $relation)
 			{
-				$this->mergeRelationErros($model, $relation);
+				$model = $this->{$relation};
+
+				if (!$model->save())
+				{
+					$this->mergeRelationErros($model, $relation);
+				}
+			}
+
+			/* POLYMORPH */
+			$polymorphicData = array();
+
+			if (static::$polymorphicRelations)
+			{
+				foreach (static::$polymorphicRelations as $relation => $relationParams)
+				{
+					if (isset($data[$relation]) && $data[$relation])
+					{
+						$polymorphicData[$relation] = $data[$relation];
+					}
+
+					unset($data[$relation]);
+				}
+			}
+			/* POLYMORPH */
+
+			$this->fill($data);
+
+			foreach ($safe as $key => $value)
+			{
+				$this->{$key} = $value;
+			}
+
+			$this->save();
+
+			/* POLYMORPH */
+			$this->savePolymorphicData($polymorphicData);
+
+			if (!$this->beforeLocalizedSave())
+			{
+				throw new \PDOException('beforeLocalizedSave() returned false', 12);
+			}
+
+			$this->saveLocalizedData(static::$data['translations'], static::$data['safeTranslations']);
+
+			if (!$this->afterLocalizedSave())
+			{
+				throw new \PDOException('afterLocalizedSave() returned false', 12);
+			}
+
+			if ((bool)$this->errors->messages)
+			{
+				throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
+			}
+
+			\DB::connection()->pdo->commit();
+		}
+		catch(\PDOException $e)
+		{
+			if (!in_array($e->getCode(),array('42S22')))
+			{
+				\Log::info("\n\n\n###################################################################################################n");
+				\Helpers\Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
+				\Helpers\Debug::log_pp($e->getMessage(), false);
+				\Log::info("\n###################################################################################################n\n\n");
+				return false;
+			}
+
+			throw $e;
+		}
+
+		return true;
+	}
+
+	public function beforeLocalizedSave()
+	{
+		return true;
+	}
+
+	public function saveLocalizedData($translations, $safeTranslations)
+	{
+		foreach ($translations as $lang => $fields)
+		{
+			$validation = \Validator::make($fields, Arr::getItem(static::$translatable, 'rules', array()));
+
+			if ($validation->fails())
+			{
+				foreach ($validation->errors->messages as $field => $message)
+				{
+					$this->addError('localized: ' . $field . '_' . $lang, $message);
+				}
+
+				continue;
+			}
+
+			foreach ($fields as $field => $value)
+			{
+				try
+				{
+					$this->saveLocalizedField($field, $value, $lang);
+				}
+				catch(\Exception $e)
+				{
+					$this->addError('localized: ' . $field . '_' . $lang, $e->getMessage());
+				}
 			}
 		}
 
-		$this->fill($data);
-
-		foreach ($safe as $key => $value)
+		foreach ($safeTranslations as $lang => $fields)
 		{
-			$this->{$key} = $value;
+			foreach ($fields as $field => $value)
+			{
+				try
+				{
+					$this->saveLocalizedField($field, $value, $lang);
+				}
+				catch(\Exception $e)
+				{
+					$this->addError('localized: ' . $field . '_' . $lang, $e->getMessage());
+				}
+			}
+		}
+	}
+
+	public function afterLocalizedSave()
+	{
+		return true;
+	}
+
+	public function setLocalized($field, $value, $lang)
+	{
+		if (!Arr::getItem(static::$data['translations'], $lang))
+		{
+			static::$data['translations'][$lang] = array();
 		}
 
-		$this->save();
-
-		return !(bool)$this->errors->messages;
+		static::$data['translations'][$lang][$field] = $value;
 	}
+
+	public function localized($field, $lang = '')
+	{
+		$result = Arr::searchRecursively(static::$data, 'translations', $lang, array());
+		$hasField = array_key_exists($field, $result);
+		if (!$hasField && $this->exists)
+		{
+			$result = $this->i18n->getByModel($field, $this, $lang);
+		}
+		else
+		{
+			$result = $hasField ? $result[$field] : null;
+		}
+
+		return $result;
+	}
+
+	public function saveLocalizedField($field, $value, $lang = '')
+	{
+		if (!$this->id)
+		{
+			throw new \Exception("Trying to localize a field \"$field\" of an unsaved model " .get_class($this));
+		}
+
+		return $this->i18n->saveByModel($field, $value, $this, $lang);
+	}
+
+	/* POLYMORPH */
+	protected function savePolymorphicData($polymorphicData)
+	{
+		foreach (static::$polymorphicRelations as $relation => $relationParams)
+		{
+			$relationObject = $this->$relation();
+
+			$this->$relation()->delete();
+
+			if (isset($polymorphicData[$relation]) and $polymorphicData[$relation])
+			{
+				$relatedValues = array(
+					$relationParams['polymorphic_id']    => $this->id,
+					$relationParams['polymorphic_field'] => $relationParams['polymorphic_value'],
+				);
+
+				foreach ($polymorphicData[$relation] as $relatedId)
+				{
+					$this->$relation()->attach($relatedId, $relatedValues);
+				}
+
+			}
+		}
+	}
+
 
 	public function conditions($conditions = array())
 	{
@@ -114,7 +375,9 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public function _order($order_by = array())
 	{
 		$order = \Input::get('order', array());
-		if (!is_array($order)) {
+
+		if (!is_array($order))
+		{
 			$order = array($order);
 		}
 
@@ -189,7 +452,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 		$offset = $per_page * (\Input::get('page', 1) - 1);
 
-		$cb = UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
+		$cb = \UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
 
 		try {
 			foreach ($relations as $relation)
@@ -231,7 +494,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		}
 		catch(\Laravel\Database\Exception $e)
 		{
-			Helpers\Debug::log_pp($e->getMessage());
+			\Helpers\Debug::log_pp($e->getMessage());
 			$results = array();
 		}
 
@@ -266,7 +529,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return $this;
 		}
 
-		$query = UrlConditionBuilder::make($query, $this)->get();
+		$query = \UrlConditionBuilder::make($query, $this)->get();
 
 		if ($order_by and $query)
 		{
@@ -309,7 +572,13 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	 */
 	public function addError($field, $message)
 	{
-		$this->errors->messages[$field][] = $message;
+		$message = is_array($message) ? $message : array($message);
+
+		foreach ($message as $msg)
+		{
+			$this->errors->messages[$field][] = $msg;
+		}
+
 		return $this->errors;
 	}
 
@@ -350,11 +619,6 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		return $this->errors;
 	}
 
-	public static function getTableName()
-	{
-		return static::$table ?: strtolower(\Str::plural(class_basename(get_called_class())));
-	}
-
 	public function __call($name, $args)
 	{
 		if ($name == 'links')
@@ -367,9 +631,14 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public function __get($name)
 	{
-		if (in_array($name, array('rules', 'accessible', 'table', 'hidden')))
+		if (in_array($name, array('rules', 'accessible', 'table', 'hidden', 'translatable')))
 		{
 			return static::$$name;
+		}
+
+		if (in_array($name, Arr::getItem(static::$translatable, 'fields', array())))
+		{
+			return $this->localized($name);
 		}
 
 		return parent::__get($name);

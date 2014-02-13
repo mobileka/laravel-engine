@@ -13,7 +13,7 @@ class Date extends BaseComponent {
 		'monthIndex' => 1,
 	);
 
-	public function value()
+	public function value($lang = '')
 	{
 		$value = $this->row;
 		$tokens = explode('.', $this->name);

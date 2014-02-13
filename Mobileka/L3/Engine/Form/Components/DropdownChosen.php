@@ -3,8 +3,6 @@
 class DropdownChosen extends Dropdown {
 
 	protected $template = 'engine::form.dropdown_chosen';
-	protected $requiredAttributes = array(
-		'class' => 'chosen-select',
-	);
+	protected $requiredAttributes = array('class' => 'chosen-select');
 
 }

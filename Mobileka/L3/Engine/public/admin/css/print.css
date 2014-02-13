@@ -1,0 +1,40 @@
+/* line 1, I:/Open Server/domains/pltables/sass/print.sass */
+body, table { margin: 0; font-size: 9px; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/print.sass */
+h3 { line-height: normal; margin: 0; }
+
+/* line 9, I:/Open Server/domains/pltables/sass/print.sass */
+.table { font-weight: normal; border-collapse: collapse; }
+
+/* line 13, I:/Open Server/domains/pltables/sass/print.sass */
+.table tr th, .table tr td { padding: 0; margin: 0; line-height: 16px; border: 1px solid black; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/print.sass */
+.print_tab { height: 32px; background: black; }
+/* line 22, I:/Open Server/domains/pltables/sass/print.sass */
+.print_tab a { float: right; margin: 1px; }
+
+/* line 26, I:/Open Server/domains/pltables/sass/print.sass */
+.table tbody + tbody { border: 0; }
+
+/* line 30, I:/Open Server/domains/pltables/sass/print.sass */
+.box .box-title { margin: 0; }
+
+/* line 34, I:/Open Server/domains/pltables/sass/print.sass */
+.form-horizontal { margin: 0; }
+/* line 36, I:/Open Server/domains/pltables/sass/print.sass */
+.form-horizontal .control-group { margin-bottom: 0; font-size: 11px; }
+/* line 39, I:/Open Server/domains/pltables/sass/print.sass */
+.form-horizontal .control-label { font-size: 11px; padding-top: 0; cursor: text; }
+/* line 43, I:/Open Server/domains/pltables/sass/print.sass */
+.form-horizontal hr { margin: 0px; }
+
+/* line 46, I:/Open Server/domains/pltables/sass/print.sass */
+.summary_filter { font-size: 11px; }
+
+/* line 51, I:/Open Server/domains/pltables/sass/print.sass */
+.blue th { background: #368ee0 !important; color: white !important; }
+
+/* line 56, I:/Open Server/domains/pltables/sass/print.sass */
+.table .actions, .table .actions_header, .box-title .actions { display: none; }

@@ -1,0 +1,6 @@
+/* line 1, I:/Open Server/domains/pltables/sass/plugins/charts.scss */
+.flot { width: 100%; height: 300px; }
+/* line 5, I:/Open Server/domains/pltables/sass/plugins/charts.scss */
+.flot.small { height: 150px; }
+/* line 9, I:/Open Server/domains/pltables/sass/plugins/charts.scss */
+.flot.medium { height: 200px; }

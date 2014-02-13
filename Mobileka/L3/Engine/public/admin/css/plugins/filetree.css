@@ -1,0 +1,5 @@
+/* line 2, I:/Open Server/domains/pltables/sass/plugins/filetree.scss */
+.filetree .dynatree-container { border: 0; }
+
+/* line 7, I:/Open Server/domains/pltables/sass/plugins/filetree.scss */
+.activeFolder, .additionalInformation { font-weight: bold; margin-left: 5px; }

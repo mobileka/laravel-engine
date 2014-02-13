@@ -1,0 +1,30 @@
+/* line 2, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-info .invoice-name { font-size: 24px; margin-bottom: 40px; }
+/* line 7, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-info .invoice-from, .invoice-info .invoice-to { float: left; margin-bottom: 30px; }
+/* line 11, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-info .invoice-from span, .invoice-info .invoice-to span { color: #888; display: block; }
+/* line 17, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-info .invoice-to { margin-left: 50px; }
+/* line 21, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-info .invoice-infos { float: right; margin-right: 20px; }
+
+/* line 27, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .price { width: 100px; }
+/* line 31, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .qty { width: 50px; }
+/* line 34, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .total { text-align: right; width: 150px; }
+/* line 40, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .taxes p { text-align: right; }
+/* line 43, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .taxes p .light { margin-right: 20px; color: #888; }
+/* line 48, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.table-invoice .taxes p .totalprice { font-weight: bold; }
+
+/* line 56, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-payment span { color: #888; display: block; }
+/* line 60, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-payment ul { list-style-type: none; margin: 10px; padding: 0; }
+/* line 65, I:/Open Server/domains/pltables/sass/pages/invoice.scss */
+.invoice-payment ul li { float: left; margin-right: 10px; }

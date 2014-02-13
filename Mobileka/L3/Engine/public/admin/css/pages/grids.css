@@ -1,0 +1,14 @@
+/* line 2, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+.grids .row-fluid { margin-top: 10px; margin-bottom: 20px; }
+/* line 6, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+.grids .row-fluid [class*="span"] { background: #ccc; text-align: center; line-height: 30px; }
+/* line 11, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+.grids .row-fluid [class*="span"]:hover { background: #aaa; }
+
+/* line 18, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+.the-icons { list-style-type: none; }
+/* line 21, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+.the-icons li { margin: 5px 0; }
+
+/* line 26, I:/Open Server/domains/pltables/sass/pages/grids.scss */
+#updateInterval { margin-bottom: 0; }

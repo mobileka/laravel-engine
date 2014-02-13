@@ -1,129 +1,110 @@
 <?php
-//require Bundle::path('cat') . '/routes.php';
-////@todo говнокод
-//$uri = \URI::current();
 
-//if ($uri == '')
-//{
-	//$uri = '/';
-//}
+/*
+ * These assets are required for admin interface to work properly.
+ *
+ * To properly include them in your admin layout first run
+ * `php artisan bundle:publish` which will publish all assets to public
+ * directory. Then, inside admin layout make sure you have these lines:
 
-//\Request::$route = \Router::route(\Request::method(), $uri);
-//var_dump(\Request::method());die();
+<head>
+... snip
 
-//$route = \Request::route()->action;
-//$alias = \Arr::getItem($route, 'as');
+{{ Asset::container('engine_assets')->styles() }}
+@yield('styles')
+<script>
+	var BASE = "{{ URL::base() }}";
+		URL_KEEPER = {
+		};
 
-//if (\Str::contains($alias, 'admin'))
-//{
-	//\Asset::container('plugins')->add('jquery',                           'bower_components/jquery/jquery.min.js');
-	//\Asset::container('plugins')->add('bootstrap',                        'admin/css/bootstrap.min.css');
-	//\Asset::container('plugins')->add('bootstrap-responsive',             'admin/css/bootstrap-responsive.min.css');
-	//\Asset::container('plugins')->add('colorbox',                         'admin/css/plugins/colorbox/colorbox.css');
-	//\Asset::container('plugins')->add('jquery-ui',                        'admin/css/plugins/jquery-ui/smoothness/jquery-ui.css');
-	//\Asset::container('plugins')->add('jquery-ui-theme',                  'admin/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css');
-	//\Asset::container('plugins')->add('pageguide',                        'admin/css/plugins/pageguide/pageguide.css');
-	//\Asset::container('plugins')->add('fullcalendar',                     'admin/css/plugins/fullcalendar/fullcalendar.css');
-	//\Asset::container('plugins')->add('fullcalendar-print',               'admin/css/plugins/fullcalendar/fullcalendar.print.css');
-	//\Asset::container('plugins')->add('tagsinput',                        'admin/css/plugins/tagsinput/jquery.tagsinput.css');
-	//\Asset::container('plugins')->add('datatable',                        'admin/css/plugins/datatable/TableTools.css');
-	//\Asset::container('plugins')->add('chosen',                           'admin/css/plugins/chosen/chosen.css');
-	//\Asset::container('plugins')->add('multiselect',                      'admin/css/plugins/multiselect/multi-select.css');
-	//\Asset::container('plugins')->add('timepicker',                       'admin/css/plugins/timepicker/bootstrap-timepicker.min.css');
-	//\Asset::container('plugins')->add('colorpicker',                      'admin/css/plugins/colorpicker/colorpicker.css');
-	//\Asset::container('plugins')->add('datepicker',                       'admin/css/plugins/datepicker/datepicker.css');
-	//\Asset::container('plugins')->add('plupload',                         'admin/css/plugins/plupload/jquery.plupload.queue.css');
-	//\Asset::container('plugins')->add('select2',                          'admin/css/plugins/select2/select2.css');
-	//\Asset::container('plugins')->add('icheck',                           'admin/css/plugins/icheck/all.css');
-	//\Asset::container('plugins')->add('jcrop',                            'admin/css/plugins/jcrop/jquery.Jcrop.css');
-	//\Asset::container('plugins')->add('alertify_core',                    'bower_components/alertify/themes/alertify.core.css');
-	//\Asset::container('plugins')->add('alertify_theme',                   'bower_components/alertify/themes/alertify.bootstrap.css');
+	@yield('script_vars')
+</script>
+{{ Asset::container('engine_assets')->scripts() }}
+@yield('plugins')
+@yield('scripts')
 
-	//\Asset::container('custom')->add('style',                             'admin/css/style.css');
-	//\Asset::container('custom')->add('themes',                            'admin/css/themes.css');
-	//\Asset::container('custom')->add('admin',                             'admin/css/admin.css');
+... snip
+</head>
 
-	////\Asset::add('alertify_styles', 'bower_components/alertify/alertify.css');
+ */
 
-	//\Asset::container('plugins')->add('bootstrap',                        'admin/js/bootstrap.min.js');
-	//\Asset::container('plugins')->add('alertify',                         'bower_components/alertify/alertify.min.js');
-	//\Asset::container('plugins')->add('nicescroll',                       'admin/js/plugins/nicescroll/jquery.nicescroll.min.js');
-	//\Asset::container('plugins')->add('imagesloaded',                     'admin/js/plugins/imagesLoaded/jquery.imagesloaded.min.js');
-	//\Asset::container('plugins')->add('ui-core',                          'admin/js/plugins/jquery-ui/jquery.ui.core.min.js');
-	//\Asset::container('plugins')->add('ui-widget',                        'admin/js/plugins/jquery-ui/jquery.ui.widget.min.js');
-	//\Asset::container('plugins')->add('ui-mouse',                         'admin/js/plugins/jquery-ui/jquery.ui.mouse.min.js');
-	//\Asset::container('plugins')->add('ui-resizable',                     'admin/js/plugins/jquery-ui/jquery.ui.resizable.min.js');
-	//\Asset::container('plugins')->add('ui-sortable',                      'admin/js/plugins/jquery-ui/jquery.ui.sortable.min.js');
-	//\Asset::container('plugins')->add('ui-ui',                            'admin/js/plugins/jquery-ui/jquery.ui.spinner.js');
-	//\Asset::container('plugins')->add('ui-ui',                            'admin/js/plugins/jquery-ui/jquery.ui.slider.js');
-	//\Asset::container('plugins')->add('ui-draggable',                     'admin/js/plugins/jquery-ui/jquery.ui.draggable.min.js');
-	//\Asset::container('plugins')->add('ui-droppable',                     'admin/js/plugins/jquery-ui/jquery.ui.droppable.min.js');
-	//\Asset::container('plugins')->add('ui-ui',                            'admin/js/plugins/jquery-ui/jquery.ui.position.js');
-	//\Asset::container('plugins')->add('ui-spinner',                       'admin/js/plugins/jquery-ui/jquery.ui.spinner.js');
-	//\Asset::container('plugins')->add('slimscroll',                       'admin/js/plugins/slimscroll/jquery.slimscroll.min.js');
-	//\Asset::container('plugins')->add('bootbox',                          'admin/js/plugins/bootbox/jquery.bootbox.js');
-	//\Asset::container('plugins')->add('form',                             'admin/js/plugins/form/jquery.form.min.js');
-	//\Asset::container('plugins')->add('dataTables',                       'admin/js/plugins/datatable/jquery.dataTables.min.js');
-	//\Asset::container('plugins')->add('TableTools',                       'admin/js/plugins/datatable/TableTools.min.js');
-	//\Asset::container('plugins')->add('ColReorder',                       'admin/js/plugins/datatable/ColReorder.min.js');
-	//\Asset::container('plugins')->add('ColVis',                           'admin/js/plugins/datatable/ColVis.min.js');
-	//\Asset::container('plugins')->add('columnFilter',                     'admin/js/plugins/datatable/jquery.dataTables.columnFilter.js');
-	//\Asset::container('plugins')->add('maskedinput',                      'admin/js/plugins/maskedinput/jquery.maskedinput.min.js');
-	//\Asset::container('plugins')->add('tagsinput',                        'admin/js/plugins/tagsinput/jquery.tagsinput.min.js');
-	//\Asset::container('plugins')->add('bootstrap-datepicker',             'admin/js/plugins/datepicker/bootstrap-datepicker.js');
-	//\Asset::container('plugins')->add('bootstrap-datepicker-ru',          'admin/js/plugins/datepicker/locales/bootstrap-datepicker.ru.js');
-	//\Asset::container('plugins')->add('bootstrap-timepicker',             'admin/js/plugins/timepicker/bootstrap-timepicker.min.js');
-	//\Asset::container('plugins')->add('bootstrap-colorpicker',            'admin/js/plugins/colorpicker/bootstrap-colorpicker.js');
-	//\Asset::container('plugins')->add('chosen',                           'admin/js/plugins/chosen/chosen.jquery.min.js');
-	//\Asset::container('plugins')->add('multi-select',                     'admin/js/plugins/multiselect/jquery.multi-select.js');
-	//\Asset::container('plugins')->add('ckeditor',                         'admin/js/plugins/ckeditor/ckeditor.js');
-	//\Asset::container('plugins')->add('plupload',                         'admin/js/plugins/plupload/plupload.full.js');
-	//\Asset::container('plugins')->add('plupload-queue',                   'admin/js/plugins/plupload/jquery.plupload.queue.js');
-	//\Asset::container('plugins')->add('bootstrap-fileupload',             'admin/js/plugins/fileupload/bootstrap-fileupload.min.js');
-	//\Asset::container('plugins')->add('mockjax',                          'admin/js/plugins/mockjax/jquery.mockjax.js');
-	//\Asset::container('plugins')->add('select2',                          'admin/js/plugins/select2/select2.min.js');
-	//\Asset::container('plugins')->add('colorbox',                         'admin/js/plugins/colorbox/jquery.colorbox-min.js');
-	//\Asset::container('plugins')->add('icheck',                           'admin/js/plugins/icheck/jquery.icheck.min.js');
-	//\Asset::container('plugins')->add('Jcrop',                            'admin/js/plugins/jcrop/jquery.Jcrop.js');
-	//\Asset::container('plugins')->add('validation',                       'admin/js/plugins/validation/jquery.validate.min.js');
-	//\Asset::container('plugins')->add('validation-additional',            'admin/js/plugins/validation/additional-methods.min.js');
-	//[> @todo Добавить проверку языка и подключать следующий файл только когда выбран русский язык <]
-	//\Asset::container('plugins')->add('validation-ru',                    'admin/js/plugins/validation/messages_ru.js');
-	//\Asset::container('plugins')->add('quicksearch',                      'admin/js/plugins/quicksearch/jquery.quicksearch.js');
+\Asset::container('engine_assets')
+	->add('jquery',                           'bundles/engine/bower_components/jquery/jquery.min.js')
+	->add('bootstrap',                        'bundles/engine/admin/css/bootstrap.min.css')
+	->add('bootstrap-responsive',             'bundles/engine/admin/css/bootstrap-responsive.min.css')
+	->add('colorbox',                         'bundles/engine/admin/css/plugins/colorbox/colorbox.css')
+	->add('jquery-ui',                        'bundles/engine/admin/css/plugins/jquery-ui/smoothness/jquery-ui.css')
+	->add('jquery-ui-theme',                  'bundles/engine/admin/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css')
+	->add('pageguide',                        'bundles/engine/admin/css/plugins/pageguide/pageguide.css')
+	->add('fullcalendar',                     'bundles/engine/admin/css/plugins/fullcalendar/fullcalendar.css')
+	->add('fullcalendar-print',               'bundles/engine/admin/css/plugins/fullcalendar/fullcalendar.print.css')
+	->add('tagsinput',                        'bundles/engine/admin/css/plugins/tagsinput/jquery.tagsinput.css')
+	->add('datatable',                        'bundles/engine/admin/css/plugins/datatable/TableTools.css')
+	->add('chosen',                           'bundles/engine/admin/css/plugins/chosen/chosen.css')
+	->add('multiselect',                      'bundles/engine/admin/css/plugins/multiselect/multi-select.css')
+	->add('timepicker',                       'bundles/engine/admin/css/plugins/timepicker/bootstrap-timepicker.min.css')
+	->add('colorpicker',                      'bundles/engine/admin/css/plugins/colorpicker/colorpicker.css')
+	->add('datepicker',                       'bundles/engine/admin/css/plugins/datepicker/datepicker.css')
+	->add('plupload',                         'bundles/engine/admin/css/plugins/plupload/jquery.plupload.queue.css')
+	->add('select2',                          'bundles/engine/admin/css/plugins/select2/select2.css')
+	->add('icheck',                           'bundles/engine/admin/css/plugins/icheck/all.css')
+	->add('jcrop',                            'bundles/engine/admin/css/plugins/jcrop/jquery.Jcrop.css')
+	->add('alertify_core',                    'bundles/engine/bower_components/alertify/themes/alertify.core.css')
+	->add('alertify_theme',                   'bundles/engine/bower_components/alertify/themes/alertify.bootstrap.css')
 
-	//\Asset::container('custom')->add('admin',                             'admin/js/admin.js');
-	//\Asset::container('custom')->add('eakroko',                           'admin/js/eakroko.js');
-	//\Asset::container('custom')->add('application',                       'admin/js/application.min.js');
-//}
-//else
-//{
-	//\Asset::container('plugins')->add('normalize',            'css/normalize.css');
-	//\Asset::container('plugins')->add('bootstrap',            'css/bootstrap.min.css');
-	//// \Asset::container('plugins')->add('bootstrap-responsive', 'css/bootstrap-responsive.min.css');
-	//\Asset::container('plugins')->add('swiper',               'css/vendor/swiper/idangerous.swiper.css');
-	//\Asset::container('plugins')->add('chosen',               'css/vendor/chosen/chosen.css');
-	//\Asset::container('plugins')->add('lightbox',             'css/vendor/lightbox/lightbox.css');
-	//\Asset::container('plugins')->add('alertify_core',        'bower_components/alertify/themes/alertify.core.css');
-	//\Asset::container('plugins')->add('alertify_theme',       'bower_components/alertify/themes/alertify.bootstrap.css');
-	//\Asset::container('custom')->add('style',                 'css/style.css');
+	->add('style',                            'bundles/engine/admin/css/style.css')
+	->add('themes',                           'bundles/engine/admin/css/themes.css')
+	->add('admin',                            'bundles/engine/admin/css/admin.css')
 
-	//\Asset::container('header_plugins')->add('modernizr',     'js/vendor/modernizr-2.6.2.min.js');
-	//\Asset::container('header_plugins')->add('mikh',          'js/mikh.js');
-	//\Asset::container('header_plugins')->add('alertify',      'bower_components/alertify/alertify.min.js');
+	->add('bootstrap',                        'bundles/engine/admin/js/bootstrap.min.js')
+	->add('alertify',                         'bundles/engine/bower_components/alertify/alertify.min.js')
+	->add('nicescroll',                       'bundles/engine/admin/js/plugins/nicescroll/jquery.nicescroll.min.js')
+	->add('imagesloaded',                     'bundles/engine/admin/js/plugins/imagesLoaded/jquery.imagesloaded.min.js')
+	->add('ui-core',                          'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.core.min.js')
+	->add('ui-widget',                        'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.widget.min.js')
+	->add('ui-mouse',                         'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.mouse.min.js')
+	->add('ui-resizable',                     'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.resizable.min.js')
+	->add('ui-sortable',                      'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.sortable.min.js')
+	->add('ui-ui',                            'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.spinner.js')
+	->add('ui-ui',                            'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.slider.js')
+	->add('ui-draggable',                     'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.draggable.min.js')
+	->add('ui-droppable',                     'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.droppable.min.js')
+	->add('ui-ui',                            'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.position.js')
+	->add('ui-spinner',                       'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.spinner.js')
+	->add('slimscroll',                       'bundles/engine/admin/js/plugins/slimscroll/jquery.slimscroll.min.js')
+	->add('bootbox',                          'bundles/engine/admin/js/plugins/bootbox/jquery.bootbox.js')
+	->add('form',                             'bundles/engine/admin/js/plugins/form/jquery.form.min.js')
+	->add('dataTables',                       'bundles/engine/admin/js/plugins/datatable/jquery.dataTables.min.js')
+	->add('TableTools',                       'bundles/engine/admin/js/plugins/datatable/TableTools.min.js')
+	->add('ColReorder',                       'bundles/engine/admin/js/plugins/datatable/ColReorder.min.js')
+	->add('ColVis',                           'bundles/engine/admin/js/plugins/datatable/ColVis.min.js')
+	->add('columnFilter',                     'bundles/engine/admin/js/plugins/datatable/jquery.dataTables.columnFilter.js')
+	->add('maskedinput',                      'bundles/engine/admin/js/plugins/maskedinput/jquery.maskedinput.min.js')
+	->add('tagsinput',                        'bundles/engine/admin/js/plugins/tagsinput/jquery.tagsinput.min.js')
+	->add('bootstrap-datepicker',             'bundles/engine/admin/js/plugins/datepicker/bootstrap-datepicker.js')
+	->add('bootstrap-datepicker-ru',          'bundles/engine/admin/js/plugins/datepicker/locales/bootstrap-datepicker.ru.js')
+	->add('bootstrap-timepicker',             'bundles/engine/admin/js/plugins/timepicker/bootstrap-timepicker.min.js')
+	->add('bootstrap-colorpicker',            'bundles/engine/admin/js/plugins/colorpicker/bootstrap-colorpicker.js')
+	->add('chosen',                           'bundles/engine/admin/js/plugins/chosen/chosen.jquery.min.js')
+	->add('multi-select',                     'bundles/engine/admin/js/plugins/multiselect/jquery.multi-select.js')
+	->add('ckeditor',                         'bundles/engine/admin/js/plugins/ckeditor/ckeditor.js')
+	->add('plupload',                         'bundles/engine/admin/js/plugins/plupload/plupload.full.js')
+	->add('plupload-queue',                   'bundles/engine/admin/js/plugins/plupload/jquery.plupload.queue.js')
+	->add('bootstrap-fileupload',             'bundles/engine/admin/js/plugins/fileupload/bootstrap-fileupload.min.js')
+	->add('mockjax',                          'bundles/engine/admin/js/plugins/mockjax/jquery.mockjax.js')
+	->add('select2',                          'bundles/engine/admin/js/plugins/select2/select2.min.js')
+	->add('colorbox',                         'bundles/engine/admin/js/plugins/colorbox/jquery.colorbox-min.js')
+	->add('icheck',                           'bundles/engine/admin/js/plugins/icheck/jquery.icheck.min.js')
+	->add('Jcrop',                            'bundles/engine/admin/js/plugins/jcrop/jquery.Jcrop.js')
+	->add('validation',                       'bundles/engine/admin/js/plugins/validation/jquery.validate.min.js')
+	->add('validation-additional',            'bundles/engine/admin/js/plugins/validation/additional-methods.min.js')
 
-	//\Asset::container('footer_plugins')->add('jquery',        'js/vendor/jquery-1.10.2.min.js');
-	//\Asset::container('footer_plugins')->add('jquery-ui',     'js/vendor/jquery-ui-1.10.3.custom.min.js');
-	//\Asset::container('footer_plugins')->add('skrollr',       'js/vendor/skrollr.min.js');
-	//\Asset::container('footer_plugins')->add('gsapCSSPlugin', 'js/vendor/gsap/CSSPlugin.min.js');
-	//\Asset::container('footer_plugins')->add('gsapEasePack',  'js/vendor/gsap/EasePack.min.js');
-	//\Asset::container('footer_plugins')->add('gsapTweenLite', 'js/vendor/gsap/TweenLite.min.js');
-	//\Asset::container('footer_plugins')->add('chosen',        'js/vendor/chosen/chosen.jquery.min.js');
-	//\Asset::container('footer_plugins')->add('lightbox',      'js/vendor/lightbox2/lightbox-2.6.min.js');
-	//\Asset::container('footer_plugins')->add('caroufredsel',  'js/vendor/caroufredsel/jquery.carouFredSel-6.2.1-packed.js');
-	//\Asset::container('footer_plugins')->add('history',       'js/vendor/html5-history/history.min.js');
-	//\Asset::container('footer_plugins')->add('easyxdm',       \Config::get('chocoauth::config.staticPath') . 'easyxdm/easyXDM.js', 'jquery');
-	//\Asset::container('footer_plugins')->add('chocoauth',     \Config::get('chocoauth::config.staticPath') . 'chocoaccount.js', 'easyxdm');
+	/* @todo Добавить проверку языка и подключаbundles/engine/ть следующий файл только когда выбран русский язык */
 
-	//\Asset::container('footer_custom')->add('plugins',       'js/plugins.js');
-	//\Asset::container('footer_custom')->add('main',          'js/main.js');
-//}
+	->add('validation-ru',                    'bundles/engine/admin/js/plugins/validation/messages_ru.js')
+	->add('quicksearch',                      'bundles/engine/admin/js/plugins/quicksearch/jquery.quicksearch.js')
+
+	->add('admin',                            'bundles/engine/admin/js/admin.js')
+	->add('eakroko',                          'bundles/engine/admin/js/eakroko.js')
+	->add('application',                      'bundles/engine/admin/js/application.min.js')
+;

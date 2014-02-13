@@ -1,0 +1,2321 @@
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.blue, .label-blue { background: #368ee0; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-blue { background: #368ee0; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.blue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.blue .box-title { background: #368ee0 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.blue .box-title .actions > a:hover { color: #368ee0; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.blue .form-wizard .wizard-steps li.active .single-step .title { background: #368ee0; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.blue .box-title { border-color: #368ee0 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.blue .box-content { border-color: #368ee0 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.blue .slimScrollDiv { border-bottom: 2px solid #368ee0; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .form-wizard .wizard-steps li.active .single-step .title { background: #368ee0; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue.login { background: #368ee0; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue a { color: #368ee0; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .btn.btn-primary { background: #368ee0; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .btn.btn-inverse, .theme-blue .btn.btn-success, .theme-blue .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue.locked { background: #368ee0 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue.locked .pull-left a { background: #1b67af; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue.locked .pull-left a:hover { background: #144d82; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation { background: #368ee0; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .toggle-mobile { background: #1b67af; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .mobile-nav.open { background: #368ee0; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .mobile-nav.open > li.active > a { background: #144d82; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .mobile-nav.open > li.active > ul { background: #144d82; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .mobile-nav.open > li > a { background: #1b67af; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .mobile-nav.open > li > ul { background: #1b67af; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .main-nav > li.open > a { background: #1b67af; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .main-nav > li > a:hover { background: #1b67af; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .user .icon-nav > li > a:hover { background: #1b67af; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .user .dropdown.open { background: #1b67af; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .user .dropdown > a:hover { background: #1b67af; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .dropdown-menu { border-color: #368ee0; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #navigation .dropdown-menu > li > a:hover { background: #368ee0; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .search-form .search-pane button[type="submit"] { background: #368ee0; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.insert .submit button { background: #368ee0; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.right .name { color: #0a2640; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.right .message { background: #e7f1fb; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.right .message p { color: #11406c; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.right .message .time { color: #11406c; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .messages > li.right .message .caret { border-left: 7px solid #e7f1fb; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .letterbox .letter > li.active { background: #368ee0; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .calendar .fc-content .fc-event .fc-event-inner { background: #368ee0; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .calendar .fc-button.fc-state-active { background: #368ee0; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .calendar .fc-button.fc-state-active:hover { background: #368ee0; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .table.table-user tr.alpha td.alpha-val span { background: #368ee0; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .tagsinput#textfield_tagsinput .tag, .theme-blue .ms-container .multi-custom-header, .theme-blue .slider .ui-slider-handle, .theme-blue .form-wizard .wizard-steps li.active .single-step .title, .theme-blue .user-list h4, .theme-blue .nav.nav-pills > li.active > a, .theme-blue .nav.nav-list > li.active > a, .theme-blue .table.table-colored-header thead th, .theme-blue .table.table-colored-header thead td, .theme-blue .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-blue .elfinder-navbar .ui-state-active, .theme-blue .pagination.pagination-custom li.active a:hover, .theme-blue .pagination.pagination-custom li.active a { background: #368ee0; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue .elfinder-navbar .ui-state-active { border-color: #368ee0; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #main .box .box-title .tabs > li.active > a { background: #368ee0; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #main .box.box-color .box-title { background: #368ee0; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #main .box.box-color .box-title .tabs > li.active > a { color: #368ee0; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #main .box.box-bordered.box-color .box-title { border-color: #368ee0; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-blue #main .box.box-bordered.box-color .box-content { border-color: #368ee0; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.orange, .label-orange { background: #f8a31f; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-orange { background: #f8a31f; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.orange { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.orange .box-title { background: #f8a31f !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.orange .box-title .actions > a:hover { color: #f8a31f; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.orange .form-wizard .wizard-steps li.active .single-step .title { background: #f8a31f; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.orange .box-title { border-color: #f8a31f !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.orange .box-content { border-color: #f8a31f !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.orange .slimScrollDiv { border-bottom: 2px solid #f8a31f; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .form-wizard .wizard-steps li.active .single-step .title { background: #f8a31f; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange.login { background: #f8a31f; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange a { color: #f8a31f; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .btn.btn-primary { background: #f8a31f; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .btn.btn-inverse, .theme-orange .btn.btn-success, .theme-orange .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange.locked { background: #f8a31f !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange.locked .pull-left a { background: #c47a06; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange.locked .pull-left a:hover { background: #935b05; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation { background: #f8a31f; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .toggle-mobile { background: #c47a06; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .mobile-nav.open { background: #f8a31f; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .mobile-nav.open > li.active > a { background: #935b05; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .mobile-nav.open > li.active > ul { background: #935b05; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .mobile-nav.open > li > a { background: #c47a06; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .mobile-nav.open > li > ul { background: #c47a06; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .main-nav > li.open > a { background: #c47a06; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .main-nav > li > a:hover { background: #c47a06; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .user .icon-nav > li > a:hover { background: #c47a06; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .user .dropdown.open { background: #c47a06; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .user .dropdown > a:hover { background: #c47a06; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .dropdown-menu { border-color: #f8a31f; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #navigation .dropdown-menu > li > a:hover { background: #f8a31f; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .search-form .search-pane button[type="submit"] { background: #f8a31f; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.insert .submit button { background: #f8a31f; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.right .name { color: #492d02; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.right .message { background: #fef4e5; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.right .message p { color: #7a4c04; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.right .message .time { color: #7a4c04; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .messages > li.right .message .caret { border-left: 7px solid #fef4e5; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .letterbox .letter > li.active { background: #f8a31f; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .calendar .fc-content .fc-event .fc-event-inner { background: #f8a31f; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .calendar .fc-button.fc-state-active { background: #f8a31f; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .calendar .fc-button.fc-state-active:hover { background: #f8a31f; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .table.table-user tr.alpha td.alpha-val span { background: #f8a31f; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .tagsinput#textfield_tagsinput .tag, .theme-orange .ms-container .multi-custom-header, .theme-orange .slider .ui-slider-handle, .theme-orange .form-wizard .wizard-steps li.active .single-step .title, .theme-orange .user-list h4, .theme-orange .nav.nav-pills > li.active > a, .theme-orange .nav.nav-list > li.active > a, .theme-orange .table.table-colored-header thead th, .theme-orange .table.table-colored-header thead td, .theme-orange .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-orange .elfinder-navbar .ui-state-active, .theme-orange .pagination.pagination-custom li.active a:hover, .theme-orange .pagination.pagination-custom li.active a { background: #f8a31f; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange .elfinder-navbar .ui-state-active { border-color: #f8a31f; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #main .box .box-title .tabs > li.active > a { background: #f8a31f; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #main .box.box-color .box-title { background: #f8a31f; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #main .box.box-color .box-title .tabs > li.active > a { color: #f8a31f; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #main .box.box-bordered.box-color .box-title { border-color: #f8a31f; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-orange #main .box.box-bordered.box-color .box-content { border-color: #f8a31f; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.red, .label-red { background: #f26c4f; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-red { background: #f26c4f; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.red { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.red .box-title { background: #f26c4f !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.red .box-title .actions > a:hover { color: #f26c4f; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.red .form-wizard .wizard-steps li.active .single-step .title { background: #f26c4f; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.red .box-title { border-color: #f26c4f !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.red .box-content { border-color: #f26c4f !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.red .slimScrollDiv { border-bottom: 2px solid #f26c4f; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .form-wizard .wizard-steps li.active .single-step .title { background: #f26c4f; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red.login { background: #f26c4f; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red a { color: #f26c4f; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .btn.btn-primary { background: #f26c4f; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .btn.btn-inverse, .theme-red .btn.btn-success, .theme-red .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red.locked { background: #f26c4f !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red.locked .pull-left a { background: #e43611; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red.locked .pull-left a:hover { background: #b42b0d; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation { background: #f26c4f; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .toggle-mobile { background: #e43611; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .mobile-nav.open { background: #f26c4f; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .mobile-nav.open > li.active > a { background: #b42b0d; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .mobile-nav.open > li.active > ul { background: #b42b0d; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .mobile-nav.open > li > a { background: #e43611; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .mobile-nav.open > li > ul { background: #e43611; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .main-nav > li.open > a { background: #e43611; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .main-nav > li > a:hover { background: #e43611; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .user .icon-nav > li > a:hover { background: #e43611; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .user .dropdown.open { background: #e43611; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .user .dropdown > a:hover { background: #e43611; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .dropdown-menu { border-color: #f26c4f; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #navigation .dropdown-menu > li > a:hover { background: #f26c4f; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .search-form .search-pane button[type="submit"] { background: #f26c4f; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.insert .submit button { background: #f26c4f; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.right .name { color: #6d1a08; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.right .message { background: white; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.right .message p { color: #9c250c; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.right .message .time { color: #9c250c; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .messages > li.right .message .caret { border-left: 7px solid white; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .letterbox .letter > li.active { background: #f26c4f; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .calendar .fc-content .fc-event .fc-event-inner { background: #f26c4f; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .calendar .fc-button.fc-state-active { background: #f26c4f; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .calendar .fc-button.fc-state-active:hover { background: #f26c4f; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .table.table-user tr.alpha td.alpha-val span { background: #f26c4f; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .tagsinput#textfield_tagsinput .tag, .theme-red .ms-container .multi-custom-header, .theme-red .slider .ui-slider-handle, .theme-red .form-wizard .wizard-steps li.active .single-step .title, .theme-red .user-list h4, .theme-red .nav.nav-pills > li.active > a, .theme-red .nav.nav-list > li.active > a, .theme-red .table.table-colored-header thead th, .theme-red .table.table-colored-header thead td, .theme-red .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-red .elfinder-navbar .ui-state-active, .theme-red .pagination.pagination-custom li.active a:hover, .theme-red .pagination.pagination-custom li.active a { background: #f26c4f; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red .elfinder-navbar .ui-state-active { border-color: #f26c4f; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #main .box .box-title .tabs > li.active > a { background: #f26c4f; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #main .box.box-color .box-title { background: #f26c4f; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #main .box.box-color .box-title .tabs > li.active > a { color: #f26c4f; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #main .box.box-bordered.box-color .box-title { border-color: #f26c4f; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-red #main .box.box-bordered.box-color .box-content { border-color: #f26c4f; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.green, .label-green { background: #339933; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-green { background: #339933; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.green { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.green .box-title { background: #339933 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.green .box-title .actions > a:hover { color: #339933; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.green .form-wizard .wizard-steps li.active .single-step .title { background: #339933; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.green .box-title { border-color: #339933 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.green .box-content { border-color: #339933 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.green .slimScrollDiv { border-bottom: 2px solid #339933; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .form-wizard .wizard-steps li.active .single-step .title { background: #339933; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green.login { background: #339933; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green a { color: #339933; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .btn.btn-primary { background: #339933; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .btn.btn-inverse, .theme-green .btn.btn-success, .theme-green .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green.locked { background: #339933 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green.locked .pull-left a { background: #206020; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green.locked .pull-left a:hover { background: #133913; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation { background: #339933; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .toggle-mobile { background: #206020; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .mobile-nav.open { background: #339933; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .mobile-nav.open > li.active > a { background: #133913; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .mobile-nav.open > li.active > ul { background: #133913; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .mobile-nav.open > li > a { background: #206020; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .mobile-nav.open > li > ul { background: #206020; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .main-nav > li.open > a { background: #206020; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .main-nav > li > a:hover { background: #206020; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .user .icon-nav > li > a:hover { background: #206020; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .user .dropdown.open { background: #206020; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .user .dropdown > a:hover { background: #206020; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .dropdown-menu { border-color: #339933; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #navigation .dropdown-menu > li > a:hover { background: #339933; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .search-form .search-pane button[type="submit"] { background: #339933; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.insert .submit button { background: #339933; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.right .message { background: #b3e6b3; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.right .message p { color: #0d260d; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.right .message .time { color: #0d260d; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .messages > li.right .message .caret { border-left: 7px solid #b3e6b3; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .letterbox .letter > li.active { background: #339933; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .calendar .fc-content .fc-event .fc-event-inner { background: #339933; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .calendar .fc-button.fc-state-active { background: #339933; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .calendar .fc-button.fc-state-active:hover { background: #339933; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .table.table-user tr.alpha td.alpha-val span { background: #339933; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .tagsinput#textfield_tagsinput .tag, .theme-green .ms-container .multi-custom-header, .theme-green .slider .ui-slider-handle, .theme-green .form-wizard .wizard-steps li.active .single-step .title, .theme-green .user-list h4, .theme-green .nav.nav-pills > li.active > a, .theme-green .nav.nav-list > li.active > a, .theme-green .table.table-colored-header thead th, .theme-green .table.table-colored-header thead td, .theme-green .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-green .elfinder-navbar .ui-state-active, .theme-green .pagination.pagination-custom li.active a:hover, .theme-green .pagination.pagination-custom li.active a { background: #339933; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green .elfinder-navbar .ui-state-active { border-color: #339933; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #main .box .box-title .tabs > li.active > a { background: #339933; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #main .box.box-color .box-title { background: #339933; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #main .box.box-color .box-title .tabs > li.active > a { color: #339933; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #main .box.box-bordered.box-color .box-title { border-color: #339933; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-green #main .box.box-bordered.box-color .box-content { border-color: #339933; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.lime, .label-lime { background: #8cbf26; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-lime { background: #8cbf26; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lime { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lime .box-title { background: #8cbf26 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lime .box-title .actions > a:hover { color: #8cbf26; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lime .form-wizard .wizard-steps li.active .single-step .title { background: #8cbf26; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lime .box-title { border-color: #8cbf26 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lime .box-content { border-color: #8cbf26 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lime .slimScrollDiv { border-bottom: 2px solid #8cbf26; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .form-wizard .wizard-steps li.active .single-step .title { background: #8cbf26; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime.login { background: #8cbf26; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime a { color: #8cbf26; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .btn.btn-primary { background: #8cbf26; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .btn.btn-inverse, .theme-lime .btn.btn-success, .theme-lime .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime.locked { background: #8cbf26 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime.locked .pull-left a { background: #5d7f19; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime.locked .pull-left a:hover { background: #3e5511; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation { background: #8cbf26; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .toggle-mobile { background: #5d7f19; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .mobile-nav.open { background: #8cbf26; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .mobile-nav.open > li.active > a { background: #3e5511; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .mobile-nav.open > li.active > ul { background: #3e5511; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .mobile-nav.open > li > a { background: #5d7f19; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .mobile-nav.open > li > ul { background: #5d7f19; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .main-nav > li.open > a { background: #5d7f19; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .main-nav > li > a:hover { background: #5d7f19; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .user .icon-nav > li > a:hover { background: #5d7f19; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .user .dropdown.open { background: #5d7f19; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .user .dropdown > a:hover { background: #5d7f19; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .dropdown-menu { border-color: #8cbf26; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #navigation .dropdown-menu > li > a:hover { background: #8cbf26; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .search-form .search-pane button[type="submit"] { background: #8cbf26; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.insert .submit button { background: #8cbf26; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.right .name { color: #0f1504; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.right .message { background: #e1f2bf; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.right .message p { color: #2e3f0d; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.right .message .time { color: #2e3f0d; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .messages > li.right .message .caret { border-left: 7px solid #e1f2bf; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .letterbox .letter > li.active { background: #8cbf26; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .calendar .fc-content .fc-event .fc-event-inner { background: #8cbf26; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .calendar .fc-button.fc-state-active { background: #8cbf26; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .calendar .fc-button.fc-state-active:hover { background: #8cbf26; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .table.table-user tr.alpha td.alpha-val span { background: #8cbf26; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .tagsinput#textfield_tagsinput .tag, .theme-lime .ms-container .multi-custom-header, .theme-lime .slider .ui-slider-handle, .theme-lime .form-wizard .wizard-steps li.active .single-step .title, .theme-lime .user-list h4, .theme-lime .nav.nav-pills > li.active > a, .theme-lime .nav.nav-list > li.active > a, .theme-lime .table.table-colored-header thead th, .theme-lime .table.table-colored-header thead td, .theme-lime .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-lime .elfinder-navbar .ui-state-active, .theme-lime .pagination.pagination-custom li.active a:hover, .theme-lime .pagination.pagination-custom li.active a { background: #8cbf26; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime .elfinder-navbar .ui-state-active { border-color: #8cbf26; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #main .box .box-title .tabs > li.active > a { background: #8cbf26; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #main .box.box-color .box-title { background: #8cbf26; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #main .box.box-color .box-title .tabs > li.active > a { color: #8cbf26; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #main .box.box-bordered.box-color .box-title { border-color: #8cbf26; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lime #main .box.box-bordered.box-color .box-content { border-color: #8cbf26; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.teal, .label-teal { background: #00aba9; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-teal { background: #00aba9; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.teal { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.teal .box-title { background: #00aba9 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.teal .box-title .actions > a:hover { color: #00aba9; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.teal .form-wizard .wizard-steps li.active .single-step .title { background: #00aba9; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.teal .box-title { border-color: #00aba9 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.teal .box-content { border-color: #00aba9 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.teal .slimScrollDiv { border-bottom: 2px solid #00aba9; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .form-wizard .wizard-steps li.active .single-step .title { background: #00aba9; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal.login { background: #00aba9; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal a { color: #00aba9; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .btn.btn-primary { background: #00aba9; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .btn.btn-inverse, .theme-teal .btn.btn-success, .theme-teal .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal.locked { background: #00aba9 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal.locked .pull-left a { background: #005e5d; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal.locked .pull-left a:hover { background: #002b2b; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation { background: #00aba9; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .toggle-mobile { background: #005e5d; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .mobile-nav.open { background: #00aba9; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .mobile-nav.open > li.active > a { background: #002b2b; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .mobile-nav.open > li.active > ul { background: #002b2b; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .mobile-nav.open > li > a { background: #005e5d; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .mobile-nav.open > li > ul { background: #005e5d; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .main-nav > li.open > a { background: #005e5d; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .main-nav > li > a:hover { background: #005e5d; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .user .icon-nav > li > a:hover { background: #005e5d; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .user .dropdown.open { background: #005e5d; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .user .dropdown > a:hover { background: #005e5d; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .dropdown-menu { border-color: #00aba9; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #navigation .dropdown-menu > li > a:hover { background: #00aba9; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .search-form .search-pane button[type="submit"] { background: #00aba9; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.insert .submit button { background: #00aba9; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.right .message { background: #78fffd; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.right .message p { color: #001212; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.right .message .time { color: #001212; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .messages > li.right .message .caret { border-left: 7px solid #78fffd; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .letterbox .letter > li.active { background: #00aba9; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .calendar .fc-content .fc-event .fc-event-inner { background: #00aba9; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .calendar .fc-button.fc-state-active { background: #00aba9; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .calendar .fc-button.fc-state-active:hover { background: #00aba9; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .table.table-user tr.alpha td.alpha-val span { background: #00aba9; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .tagsinput#textfield_tagsinput .tag, .theme-teal .ms-container .multi-custom-header, .theme-teal .slider .ui-slider-handle, .theme-teal .form-wizard .wizard-steps li.active .single-step .title, .theme-teal .user-list h4, .theme-teal .nav.nav-pills > li.active > a, .theme-teal .nav.nav-list > li.active > a, .theme-teal .table.table-colored-header thead th, .theme-teal .table.table-colored-header thead td, .theme-teal .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-teal .elfinder-navbar .ui-state-active, .theme-teal .pagination.pagination-custom li.active a:hover, .theme-teal .pagination.pagination-custom li.active a { background: #00aba9; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal .elfinder-navbar .ui-state-active { border-color: #00aba9; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #main .box .box-title .tabs > li.active > a { background: #00aba9; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #main .box.box-color .box-title { background: #00aba9; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #main .box.box-color .box-title .tabs > li.active > a { color: #00aba9; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #main .box.box-bordered.box-color .box-title { border-color: #00aba9; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-teal #main .box.box-bordered.box-color .box-content { border-color: #00aba9; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.purple, .label-purple { background: #ff0097; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-purple { background: #ff0097; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.purple { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.purple .box-title { background: #ff0097 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.purple .box-title .actions > a:hover { color: #ff0097; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.purple .form-wizard .wizard-steps li.active .single-step .title { background: #ff0097; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.purple .box-title { border-color: #ff0097 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.purple .box-content { border-color: #ff0097 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.purple .slimScrollDiv { border-bottom: 2px solid #ff0097; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .form-wizard .wizard-steps li.active .single-step .title { background: #ff0097; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple.login { background: #ff0097; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple a { color: #ff0097; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .btn.btn-primary { background: #ff0097; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .btn.btn-inverse, .theme-purple .btn.btn-success, .theme-purple .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple.locked { background: #ff0097 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple.locked .pull-left a { background: #b3006a; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple.locked .pull-left a:hover { background: #80004b; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation { background: #ff0097; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .toggle-mobile { background: #b3006a; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .mobile-nav.open { background: #ff0097; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .mobile-nav.open > li.active > a { background: #80004b; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .mobile-nav.open > li.active > ul { background: #80004b; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .mobile-nav.open > li > a { background: #b3006a; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .mobile-nav.open > li > ul { background: #b3006a; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .main-nav > li.open > a { background: #b3006a; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .main-nav > li > a:hover { background: #b3006a; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .user .icon-nav > li > a:hover { background: #b3006a; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .user .dropdown.open { background: #b3006a; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .user .dropdown > a:hover { background: #b3006a; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .dropdown-menu { border-color: #ff0097; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #navigation .dropdown-menu > li > a:hover { background: #ff0097; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .search-form .search-pane button[type="submit"] { background: #ff0097; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.insert .submit button { background: #ff0097; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.right .name { color: #33001e; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.right .message { background: #ffccea; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.right .message p { color: #66003c; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.right .message .time { color: #66003c; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .messages > li.right .message .caret { border-left: 7px solid #ffccea; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .letterbox .letter > li.active { background: #ff0097; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .calendar .fc-content .fc-event .fc-event-inner { background: #ff0097; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .calendar .fc-button.fc-state-active { background: #ff0097; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .calendar .fc-button.fc-state-active:hover { background: #ff0097; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .table.table-user tr.alpha td.alpha-val span { background: #ff0097; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .tagsinput#textfield_tagsinput .tag, .theme-purple .ms-container .multi-custom-header, .theme-purple .slider .ui-slider-handle, .theme-purple .form-wizard .wizard-steps li.active .single-step .title, .theme-purple .user-list h4, .theme-purple .nav.nav-pills > li.active > a, .theme-purple .nav.nav-list > li.active > a, .theme-purple .table.table-colored-header thead th, .theme-purple .table.table-colored-header thead td, .theme-purple .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-purple .elfinder-navbar .ui-state-active, .theme-purple .pagination.pagination-custom li.active a:hover, .theme-purple .pagination.pagination-custom li.active a { background: #ff0097; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple .elfinder-navbar .ui-state-active { border-color: #ff0097; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #main .box .box-title .tabs > li.active > a { background: #ff0097; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #main .box.box-color .box-title { background: #ff0097; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #main .box.box-color .box-title .tabs > li.active > a { color: #ff0097; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #main .box.box-bordered.box-color .box-title { border-color: #ff0097; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-purple #main .box.box-bordered.box-color .box-content { border-color: #ff0097; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.brown, .label-brown { background: #a05000; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-brown { background: #a05000; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.brown { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.brown .box-title { background: #a05000 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.brown .box-title .actions > a:hover { color: #a05000; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.brown .form-wizard .wizard-steps li.active .single-step .title { background: #a05000; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.brown .box-title { border-color: #a05000 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.brown .box-content { border-color: #a05000 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.brown .slimScrollDiv { border-bottom: 2px solid #a05000; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .form-wizard .wizard-steps li.active .single-step .title { background: #a05000; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown.login { background: #a05000; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown a { color: #a05000; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .btn.btn-primary { background: #a05000; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .btn.btn-inverse, .theme-brown .btn.btn-success, .theme-brown .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown.locked { background: #a05000 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown.locked .pull-left a { background: #532a00; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown.locked .pull-left a:hover { background: #201000; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation { background: #a05000; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .toggle-mobile { background: #532a00; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .mobile-nav.open { background: #a05000; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .mobile-nav.open > li.active > a { background: #201000; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .mobile-nav.open > li.active > ul { background: #201000; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .mobile-nav.open > li > a { background: #532a00; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .mobile-nav.open > li > ul { background: #532a00; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .main-nav > li.open > a { background: #532a00; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .main-nav > li > a:hover { background: #532a00; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .user .icon-nav > li > a:hover { background: #532a00; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .user .dropdown.open { background: #532a00; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .user .dropdown > a:hover { background: #532a00; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .dropdown-menu { border-color: #a05000; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #navigation .dropdown-menu > li > a:hover { background: #a05000; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .search-form .search-pane button[type="submit"] { background: #a05000; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.insert .submit button { background: #a05000; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.right .message { background: #ffb66d; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.right .message p { color: #070300; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.right .message .time { color: #070300; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .messages > li.right .message .caret { border-left: 7px solid #ffb66d; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .letterbox .letter > li.active { background: #a05000; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .calendar .fc-content .fc-event .fc-event-inner { background: #a05000; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .calendar .fc-button.fc-state-active { background: #a05000; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .calendar .fc-button.fc-state-active:hover { background: #a05000; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .table.table-user tr.alpha td.alpha-val span { background: #a05000; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .tagsinput#textfield_tagsinput .tag, .theme-brown .ms-container .multi-custom-header, .theme-brown .slider .ui-slider-handle, .theme-brown .form-wizard .wizard-steps li.active .single-step .title, .theme-brown .user-list h4, .theme-brown .nav.nav-pills > li.active > a, .theme-brown .nav.nav-list > li.active > a, .theme-brown .table.table-colored-header thead th, .theme-brown .table.table-colored-header thead td, .theme-brown .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-brown .elfinder-navbar .ui-state-active, .theme-brown .pagination.pagination-custom li.active a:hover, .theme-brown .pagination.pagination-custom li.active a { background: #a05000; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown .elfinder-navbar .ui-state-active { border-color: #a05000; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #main .box .box-title .tabs > li.active > a { background: #a05000; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #main .box.box-color .box-title { background: #a05000; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #main .box.box-color .box-title .tabs > li.active > a { color: #a05000; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #main .box.box-bordered.box-color .box-title { border-color: #a05000; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-brown #main .box.box-bordered.box-color .box-content { border-color: #a05000; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.pink, .label-pink { background: #e671b8; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-pink { background: #e671b8; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.pink { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.pink .box-title { background: #e671b8 !important; }
+/* line 24, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.pink .box-title h3 { color: #333; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.pink .box-title .actions > a:hover { color: #e671b8; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.pink .form-wizard .wizard-steps li.active .single-step .title { background: #e671b8; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.pink .box-title { border-color: #e671b8 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.pink .box-content { border-color: #e671b8 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.pink .slimScrollDiv { border-bottom: 2px solid #e671b8; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .form-wizard .wizard-steps li.active .single-step .title { background: #e671b8; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink.login { background: #e671b8; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink a { color: #e671b8; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .btn.btn-primary { background: #e671b8; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .btn.btn-inverse, .theme-pink .btn.btn-success, .theme-pink .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink.locked { background: #e671b8 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink.locked .pull-left a { background: #db3097; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink.locked .pull-left a:hover { background: #b7207c; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation { background: #e671b8; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .toggle-mobile { background: #db3097; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .mobile-nav.open { background: #e671b8; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .mobile-nav.open > li.active > a { background: #b7207c; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .mobile-nav.open > li.active > ul { background: #b7207c; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .mobile-nav.open > li > a { background: #db3097; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .mobile-nav.open > li > ul { background: #db3097; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .main-nav > li.open > a { background: #db3097; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .main-nav > li > a:hover { background: #db3097; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .user .icon-nav > li > a:hover { background: #db3097; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .user .dropdown.open { background: #db3097; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .user .dropdown > a:hover { background: #db3097; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .dropdown-menu { border-color: #e671b8; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #navigation .dropdown-menu > li > a:hover { background: #e671b8; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .search-form .search-pane button[type="submit"] { background: #e671b8; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.insert .submit button { background: #e671b8; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.right .name { color: #761550; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.right .message { background: white; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.right .message p { color: #a21c6d; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.right .message .time { color: #a21c6d; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .messages > li.right .message .caret { border-left: 7px solid white; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .letterbox .letter > li.active { background: #e671b8; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .calendar .fc-content .fc-event .fc-event-inner { background: #e671b8; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .calendar .fc-button.fc-state-active { background: #e671b8; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .calendar .fc-button.fc-state-active:hover { background: #e671b8; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .table.table-user tr.alpha td.alpha-val span { background: #e671b8; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .tagsinput#textfield_tagsinput .tag, .theme-pink .ms-container .multi-custom-header, .theme-pink .slider .ui-slider-handle, .theme-pink .form-wizard .wizard-steps li.active .single-step .title, .theme-pink .user-list h4, .theme-pink .nav.nav-pills > li.active > a, .theme-pink .nav.nav-list > li.active > a, .theme-pink .table.table-colored-header thead th, .theme-pink .table.table-colored-header thead td, .theme-pink .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-pink .elfinder-navbar .ui-state-active, .theme-pink .pagination.pagination-custom li.active a:hover, .theme-pink .pagination.pagination-custom li.active a { background: #e671b8; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink .elfinder-navbar .ui-state-active { border-color: #e671b8; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #main .box .box-title .tabs > li.active > a { background: #e671b8; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #main .box.box-color .box-title { background: #e671b8; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #main .box.box-color .box-title .tabs > li.active > a { color: #e671b8; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #main .box.box-bordered.box-color .box-title { border-color: #e671b8; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-pink #main .box.box-bordered.box-color .box-content { border-color: #e671b8; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.magenta, .label-magenta { background: #a200ff; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-magenta { background: #a200ff; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.magenta { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.magenta .box-title { background: #a200ff !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.magenta .box-title .actions > a:hover { color: #a200ff; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.magenta .form-wizard .wizard-steps li.active .single-step .title { background: #a200ff; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.magenta .box-title { border-color: #a200ff !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.magenta .box-content { border-color: #a200ff !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.magenta .slimScrollDiv { border-bottom: 2px solid #a200ff; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .form-wizard .wizard-steps li.active .single-step .title { background: #a200ff; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta.login { background: #a200ff; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta a { color: #a200ff; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .btn.btn-primary { background: #a200ff; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .btn.btn-inverse, .theme-magenta .btn.btn-success, .theme-magenta .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta.locked { background: #a200ff !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta.locked .pull-left a { background: #7100b3; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta.locked .pull-left a:hover { background: #510080; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation { background: #a200ff; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .toggle-mobile { background: #7100b3; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .mobile-nav.open { background: #a200ff; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .mobile-nav.open > li.active > a { background: #510080; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .mobile-nav.open > li.active > ul { background: #510080; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .mobile-nav.open > li > a { background: #7100b3; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .mobile-nav.open > li > ul { background: #7100b3; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .main-nav > li.open > a { background: #7100b3; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .main-nav > li > a:hover { background: #7100b3; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .user .icon-nav > li > a:hover { background: #7100b3; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .user .dropdown.open { background: #7100b3; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .user .dropdown > a:hover { background: #7100b3; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .dropdown-menu { border-color: #a200ff; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #navigation .dropdown-menu > li > a:hover { background: #a200ff; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .search-form .search-pane button[type="submit"] { background: #a200ff; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.insert .submit button { background: #a200ff; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.right .name { color: #200033; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.right .message { background: #ecccff; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.right .message p { color: #410066; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.right .message .time { color: #410066; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .messages > li.right .message .caret { border-left: 7px solid #ecccff; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .letterbox .letter > li.active { background: #a200ff; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .calendar .fc-content .fc-event .fc-event-inner { background: #a200ff; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .calendar .fc-button.fc-state-active { background: #a200ff; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .calendar .fc-button.fc-state-active:hover { background: #a200ff; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .table.table-user tr.alpha td.alpha-val span { background: #a200ff; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .tagsinput#textfield_tagsinput .tag, .theme-magenta .ms-container .multi-custom-header, .theme-magenta .slider .ui-slider-handle, .theme-magenta .form-wizard .wizard-steps li.active .single-step .title, .theme-magenta .user-list h4, .theme-magenta .nav.nav-pills > li.active > a, .theme-magenta .nav.nav-list > li.active > a, .theme-magenta .table.table-colored-header thead th, .theme-magenta .table.table-colored-header thead td, .theme-magenta .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-magenta .elfinder-navbar .ui-state-active, .theme-magenta .pagination.pagination-custom li.active a:hover, .theme-magenta .pagination.pagination-custom li.active a { background: #a200ff; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta .elfinder-navbar .ui-state-active { border-color: #a200ff; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #main .box .box-title .tabs > li.active > a { background: #a200ff; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #main .box.box-color .box-title { background: #a200ff; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #main .box.box-color .box-title .tabs > li.active > a { color: #a200ff; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #main .box.box-bordered.box-color .box-title { border-color: #a200ff; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-magenta #main .box.box-bordered.box-color .box-content { border-color: #a200ff; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.grey, .label-grey { background: #333333; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-grey { background: #333333; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey .box-title { background: #333333 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey .box-title .actions > a:hover { color: #333333; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey .form-wizard .wizard-steps li.active .single-step .title { background: #333333; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey .box-title { border-color: #333333 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey .box-content { border-color: #333333 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey .slimScrollDiv { border-bottom: 2px solid #333333; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .form-wizard .wizard-steps li.active .single-step .title { background: #333333; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey.login { background: #333333; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey a { color: #333333; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .btn.btn-primary { background: #333333; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .btn.btn-inverse, .theme-grey .btn.btn-success, .theme-grey .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey.locked { background: #333333 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey.locked .pull-left a { background: #0d0d0d; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey.locked .pull-left a:hover { background: black; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation { background: #333333; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .toggle-mobile { background: #0d0d0d; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .mobile-nav.open { background: #333333; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .mobile-nav.open > li.active > a { background: black; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .mobile-nav.open > li.active > ul { background: black; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .mobile-nav.open > li > a { background: #0d0d0d; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .mobile-nav.open > li > ul { background: #0d0d0d; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .main-nav > li.open > a { background: #0d0d0d; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .main-nav > li > a:hover { background: #0d0d0d; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .user .icon-nav > li > a:hover { background: #0d0d0d; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .user .dropdown.open { background: #0d0d0d; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .user .dropdown > a:hover { background: #0d0d0d; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .dropdown-menu { border-color: #333333; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #navigation .dropdown-menu > li > a:hover { background: #333333; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .search-form .search-pane button[type="submit"] { background: #333333; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.insert .submit button { background: #333333; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.right .message { background: #999999; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.right .message p { color: black; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.right .message .time { color: black; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .messages > li.right .message .caret { border-left: 7px solid #999999; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .letterbox .letter > li.active { background: #333333; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .calendar .fc-content .fc-event .fc-event-inner { background: #333333; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .calendar .fc-button.fc-state-active { background: #333333; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .calendar .fc-button.fc-state-active:hover { background: #333333; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .table.table-user tr.alpha td.alpha-val span { background: #333333; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .tagsinput#textfield_tagsinput .tag, .theme-grey .ms-container .multi-custom-header, .theme-grey .slider .ui-slider-handle, .theme-grey .form-wizard .wizard-steps li.active .single-step .title, .theme-grey .user-list h4, .theme-grey .nav.nav-pills > li.active > a, .theme-grey .nav.nav-list > li.active > a, .theme-grey .table.table-colored-header thead th, .theme-grey .table.table-colored-header thead td, .theme-grey .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-grey .elfinder-navbar .ui-state-active, .theme-grey .pagination.pagination-custom li.active a:hover, .theme-grey .pagination.pagination-custom li.active a { background: #333333; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey .elfinder-navbar .ui-state-active { border-color: #333333; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #main .box .box-title .tabs > li.active > a { background: #333333; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #main .box.box-color .box-title { background: #333333; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #main .box.box-color .box-title .tabs > li.active > a { color: #333333; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #main .box.box-bordered.box-color .box-title { border-color: #333333; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey #main .box.box-bordered.box-color .box-content { border-color: #333333; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.darkblue, .label-darkblue { background: #204e81; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-darkblue { background: #204e81; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.darkblue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.darkblue .box-title { background: #204e81 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.darkblue .box-title .actions > a:hover { color: #204e81; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.darkblue .form-wizard .wizard-steps li.active .single-step .title { background: #204e81; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.darkblue .box-title { border-color: #204e81 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.darkblue .box-content { border-color: #204e81 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.darkblue .slimScrollDiv { border-bottom: 2px solid #204e81; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .form-wizard .wizard-steps li.active .single-step .title { background: #204e81; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue.login { background: #204e81; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue a { color: #204e81; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .btn.btn-primary { background: #204e81; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .btn.btn-inverse, .theme-darkblue .btn.btn-success, .theme-darkblue .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue.locked { background: #204e81 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue.locked .pull-left a { background: #112944; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue.locked .pull-left a:hover { background: #07101b; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation { background: #204e81; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .toggle-mobile { background: #112944; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .mobile-nav.open { background: #204e81; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .mobile-nav.open > li.active > a { background: #07101b; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .mobile-nav.open > li.active > ul { background: #07101b; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .mobile-nav.open > li > a { background: #112944; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .mobile-nav.open > li > ul { background: #112944; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .main-nav > li.open > a { background: #112944; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .main-nav > li > a:hover { background: #112944; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .user .icon-nav > li > a:hover { background: #112944; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .user .dropdown.open { background: #112944; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .user .dropdown > a:hover { background: #112944; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .dropdown-menu { border-color: #204e81; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #navigation .dropdown-menu > li > a:hover { background: #204e81; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .search-form .search-pane button[type="submit"] { background: #204e81; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.insert .submit button { background: #204e81; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.right .message { background: #8bb4e2; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.right .message p { color: #020406; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.right .message .time { color: #020406; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .messages > li.right .message .caret { border-left: 7px solid #8bb4e2; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .letterbox .letter > li.active { background: #204e81; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .calendar .fc-content .fc-event .fc-event-inner { background: #204e81; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .calendar .fc-button.fc-state-active { background: #204e81; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .calendar .fc-button.fc-state-active:hover { background: #204e81; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .table.table-user tr.alpha td.alpha-val span { background: #204e81; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .tagsinput#textfield_tagsinput .tag, .theme-darkblue .ms-container .multi-custom-header, .theme-darkblue .slider .ui-slider-handle, .theme-darkblue .form-wizard .wizard-steps li.active .single-step .title, .theme-darkblue .user-list h4, .theme-darkblue .nav.nav-pills > li.active > a, .theme-darkblue .nav.nav-list > li.active > a, .theme-darkblue .table.table-colored-header thead th, .theme-darkblue .table.table-colored-header thead td, .theme-darkblue .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-darkblue .elfinder-navbar .ui-state-active, .theme-darkblue .pagination.pagination-custom li.active a:hover, .theme-darkblue .pagination.pagination-custom li.active a { background: #204e81; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue .elfinder-navbar .ui-state-active { border-color: #204e81; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #main .box .box-title .tabs > li.active > a { background: #204e81; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #main .box.box-color .box-title { background: #204e81; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #main .box.box-color .box-title .tabs > li.active > a { color: #204e81; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #main .box.box-bordered.box-color .box-title { border-color: #204e81; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-darkblue #main .box.box-bordered.box-color .box-content { border-color: #204e81; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.lightred, .label-lightred { background: #e63a3a; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-lightred { background: #e63a3a; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightred { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightred .box-title { background: #e63a3a !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightred .box-title .actions > a:hover { color: #e63a3a; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightred .form-wizard .wizard-steps li.active .single-step .title { background: #e63a3a; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightred .box-title { border-color: #e63a3a !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightred .box-content { border-color: #e63a3a !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightred .slimScrollDiv { border-bottom: 2px solid #e63a3a; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .form-wizard .wizard-steps li.active .single-step .title { background: #e63a3a; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred.login { background: #e63a3a; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred a { color: #e63a3a; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .btn.btn-primary { background: #e63a3a; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .btn.btn-inverse, .theme-lightred .btn.btn-success, .theme-lightred .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred.locked { background: #e63a3a !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred.locked .pull-left a { background: #bc1818; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred.locked .pull-left a:hover { background: #8e1212; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation { background: #e63a3a; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .toggle-mobile { background: #bc1818; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .mobile-nav.open { background: #e63a3a; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .mobile-nav.open > li.active > a { background: #8e1212; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .mobile-nav.open > li.active > ul { background: #8e1212; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .mobile-nav.open > li > a { background: #bc1818; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .mobile-nav.open > li > ul { background: #bc1818; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .main-nav > li.open > a { background: #bc1818; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .main-nav > li > a:hover { background: #bc1818; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .user .icon-nav > li > a:hover { background: #bc1818; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .user .dropdown.open { background: #bc1818; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .user .dropdown > a:hover { background: #bc1818; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .dropdown-menu { border-color: #e63a3a; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #navigation .dropdown-menu > li > a:hover { background: #e63a3a; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .search-form .search-pane button[type="submit"] { background: #e63a3a; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.insert .submit button { background: #e63a3a; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.right .name { color: #4b0909; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.right .message { background: #fdefef; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.right .message p { color: #780f0f; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.right .message .time { color: #780f0f; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .messages > li.right .message .caret { border-left: 7px solid #fdefef; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .letterbox .letter > li.active { background: #e63a3a; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .calendar .fc-content .fc-event .fc-event-inner { background: #e63a3a; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .calendar .fc-button.fc-state-active { background: #e63a3a; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .calendar .fc-button.fc-state-active:hover { background: #e63a3a; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .table.table-user tr.alpha td.alpha-val span { background: #e63a3a; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .tagsinput#textfield_tagsinput .tag, .theme-lightred .ms-container .multi-custom-header, .theme-lightred .slider .ui-slider-handle, .theme-lightred .form-wizard .wizard-steps li.active .single-step .title, .theme-lightred .user-list h4, .theme-lightred .nav.nav-pills > li.active > a, .theme-lightred .nav.nav-list > li.active > a, .theme-lightred .table.table-colored-header thead th, .theme-lightred .table.table-colored-header thead td, .theme-lightred .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-lightred .elfinder-navbar .ui-state-active, .theme-lightred .pagination.pagination-custom li.active a:hover, .theme-lightred .pagination.pagination-custom li.active a { background: #e63a3a; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred .elfinder-navbar .ui-state-active { border-color: #e63a3a; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #main .box .box-title .tabs > li.active > a { background: #e63a3a; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #main .box.box-color .box-title { background: #e63a3a; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #main .box.box-color .box-title .tabs > li.active > a { color: #e63a3a; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #main .box.box-bordered.box-color .box-title { border-color: #e63a3a; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightred #main .box.box-bordered.box-color .box-content { border-color: #e63a3a; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.lightgrey, .label-lightgrey { background: #666666; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-lightgrey { background: #666666; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightgrey { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightgrey .box-title { background: #666666 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightgrey .box-title .actions > a:hover { color: #666666; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.lightgrey .form-wizard .wizard-steps li.active .single-step .title { background: #666666; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightgrey .box-title { border-color: #666666 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightgrey .box-content { border-color: #666666 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.lightgrey .slimScrollDiv { border-bottom: 2px solid #666666; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .form-wizard .wizard-steps li.active .single-step .title { background: #666666; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey.login { background: #666666; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey a { color: #666666; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .btn.btn-primary { background: #666666; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .btn.btn-inverse, .theme-lightgrey .btn.btn-success, .theme-lightgrey .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey.locked { background: #666666 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey.locked .pull-left a { background: #404040; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey.locked .pull-left a:hover { background: #262626; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation { background: #666666; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .toggle-mobile { background: #404040; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .mobile-nav.open { background: #666666; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .mobile-nav.open > li.active > a { background: #262626; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .mobile-nav.open > li.active > ul { background: #262626; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .mobile-nav.open > li > a { background: #404040; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .mobile-nav.open > li > ul { background: #404040; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .main-nav > li.open > a { background: #404040; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .main-nav > li > a:hover { background: #404040; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .user .icon-nav > li > a:hover { background: #404040; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .user .dropdown.open { background: #404040; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .user .dropdown > a:hover { background: #404040; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .dropdown-menu { border-color: #666666; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #navigation .dropdown-menu > li > a:hover { background: #666666; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .search-form .search-pane button[type="submit"] { background: #666666; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.insert .submit button { background: #666666; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.right .message { background: #cccccc; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.right .message p { color: #1a1a1a; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.right .message .time { color: #1a1a1a; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .messages > li.right .message .caret { border-left: 7px solid #cccccc; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .letterbox .letter > li.active { background: #666666; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .calendar .fc-content .fc-event .fc-event-inner { background: #666666; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .calendar .fc-button.fc-state-active { background: #666666; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .calendar .fc-button.fc-state-active:hover { background: #666666; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .table.table-user tr.alpha td.alpha-val span { background: #666666; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .tagsinput#textfield_tagsinput .tag, .theme-lightgrey .ms-container .multi-custom-header, .theme-lightgrey .slider .ui-slider-handle, .theme-lightgrey .form-wizard .wizard-steps li.active .single-step .title, .theme-lightgrey .user-list h4, .theme-lightgrey .nav.nav-pills > li.active > a, .theme-lightgrey .nav.nav-list > li.active > a, .theme-lightgrey .table.table-colored-header thead th, .theme-lightgrey .table.table-colored-header thead td, .theme-lightgrey .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-lightgrey .elfinder-navbar .ui-state-active, .theme-lightgrey .pagination.pagination-custom li.active a:hover, .theme-lightgrey .pagination.pagination-custom li.active a { background: #666666; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey .elfinder-navbar .ui-state-active { border-color: #666666; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #main .box .box-title .tabs > li.active > a { background: #666666; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #main .box.box-color .box-title { background: #666666; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #main .box.box-color .box-title .tabs > li.active > a { color: #666666; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #main .box.box-bordered.box-color .box-title { border-color: #666666; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-lightgrey #main .box.box-bordered.box-color .box-content { border-color: #666666; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.satblue, .label-satblue { background: #2c5e7b; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-satblue { background: #2c5e7b; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satblue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satblue .box-title { background: #2c5e7b !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satblue .box-title .actions > a:hover { color: #2c5e7b; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satblue .form-wizard .wizard-steps li.active .single-step .title { background: #2c5e7b; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satblue .box-title { border-color: #2c5e7b !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satblue .box-content { border-color: #2c5e7b !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satblue .slimScrollDiv { border-bottom: 2px solid #2c5e7b; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .form-wizard .wizard-steps li.active .single-step .title { background: #2c5e7b; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue.login { background: #2c5e7b; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue a { color: #2c5e7b; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .btn.btn-primary { background: #2c5e7b; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .btn.btn-inverse, .theme-satblue .btn.btn-success, .theme-satblue .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue.locked { background: #2c5e7b !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue.locked .pull-left a { background: #183343; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue.locked .pull-left a:hover { background: #0a161d; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation { background: #2c5e7b; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .toggle-mobile { background: #183343; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .mobile-nav.open { background: #2c5e7b; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .mobile-nav.open > li.active > a { background: #0a161d; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .mobile-nav.open > li.active > ul { background: #0a161d; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .mobile-nav.open > li > a { background: #183343; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .mobile-nav.open > li > ul { background: #183343; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .main-nav > li.open > a { background: #183343; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .main-nav > li > a:hover { background: #183343; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .user .icon-nav > li > a:hover { background: #183343; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .user .dropdown.open { background: #183343; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .user .dropdown > a:hover { background: #183343; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .dropdown-menu { border-color: #2c5e7b; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #navigation .dropdown-menu > li > a:hover { background: #2c5e7b; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .search-form .search-pane button[type="submit"] { background: #2c5e7b; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.insert .submit button { background: #2c5e7b; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.right .message { background: #99c2da; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.right .message p { color: #04080a; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.right .message .time { color: #04080a; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .messages > li.right .message .caret { border-left: 7px solid #99c2da; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .letterbox .letter > li.active { background: #2c5e7b; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .calendar .fc-content .fc-event .fc-event-inner { background: #2c5e7b; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .calendar .fc-button.fc-state-active { background: #2c5e7b; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .calendar .fc-button.fc-state-active:hover { background: #2c5e7b; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .table.table-user tr.alpha td.alpha-val span { background: #2c5e7b; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .tagsinput#textfield_tagsinput .tag, .theme-satblue .ms-container .multi-custom-header, .theme-satblue .slider .ui-slider-handle, .theme-satblue .form-wizard .wizard-steps li.active .single-step .title, .theme-satblue .user-list h4, .theme-satblue .nav.nav-pills > li.active > a, .theme-satblue .nav.nav-list > li.active > a, .theme-satblue .table.table-colored-header thead th, .theme-satblue .table.table-colored-header thead td, .theme-satblue .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-satblue .elfinder-navbar .ui-state-active, .theme-satblue .pagination.pagination-custom li.active a:hover, .theme-satblue .pagination.pagination-custom li.active a { background: #2c5e7b; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue .elfinder-navbar .ui-state-active { border-color: #2c5e7b; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #main .box .box-title .tabs > li.active > a { background: #2c5e7b; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #main .box.box-color .box-title { background: #2c5e7b; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #main .box.box-color .box-title .tabs > li.active > a { color: #2c5e7b; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #main .box.box-bordered.box-color .box-title { border-color: #2c5e7b; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satblue #main .box.box-bordered.box-color .box-content { border-color: #2c5e7b; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.satgreen, .label-satgreen { background: #56af45; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-satgreen { background: #56af45; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satgreen { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satgreen .box-title { background: #56af45 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satgreen .box-title .actions > a:hover { color: #56af45; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.satgreen .form-wizard .wizard-steps li.active .single-step .title { background: #56af45; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satgreen .box-title { border-color: #56af45 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satgreen .box-content { border-color: #56af45 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.satgreen .slimScrollDiv { border-bottom: 2px solid #56af45; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .form-wizard .wizard-steps li.active .single-step .title { background: #56af45; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen.login { background: #56af45; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen a { color: #56af45; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .btn.btn-primary { background: #56af45; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .btn.btn-inverse, .theme-satgreen .btn.btn-success, .theme-satgreen .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen.locked { background: #56af45 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen.locked .pull-left a { background: #3b782f; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen.locked .pull-left a:hover { background: #295421; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation { background: #56af45; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .toggle-mobile { background: #3b782f; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .mobile-nav.open { background: #56af45; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .mobile-nav.open > li.active > a { background: #295421; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .mobile-nav.open > li.active > ul { background: #295421; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .mobile-nav.open > li > a { background: #3b782f; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .mobile-nav.open > li > ul { background: #3b782f; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .main-nav > li.open > a { background: #3b782f; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .main-nav > li > a:hover { background: #3b782f; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .user .icon-nav > li > a:hover { background: #3b782f; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .user .dropdown.open { background: #3b782f; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .user .dropdown > a:hover { background: #3b782f; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .dropdown-menu { border-color: #56af45; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #navigation .dropdown-menu > li > a:hover { background: #56af45; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .search-form .search-pane button[type="submit"] { background: #56af45; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.insert .submit button { background: #56af45; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.right .name { color: #0e1d0b; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.right .message { background: #d7edd3; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.right .message p { color: #20411a; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.right .message .time { color: #20411a; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .messages > li.right .message .caret { border-left: 7px solid #d7edd3; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .letterbox .letter > li.active { background: #56af45; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .calendar .fc-content .fc-event .fc-event-inner { background: #56af45; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .calendar .fc-button.fc-state-active { background: #56af45; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .calendar .fc-button.fc-state-active:hover { background: #56af45; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .table.table-user tr.alpha td.alpha-val span { background: #56af45; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .tagsinput#textfield_tagsinput .tag, .theme-satgreen .ms-container .multi-custom-header, .theme-satgreen .slider .ui-slider-handle, .theme-satgreen .form-wizard .wizard-steps li.active .single-step .title, .theme-satgreen .user-list h4, .theme-satgreen .nav.nav-pills > li.active > a, .theme-satgreen .nav.nav-list > li.active > a, .theme-satgreen .table.table-colored-header thead th, .theme-satgreen .table.table-colored-header thead td, .theme-satgreen .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-satgreen .elfinder-navbar .ui-state-active, .theme-satgreen .pagination.pagination-custom li.active a:hover, .theme-satgreen .pagination.pagination-custom li.active a { background: #56af45; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen .elfinder-navbar .ui-state-active { border-color: #56af45; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #main .box .box-title .tabs > li.active > a { background: #56af45; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #main .box.box-color .box-title { background: #56af45; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #main .box.box-color .box-title .tabs > li.active > a { color: #56af45; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #main .box.box-bordered.box-color .box-title { border-color: #56af45; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-satgreen #main .box.box-bordered.box-color .box-content { border-color: #56af45; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.grey-3, .label-grey-3 { background: #eeeeee; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-grey-3 { background: #eeeeee; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey-3 { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey-3 .box-title { background: #eeeeee !important; }
+/* line 24, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey-3 .box-title h3 { color: #333; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey-3 .box-title .actions > a:hover { color: #eeeeee; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.grey-3 .form-wizard .wizard-steps li.active .single-step .title { background: #eeeeee; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey-3 .box-title { border-color: #eeeeee !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey-3 .box-content { border-color: #eeeeee !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.grey-3 .slimScrollDiv { border-bottom: 2px solid #eeeeee; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .form-wizard .wizard-steps li.active .single-step .title { background: #eeeeee; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3.login { background: #eeeeee; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 a { color: #eeeeee; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .btn.btn-primary { background: #eeeeee; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .btn.btn-inverse, .theme-grey-3 .btn.btn-success, .theme-grey-3 .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3.locked { background: #eeeeee !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3.locked .pull-left a { background: #c8c8c8; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3.locked .pull-left a:hover { background: #aeaeae; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation { background: #eeeeee; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .toggle-mobile { background: #c8c8c8; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .mobile-nav.open { background: #eeeeee; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .mobile-nav.open > li.active > a { background: #aeaeae; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .mobile-nav.open > li.active > ul { background: #aeaeae; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .mobile-nav.open > li > a { background: #c8c8c8; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .mobile-nav.open > li > ul { background: #c8c8c8; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .main-nav > li.open > a { background: #c8c8c8; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .main-nav > li > a:hover { background: #c8c8c8; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .user .icon-nav > li > a:hover { background: #c8c8c8; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .user .dropdown.open { background: #c8c8c8; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .user .dropdown > a:hover { background: #c8c8c8; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .dropdown-menu { border-color: #eeeeee; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #navigation .dropdown-menu > li > a:hover { background: #eeeeee; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .search-form .search-pane button[type="submit"] { background: #eeeeee; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.insert .submit button { background: #eeeeee; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.right .name { color: #888888; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.right .message { background: white; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.right .message p { color: #a2a2a2; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.right .message .time { color: #a2a2a2; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .messages > li.right .message .caret { border-left: 7px solid white; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .letterbox .letter > li.active { background: #eeeeee; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .calendar .fc-content .fc-event .fc-event-inner { background: #eeeeee; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .calendar .fc-button.fc-state-active { background: #eeeeee; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .calendar .fc-button.fc-state-active:hover { background: #eeeeee; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .table.table-user tr.alpha td.alpha-val span { background: #eeeeee; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .tagsinput#textfield_tagsinput .tag, .theme-grey-3 .ms-container .multi-custom-header, .theme-grey-3 .slider .ui-slider-handle, .theme-grey-3 .form-wizard .wizard-steps li.active .single-step .title, .theme-grey-3 .user-list h4, .theme-grey-3 .nav.nav-pills > li.active > a, .theme-grey-3 .nav.nav-list > li.active > a, .theme-grey-3 .table.table-colored-header thead th, .theme-grey-3 .table.table-colored-header thead td, .theme-grey-3 .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-grey-3 .elfinder-navbar .ui-state-active, .theme-grey-3 .pagination.pagination-custom li.active a:hover, .theme-grey-3 .pagination.pagination-custom li.active a { background: #eeeeee; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 .elfinder-navbar .ui-state-active { border-color: #eeeeee; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #main .box .box-title .tabs > li.active > a { background: #eeeeee; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #main .box.box-color .box-title { background: #eeeeee; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #main .box.box-color .box-title .tabs > li.active > a { color: #eeeeee; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #main .box.box-bordered.box-color .box-title { border-color: #eeeeee; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-grey-3 #main .box.box-bordered.box-color .box-content { border-color: #eeeeee; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.black, .label-black { background: #333333; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-black { background: #333333; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.black { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.black .box-title { background: #333333 !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.black .box-title .actions > a:hover { color: #333333; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.black .form-wizard .wizard-steps li.active .single-step .title { background: #333333; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.black .box-title { border-color: #333333 !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.black .box-content { border-color: #333333 !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.black .slimScrollDiv { border-bottom: 2px solid #333333; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .form-wizard .wizard-steps li.active .single-step .title { background: #333333; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black.login { background: #333333; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black a { color: #333333; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .btn.btn-primary { background: #333333; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .btn.btn-inverse, .theme-black .btn.btn-success, .theme-black .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black.locked { background: #333333 !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black.locked .pull-left a { background: #0d0d0d; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black.locked .pull-left a:hover { background: black; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation { background: #333333; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .toggle-mobile { background: #0d0d0d; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .mobile-nav.open { background: #333333; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .mobile-nav.open > li.active > a { background: black; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .mobile-nav.open > li.active > ul { background: black; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .mobile-nav.open > li > a { background: #0d0d0d; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .mobile-nav.open > li > ul { background: #0d0d0d; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .main-nav > li.open > a { background: #0d0d0d; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .main-nav > li > a:hover { background: #0d0d0d; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .user .icon-nav > li > a:hover { background: #0d0d0d; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .user .dropdown.open { background: #0d0d0d; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .user .dropdown > a:hover { background: #0d0d0d; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .dropdown-menu { border-color: #333333; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #navigation .dropdown-menu > li > a:hover { background: #333333; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .search-form .search-pane button[type="submit"] { background: #333333; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.insert .submit button { background: #333333; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.right .message { background: #999999; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.right .message p { color: black; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.right .message .time { color: black; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .messages > li.right .message .caret { border-left: 7px solid #999999; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .letterbox .letter > li.active { background: #333333; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .calendar .fc-content .fc-event .fc-event-inner { background: #333333; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .calendar .fc-button.fc-state-active { background: #333333; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .calendar .fc-button.fc-state-active:hover { background: #333333; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .table.table-user tr.alpha td.alpha-val span { background: #333333; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .tagsinput#textfield_tagsinput .tag, .theme-black .ms-container .multi-custom-header, .theme-black .slider .ui-slider-handle, .theme-black .form-wizard .wizard-steps li.active .single-step .title, .theme-black .user-list h4, .theme-black .nav.nav-pills > li.active > a, .theme-black .nav.nav-list > li.active > a, .theme-black .table.table-colored-header thead th, .theme-black .table.table-colored-header thead td, .theme-black .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-black .elfinder-navbar .ui-state-active, .theme-black .pagination.pagination-custom li.active a:hover, .theme-black .pagination.pagination-custom li.active a { background: #333333; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black .elfinder-navbar .ui-state-active { border-color: #333333; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #main .box .box-title .tabs > li.active > a { background: #333333; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #main .box.box-color .box-title { background: #333333; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #main .box.box-color .box-title .tabs > li.active > a { color: #333333; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #main .box.box-bordered.box-color .box-title { border-color: #333333; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-black #main .box.box-bordered.box-color .box-content { border-color: #333333; }
+
+/* line 5, I:/Open Server/domains/pltables/sass/themes.scss */
+ul > li.dark, .label-dark { background: #2a2a2a; }
+
+/* line 11, I:/Open Server/domains/pltables/sass/themes.scss */
+.progress.small .bar.bar-dark { background: #2a2a2a; }
+
+/* line 19, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.dark { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 20, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.dark .box-title { background: #2a2a2a !important; }
+/* line 31, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.dark .box-title .actions > a:hover { color: #2a2a2a; }
+/* line 43, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-color.dark .form-wizard .wizard-steps li.active .single-step .title { background: #2a2a2a; }
+/* line 64, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.dark .box-title { border-color: #2a2a2a !important; }
+/* line 67, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.dark .box-content { border-color: #2a2a2a !important; }
+/* line 70, I:/Open Server/domains/pltables/sass/themes.scss */
+.box.box-bordered.box-color.dark .slimScrollDiv { border-bottom: 2px solid #2a2a2a; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark { /*
+.btn{
+	&.btn-primary{
+		background: $currentColor;
+	}
+}
+*/ }
+/* line 83, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .form-wizard .wizard-steps li.active .single-step .title { background: #2a2a2a; }
+/* line 98, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark.login { background: #2a2a2a; }
+/* line 101, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark a { color: #2a2a2a; }
+/* line 104, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .btn { color: #333; }
+/* line 107, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .btn.btn-primary { background: #2a2a2a; color: #fff; }
+/* line 111, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .btn.btn-inverse, .theme-dark .btn.btn-success, .theme-dark .btn.btn-danger { color: #fff; }
+/* line 115, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark.locked { background: #2a2a2a !important; }
+/* line 119, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark.locked .pull-left a { background: #040404; }
+/* line 121, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark.locked .pull-left a:hover { background: black; }
+/* line 127, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation { background: #2a2a2a; }
+/* line 129, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .toggle-mobile { background: #040404; }
+/* line 133, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .mobile-nav.open { background: #2a2a2a; }
+/* line 138, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .mobile-nav.open > li.active > a { background: black; }
+/* line 142, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .mobile-nav.open > li.active > ul { background: black; }
+/* line 147, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .mobile-nav.open > li > a { background: #040404; }
+/* line 151, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .mobile-nav.open > li > ul { background: #040404; }
+/* line 161, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .main-nav > li.active > a:hover { background: #fff; }
+/* line 167, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .main-nav > li.open > a { background: #040404; }
+/* line 172, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .main-nav > li > a:hover { background: #040404; }
+/* line 183, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .user .icon-nav > li > a:hover { background: #040404; }
+/* line 190, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .user .dropdown.open { background: #040404; }
+/* line 194, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .user .dropdown > a:hover { background: #040404; }
+/* line 201, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .dropdown-menu { border-color: #2a2a2a; }
+/* line 205, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #navigation .dropdown-menu > li > a:hover { background: #2a2a2a; }
+/* line 215, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .search-form .search-pane button[type="submit"] { background: #2a2a2a; }
+/* line 225, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.insert .submit button { background: #2a2a2a; }
+/* line 231, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.right .name { color: black; }
+/* line 234, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.right .message { background: #909090; }
+/* line 236, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.right .message p { color: black; }
+/* line 239, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.right .message .time { color: black; }
+/* line 242, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .messages > li.right .message .caret { border-left: 7px solid #909090; }
+/* line 253, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .letterbox .letter > li.active { background: #2a2a2a; }
+/* line 263, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .calendar .fc-content .fc-event .fc-event-inner { background: #2a2a2a; }
+/* line 269, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .calendar .fc-button.fc-state-active { background: #2a2a2a; }
+/* line 272, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .calendar .fc-button.fc-state-active:hover { background: #2a2a2a; }
+/* line 285, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .table.table-user tr.alpha td.alpha-val span { background: #2a2a2a; }
+/* line 295, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .tagsinput#textfield_tagsinput .tag, .theme-dark .ms-container .multi-custom-header, .theme-dark .slider .ui-slider-handle, .theme-dark .form-wizard .wizard-steps li.active .single-step .title, .theme-dark .user-list h4, .theme-dark .nav.nav-pills > li.active > a, .theme-dark .nav.nav-list > li.active > a, .theme-dark .table.table-colored-header thead th, .theme-dark .table.table-colored-header thead td, .theme-dark .dataTables_wrapper .dataTables_paginate > span > a.paginate_active, .theme-dark .elfinder-navbar .ui-state-active, .theme-dark .pagination.pagination-custom li.active a:hover, .theme-dark .pagination.pagination-custom li.active a { background: #2a2a2a; }
+/* line 299, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark .elfinder-navbar .ui-state-active { border-color: #2a2a2a; }
+/* line 308, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #main .box .box-title .tabs > li.active > a { background: #2a2a2a; }
+/* line 316, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #main .box.box-color .box-title { background: #2a2a2a; }
+/* line 322, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #main .box.box-color .box-title .tabs > li.active > a { color: #2a2a2a; }
+/* line 333, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #main .box.box-bordered.box-color .box-title { border-color: #2a2a2a; }
+/* line 336, I:/Open Server/domains/pltables/sass/themes.scss */
+.theme-dark #main .box.box-bordered.box-color .box-content { border-color: #2a2a2a; }

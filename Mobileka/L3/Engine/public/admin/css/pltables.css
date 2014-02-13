@@ -1,0 +1,427 @@
+/* line 25, I:/Open Server/domains/pltables/sass/pltables.sass */
+body { font-size: 16px; }
+
+/* line 28, I:/Open Server/domains/pltables/sass/pltables.sass */
+a { cursor: pointer; }
+
+/* line 31, I:/Open Server/domains/pltables/sass/pltables.sass */
+select { -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+/* line 33, I:/Open Server/domains/pltables/sass/pltables.sass */
+select:focus { outline: none; border-color: rgba(82, 168, 236, 0.8); }
+
+/* line 37, I:/Open Server/domains/pltables/sass/pltables.sass */
+.inline-form { display: inline; }
+
+/* line 40, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table { font-weight: bold; }
+/* line 42, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table th { text-transform: uppercase; }
+
+/* line 46, I:/Open Server/domains/pltables/sass/pltables.sass */
+.box-title h3 { text-transform: uppercase; }
+
+/* line 49, I:/Open Server/domains/pltables/sass/pltables.sass */
+.filter_buttons { margin-top: 40px; }
+
+/* line 52, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.ColVis_collection { width: 200px !important; left: auto !important; right: 20px; }
+/* line 56, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.ColVis_collection button.ColVis_Button { width: 100% !important; }
+/* line 58, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.ColVis_collection button.ColVis_Button .order_column { display: none; }
+/* line 60, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.ColVis_collection button.ColVis_ShowHideAll { background: #8cbf26; }
+/* line 62, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.ColVis_collection button.ColVis_ShowHideAll:hover { background: #8cbf26; }
+
+/* line 66, I:/Open Server/domains/pltables/sass/pltables.sass */
+.dataTables_wrapper .ColVis { margin-right: 0; }
+
+/* line 69, I:/Open Server/domains/pltables/sass/pltables.sass */
+.dataTables_wrapper .dataTables_length { margin-left: 0; }
+
+/* line 72, I:/Open Server/domains/pltables/sass/pltables.sass */
+.ui-autocomplete { z-index: 2000; }
+
+/* line 75, I:/Open Server/domains/pltables/sass/pltables.sass */
+thead.red th { background-color: #f26c4f; color: white; }
+
+/* line 78, I:/Open Server/domains/pltables/sass/pltables.sass */
+thead.blue th { background-color: #368ee0; color: white; }
+
+/* line 81, I:/Open Server/domains/pltables/sass/pltables.sass */
+thead.green th { background-color: #339933; color: white; }
+
+/* line 84, I:/Open Server/domains/pltables/sass/pltables.sass */
+thead.satblue th { background-color: #2c5e7b; color: white; }
+
+/* line 88, I:/Open Server/domains/pltables/sass/pltables.sass */
+#navigation #brand { background: url('../img/logo.png?1362458832') no-repeat; }
+
+/* line 91, I:/Open Server/domains/pltables/sass/pltables.sass */
+#main { margin-left: 0; }
+
+/* line 94, I:/Open Server/domains/pltables/sass/pltables.sass */
+#footer { height: 50px; }
+
+/* line 99, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.green .box-title { background: #339933; }
+/* line 101, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.green .box-content { background: #8dc63f; }
+/* line 104, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.blue .box-title { background: #368ee0; }
+/* line 106, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.blue .box-content { background: #81c0fc; }
+/* line 109, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.teal .box-title { background: #00aba9; }
+/* line 111, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.teal .box-content { background: #81c0fc; }
+/* line 114, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.red .box-title { background: #f26c4f; }
+/* line 116, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.red .box-content { background: #f69679; }
+/* line 119, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.satblue .box-title { background: #2c5e7b; }
+/* line 121, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.satblue .box-content { background: #448ccb; }
+/* line 124, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.black .box-title { background: #333333; }
+/* line 126, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form.black .box-content { background: #dddddd; }
+/* line 128, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form .box-title h3 { color: white; }
+/* line 130, I:/Open Server/domains/pltables/sass/pltables.sass */
+.edit-form .box-content label { font-weight: bold; font-size: 16px; }
+
+/* line 135, I:/Open Server/domains/pltables/sass/pltables.sass */
+.module-nav { text-transform: uppercase; list-style: none; margin: 0; padding: 0; }
+/* line 140, I:/Open Server/domains/pltables/sass/pltables.sass */
+.module-nav li { float: left; margin-left: 15px; font-size: 14px; }
+/* line 144, I:/Open Server/domains/pltables/sass/pltables.sass */
+.module-nav a { color: white; display: block; padding: 10px 15px; }
+
+/* line 150, I:/Open Server/domains/pltables/sass/pltables.sass */
+.dropdown-menu li { float: none; margin: 0; }
+
+/* line 154, I:/Open Server/domains/pltables/sass/pltables.sass */
+.user-nav { list-style: none; float: right; clear: right; }
+/* line 158, I:/Open Server/domains/pltables/sass/pltables.sass */
+.user-nav li { float: left; margin-left: 10px; }
+
+/* line 162, I:/Open Server/domains/pltables/sass/pltables.sass */
+.controls .help-inline { margin-top: -10px; }
+
+/* line 166, I:/Open Server/domains/pltables/sass/pltables.sass */
+.changed_by_admin { float: left; margin-left: -15px; }
+
+/* line 171, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-horizontal textarea { width: 400px; }
+/* line 173, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-horizontal select { font-size: 15px; }
+/* line 175, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-horizontal .form-actions { padding-left: 160px; }
+/* line 177, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-horizontal .form-actions .btn { margin-right: 5px; border: 1px solid #cccccc; border-bottom-color: #b3b3b3; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
+
+/* line 184, I:/Open Server/domains/pltables/sass/pltables.sass */
+#category_id_field option[value="33"] { background: #81c0fc; }
+/* line 186, I:/Open Server/domains/pltables/sass/pltables.sass */
+#category_id_field option[value="34"] { background: #fff200; }
+/* line 188, I:/Open Server/domains/pltables/sass/pltables.sass */
+#category_id_field option[value="12"] { background: #fff568; }
+
+/* line 192, I:/Open Server/domains/pltables/sass/pltables.sass */
+#main .page-header .pull-left h1 { width: 300px; line-height: normal; }
+
+/* line 198, I:/Open Server/domains/pltables/sass/pltables.sass */
+.slider-range-amount { text-align: left; }
+
+/* line 201, I:/Open Server/domains/pltables/sass/pltables.sass */
+.per_page_changer { float: left; margin: 10px 0; }
+/* line 206, I:/Open Server/domains/pltables/sass/pltables.sass */
+.per_page_changer .btn-warning, .per_page_changer .btn-warning:hover { color: white; }
+
+/* line 211, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked { display: none; width: 100%; height: 100%; color: white; position: fixed; top: 0; left: 0; z-index: 1200; }
+/* line 220, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .result-block { display: none; }
+/* line 222, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .help-block { display: block; background: white; padding: 5px; width: 210px; }
+/* line 227, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .triangle { margin-top: -10px; margin-left: 10px; position: absolute; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid white; }
+/* line 234, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .locked_info { width: 400px; height: 300px; position: fixed; left: 50%; top: 50%; margin-left: -200px; margin-top: -150px; }
+/* line 242, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .locked_info h2 { margin: 0; }
+/* line 244, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .locked_info img { float: left; margin-right: 10px; }
+/* line 247, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .locked_info form { width: 150px; margin-top: 20px; float: left; }
+/* line 251, I:/Open Server/domains/pltables/sass/pltables.sass */
+.locked .locked_info span { font-size: 13px; }
+
+/* line 255, I:/Open Server/domains/pltables/sass/pltables.sass */
+#user_profile .control-label { cursor: default; padding-top: 1px; }
+
+/* line 260, I:/Open Server/domains/pltables/sass/pltables.sass */
+#expense_grid th { white-space: nowrap; }
+
+/* line 266, I:/Open Server/domains/pltables/sass/pltables.sass */
+#cash_grid .type_expenses { background: #fab750 !important; }
+/* line 268, I:/Open Server/domains/pltables/sass/pltables.sass */
+#cash_grid .type_not_related { background: #fff200 !important; }
+/* line 270, I:/Open Server/domains/pltables/sass/pltables.sass */
+#cash_grid .type_consumptions { background: #81c0fc !important; }
+/* line 272, I:/Open Server/domains/pltables/sass/pltables.sass */
+#cash_grid .type_cash { background: #fff568 !important; }
+/* line 274, I:/Open Server/domains/pltables/sass/pltables.sass */
+#cash_grid .type_total { background: #eeeeee !important; }
+
+/* line 277, I:/Open Server/domains/pltables/sass/pltables.sass */
+.scroll_up, .scroll_down { -webkit-transition: all 0.35s ease-out; -moz-transition: all 0.35s ease-out; -o-transition: all 0.35s ease-out; transition: all 0.35s ease-out; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5; position: fixed; z-index: 2000; right: 20px; background: #81c0fc; color: white; padding: 10px 15px; font-size: 20px; }
+/* line 287, I:/Open Server/domains/pltables/sass/pltables.sass */
+.scroll_up:hover, .scroll_down:hover { filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; text-decoration: none; background: #2c5e7b; color: white; }
+
+/* line 292, I:/Open Server/domains/pltables/sass/pltables.sass */
+.scroll_up { top: 228px; }
+
+/* line 294, I:/Open Server/domains/pltables/sass/pltables.sass */
+.scroll_down { top: 270px; }
+
+/* line 298, I:/Open Server/domains/pltables/sass/pltables.sass */
+div.pagination .active > a, div.pagination .active > a:hover { background: #368ee0; color: white; }
+
+/* line 303, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-income, #summary_grid .data-cash { background: #8dc63f !important; }
+/* line 305, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-expense { background: #fab750 !important; }
+/* line 307, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-warehouse { background: #81c0fc !important; }
+/* line 309, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-income_expense { background: #fff200; }
+/* line 311, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-income_expense th { background: none; }
+/* line 313, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-20 { background: #81c0fc !important; }
+/* line 315, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .data-80 { background: #fff200 !important; }
+/* line 319, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .user_names th { background-color: #00aba9; color: white; }
+/* line 322, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .category_row { text-transform: uppercase; }
+/* line 324, I:/Open Server/domains/pltables/sass/pltables.sass */
+#summary_grid .separates_line th { border-top: 2px solid #444444; }
+
+/* line 328, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table.dataTable { margin: 0; }
+
+/* line 331, I:/Open Server/domains/pltables/sass/pltables.sass */
+.dataTables_scrollBody .table-bordered.dataTable { border-top: 0; }
+
+/* line 337, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_1 { background: #8dc63f !important; }
+
+/* line 340, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_2 { background: #ed1c24 !important; color: white; }
+/* line 343, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_2 a { color: white; }
+
+/* line 346, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_3 { background: url('../img/forced.png?1368956713') #c2c2c2 !important; color: #555555; }
+/* line 349, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_3 .uneditable { color: #555555; }
+/* line 351, I:/Open Server/domains/pltables/sass/pltables.sass */
+.priority_3 .buttons { display: none; }
+
+/* line 354, I:/Open Server/domains/pltables/sass/pltables.sass */
+.finished { background: #fff200 !important; }
+
+/* line 357, I:/Open Server/domains/pltables/sass/pltables.sass */
+.finished_forced { background: url('../img/finished_forced.png?1369483325') #fff200 !important; color: #444444; }
+/* line 360, I:/Open Server/domains/pltables/sass/pltables.sass */
+.finished_forced .uneditable { color: #444444; }
+/* line 362, I:/Open Server/domains/pltables/sass/pltables.sass */
+.finished_forced .buttons { display: none; }
+
+/* line 365, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table td.actions { text-align: center; background-color: white; }
+/* line 368, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table td.actions .btn { line-height: 20px; width: 12px; }
+/* line 371, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table td.actions .btn-warning { color: #333333; }
+/* line 373, I:/Open Server/domains/pltables/sass/pltables.sass */
+.table td.actions button.btn { width: 30px; }
+
+/* line 377, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-filter { -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+/* line 379, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-filter .control-group { margin-bottom: 10px; }
+/* line 381, I:/Open Server/domains/pltables/sass/pltables.sass */
+.form-filter hr { border-top-color: #cccccc; }
+
+/* line 385, I:/Open Server/domains/pltables/sass/pltables.sass */
+.dropdown-menu { border-color: #bbbbbb; }
+
+/* line 387, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-dropdown .datepicker-days { width: 245px; }
+
+/* line 390, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker .dow { background: #eeeeee; }
+/* line 392, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table { width: 100%; }
+/* line 395, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table tr td, .datepicker table tr th.prev, .datepicker table tr th.next, .datepicker table tr th.prev_year, .datepicker table tr th.next_year { cursor: pointer; }
+/* line 397, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table tr td { -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; text-align: center; }
+/* line 400, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table tr td:hover { background: #bbbbbb; }
+/* line 402, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table tr td.active { background: #368ee0; color: white; }
+/* line 405, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker table tr td.active:hover { background: #1b67af; }
+
+/* line 410, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-days .new, .datepicker-days .old { color: #cccccc; }
+
+/* line 413, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-months .month { margin-bottom: 5px; display: block; cursor: pointer; }
+/* line 417, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-months .month:hover { background: #999999; color: white; }
+/* line 420, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-months .month.active { background: #368ee0; color: white; }
+
+/* line 425, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-years .year { margin-bottom: 5px; display: block; cursor: pointer; }
+/* line 429, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-years .year:hover { background: #999999; color: white; }
+/* line 432, I:/Open Server/domains/pltables/sass/pltables.sass */
+.datepicker-years .year.active { background: #368ee0; color: white; }
+
+/* line 436, I:/Open Server/domains/pltables/sass/pltables.sass */
+.editable-submit { padding: 5px 7px; }
+
+/* line 439, I:/Open Server/domains/pltables/sass/pltables.sass */
+.editable-fact span { width: 90px; display: inline-block; text-align: right; margin-right: 5px; }
+
+/* line 445, I:/Open Server/domains/pltables/sass/pltables.sass */
+.editable { color: #333333; }
+
+/* line 448, I:/Open Server/domains/pltables/sass/pltables.sass */
+a.uneditable { color: #666666; text-decoration: none; cursor: default; }
+
+/* line 453, I:/Open Server/domains/pltables/sass/pltables.sass */
+a.editable-click { border-bottom: 0; }
+
+/* line 459, I:/Open Server/domains/pltables/sass/pltables.sass */
+a.btn-payment { height: 20px; border-bottom: 0; overflow: hidden; }
+/* line 463, I:/Open Server/domains/pltables/sass/pltables.sass */
+a.btn-payment:hover { border-bottom: 0; }
+
+/* line 466, I:/Open Server/domains/pltables/sass/pltables.sass */
+.order_column span { background: url("plugins/jquery-ui/flick/images/ui-icons_454545_256x240.png") no-repeat; float: right; width: 16px; height: 16px; position: relative; left: 13px; }
+/* line 473, I:/Open Server/domains/pltables/sass/pltables.sass */
+.order_column span.sort { background-position: -128px -16px; }
+/* line 475, I:/Open Server/domains/pltables/sass/pltables.sass */
+.order_column span.sort_asc { background-position: 0px -16px; }
+/* line 477, I:/Open Server/domains/pltables/sass/pltables.sass */
+.order_column span.sort_desc { background-position: -64px -16px; }
+
+/* line 479, I:/Open Server/domains/pltables/sass/pltables.sass */
+.order_column:hover span { background-image: url("plugins/jquery-ui/flick/images/ui-icons_0073ea_256x240.png"); }
+
+/* line 486, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-disable_window { position: fixed; z-index: 2000; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); }
+/* line 492, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-disable_window .alert { border: 1px solid #b4b4b4; width: 350px; background: #f5f5f5; color: #515151; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5); position: absolute; z-index: 2001; left: 50%; top: 50%; margin-top: -55px; margin-left: -175px; text-align: center; font-size: 14px; padding: 20px 0; line-height: normal; }
+/* line 509, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-disable_window .alert .prompt_area { display: block; margin: 0 auto; width: 300px; height: 100px; margin-top: 20px; }
+/* line 515, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-disable_window .alert .close { margin-top: -20px; margin-right: 23px; }
+/* line 518, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-disable_window .alert .buttons { margin-top: 20px; }
+
+/* line 521, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello { position: fixed; z-index: 2000; opacity: 0.9; background: url(../img/hello/default.png) top center repeat-x; line-height: 72px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.75); -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.75); box-shadow: 0 0 5px rgba(0, 0, 0, 0.75); padding: 0 15px; margin: 10px; }
+/* line 532, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .response_link { line-height: normal; }
+/* line 534, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .response_link a { text-decoration: underline; color: white; }
+/* line 537, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .response { margin-bottom: 10px; }
+/* line 539, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .response h2 { font-size: 20px; }
+/* line 541, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .response h3 { font-size: 16px; font-weight: normal; line-height: 30px; }
+/* line 545, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello i { width: 50px; height: 50px; float: left; margin-top: 12px; margin-right: 10px; }
+/* line 551, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .hello-icon-fire { background-image: url(../img/hello/icon/fire.png); }
+/* line 553, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .hello-icon-info { background-image: url(../img/hello/icon/info.png); }
+/* line 555, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .hello-icon-mail { background-image: url(../img/hello/icon/mail.png); }
+/* line 557, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .hello-icon-recycle { background-image: url(../img/hello/icon/recycle.png); }
+/* line 559, I:/Open Server/domains/pltables/sass/pltables.sass */
+.O_o-hello .hello-icon-warn { background-image: url(../img/hello/icon/warn.png); }
+
+/* line 562, I:/Open Server/domains/pltables/sass/pltables.sass */
+.hello-color-red { background-image: url(../img/hello/red.png); background-color: #75001b; color: white; }
+
+/* line 566, I:/Open Server/domains/pltables/sass/pltables.sass */
+.hello-color-orange { background-image: url(../img/hello/orange.png); color: white; }
+
+/* line 569, I:/Open Server/domains/pltables/sass/pltables.sass */
+.hello-color-blue { background-image: url(../img/hello/blue.png); color: white; }
+
+/* line 572, I:/Open Server/domains/pltables/sass/pltables.sass */
+.hello-color-green { background-image: url(../img/hello/green.png); color: white; }
+
+/* line 576, I:/Open Server/domains/pltables/sass/pltables.sass */
+.nav-tabs { margin-bottom: 0; }
+
+/* line 578, I:/Open Server/domains/pltables/sass/pltables.sass */
+.tab-content { background: white; padding: 10px 5px; border: 1px solid #dddddd; border-top: 0; }
+
+/* line 584, I:/Open Server/domains/pltables/sass/pltables.sass */
+.icon-tenge { background-image: url('../img/tenge.png?1368960647'); width: 14px; height: 14px; display: inline-block !important; vertical-align: text-top; }
+
+/* line 593, I:/Open Server/domains/pltables/sass/pltables.sass */
+#warehouses_grid tr.group_list, #sales_grid tr.group_list { background: #8dc63f !important; }
+/* line 595, I:/Open Server/domains/pltables/sass/pltables.sass */
+#warehouses_grid tr.group_list a.show_list, #sales_grid tr.group_list a.show_list { color: #333333; border-bottom: 1px dashed; }
+/* line 598, I:/Open Server/domains/pltables/sass/pltables.sass */
+#warehouses_grid tr.group_list a.show_list:hover, #sales_grid tr.group_list a.show_list:hover { color: black; text-decoration: none; }
+
+/* line 602, I:/Open Server/domains/pltables/sass/pltables.sass */
+#sales_grid tr.group_list { background: #81c0fc !important; }
+
+/* Fix 100% width */
+/* line 607, I:/Open Server/domains/pltables/sass/pltables.sass */
+.chzn-container, .chzn-drop, .chzn-drop .chzn-search, .chzn-drop .chzn-search input { width: 100% !important; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/* line 611, I:/Open Server/domains/pltables/sass/pltables.sass */
+.chzn-drop .chzn-search input { height: 30px; }
+
+/* Override width */
+/* line 615, I:/Open Server/domains/pltables/sass/pltables.sass */
+.chzn-container { width: 300px !important; }
+
+/* line 618, I:/Open Server/domains/pltables/sass/pltables.sass */
+.select2-container { width: 300px; }
+
+/* line 622, I:/Open Server/domains/pltables/sass/pltables.sass */
+#filter_summary { margin: 0; }
+
+/* line 625, I:/Open Server/domains/pltables/sass/pltables.sass */
+#filter_branch_toggle { background: #666666; color: white; padding: 5px 10px; width: 200px; }
+/* line 630, I:/Open Server/domains/pltables/sass/pltables.sass */
+#filter_branch_toggle.active { background: #368ee0; }
+
+/* line 633, I:/Open Server/domains/pltables/sass/pltables.sass */
+.filter-branch .controls { display: none; }
+
+/* line 636, I:/Open Server/domains/pltables/sass/pltables.sass */
+.ms-container { background-position: 235px 80px; }
+/* line 638, I:/Open Server/domains/pltables/sass/pltables.sass */
+.ms-container ul.ms-list { width: 220px; }

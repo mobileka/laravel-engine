@@ -1,0 +1,62 @@
+/* line 1, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.btn-file { position: relative; overflow: hidden; vertical-align: middle; padding: 4px 8px; border: 1px solid #ccc; }
+
+/* line 10, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.btn-file > input { position: absolute; top: 0; right: 0; margin: 0; font-size: 23px; cursor: pointer; opacity: 0; filter: alpha(opacity=0); transform: translate(-300px, 0) scale(4); direction: ltr; }
+
+/* line 22, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload { margin-bottom: 0px; }
+
+/* line 26, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload .uneditable-input { display: inline-block; margin-bottom: 0; vertical-align: middle; cursor: text; }
+
+/* line 33, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload .thumbnail { display: inline-block; margin-bottom: 5px; overflow: hidden; text-align: center; vertical-align: middle; }
+
+/* line 41, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload .thumbnail > img { display: inline-block; max-height: 100%; vertical-align: middle; }
+
+/* line 47, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload .btn { vertical-align: middle; }
+
+/* line 52, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload-exists .fileupload-new, .fileupload-new .fileupload-exists { display: none; }
+
+/* line 56, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload-inline .fileupload-controls { display: inline; }
+
+/* line 60, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload-new .input-append .btn-file { -webkit-border-radius: 0 0 0 0; -moz-border-radius: 0 0 0 0; border-radius: 0 0 0 0; }
+
+/* line 66, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.thumbnail-borderless .thumbnail { padding: 0; border: none; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+/* line 77, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.fileupload-new.thumbnail-borderless .thumbnail { border: 1px solid #ddd; }
+
+/* line 81, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.warning .fileupload .uneditable-input { color: #a47e3c; border-color: #a47e3c; }
+
+/* line 86, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.warning .fileupload .fileupload-preview { color: #a47e3c; }
+
+/* line 90, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.warning .fileupload .thumbnail { border-color: #a47e3c; }
+
+/* line 94, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.error .fileupload .uneditable-input { color: #b94a48; border-color: #b94a48; }
+
+/* line 99, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.error .fileupload .fileupload-preview { color: #b94a48; }
+
+/* line 103, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.error .fileupload .thumbnail { border-color: #b94a48; }
+
+/* line 107, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.success .fileupload .uneditable-input { color: #468847; border-color: #468847; }
+
+/* line 112, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.success .fileupload .fileupload-preview { color: #468847; }
+
+/* line 116, I:/Open Server/domains/pltables/sass/plugins/fileupload.scss */
+.control-group.success .fileupload .thumbnail { border-color: #468847; }

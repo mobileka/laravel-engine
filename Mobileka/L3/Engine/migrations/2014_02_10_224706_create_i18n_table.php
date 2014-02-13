@@ -1,6 +1,6 @@
 <?php
 
-class I18n_Create_I18n_Table {	
+class Engine_Create_I18n_Table {
 
 	public function up()
 	{

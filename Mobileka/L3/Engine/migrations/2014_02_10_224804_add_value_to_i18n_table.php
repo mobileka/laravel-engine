@@ -1,6 +1,6 @@
 <?php
 
-class I18n_Add_Value_To_I18n_Table {
+class Engine_Add_Value_To_I18n_Table {
 
 	public function up()
 	{

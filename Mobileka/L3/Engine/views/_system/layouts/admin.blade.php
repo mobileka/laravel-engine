@@ -7,36 +7,25 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<title>{{  Config::get('application.projectName') . ' | ' . $title }}</title>
+	<title>{{ Config::get('application.projectName') . ' | ' . $title }}</title>
 
-	{{ Asset::container('plugins')->styles() }}
+  {{ Asset::container('engine_assets')->styles() }}
+  @yield('styles')
+  <script>
+    var BASE = "{{ URL::base() }}";
+    URL_KEEPER = {
+      upload_url                         : '{{ URL::to_upload(Controller::$route) }}'
+    };
+    var app = {
+      URL_BASE: '{{ URL::base() }}',
+      jcropParams: {}
+    };
 
-	@yield('styles')
-
-	{{ Asset::container('custom')->styles() }}
-
-	<script>
-		var BASE = "{{ URL::base() }}";
-			URL_KEEPER = {
-				upload_url                         : '{{ URL::to_upload(Controller::$route) }}',
-				upload_thumbnail                   : '{{ URL::to_route('uploads_admin_default_view') }}'
-			};
-
-		var app = {
-			URL_BASE: '{{ URL::base() }}',
-			jcropParams: {}
-		};
-
-		@yield('script_vars')
-	</script>
-
-	{{ Asset::container('plugins')->scripts() }}
-
-	@yield('plugins')
-
-	{{ Asset::container('custom')->scripts() }}
-
-	@yield('scripts')
+    @yield('script_vars')
+  </script>
+  {{ Asset::container('engine_assets')->scripts() }}
+  @yield('plugins')
+  @yield('scripts')
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico" />

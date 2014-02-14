@@ -2,15 +2,11 @@
 
 class BackendController extends Controller {
 
-	public $layout = 'engine::layouts.admin';
+	public $layout = 'engine::_system.layouts.admin';
 
 	public function __construct()
 	{
-		/**
-		 * Надо ли добавить сюда авторизацию сразу?
-		 * В таком случае надо будет в CRUD интегрировать бандл Auth еще :)
-		 */
-		//$this->filter('before', 'adminAuth');
+		$this->filter('before', 'adminAuth');
 		parent::__construct();
 	}
 

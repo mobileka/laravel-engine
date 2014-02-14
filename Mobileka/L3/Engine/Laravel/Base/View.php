@@ -57,7 +57,7 @@ class View extends \Laravel\View {
 		}
 	}
 
-	public function validation(array $errors, $view = '_system.validation_error')
+	public function validation(array $errors, $view = 'engine::_system.validation_error')
 	{
 		$result = '';
 
@@ -69,7 +69,7 @@ class View extends \Laravel\View {
 		return $result;
 	}
 
-	public function validationErrors($field, $view = '_system.validation_error')
+	public function validationErrors($field, $view = 'engine::_system.validation_error')
 	{
 		return $this->validation($this->data['errors']->get($field), $view);
 	}

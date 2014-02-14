@@ -1,6 +1,6 @@
 <?php
 
-function notifications($view = '_system.notifications')
+function notifications($view = 'engine::_system.notifications')
 {
 	return \Notification::printAll($view);
 }

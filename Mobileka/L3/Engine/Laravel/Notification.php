@@ -15,7 +15,7 @@ class Notification {
 	 * @param string $view - a view that will output error messages
 	 * @return \View
 	 */
-	public static function printAll($view = '_system.notifications')
+	public static function printAll($view = 'engine::_system.notifications')
 	{
 		return \View::make(
 			$view,

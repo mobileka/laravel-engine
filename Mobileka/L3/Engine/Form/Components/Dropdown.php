@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Form\Components;
 
+use Mobileka\L3\Engine\Laravel\Lang;
+
 class Dropdown extends BaseComponent {
 
 	protected $template = 'engine::form.dropdown';
@@ -12,13 +14,13 @@ class Dropdown extends BaseComponent {
 		{
 			foreach ($options as $key => $option)
 			{
-				$options[$key] = \Lang::findLine($this->languageFile, $option);
+				$options[$key] = Lang::findLine($this->languageFile, $option);
 			}
 		}
 
 		if ($defaultValue)
 		{
-			$options = array(null => \Lang::findLine($this->languageFile, 'not_selected')) + $options;
+			$options = array(null => Lang::findLine($this->languageFile, 'not_selected')) + $options;
 		}
 
 		$this->options = $options;

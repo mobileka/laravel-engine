@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Mobileka\L3\Engine\Laravel\Helpers\Debug,
 	Input,
 	File;
 
@@ -494,7 +495,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		}
 		catch(\Laravel\Database\Exception $e)
 		{
-			\Helpers\Debug::log_pp($e->getMessage());
+			Debug::log_pp($e->getMessage());
 			$results = array();
 		}
 

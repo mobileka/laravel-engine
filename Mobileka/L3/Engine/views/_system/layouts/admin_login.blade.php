@@ -8,25 +8,25 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<title>Михалыч | Войти в панель администратора</title>
+	<title>{{ Config::get('application.projectName') }} | Войти в панель администратора</title>
 
-	{{ HTML::style('backoffice/css/bootstrap.min.css') }}
-	{{ HTML::style('backoffice/css/bootstrap-responsive.min.css') }}
-	{{ HTML::style('backoffice/css/plugins/icheck/all.css') }}
-	{{ HTML::style('backoffice/css/style.css') }}
-	{{ HTML::style('backoffice/css/themes.css') }}
+  {{ Asset::container('engine_assets')->styles() }}
+  @yield('styles')
+  <script>
+    var BASE = "{{ URL::base() }}";
+    URL_KEEPER = {
+      upload_url                         : '{{ URL::to_upload(Controller::$route) }}'
+    };
+    var app = {
+      URL_BASE: '{{ URL::base() }}',
+      jcropParams: {}
+    };
 
-	{{ HTML::script('backoffice/js/jquery.min.js') }}
-	{{ HTML::script('backoffice/js/plugins/nicescroll/jquery.nicescroll.min.js') }}
-	{{ HTML::script('backoffice/js/plugins/validation/jquery.validate.min.js') }}
-	{{ HTML::script('backoffice/js/plugins/validation/additional-methods.min.js') }}
-	{{ HTML::script('backoffice/js/plugins/icheck/jquery.icheck.min.js') }}
-	{{ HTML::script('backoffice/js/bootstrap.min.js') }}
-	{{ HTML::script('backoffice/js/eakroko.js') }}
-
-
-	{{ Asset::container('header')->styles() }}
-	{{ Asset::container('header')->scripts() }}
+    @yield('script_vars')
+  </script>
+  {{ Asset::container('engine_assets')->scripts() }}
+  @yield('plugins')
+  @yield('scripts')
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,7 +34,7 @@
 </head>
 <body class="login theme-darkblue">
 	<div class="wrapper">
-		<h1><a href="#"><img src="{{ URL::base() }}/backoffice/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">Михалыч</a></h1>
+		<h1><a href="#"><img src="{{ URL::base() }}/bundles/engine/admin/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">{{ Config::get('application.projectName') . ' | ' . $title }}</a></h1>
 		<div class="login-body">
 			<h2>Войти</h2>
 

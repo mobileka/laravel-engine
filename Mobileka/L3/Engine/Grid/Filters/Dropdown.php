@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
+use Mobileka\L3\Engine\Laravel\Lang;
+
 class Dropdown extends BaseComponent {
 
 	protected $template = 'engine::grid.filters.dropdown';
@@ -13,7 +15,7 @@ class Dropdown extends BaseComponent {
 	{
 		if ($defaultValue)
 		{
-			$options = array(null => \Lang::findLine($this->languageFile, 'not_selected')) + $options;
+			$options = array(null => Lang::findLine($this->languageFile, 'not_selected')) + $options;
 		}
 
 		$this->options = $options;

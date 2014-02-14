@@ -157,7 +157,7 @@ class Misc {
 		{
 			foreach ($what as $object)
 			{
-				return static::prepareForJson($object);
+				$result[] = static::prepareForJson($object);
 			}
 		}
 		elseif ($what instanceof \Laravel\Paginator)
@@ -241,3 +241,4 @@ class Misc {
 		return \Str::limit($password, $length, '');
 	}
 }
+

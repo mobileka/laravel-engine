@@ -62,6 +62,7 @@ return array(
 
 		'aliases' => array(
 			'(:any)_admin_(:any)' => array('admins'),
+			'admin_home' => array('admins'),
 		),
 
 		'paths' => array(

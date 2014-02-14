@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Config;
+
 class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 	public $aliases = array();
@@ -8,8 +10,8 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	public static function make()
 	{
 		$self = new static;
-		$self->permissions = \Config::get('acl.permissions', array());
-		$self->defaultResult = \Config::get('acl.defaultResult', false);
+		$self->permissions = Config::get('acl.permissions', array());
+		$self->defaultResult = Config::get('acl.defaultResult', false);
 
 		foreach (\Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
 		{
@@ -124,7 +126,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	 */
 	public static function can($action, $group = null)
 	{
-		if ($action = \Arr::getItem(\Config::get('acl.actions', array()), $action, array()))
+		if ($action = \Arr::getItem(Config::get('acl.actions', array()), $action, array()))
 		{
 			$allow = \Arr::getItem($action, 'allow', array());
 			$deny = \Arr::getItem($action, 'deny', array());
@@ -155,7 +157,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 			}
 		}
 
-		return \Config::get('acl.defaultResult', false);
+		return Config::get('acl.defaultResult', false);
 	}
 
 	public static function userAclGroups($group = null)

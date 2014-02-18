@@ -28,7 +28,7 @@
 			});
 		}
 		return this;
-	}
+	};
 })( jQuery );
 function icheck(){
 	if($(".icheck-me").length > 0){
@@ -41,21 +41,20 @@ function icheck(){
 				checkboxClass: 'icheckbox' + skin + color,
 				radioClass: 'iradio' + skin + color,
 				increaseArea: "10%"
+			};
+			$el.iCheck(opt);
+			if ($el.hasClass('icheck-me-trigger')) {
+				var hidden_checkbox = $el.closest('.check-line').find('.checkbox-value'),
+					checkedValue = hidden_checkbox.data('checked-value'),
+					uncheckedValue = hidden_checkbox.data('unchecked-value')
+				;
+
+				$el.on('is.Changed', function() {
+					var value = $el.prop('checked') ? checkedValue : uncheckedValue;
+					hidden_checkbox.val(value);
+				});
 			}
 
-			$el.iCheck(opt);
-		});
-	}
-
-	if ($('.icheck-me-trigger').length) {
-		$('.icheck-me-trigger').change(function() {
-			var checked = $(this).is(':checked'),
-				hidden_checkbox = $(this).closest('.check-line').find('.icheck-me-hidden'),
-				new_value;
-
-			new_value = (checked ? hidden_checkbox.data('checkedvalue') : hidden_checkbox.data('uncheckedvalue'));
-
-			$(this).closest('.check-line').find('.icheck-me-hidden').val(new_value);
 		});
 	}
 }

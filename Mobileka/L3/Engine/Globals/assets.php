@@ -98,6 +98,7 @@
 	->add('Jcrop',                            'bundles/engine/admin/js/plugins/jcrop/jquery.Jcrop.js')
 	->add('validation',                       'bundles/engine/admin/js/plugins/validation/jquery.validate.min.js')
 	->add('validation-additional',            'bundles/engine/admin/js/plugins/validation/additional-methods.min.js')
+	->add('touch-punch',                      'bundles/engine/admin/js/plugins/touch-punch/jquery.touch-punch.min.js')
 
 	/* @todo Добавить проверку языка и подключаbundles/engine/ть следующий файл только когда выбран русский язык */
 

@@ -158,9 +158,9 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 			 * If specified, set cancel url with \URL::to_action()
 			 * This has a higher priority than 'url' config parameter
 			 */
-			if ($result = Arr::getItem($config, 'urlToAction'))
+			if ($urlToAction = Arr::getItem($config, 'urlToAction'))
 			{
-				$result = \URL::to_action($result, $params);
+				$result = \URL::to_action($urlToAction, $params);
 			}
 
 			/**
@@ -170,6 +170,11 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 			if ($alias = Arr::getItem($config, 'urlToRoute'))
 			{
 				$result = \URL::to_route($alias, $params);
+			}
+
+			if ($queryString = Arr::getItem($config, 'queryString'))
+			{
+				$result .= '?' . $queryString;
 			}
 		}
 

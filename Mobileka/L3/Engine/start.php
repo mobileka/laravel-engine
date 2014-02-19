@@ -84,6 +84,7 @@ IoC::register('i18n', function($injection = null)
 \Laravel\Autoloader::$aliases['LinkColumn'] = 'Mobileka\L3\Engine\Grid\Components\Link';
 \Laravel\Autoloader::$aliases['PriceColumn'] = 'Mobileka\L3\Engine\Grid\Components\Price';
 \Laravel\Autoloader::$aliases['SwitcherColumn'] = 'Mobileka\L3\Engine\Grid\Components\Switcher';
+\Laravel\Autoloader::$aliases['BooleanColumn'] = 'Mobileka\L3\Engine\Grid\Components\Boolean';
 
 //Filters
 \Laravel\Autoloader::$aliases['ContainsFilter'] = 'Mobileka\L3\Engine\Grid\Filters\Contains';

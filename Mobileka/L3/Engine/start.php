@@ -75,6 +75,7 @@ IoC::register('i18n', function($injection = null)
 \Laravel\Autoloader::$aliases['TextField'] = 'Mobileka\L3\Engine\Form\Components\Text';
 \Laravel\Autoloader::$aliases['TextareaField'] = 'Mobileka\L3\Engine\Form\Components\TextArea';
 \Laravel\Autoloader::$aliases['CheckboxField'] = 'Mobileka\L3\Engine\Form\Components\Checkbox';
+\Laravel\Autoloader::$aliases['HiddenField'] = 'Mobileka\L3\Engine\Form\Components\Hidden';
 
 //Grid Components
 \Laravel\Autoloader::$aliases['TextColumn'] = 'Mobileka\L3\Engine\Grid\Components\Column';

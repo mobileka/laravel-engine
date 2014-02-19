@@ -125,6 +125,6 @@ $(ad.parent).change(function(){
 
 <?php }
 catch (Exception $e) {
-	\Helpers\Debug::pp($e->getMessage());
+	Mobileka\L3\Engine\Laravel\Helpers\Debug::pp($e->getMessage());
 }
 ?>

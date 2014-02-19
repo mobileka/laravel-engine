@@ -1,6 +1,8 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr, \Str;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Mobileka\L3\Engine\Laravel\Base\View,
+	\Str;
 
 abstract class Component {
 
@@ -165,7 +167,7 @@ abstract class Component {
 			}
 		}
 
-		return \View::make(
+		return View::make(
 			$this->template,
 			array(
 				'lang' => $lang,

@@ -87,7 +87,7 @@ var AjaxDropdown = {
 
 							for (var i in response)
 							{
-								options += '<option value="' + response[i].id + '">' + response[i].id + '</option>';
+								options += '<option value="' + response[i].id + '">' + response[i].title + '</option>';
 							}
 
 							child.html(options);

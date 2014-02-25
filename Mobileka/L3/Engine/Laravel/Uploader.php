@@ -1,14 +1,28 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Config;
+
 class Uploader extends \Model {
 
 	public static $table = 'uploads';
 	public static $rules = array('object_id' => 'integer');
-	public static $template = 'engine::uploader.view';
+	public static $template = 'engine::form.thumbnail_view';
 
 	public function get_template()
 	{
 		return static::$template;
+	}
+
+	public function to_array()
+	{
+		$this->url = $this->get_url();
+		$this->path = $this->get_path();
+		return parent::to_array();
+	}
+
+	public function get_croppedImage()
+	{
+		return image('crop_' . $this->filename, $this->type, $this->created_at);
 	}
 
 	public function get_path()
@@ -53,9 +67,9 @@ class Uploader extends \Model {
 
 	public function __get($name)
 	{
-		if (array_key_exists($name, \Config::find('image.aliases', array())))
+		if (array_key_exists($name, Config::find('image.aliases', array())))
 		{
-			$dimensions = \Config::find('image.aliases.'.$name);
+			$dimensions = Config::find('image.aliases.'.$name);
 			$original = imagePath($this->filename, $this->type, $this->created_at);
 
 			$name .= '_' . $this->filename;

@@ -187,6 +187,18 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		return $alias;
 	}
 
+	public static function isOwnerOfObject($model, $field, $object_id)
+	{
+		$model = is_string($model) ? new $model : $model;
+
+		if (!$model = $model->find($object_id))
+		{
+			return false;
+		}
+
+		return uid() === (int) $model->$field;
+	}
+
 	public function __call($method, $args)
 	{
 		if ($method == 'except')

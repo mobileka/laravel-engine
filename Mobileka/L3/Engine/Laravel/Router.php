@@ -80,4 +80,29 @@ class Router extends \Laravel\Routing\Router {
 		$routes = array_pluck(array_values(static::$routes[$method]), 'as');
 		return in_array($route, $routes);
 	}
+
+	public static function resolve($routeAlias, $stripAction = true)
+	{
+		$controllerName = '';
+		$segments = explode('_', $routeAlias);
+		$total = $stripAction ? count($segments) - 1 : count($segments);
+
+		for ($i = 0; $i < $total; $i++)
+		{
+			if ($i === 0)
+			{
+				$bundle = $segments[$i];
+			}
+			elseif ($i < ($total - 1))
+			{
+				$controllerName .= $segments[$i] . '.';
+			}
+			else
+			{
+				$controllerName .= $segments[$i];
+			}
+		}
+
+		return Controller::resolve($bundle, $controllerName);
+	}
 }

@@ -90,7 +90,6 @@
 	->add('ckeditor',                         'bundles/engine/admin/js/plugins/ckeditor/ckeditor.js')
 	->add('plupload',                         'bundles/engine/admin/js/plugins/plupload/plupload.full.js')
 	->add('plupload-queue',                   'bundles/engine/admin/js/plugins/plupload/jquery.plupload.queue.js')
-	->add('bootstrap-fileupload',             'bundles/engine/admin/js/plugins/fileupload/bootstrap-fileupload.min.js')
 	->add('mockjax',                          'bundles/engine/admin/js/plugins/mockjax/jquery.mockjax.js')
 	->add('select2',                          'bundles/engine/admin/js/plugins/select2/select2.min.js')
 	->add('colorbox',                         'bundles/engine/admin/js/plugins/colorbox/jquery.colorbox-min.js')
@@ -108,4 +107,10 @@
 	->add('admin',                            'bundles/engine/admin/js/admin.js')
 	->add('eakroko',                          'bundles/engine/admin/js/eakroko.js')
 	->add('application',                      'bundles/engine/admin/js/application.min.js')
+
+	//Jquery Fileupload
+	->add('jquery_ui_widget', 'bundles/engine/admin/js/plugins/jquery_fileupload/jquery.ui.widget.js')
+	->add('iframe-transport', 'bundles/engine/admin/js/plugins/jquery_fileupload/jquery.iframe-transport.js')
+	->add('jquery_fileupload', 'bundles/engine/admin/js/plugins/jquery_fileupload/jquery.fileupload.js')
+
 ;

@@ -1,51 +1,98 @@
-@if ($component->jcropParams)
+<? try { ?>
+<div id="{{ $component->name }}_image" class="fileupload">
+
+	<div class="thumbnail">
+
+		<img class="jcrop-image image-edit-thumbnail" src="{{ $component->value() ?: 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image' }}">
+
+	</div> <!-- .thumbnail -->
+
+</div>
+
+<input id="fileupload" type="file" name="{{$component->name}}" data-url="{{ URL::to_upload(Controller::$route) }}">
+{{ Form::hidden('upload_token[' . $component->name . ']', Input::old('upload_token.' . $component->name, uniqid())) }}
+
+{{ Form::hidden($component->name . '[x]', '', array('id' => $component->name . '_x')) }}
+{{ Form::hidden($component->name . '[y]', '', array('id' => $component->name . '_y')) }}
+{{ Form::hidden($component->name . '[w]', '', array('id' => $component->name . '_w')) }}
+{{ Form::hidden($component->name . '[h]', '', array('id' => $component->name . '_h')) }}
+
 <script>
-	app.showCoords_{{ $component->name }} = function(c) {
+var component = {
+	showCoords_{{ $component->name }} : function(c) {
 		$('#{{ $component->name }}_x').val(c.x);
 		$('#{{ $component->name }}_y').val(c.y);
 		$('#{{ $component->name }}_w').val(c.w);
 		$('#{{ $component->name }}_h').val(c.h);
-	};
-
-	app.jcropParams.{{ $component->name }} = {
+	},
+	jcrop : {
 		setSelect: [0, 0, 100, 50],
 		boxWidth: 500,
 		boxHeight: 500
-	};
+	}
+};
 
-	@foreach ($component->jcropParams as $param => $value)
-	app.jcropParams.{{ $component->name }}.{{ $param }} = {{ $value }};
-	@endforeach
+@foreach ($component->jcrop as $param => $value)
+component.jcrop.{{ $param }} = {{ $value }};
+@endforeach
 
-	app.jcropParams.{{ $component->name }}.onSelect = app.showCoords_{{ $component->name }};
+component.jcrop.onSelect = component.showCoords_{{ $component->name }};
 
+
+$(document).ready(function()
+{
+	$('[name={{ $component->name }}]').fileupload({
+		type: 'post',
+		singleFileUploads: true,
+		formData: function(form)
+		{
+			return [
+				{
+					name: "upload_token",
+					value: form.find('[name=upload_token\\[{{ $component->name }}\\]]').val()
+				},
+				{
+					name: "fieldName",
+					value: "{{ $component->name }}"
+				},
+				{
+					name: 'modelName',
+					value: "{{ $component->getModelName() }}"
+				},
+				{
+					name: 'single',
+					value: true
+				}
+			];
+		},
+		dataType: 'json',
+		done: function (e, data) {
+			if (data.result.status !== 'error')
+			{
+				var appendTo = $('[name={{ $component->name }}]').parent(),
+					jcrop = {{ $component->jcrop ? 1 : 0 }},
+					img = $('div#{{$component->name}}_image .jcrop-image').removeClass('image-edit-thumbnail')
+						.attr('src', data.result.data.url);
+
+				img.load(function() {
+
+					$(this).css('max-width', 'none');
+					$(this).css('width', 'auto');
+					$(this).css('height', 'auto');
+					crop_width = this.width;
+					crop_height = this.height;
+
+					if (jcrop)
+					{
+						component.jcrop.trueSize = [crop_width, crop_height];
+						img.Jcrop(component.jcrop);
+					}
+				});
+			}
+		}
+	});
+});
 </script>
-@endif
 
-<div id="{{ $component->name }}_id" data-provides="fileupload" class="fileupload {{ $component->value() ? 'fileupload-exists' : 'fileupload-new' }}" data-image_field="{{ $component->name }}" data-jcrop="{{ $component->jcropParams ? 'true' : 'false' }}">
+<? } catch(\Exception $e) { echo $e->getMessage();die('fe'); }
 
-	<div class="fileupload-new thumbnail {{ $component->div_class }}">
-		<img alt="" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image">
-	</div>
-
-	<div class="fileupload-preview fileupload-exists thumbnail {{ $component->div_class }}">
-		<img alt="" src="{{ $component->value() ? $component->row->getImageSrc($component->name, 'small_thumb', true) : 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image'}}">
-	</div>
-
-	<div>
-		<span class="btn btn-file">
-			<span class="fileupload-new">{{ ___('default', 'labels.select_image') }}</span>
-			<span class="fileupload-exists">{{ ___('default', 'labels.change_image') }}</span>
-
-			{{ Form::file($component->name, array('class' => 'fileupload-file')) }}
-		</span>
-
-		<a data-dismiss="fileupload" class="btn fileupload-exists" href="#">{{ ___('default', 'labels.remove_image') }}</a>
-	</div>
-
-	{{ Form::hidden($component->name . '[x]', '', array('id' => $component->name . '_x')) }}
-	{{ Form::hidden($component->name . '[y]', '', array('id' => $component->name . '_y')) }}
-	{{ Form::hidden($component->name . '[w]', '', array('id' => $component->name . '_w')) }}
-	{{ Form::hidden($component->name . '[h]', '', array('id' => $component->name . '_h')) }}
-
-</div>

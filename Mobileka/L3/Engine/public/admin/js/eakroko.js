@@ -340,10 +340,16 @@ $(document).ready(function() {
 	});
 
 		$(".plupload").each(function(){
-			var $el = $(this);
+			var $el = $(this),
+				fieldname = $el.data('fieldname'),
+				uploadUrl = $el.data('upload-url'),
+				thumbnailUrl = $el.data('thumbnail-url'),
+				modelName = $el.data('modelname');
+
 			$el.pluploadQueue({
 				runtimes : 'html5,gears,flash,silverlight,browserplus',
-				url : URL_KEEPER.upload_url,
+				url : uploadUrl,
+				file_data_name: fieldname,
 				max_file_size : '50mb',
 				chunk_size : '10mb',
 				unique_names : true,
@@ -358,7 +364,10 @@ $(document).ready(function() {
 			$(".plupload_header").remove();
 			var upload = $el.pluploadQueue();
 			upload.settings.multipart_params = {
-				'upload_token' : $('[name="upload_token"]').val()
+				'upload_token' : $('[name="upload_token[' + fieldname + ']"]').val(),
+				'fieldName': fieldname,
+				'modelName' : modelName,
+				'single' : 0
 			};
 
 			if($el.hasClass("pl-sidebar")){
@@ -390,7 +399,7 @@ $(document).ready(function() {
 						$('.modal-dimensions-error').modal('show');
 					}
 					else {
-						var url = URL_KEEPER.upload_thumbnail + '/' + response.data.id;
+						var url = thumbnailUrl + '/' + response.data.id;
 
 						$.get(url, {
 

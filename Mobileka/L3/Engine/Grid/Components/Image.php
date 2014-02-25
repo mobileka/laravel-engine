@@ -3,10 +3,52 @@
 class Image extends BaseComponent {
 
 	protected $template = 'engine::grid.image_column';
+	protected $imageAlias = 'admin_grid_thumb';
+	protected $multi = true;
+	protected $cropped = false;
+	protected $featuredImage = false;
 
-	public function value()
+	public function featuredImage($field = '')
 	{
-		return $this->row->image ? $this->row->image->admin_grid_thumb : dummyThumbnail('admin_grid_thumb');
+		$this->featuredImage = $field ?: $this->name;
+		return $this;
 	}
 
+	public function cropped($cropped = true)
+	{
+		$this->cropped = $cropped;
+		return $this;
+	}
+
+	public function value($lang = '')
+	{
+		try
+		{
+			$relation = $this->name .'_uploads';
+
+			if ($this->featuredImage)
+			{
+				$image = $this->row->belongs_to(\IoC::resolve('Uploader'), $this->name)
+						->first() ?: $this->name;
+			}
+			else
+			{
+				$image = $this->row->{$relation}()->first() ?: $this->name;
+			}
+
+			return $this->row->getImageSrc($image, $this->imageAlias, $this->cropped);
+		}
+		catch(\Exception $e)
+		{
+			if (\Str::contains($e->getMessage(), $relation))
+			{
+				throw new \Exception(
+					'Please, provide a "' . $relation . '" relation in your "' .
+					get_class($this->row) . '"'
+				);
+			}
+
+			throw $e;
+		}
+	}
 }

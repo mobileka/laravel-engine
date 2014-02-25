@@ -162,9 +162,9 @@ class RestfulRouter {
 	{
 		\Route::get(
 			array(
-				$uri . '/(:num)/uploads',
-				$uri . '/(:num)/uploads.(json)',
-				$uri . '/(:num)/uploads.(ajax)'
+				$uri . '/(:num)/uploads/(:num)',
+				$uri . '/(:num)/uploads/(:num).(json)',
+				$uri . '/(:num)/uploads/(:num).(ajax)'
 			),
 			array(
 				'as' => $as . __FUNCTION__,
@@ -221,7 +221,7 @@ class RestfulRouter {
 
 		if ($method == 'with')
 		{
-			if (\Arr::haveIntersections($args, array('images', 'uploads', 'files')))
+			if (\Arr::haveIntersections($args, array('file', 'files', 'img', 'image', 'images', 'uploads')))
 			{
 				$this->actions[] = 'uploads';
 				$this->actions[] = 'upload_file';

@@ -83,6 +83,28 @@ and specify model for authenticating users in `application/config/auth.php`:
 'model' => 'Users\Models\User',
 ```
 
+If you use image upload functionality, make sure to create a directory writable
+by webserver and specify it in `paths.php`:
+
+```
+$paths['uploads'] = 'public/uploads';
+```
+
+
+If you want to use ImageColumn component, you need to create config file
+`application/config/image.php` and write:
+
+```
+<?php
+
+return array(
+	'aliases' => array(
+		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
+		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
+	),
+);
+```
+
 Go to http://sitename.dev/cp/, default credentials:
 
 email: admin@example.com

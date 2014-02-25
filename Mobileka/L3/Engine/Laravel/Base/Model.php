@@ -2,6 +2,7 @@
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Helpers\Debug,
+	Mobileka\L3\Engine\Laravel\Str,
 	Input,
 	File;
 
@@ -49,6 +50,11 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	 */
 	protected static $polymorphicRelations = array();
 	public static $imageFields = array();
+
+	public static function getTableName()
+	{
+		return static::$table ?: strtolower(Str::plural(class_basename(get_called_class())));
+	}
 
 	public function __construct($attributes = array(), $exists = false)
 	{
@@ -220,8 +226,8 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			if (!in_array($e->getCode(),array('42S22')))
 			{
 				\Log::info("\n\n\n###################################################################################################n");
-				\Helpers\Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
-				\Helpers\Debug::log_pp($e->getMessage(), false);
+				Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
+				Debug::log_pp($e->getMessage(), false);
 				\Log::info("\n###################################################################################################n\n\n");
 				return false;
 			}
@@ -620,11 +626,24 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		return $this->errors;
 	}
 
+	public function uploads()
+	{
+		return $this->has_many(\IoC::resolve('Uploader'), 'object_id')
+			->where_type($this->table());
+	}
+
+
 	public function __call($name, $args)
 	{
 		if ($name == 'links')
 		{
 			return;
+		}
+		if (\Str::contains($name, '_uploads'))
+		{
+			$field = str_replace('_uploads', '', $name);
+
+			return $this->uploads()->where_fieldname($field);
 		}
 
 		return parent::__call($name, $args);
@@ -635,6 +654,14 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		if (in_array($name, array('rules', 'accessible', 'table', 'hidden', 'translatable')))
 		{
 			return static::$$name;
+		}
+
+		if (\Str::contains($name, '_uploads'))
+		{
+			if ($uploads = $this->$name())
+			{
+				return $uploads->get();
+			}
 		}
 
 		if (in_array($name, Arr::getItem(static::$translatable, 'fields', array())))

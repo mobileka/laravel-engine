@@ -1,26 +1,14 @@
-<?php
+<?php namespace Mobileka\L3\Engine\Laravel;
 
 class File extends \Laravel\File {
 
-	public static function upload($file, $type = null, $directory = null, $cropData = null)
+	public static function upload($file, $type = null, $directory = null)
 	{
-		if (!$directory)
-		{
-			$directory = (!File::is(array('jpeg', 'png', 'gif'), $file['tmp_name'])) ? 'docs' : 'images';
-		}
+		$directory = static::getDirectoryPath($file, $directory);
+		$extension = static::getFileExtension($file);
+		$filename = static::getFilename($file, $extension);
+		$path = static::getFilePath($file, $directory, $type);
 
-		//получаем расширение файла
-		$extension = File::extension($file['name']);
-
-		//формируем его название и путь к нему
-		$filename = md5(time() . $file['tmp_name']) . '.' . $extension;
-		$path = path('uploads') . $directory;
-
-		/**
-		 * Если указана папка, в которую дополнительно необходимо вложить файл,
-		 * то запищем ее в путь и попытаемся ее создать
-		 */
-		$path .= $type ? '/' .$type . '/' : '/';
 		umask(0);
 		static::mkdir($path);
 
@@ -30,21 +18,21 @@ class File extends \Laravel\File {
 		//Если тип заливаемого файла - картинка, то сжать ее
 		if ($directory == 'images')
 		{
-			$img = Image::make($path.$filename)->
-				save($path.$filename, 100);
-
-			if ($cropData)
-			{
-				static::saveCroppedCopy($img, $cropData);
-			}
+			$img = Image::make($path.$filename)
+				->save($path.$filename, 75);
 		}
 
 		//возвращаем имя файла
 		return $filename;
 	}
 
-	protected static function saveCroppedCopy($img, $cropData)
+	public static function saveCroppedImage($file, $type = null, $directory = null, $cropData)
 	{
+		$extension = static::getFileExtension($file);
+		$filename = static::getFilename($file, $extension);
+		$path = static::getFilePath($file, $directory, $type);
+		$img = Image::make($path.$filename);
+
 		$x = $cropData['x'];
 		$y = $cropData['y'];
 		$w = $cropData['w'];
@@ -55,6 +43,35 @@ class File extends \Laravel\File {
 			$img = $img->crop($w, $h, $x, $y);
 		}
 
-		$img->save($img->dirname . '/crop_' . $img->basename);
+		return $img->save($img->dirname . '/crop_' . $img->basename);
+	}
+
+	public static function getDirectoryPath($file, $directory = null)
+	{
+		$file = is_array($file) ? $file['tmp_name'] : $file->filename;
+		return $directory ? : (!File::is(array('jpeg', 'png', 'gif'), $file)) ? 'docs' : 'images';
+	}
+
+	public static function getFileExtension($file)
+	{
+		$filename = is_array($file) ? $file['name'] : $file->filename;
+		return File::extension($filename);
+	}
+
+	public static function getFilename($file, $extension = null)
+	{
+		return is_array($file)
+			? md5(time() . $file['tmp_name']) . '.' . $extension
+			: $file->filename
+		;
+	}
+
+	public static function getFilePath($file, $directory, $type = null)
+	{
+		$directory = $directory ? : static::getDirectoryPath($file, $directory);
+		$path = path('uploads') . $directory;
+
+		//Если указана папка, в которую дополнительно необходимо вложить файл, то запишем ее в путь
+		return $path .= $type ? '/' . $type . '/' : '/';
 	}
 }

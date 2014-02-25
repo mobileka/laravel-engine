@@ -292,36 +292,6 @@ $(document).ready(function() {
 		});
 	});
 
-	$('body').on('click', '.plupload-image-delete', function(e) {
-		e.preventDefault();
-
-		var url   = $(this).attr('href'),
-			thumb = $(this).parent();
-
-		$.ajax({
-			url: url,
-			type: 'DELETE',
-			success: function() {
-				if (thumb.hasClass('featured-image') && $(thumb).siblings('.thumbnail-plupload').length) {
-					$(thumb).siblings('.thumbnail-plupload').eq(0).find('.featured-image-selector').click();
-				}
-
-				thumb.remove();
-			}
-		});
-	});
-
-	$('body').on('click', '.plupload-images-featured-selector .featured-image-selector', function(e) {
-		e.preventDefault();
-
-		var id = $(this).data('id');
-
-		$(this).closest('.plupload-images').find('.thumbnail-plupload').removeClass('featured-image');
-		$(this).closest('.thumbnail-plupload').addClass('featured-image');
-
-		$('#image_id').val(id);
-	});
-
 	$('.price_with_discount_toggle').click(function() {
 		var show = $(this).is(':checked');
 		if (show) {

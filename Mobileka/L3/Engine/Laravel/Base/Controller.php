@@ -9,6 +9,7 @@ use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Date,
 	Mobileka\L3\Engine\Laravel\Lang,
 	Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Acl,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 use Mobileka\L3\Engine\Grid\Grid,
@@ -73,6 +74,15 @@ class Controller extends \Laravel\Routing\Controller {
 	 * Is being set by hand in a controller
 	 */
 	protected $safeData = array();
+
+	/**
+	 * Actions that can only be accessed by the author.
+	 *
+	 * Example: array('get_view' => 'user_id', 'get_edit' => 'author_id')
+	 *
+	 * @var array
+	 */
+	public static $personalActions = array();
 
 	/**
 	 * Create a new Controller instance.
@@ -162,7 +172,7 @@ class Controller extends \Laravel\Routing\Controller {
 			$this->model = $this->model->with(static::$with);
 		}
 
-		if (!$data = $this->model->find($id))
+		if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data))
 		{
 			return Response::error('404');
 		}
@@ -195,7 +205,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function get_edit($id)
 	{
-		if (!$data = $this->model->find($id))
+		if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data))
 		{
 			return Response::error('404');
 		}
@@ -221,7 +231,7 @@ class Controller extends \Laravel\Routing\Controller {
 	{
 		$this->data = Input::allBut(array('_method', 'successUrl', 'errorUrl', 'upload_token'));
 
-		if (!$this->model = $this->model->find($id))
+		if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model))
 		{
 			return Response::error('404');
 		}
@@ -231,7 +241,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function delete_destroy($id)
 	{
-		if (!$this->model = $this->model->find($id))
+		if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model))
 		{
 			return Response::error('404');
 		}
@@ -411,13 +421,69 @@ class Controller extends \Laravel\Routing\Controller {
 		return $this->index('json');
 	}
 
-	public function get_view_file($id, $format = 'html')
+	public function get_view_file($id, $uploadId, $format = 'html')
 	{
 		$uploader = IoC::resolve('Uploader');
-		$file = $uploader->find($id);
+		$file = $uploader->find($uploadId);
 		$json = array('thumbnail' => \View::make($uploader->template, compact('file'))->render());
 
 		return Response::json($json);
+	}
+
+	public function post_upload_file($object_id = 0)
+	{
+		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name', 'fieldName', 'modelName', 'single'));
+		$fieldName = Input::get('fieldName', 'file');
+		$single = Input::get('single', 0);
+		$modelName = str_replace('\\\\', '\\', Input::get('modelName'));
+		$uploader = IoC::resolve('Uploader');
+
+		if (!Acl::can('upload_files_without_restrictions') and $object_id)
+		{
+			$controller = Router::resolve(Controller::$route['alias']);
+			$field = Arr::getItem($controller::$personalActions, __FUNCTION__) ?: Arr::getItem($controller::$personalActions, 'all');
+
+			if ($field)
+			{
+				$isOwner = Acl::isOwnerOfObject($modelName, $field, $object_id);
+
+				if (!$isOwner)
+				{
+					return Response::json(array(
+						'status' => 'error',
+						'errors' => array(
+							$fieldName => Lang::findLine('default', 'errors.not_owner'),
+						),
+						'data' => array(),
+					));
+				}
+			}
+		}
+
+		$this->data['type'] = $modelName::getTableName();
+		$this->data['token'] = Input::get('upload_token');
+		$this->data['fieldname'] = $fieldName;
+		$this->data['object_id'] = $object_id;
+		$this->data['created_at'] = date('Y-m-d H:i:s');
+
+		if ($single)
+		{
+			$uploader->where_type($this->data['type'])
+				->where_fieldname($fieldName)
+				->where_object_id($object_id)
+				->delete();
+		}
+
+		/**
+		 * Сохраним файл в папку uploads/$type/YEAR-MONTH
+		 */
+		$this->data['filename'] = File::upload(
+			Input::file($fieldName),
+			$this->data['type'] . '/' . \Date::make($this->data['created_at'])->get('Y-m')
+		);
+
+		//Сохраняем запись в БД
+		return $this->_ajaxSave(false, $uploader);
 	}
 
 	/**
@@ -425,7 +491,7 @@ class Controller extends \Laravel\Routing\Controller {
 	 *
 	 * @return json
 	 */
-	public function post_upload_file($object_id = 0)
+	public function _post_upload_file($object_id = 0)
 	{
 		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name'));
 
@@ -460,7 +526,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		foreach (Config::find('image.aliases') as $alias => $dimensions)
 		{
-			$filename = $alias . '_' . $upload->filename;
+			$filename = $alias . '_' . $file->filename;
 			$path = imagePath($filename, $file->type, $file->created_at);
 
 			if (File::exists($path))
@@ -469,7 +535,7 @@ class Controller extends \Laravel\Routing\Controller {
 			}
 		}
 
-		$path = $upload->path;
+		$path = $file->path;
 
 		if (File::exists($path))
 		{
@@ -479,6 +545,18 @@ class Controller extends \Laravel\Routing\Controller {
 		$file->delete();
 
 		return \Response::json(array('status' => 'success', 'errors' => array(), 'data' => compact($file)));
+	}
+
+	protected function checkPersonalAccess($action, $model, $customData = array())
+	{
+		$field = Arr::getItem(static::$personalActions, $action) ?: Arr::getItem(static::$personalActions, 'all');
+
+		if ($field)
+		{
+			return (int) $model->$field === uid();
+		}
+
+		return true;
 	}
 
 

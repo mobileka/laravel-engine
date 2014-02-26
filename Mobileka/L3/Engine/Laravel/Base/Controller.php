@@ -486,35 +486,6 @@ class Controller extends \Laravel\Routing\Controller {
 		return $this->_ajaxSave(false, $uploader);
 	}
 
-	/**
-	 * Upload a file / image
-	 *
-	 * @return json
-	 */
-	public function _post_upload_file($object_id = 0)
-	{
-		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name'));
-
-
-		/**
-		 * Получаем тип объекта, основываясь на имени роута.
-		 */
-		$this->data['type'] = head(explode('_', static::$route['alias']));
-		$this->data['token'] = Input::get('upload_token');
-		$this->data['object_id'] = $object_id;
-		$this->data['created_at'] = date('Y-m-d H:i:s');
-
-		/**
-		 * Сохраним файл в папку uploads/$type/YEAR-MONTH
-		 */
-		$this->data['filename'] = File::upload(
-			Input::file('file'),
-			$this->data['type'] . '/' . Date::make($this->data['created_at'])->get('Y-m')
-		);
-
-		return $this->_ajaxSave(false, IoC::resolve('Uploader'));
-	}
-
 	public function delete_destroy_file($id)
 	{
 		$uploader = IoC::resolve('Uploader');

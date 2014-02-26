@@ -477,8 +477,15 @@ class Controller extends \Laravel\Routing\Controller {
 		/**
 		 * Сохраним файл в папку uploads/$type/YEAR-MONTH
 		 */
+		$fileData = Input::file($fieldName);
+		if ($fileData['error'] != UPLOAD_ERR_OK) {
+			return Response::json(array(
+				'status' => 'error',
+				'errors' => array("File upload failed"),
+			));
+		}
 		$this->data['filename'] = File::upload(
-			Input::file($fieldName),
+			$fileData,
 			$this->data['type'] . '/' . \Date::make($this->data['created_at'])->get('Y-m')
 		);
 

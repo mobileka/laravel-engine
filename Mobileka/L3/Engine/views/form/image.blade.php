@@ -17,6 +17,8 @@
 {{ Form::hidden($component->name . '[w]', '', array('id' => $component->name . '_w')) }}
 {{ Form::hidden($component->name . '[h]', '', array('id' => $component->name . '_h')) }}
 
+<div class="alert alert-error hide" id="cropError"></div>
+
 <script>
 var component = {
 	showCoords_{{ $component->name }} : function(c) {
@@ -67,6 +69,7 @@ $(document).ready(function()
 		},
 		dataType: 'json',
 		done: function (e, data) {
+			$('#cropError').hide();
 			if (data.result.status !== 'error')
 			{
 				var appendTo = $('[name={{ $component->name }}]').parent(),
@@ -88,6 +91,9 @@ $(document).ready(function()
 						img.Jcrop(component.jcrop);
 					}
 				});
+			} else {
+				var errorString = (data.result.errors) ? data.result.errors.join('<br>') : 'Произошла ошибка при загрузке файла';
+				$('#cropError').text(errorString).show();
 			}
 		}
 	});

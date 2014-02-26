@@ -209,6 +209,6 @@ input.no-mb {
 .iframe-buttons {
 	margin-top: 20px;
 }
-.image-edit-thumbnail {
+.thumbnail > img.image-edit-thumbnail {
 	max-width: 500px;
 }

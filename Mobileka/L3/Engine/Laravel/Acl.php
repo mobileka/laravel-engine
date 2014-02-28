@@ -126,24 +126,11 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	 */
 	public static function can($action, $group = null)
 	{
-		if ($action = \Arr::getItem(Config::get('acl.actions', array()), $action, array()))
+		if ($greenGroups = \Arr::getItem(Config::get('acl.actions', array()), $action, array()))
 		{
-			$allow = \Arr::getItem($action, 'allow', array());
-			$deny = \Arr::getItem($action, 'deny', array());
 			$group = static::userAclGroups($group);
 
-			/**
-			 * Если группа есть в списке запрета, то сразу вернуть false
-			 */
-			foreach ($deny as $groupName)
-			{
-				if (in_array($groupName, $group))
-				{
-					return false;
-				}
-			}
-
-			foreach ($allow as $groups)
+			foreach ($greenGroups as $groups)
 			{
 				$groups = (is_array($groups)) ? $groups : array($groups);
 

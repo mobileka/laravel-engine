@@ -72,6 +72,7 @@ return array(
 	),
 
 	'actions' => array(
+		'upload_files_without_restrictions' => array('admins')
 	),
 );
 ```
@@ -84,14 +85,14 @@ and specify model for authenticating users in `application/config/auth.php`:
 ```
 
 If you use image upload functionality, make sure to create a directory writable
-by webserver and specify it in `paths.php`:
+by a webserver and specify it in `paths.php`:
 
 ```
 $paths['uploads'] = 'public/uploads';
 ```
 
 
-If you want to use ImageColumn component, you need to create config file
+If you want to use ImageColumn component, you need to create a config file
 `application/config/image.php` and write:
 
 ```
@@ -112,3 +113,4 @@ email: admin@example.com
 password: 123456
 
 
+# Conventions

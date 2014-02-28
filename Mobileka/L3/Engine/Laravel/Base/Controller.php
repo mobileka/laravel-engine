@@ -553,7 +553,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		if ($field)
 		{
-			return (int) $model->$field === uid();
+			return (int)$model->$field === (int)uid();
 		}
 
 		return true;

@@ -11,7 +11,7 @@ class Users_Seed_Users {
 	{
 		foreach (Config::get('users::user_seeds', array()) as $seed)
 		{
-			$model = new Users\Models\User;
+			$model = IoC::resolve('UserModel');
 
 			foreach ($seed as $key => $value)
 			{
@@ -26,8 +26,9 @@ class Users_Seed_Users {
 	{
 		foreach (Config::get('users::user_seeds', array()) as $seed)
 		{
-			$model = Users\Models\User::where_email($seed['email'])->
-				where_password(\Hash::make($seed['password']))->
+			$model = IoC::resolve('UserModel');
+			$model = $model::where_email($seed['email'])->
+				where_password(Hash::make($seed['password']))->
 				first();
 
 			if ($model)

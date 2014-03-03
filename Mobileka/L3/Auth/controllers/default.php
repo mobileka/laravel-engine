@@ -1,15 +1,15 @@
 <?php
 
-use Mobileka\Crud\Form\Form,
-	Users\Models\User,
-	Users\Models\Group;
+use Mobileka\Crud\Form\Form;
 
 class Auth_Default_Controller extends Base_Controller {
-	// public $layout = '_system.layouts.login';
 
-	public function __construct(\Users\Models\User $user)
+	protected $groupModel;
+
+	public function __construct()
 	{
-		$this->model = $user;
+		$this->model = IoC::resolve('UserModel');
+		$this->groupModel = IoC::resolve('UserGroupModel');
 		return parent::__construct();
 	}
 
@@ -72,24 +72,22 @@ class Auth_Default_Controller extends Base_Controller {
 	 */
 	public function post_register()
 	{
-		$user = new User;
-
 		$data = Input::allBut('successUrl');
-		$data['group_id'] = Group::getIdByCode('users');
+		$data['group_id'] = $this->groupModel::getIdByCode('users');
 
-		if (!$user->saveData($data))
+		if (!$this->model->saveData($data))
 		{
 			return \Redirect::to_route('auth_default_register')->
 				with_input()->
-				with_errors($user->errors);
+				with_errors($this->model->errors);
 		}
 
-		\Event::fire('A new user was created', array($user, $data['password']));
+		\Event::fire('A new user was created', array($this->model, $data['password']));
 
 		//если пользователь был создан, то автоматически авторизуем его
 		$authenticated = \Auth::attempt(
 			array(
-				'username' => $user->email,
+				'username' => $this->model->email,
 				'password' => $data['password'],
 				'remember' => true
 			)
@@ -164,7 +162,6 @@ class Auth_Default_Controller extends Base_Controller {
 	{
 		$user = $this->model->where_recovery_token($token)->first();
 		$numberOfValidDays = Config::get('auth::recovery.recovery_link_valid_days');
-
 		$now = Date::make()->subDays($numberOfValidDays)->get();
 
 		//если (сегодня - 7 дней) больше даты подачи заявки, то просрочено

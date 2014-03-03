@@ -1,12 +1,10 @@
 <?php
 
-use Users\Models\Group;
-
 class Users_Admin_Groups_Controller extends Admin_Base_Controller {
 
 	public function __construct()
 	{
-		$this->model = new Group;
+		$this->model = IoC::resolve('UserGroupModel');
 
 		parent::__construct();
 

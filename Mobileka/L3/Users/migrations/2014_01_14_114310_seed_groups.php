@@ -11,7 +11,7 @@ class Users_Seed_Groups {
 	{
 		foreach (Config::get('users::group_seeds', array()) as $seed)
 		{
-			$model = new Users\Models\Group;
+			$model = IoC::resolve('UserGroupModel');
 
 			foreach ($seed as $key => $value)
 			{
@@ -26,7 +26,9 @@ class Users_Seed_Groups {
 	{
 		foreach (Config::get('users::group_seeds', array()) as $seed)
 		{
-			if ($model = Users\Models\Group::find(Arr::getItem($seed, 'id', 0)))
+			$model = IoC::resolve('UserGroupModel');
+
+			if ($model = $model::find(Arr::getItem($seed, 'id', 0)))
 			{
 				$model->delete();
 			}

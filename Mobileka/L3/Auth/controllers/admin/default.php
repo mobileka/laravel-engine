@@ -1,7 +1,6 @@
 <?php
 
-use Carts\Models\Cart,
-	Mobileka\L3\Engine\Laravel\Base\BackendController,
+use Mobileka\L3\Engine\Laravel\Base\BackendController,
 	Mobileka\L3\Engine\Laravel\Lang;
 
 class Auth_Admin_Default_Controller extends BackendController {
@@ -9,9 +8,9 @@ class Auth_Admin_Default_Controller extends BackendController {
 	protected $user;
 	public $layout = 'engine::_system.layouts.admin_login';
 
-	public function __construct(\Users\Models\User $user)
+	public function __construct()
 	{
-		$this->user = $user;
+		$this->user = IoC::resolve('UserModel');
 		parent::__construct();
 	}
 

@@ -8,9 +8,8 @@ use Mobileka\L3\Engine\Form\Components\Text,
 	Mobileka\L3\Engine\Grid\Filters\Contains,
 	Mobileka\L3\Engine\Grid\Filters\Dropdown as DropdownFilter;
 
-use Users\Models\Group;
-
-$groups = Group::lists('name', 'id');
+$group = IoC::resolve('UserGroupModel');
+$groups = $group::lists('name', 'id');
 
 return array(
 	'form' => array(

@@ -1,6 +1,6 @@
 <?php
 
-class Users_Create_Users_Table {	
+class Users_Create_Users_Table {
 
 	public function up()
 	{
@@ -11,7 +11,11 @@ class Users_Create_Users_Table {
 			$table->string('password');
 			$table->integer('group_id')->unsigned()->index();
 			$table->string('name');
-			$table->text('contacts');
+
+			$table->string('recovery_token');
+			$table->string('recovery_password');
+			$table->date('recovery_request_date');
+
 			$table->timestamps();
 		});
 	}

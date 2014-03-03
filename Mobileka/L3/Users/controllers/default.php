@@ -1,13 +1,13 @@
 <?php
 
-use Users\Models\User,
-	Users\Models\Group;
-
 class Users_Default_Controller extends Base_Controller {
+
+	protected $groupModel;
 
 	public function __construct()
 	{
-		$this->model = new User;
+		$this->model = IoC::resolve('UserModel');
+		$this->groupModel = IoC::resolve('UserGroupModel');
 		return parent::__construct();
 	}
 
@@ -23,8 +23,8 @@ class Users_Default_Controller extends Base_Controller {
 		$result = array(
 			'status' => 'success',
 			'errors' => array(),
-			'data' => User::where('email', 'like', $query.'%')->
-				where_group_id(Group::getIdByCode('users'))->
+			'data' => $this->model::where('email', 'like', $query.'%')->
+				where_group_id($this->groupModel::getIdByCode('users'))->
 				lists('email')
 		);
 
@@ -43,7 +43,7 @@ class Users_Default_Controller extends Base_Controller {
 		$result = array(
 			'status' => 'success',
 			'errors' => array(),
-			'data' => $user = ($user = User::where_email($email)->first()) ? $user->to_array() : $user
+			'data' => $user = ($user = $this->model::where_email($email)->first()) ? $user->to_array() : $user
 		);
 
 		return \Response::json($result);

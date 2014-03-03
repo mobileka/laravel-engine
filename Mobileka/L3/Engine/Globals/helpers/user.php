@@ -1,26 +1,15 @@
 <?php
 
-/**
- * @todo перенести в бандл Users
- */
-use \Users\Models\User,
-	\Users\Models\Group;
-
 function isAdmin($user = null)
 {
 	return group($user) === 'admins';
-}
-
-function isManager()
-{
-	return in_array(group(), Group::$types['managers']);
 }
 
 function user()
 {
 	if (!Auth::check())
 	{
-		return new User;
+		return IoC::resolve('UserModel');
 	}
 
 	return Auth::user();

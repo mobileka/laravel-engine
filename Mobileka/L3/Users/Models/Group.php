@@ -1,15 +1,10 @@
-<?php namespace Users\Models;
+<?php namespace Mobileka\L3\Users\Models;
 
 use Mobileka\L3\Engine\Laravel\Base\Model;
 
 class Group extends Model {
 
 	public static $table = 'user_groups';
-
-	public static $types = array(
-		'controlPanel' => array('programmers', 'admins', 'contents'),
-		'managers' => array('programmers', 'admins', 'managers', 'contents')
-	);
 
 	public static $rules = array(
 		'name' => 'required|unique:user_groups',
@@ -18,13 +13,13 @@ class Group extends Model {
 
 	public function users()
 	{
-		return $this->has_many('User');
+		return $this->has_many(\IoC::resolve('UserModel'));
 	}
 
-	public function onSave()
+	public function beforeValidation()
 	{
 		$this->code = \Str::lower(trim($this->code));
-		return true;
+		return parent::beforeValidation();
 	}
 
 	public static function getIdByCode($code)

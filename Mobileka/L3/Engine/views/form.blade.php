@@ -5,7 +5,8 @@
 	@foreach ($components as $component)
 		<div class="control-group">
 			<?php $component->row($crud->model); ?>
-			{{ Form::label($component->name, formLang($crud->languageFile, $component->name) . $component->required(), array('class' => 'control-label'), false) }}
+			
+			<label for="{{ $component->name }}" class="control-label">{{ formLang($crud->languageFile, $component->name) . $component->required() }}</label>
 
 			<div class="controls">
 				@if ($component->localized)

@@ -27,6 +27,8 @@ Also, these aliases must be defined (this must be fixed) in
 	),
 ```
 
+Default Laravel route must be removed (all routes must have aliases)
+
 Run migrations:
 
 ```

@@ -70,7 +70,6 @@ IoC::register('i18n', function($injection = null)
 \Laravel\Autoloader::$aliases['PasswordField'] = 'Mobileka\L3\Engine\Form\Components\Password';
 \Laravel\Autoloader::$aliases['PriceField'] = 'Mobileka\L3\Engine\Form\Components\Price';
 \Laravel\Autoloader::$aliases['RadioField'] = 'Mobileka\L3\Engine\Form\Components\Radio';
-\Laravel\Autoloader::$aliases['UploadField'] = 'Mobileka\L3\Engine\Form\Components\SingleUpload';
 \Laravel\Autoloader::$aliases['SpinnerField'] = 'Mobileka\L3\Engine\Form\Components\Spinner';
 \Laravel\Autoloader::$aliases['TagField'] = 'Mobileka\L3\Engine\Form\Components\Tag';
 \Laravel\Autoloader::$aliases['TextField'] = 'Mobileka\L3\Engine\Form\Components\Text';

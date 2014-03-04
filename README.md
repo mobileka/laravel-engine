@@ -83,7 +83,7 @@ and specify model for authenticating users in `application/config/auth.php`:
 
 
 ```
-'model' => 'Users\Models\User',
+'model' => IoC::resolve('UserModel'),
 ```
 
 If you use image upload functionality, make sure to create a directory writable

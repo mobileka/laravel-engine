@@ -27,6 +27,8 @@ Also, these aliases must be defined (this must be fixed) in
 	),
 ```
 
+Default Laravel route must be removed (all routes must have aliases)
+
 Run migrations:
 
 ```
@@ -37,8 +39,10 @@ $ php artisan migrate
 Add route to handle access to admin interface:
 
 ```
-Route::get('cp', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
+Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
+
+If you have other defined routes, the Engine requires all of them to be aliased.
 
 The Engine bundle contains a shitload of assets which must be published:
 
@@ -65,10 +69,7 @@ return array(
 			'admin_home' => array('admins'),
 		),
 
-		'paths' => array(
-			// 'auth::default@signin' => ['*'],
-			// 'users::admin.default@index' => ['managers']
-		),
+		'paths' => array(),
 	),
 
 	'actions' => array(
@@ -81,7 +82,7 @@ and specify model for authenticating users in `application/config/auth.php`:
 
 
 ```
-'model' => 'Users\Models\User',
+'model' => IoC::resolve('UserModel'),
 ```
 
 If you use image upload functionality, make sure to create a directory writable
@@ -106,11 +107,62 @@ return array(
 );
 ```
 
-Go to http://sitename.dev/cp/, default credentials:
+Go to http://sitename.dev/admin
+
+Default authorization credentials:
 
 email: admin@example.com
 
 password: 123456
 
-
 # Conventions
+* Routing
+	* Route aliases
+	* RESTful urls (RestfulRouter class)
+	* .json and .ajax
+* Models
+	* naming
+	* saveData()
+
+* CRUD
+	* Component configuration
+	* Language configuration
+	* Component value translation
+
+# Base\Model
+* Events
+* Field validation
+* i18n field validation
+* Image fields
+
+# ACL
+
+# i18n
+
+# Image uploading
+* ImageField component
+* MultiUploadField component
+* ImageColumn component
+
+# CRUD
+* Structure
+* Form
+* Grid
+
+# Crud components
+* Form
+	* ImageField
+    * TextField
+    * ...
+* Grid
+	* ImageColumn
+    * TextColumn
+    * ...
+* Filters
+	* StartsWithFilter
+    * DropdownFilter
+    * ...
+
+# Admin sidebar menu configuration
+
+# Generating CRUD modules with cli

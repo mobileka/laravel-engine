@@ -7,14 +7,14 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<title>{{ Config::get('application.projectName') . ' | ' . $title }}</title>
+	<title>{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }}</title>
 
   {{ Asset::container('engine_assets')->styles() }}
   @yield('styles')
   <script>
     var BASE = "{{ URL::base() }}";
     URL_KEEPER = {
-      upload_url                         : '{{ URL::to_upload(Controller::$route) }}'
+      upload_url : '{{ URL::to_upload(Controller::$route) }}'
     };
     var app = {
       URL_BASE: '{{ URL::base() }}',
@@ -38,7 +38,7 @@
 	<div id="navigation">
 		<div class="container-fluid">
 			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
-			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ Config::get('application.projectName') . ' | ' . $title }} | Панель администратора</a>
+			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }} | Панель администратора</a>
 
 			<div class="user">
 				<ul class="icon-nav">
@@ -69,7 +69,8 @@
 				</div>
 			</form>
 
-			{{ View::make('engine::_system.layouts.inc.subnav', get_defined_vars() )->render() }}
+			@include('engine::_system.layouts.inc.subnav')
+
 		</div>
 		<div id="main">
 			<div class="container-fluid">

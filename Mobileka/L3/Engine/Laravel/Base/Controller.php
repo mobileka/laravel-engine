@@ -85,6 +85,14 @@ class Controller extends \Laravel\Routing\Controller {
 	public static $personalActions = array();
 
 	/**
+	 * Additional fields coming in POST data, which
+	 * must never be saved to database.
+	 *
+	 * @var array
+	 */
+	protected static $fieldsToIgnore = array('_method', 'successUrl', 'errorUrl', 'upload_token');
+
+	/**
 	 * Create a new Controller instance.
 	 *
 	 * @return void
@@ -223,13 +231,13 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function post_create()
 	{
-		$this->data = Input::allBut(array('_method', 'successUrl', 'errorUrl', 'upload_token'));
+		$this->data = Input::allBut(static::$fieldsToIgnore);
 		return $this->_save();
 	}
 
 	public function put_update($id)
 	{
-		$this->data = Input::allBut(array('_method', 'successUrl', 'errorUrl', 'upload_token'));
+		$this->data = Input::allBut(static::$fieldsToIgnore);
 
 		if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model))
 		{
@@ -432,7 +440,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function post_upload_file($object_id = 0)
 	{
-		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name', 'fieldName', 'modelName', 'single'));
+		$this->data = Input::allBut(static::$fieldsToIgnore);
 		$fieldName = Input::get('fieldName', 'file');
 		$single = Input::get('single', 0);
 		$modelName = str_replace('\\\\', '\\', Input::get('modelName'));
@@ -537,13 +545,29 @@ class Controller extends \Laravel\Routing\Controller {
 		return true;
 	}
 
-
 	protected function generateUrl($route, $options)
 	{
 		$route['action'] = Arr::getItem($options, 'action', 'index');
 		$route['controller'] = Arr::getItem($options, 'controller', $route['controller']);
 		$route['bundle'] = Arr::getItem($options, 'bundle', $route['bundle']);
 		return Misc::actionUri($route);
+	}
+
+	public function ignoreField($field)
+	{
+		return $this->ignoreFields($field);
+	}
+
+	public function ignoreFields($fields)
+	{
+		$fields = is_array($fields) ? $fields : array($fields);
+
+		foreach ($fields as $field)
+		{
+			static::$fieldsToIgnore[] = $field;
+		}
+
+		return static::$fieldsToIgnore;
 	}
 
 	/**

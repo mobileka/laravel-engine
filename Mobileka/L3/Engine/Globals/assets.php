@@ -70,6 +70,8 @@
 	->add('ui-draggable',                     'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.draggable.min.js')
 	->add('ui-droppable',                     'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.droppable.min.js')
 	->add('ui-ui',                            'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.position.js')
+	->add('ui-menu',                          'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.menu.js')
+	->add('ui-autocomplete',                  'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.autocomplete.js')
 	->add('ui-spinner',                       'bundles/engine/admin/js/plugins/jquery-ui/jquery.ui.spinner.js')
 	->add('slimscroll',                       'bundles/engine/admin/js/plugins/slimscroll/jquery.slimscroll.min.js')
 	->add('bootbox',                          'bundles/engine/admin/js/plugins/bootbox/jquery.bootbox.js')

@@ -10,6 +10,7 @@ use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Lang,
 	Mobileka\L3\Engine\Laravel\Config,
 	Mobileka\L3\Engine\Laravel\Acl,
+	Mobileka\L3\Engine\Laravel\Base\View,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 use Mobileka\L3\Engine\Grid\Grid,
@@ -99,7 +100,7 @@ class Controller extends \Laravel\Routing\Controller {
 	 */
 	public function __construct()
 	{
-		if (! is_null($this->layout))
+		if (!is_null($this->layout))
 		{
 			$this->layout = $this->layout();
 		}
@@ -440,7 +441,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function post_upload_file($object_id = 0)
 	{
-		$this->data = Input::allBut(static::$fieldsToIgnore);
+		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name', 'fieldName', 'modelName', 'single'));
 		$fieldName = Input::get('fieldName', 'file');
 		$single = Input::get('single', 0);
 		$modelName = str_replace('\\\\', '\\', Input::get('modelName'));
@@ -486,16 +487,20 @@ class Controller extends \Laravel\Routing\Controller {
 		 * Сохраним файл в папку uploads/$type/YEAR-MONTH
 		 */
 		$fileData = Input::file($fieldName);
-		if ($fileData['error'] != UPLOAD_ERR_OK) {
+
+		if ($fileData['error'] != UPLOAD_ERR_OK)
+		{
 			return Response::json(array(
 				'status' => 'error',
 				'errors' => array("File upload failed"),
 			));
 		}
+
 		$this->data['filename'] = File::upload(
 			$fileData,
 			$this->data['type'] . '/' . \Date::make($this->data['created_at'])->get('Y-m')
 		);
+
 
 		//Сохраняем запись в БД
 		return $this->_ajaxSave(false, $uploader);

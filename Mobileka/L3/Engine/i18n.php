@@ -70,11 +70,7 @@ class i18n {
 
 	public static function getCurrentLang()
 	{
-		/**
-		 * @todo Implement this
-		 */
-		return 'ru';
-		\Helpers\Debug::pp('i18n::getCurrentLang() not implemented yet');
+		return \Config::get('application.language');
 	}
 
 }

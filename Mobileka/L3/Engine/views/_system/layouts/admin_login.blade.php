@@ -8,7 +8,7 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-	<title>{{ Config::get('application.projectName') }} | Войти в панель администратора</title>
+	<title>{{ configValue('application.project_name', 'application.project_name') }} | Войти в панель администратора</title>
 
   {{ Asset::container('engine_assets')->styles() }}
   @yield('styles')
@@ -34,7 +34,7 @@
 </head>
 <body class="login theme-darkblue">
 	<div class="wrapper">
-		<h1><a href="#"><img src="{{ URL::base() }}/bundles/engine/admin/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">{{ Config::get('application.projectName') . ' | ' . $title }}</a></h1>
+		<h1><a href="#"><img src="{{ URL::base() }}/bundles/engine/admin/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }}</a></h1>
 		<div class="login-body">
 			<h2>Войти</h2>
 

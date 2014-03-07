@@ -5,14 +5,15 @@
 	@foreach ($components as $component)
 		<div class="control-group">
 			<?php $component->row($crud->model); ?>
-			
+
 			<label for="{{ $component->name }}" class="control-label">{{ formLang($crud->languageFile, $component->name) . $component->required() }}</label>
 
 			<div class="controls">
 				@if ($component->localized)
 					@foreach (langs() as $lang)
 						<label>
-							{{ HTML::image('admin_assets/img/flags/' . $lang . '.png', $lang, array('class' => 'flag')) }}
+							{{-- HTML::image('admin_assets/img/flags/' . $lang . '.png', $lang, array('class' => 'flag')) --}}
+							{{ $lang }}&nbsp;
 							{{ $this->validation($errors->get('localized: '.$component->name.'_'.$lang)) }}
 							{{ $component->render($lang) }}
 						</label>

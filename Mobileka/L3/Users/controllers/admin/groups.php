@@ -1,6 +1,8 @@
 <?php
 
-class Users_Admin_Groups_Controller extends Admin_Base_Controller {
+use Mobileka\L3\Engine\Laravel\Base\BackendController;
+
+class Users_Admin_Groups_Controller extends BackendController {
 
 	public function __construct()
 	{

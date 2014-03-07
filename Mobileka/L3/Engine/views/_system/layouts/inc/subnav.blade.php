@@ -1,6 +1,6 @@
 <div class="subnav">
 	<div class="subnav-title">
-		<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>{{ Config::get('application.projectName') }}</span></a>
+		<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>{{ Config::get('application.project_name') }}</span></a>
 	</div>
 	<ul class="subnav-menu">
 		@foreach ($sections as $section)

@@ -18,7 +18,6 @@ return array(
 			'password' => Password::make('password'),
 			'group_id' => DropdownChosen::make('group_id')->options($groups),
 			'name' => Text::make('name'),
-			'contacts' => TextArea::make('contacts'),
 		),
 	),
 

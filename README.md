@@ -188,7 +188,7 @@ artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnT
 
 Type ```fieldName:laravelColumnType:required``` and this column will be required.
 
-Type ```modelName_id:unsigned``` and create relations and foreign automatically.
+Type ```modelName_id:unsigned``` and create relations and foreign keys automatically.
 
 
 To create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)

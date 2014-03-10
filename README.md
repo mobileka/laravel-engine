@@ -166,28 +166,28 @@ password: 123456
 # Admin sidebar menu configuration
 
 # Generating CRUD modules with cli
-Mass Bundle Creator for Laravel Engine by Rakhmatulin Daniil
+Mass Bundle Creator for Laravel Engine
 
 Create single bundle:
 ```
 artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType[ fieldName:laravelColumnType ...][ addmenu:section:item]
 ```
-Create next items with all stuff:
-* config/config.php
-* controllers/admin/default.php
-* language/ru/default.php
-* migrations/migrations with foreign
-* Models/bundleName.php
-* routes.php
-* start.php
+* Create next items with all stuff:
+	* config/config.php
+	* controllers/admin/default.php
+	* language/ru/default.php
+	* migrations/migrations with foreign
+	* Models/bundleName.php
+	* routes.php
+	* start.php
 
-Adds to Admin sidebar menu:
-* ```bundle``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
-* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
+* Adds to Admin sidebar menu:
+	* ```bundle``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
+	* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
 
-Adds to application/bundles.php.
+* Adds to application/bundles.php.
 
-Run migrations.
+* Run migrations.
 
 To create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)
 ```

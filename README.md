@@ -170,7 +170,7 @@ Mass Bundle Creator for Laravel Engine
 
 Create single bundle:
 ```
-artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType[ fieldName:laravelColumnType ...][ addmenu:section:item]
+artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType:option[ fieldName:laravelColumnType:option ...][ addmenu:section:item]
 ```
 * Create next items with all stuff:
 	* config/config.php
@@ -185,6 +185,9 @@ artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnT
 	* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
 * Add this to application/bundles.php.
 * Run migrations.
+
+Type ```fieldName:laravelColumnType:required``` and this column will be required.
+Type ```modelName_id:unsigned``` and create relations and foreign automatically.
 
 To create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)
 ```

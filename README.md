@@ -168,14 +168,30 @@ password: 123456
 # Generating CRUD modules with cli
 Mass Bundle Creator for Laravel Engine by Rakhmatulin Daniil
 
-To create single bundle, type next artisan command:
+Create single bundle:
 ```
-engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType[ fieldName:laravelColumnType ...][ addmenu:section:item]
+artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType[ fieldName:laravelColumnType ...][ addmenu:section:item]
 ```
+Create next items with all stuff:
+* config/config.php
+* controllers/admin/default.php
+* language/ru/default.php
+* migrations/migrations with foreign
+* Models/bundleName.php
+* routes.php
+* start.php
 
-Create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)
+Adds to Admin sidebar menu:
+* ```bundle``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
+* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
+
+Adds to application/bundles.php.
+
+Run migrations.
+
+To create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)
 ```
-	engine::create:application[ schema_filename][ path_to_bundles]
+artisan engine::create:application[ schema_filename][ path_to_bundles]
 ```
 
 Write less code, go have beer sooner!

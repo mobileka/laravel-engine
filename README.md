@@ -180,13 +180,10 @@ artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnT
 	* Models/bundleName.php
 	* routes.php
 	* start.php
-
-* Adds to Admin sidebar menu:
+* Add this to Admin sidebar menu:
 	* ```bundle``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
 	* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
-
-* Adds to application/bundles.php.
-
+* Add this to application/bundles.php.
 * Run migrations.
 
 To create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)

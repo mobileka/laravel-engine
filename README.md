@@ -166,3 +166,17 @@ password: 123456
 # Admin sidebar menu configuration
 
 # Generating CRUD modules with cli
+Mass Bundle Creator for Laravel Engine by Rakhmatulin Daniil
+
+To create single bundle, type next artisan command:
+```
+engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType[ fieldName:laravelColumnType ...][ addmenu:section:item]
+```
+
+Create many bundles from SQL, put ```schema.sql``` into ```path('app')/schema```, and type command: (not tested)
+```
+	engine::create:application[ schema_filename][ path_to_bundles]
+```
+
+Write less code, go have beer sooner!
+-------------------------------------

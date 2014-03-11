@@ -2,6 +2,9 @@
 
 Event::listen('bind-uploads', function($id, $tokens)
 {
+	if (!is_array($tokens)) {
+		$tokens = array($tokens);
+	}
 	if ($id and $tokens)
 	{
 		foreach ($tokens as $fieldName => $token)

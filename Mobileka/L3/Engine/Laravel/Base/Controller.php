@@ -161,7 +161,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		try
 		{
-			$grid = IoC::resolve('EngineGrid')->
+			$grid = IoC::resolve(static::$route['bundle'].'EngineGrid')->
 				setModel($this->model)->
 				setItems($data);
 		}
@@ -214,7 +214,7 @@ class Controller extends \Laravel\Routing\Controller {
 	{
 		try
 		{
-			$form = IoC::resolve('EngineForm')->
+			$form = IoC::resolve(static::$route['bundle'].'EngineForm')->
 				setModel($this->model);
 		}
 		catch (\ReflectionException $e)

@@ -28,7 +28,7 @@ function s($string)
 	return Str::singular($string);
 }
 
-include path('bundle').'Mobileka'.DS.'L3'.DS.'engine'.DS.'tasks'.DS.'g.php';
+require Bundle::path('engine') . 'tasks/g.php';
 
 class Engine_Create_Task extends G_Task {
 
@@ -40,14 +40,14 @@ class Engine_Create_Task extends G_Task {
  ---------------------------------------------------------------------
 
  Extends from Laravel Generator by Jeffrey Way
- 
+
  Single bundle:
  	Type command: artisan engine::create:bundle path.to.bundle.bundlename name:type:option[ name:type:option ...][ addmenu:section:item]
- 
+
  Create many bundles from SQL:
  	Put schema.sql into path('app')/schema
  	Type command: artisan engine::create:application[ schema_filename][ path_to_bundles]
- 
+
  Write less code, go have beer sooner!
  -------------------------------------
 ";
@@ -75,7 +75,7 @@ class Engine_Create_Task extends G_Task {
 		$this->changeMenuConfig();
 		$this->changeBundlesPhp();
 
-		print_r(shell_exec('php artisan migrate'));
+		Laravel\CLI\Command::run(array('migrate'));
 	}
 
 	public function application($args)
@@ -762,7 +762,7 @@ class #Names#_Add_#Names#_Foreign {
 			$result = "<?php\n\nreturn ".var_export($this->menu, true).';';
 
 			// Config::set('menu', $this->menu);
-			
+
 			file_put_contents(path('app').'config'.DS.'menu'.EXT, $result, LOCK_EX);
 
 			if (isset($message))

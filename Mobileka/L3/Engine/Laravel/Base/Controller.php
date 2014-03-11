@@ -91,7 +91,7 @@ class Controller extends \Laravel\Routing\Controller {
 	 *
 	 * @var array
 	 */
-	protected static $fieldsToIgnore = array('_method', 'successUrl', 'errorUrl', 'upload_token');
+	protected static $fieldsToIgnore = array('_method', 'successUrl', 'errorUrl', 'fieldName', 'upload_token');
 
 	/**
 	 * Create a new Controller instance.

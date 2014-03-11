@@ -4,8 +4,9 @@ Laravel Engine is a result of a constant evolution of a simple Laravel bundle wh
 
 With Laravel Engine you get a nice functionality to develop CRUD-oriented applications in a simple and fun way. It is like a LEGO for a progmrammer who just needs to glue all the "bricks" together in order to get a working application.
 
-We call this bricks "Components" and there are two types of them in the Engine:
-1. Grid components - these are bricks for listing data stored in a database
+We call this bricks "Components" and there are two types of them in the Engine: 
+
+1. Grid components - these are bricks for listing data stored in a database 
 2. Form components - bricks that are used to add and edit data
 
 To make this possible and easy to implement, we needed to improve most of the standard Laravel 3 libraries adding new functionality that made us write less code and get better results.

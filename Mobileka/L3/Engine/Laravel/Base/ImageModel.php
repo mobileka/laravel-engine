@@ -11,8 +11,19 @@ class ImageModel extends Model {
 	{
 		$relations = array();
 
-		list($data, $relationData) = $this->parseInputData($data);
-		list($safe, $safeRelationData) = $this->parseInputData($safe);
+		list($data, $relationData, $translations) = $this->parseInputData($data);
+		list($safe, $safeRelationData, $safeTranslations) = $this->parseInputData($safe, true);
+
+		static::$data = array(
+			'data' => $data,
+			'safe' => $safe,
+
+			'relationData' => $relationData,
+			'safeRelationData' => $safeRelationData,
+
+			'translations' => $translations,
+			'safeTranslations' => $safeTranslations
+		);
 
 		foreach ($relationData as $relation => $data)
 		{
@@ -29,68 +40,105 @@ class ImageModel extends Model {
 			$this->{$relation}()->{$key} = $value;
 		}
 
-		foreach (array_unique($relations) as $relation)
+		try
 		{
-			$model = $this->{$relation};
+			\DB::connection()->pdo->beginTransaction();
 
-			if (!$model->save())
+			foreach (array_unique($relations) as $relation)
 			{
-				$this->mergeRelationErros($model, $relation);
+				$model = $this->{$relation};
+
+				if (!$model->save())
+				{
+					$this->mergeRelationErros($model, $relation);
+				}
+			}
+
+			$polymorphicData = array();
+			if (static::$polymorphicRelations)
+			{
+				foreach (static::$polymorphicRelations as $relation => $relationParams)
+				{
+					if (isset($data[$relation]) && $data[$relation])
+					{
+						$polymorphicData[$relation] = $data[$relation];
+					}
+
+					unset($data[$relation]);
+				}
+			}
+
+			$this->fill($data);
+
+			foreach ($safe as $key => $value)
+			{
+				$this->{$key} = $value;
+			}
+
+			if ($this->save())
+			{
+				$tokens = Input::get('upload_token');
+
+				foreach (static::$imageFields as $field)
+				{
+					if ($token = Arr::getItem($tokens, $field))
+					{
+						$uploader = \IoC::resolve('Uploader');
+						$img = $uploader::where_token($token)->first();
+					}
+
+					if (!isset($img) or !$img)
+					{
+						continue;
+					}
+
+					$type = $this->table() . '/' . \Date::make($img->created_at)->get('Y-m');
+					$cropData = Input::get($field, array());
+
+					if ($cropData)
+					{
+						File::saveCroppedImage($img, $type, 'images', $cropData);
+					}
+					$this->save();
+				}
+
+				$this->savePolymorphicData($polymorphicData);
+
+				if (!$this->beforeLocalizedSave())
+				{
+					throw new \PDOException('beforeLocalizedSave() returned false', 12);
+				}
+
+				$this->saveLocalizedData(static::$data['translations'], static::$data['safeTranslations']);
+
+				if (!$this->afterLocalizedSave())
+				{
+					throw new \PDOException('afterLocalizedSave() returned false', 12);
+				}
+
+				if ((bool)$this->errors->messages)
+				{
+					throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
+				}
+
+				\DB::connection()->pdo->commit();
 			}
 		}
-
-		$polymorphicData = array();
-		if (static::$polymorphicRelations)
+		catch(\PDOException $e)
 		{
-			foreach (static::$polymorphicRelations as $relation => $relationParams)
+			if (!in_array($e->getCode(),array('42S22')))
 			{
-				if (isset($data[$relation]) && $data[$relation])
-				{
-					$polymorphicData[$relation] = $data[$relation];
-				}
-
-				unset($data[$relation]);
+				\Log::info("\n\n\n###################################################################################################n");
+				\Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
+				\Debug::log_pp($e->getMessage(), false);
+				\Log::info("\n###################################################################################################n\n\n");
+				return false;
 			}
+
+			throw $e;
 		}
 
-		$this->fill($data);
-
-		foreach ($safe as $key => $value)
-		{
-			$this->{$key} = $value;
-		}
-
-		if ($this->save())
-		{
-			$tokens = Input::get('upload_token');
-
-			foreach (static::$imageFields as $field)
-			{
-				if ($token = Arr::getItem($tokens, $field))
-				{
-					$uploader = \IoC::resolve('Uploader');
-					$img = $uploader::where_token($token)->first();
-				}
-
-				if (!isset($img) or !$img)
-				{
-					continue;
-				}
-
-				$type = $this->table() . '/' . \Date::make($img->created_at)->get('Y-m');
-				$cropData = Input::get($field, array());
-
-				if ($cropData)
-				{
-					File::saveCroppedImage($img, $type, 'images', $cropData);
-				}
-				$this->save();
-			}
-		}
-
-		$this->savePolymorphicData($polymorphicData);
-
-		return !(bool)$this->errors->messages;
+		return true;
 	}
 
 	public function getImageSrc($image, $alias = '', $crop = false)

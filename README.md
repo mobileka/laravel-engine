@@ -205,7 +205,7 @@ Here is a simple example:
 artisan engine::create:bundle app.Users username:string password:string role_id:unsigned:index
 ```
 
-* This generates following files with proper contents in "bundles/Users" directory:
+* This generates following files with proper contents in `bundles/app/Users` directory:
 	* config/config.php
 	* controllers/admin/default.php
 	* language/ru/default.php

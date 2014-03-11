@@ -32,15 +32,17 @@
 	<thead>
 		<tr>
 			@foreach ($components as $heading => $value)
-				<th>
-					@if (in_array($heading, $crud->sortable))
-					<a href="#" data-order="{{ $value->name }}" class="th-sortable">
-						{{ gridLang($crud->languageFile, $heading) }}
-					</a>
-					@else
-						{{ gridLang($crud->languageFile, $heading) }}
-					@endif
-				</th>
+				@if (!$value->relevantActions or in_array(Controller::$route['action'], $value->relevantActions))
+					<th>
+						@if (in_array($heading, $crud->sortable))
+						<a href="#" data-order="{{ $value->name }}" class="th-sortable">
+							{{ gridLang($crud->languageFile, $heading) }}
+						</a>
+						@else
+							{{ gridLang($crud->languageFile, $heading) }}
+						@endif
+					</th>
+				@endif
 			@endforeach
 				<th></th>
 		</tr>
@@ -50,7 +52,9 @@
 		@forelse ($crud->items->results as $row)
 			<tr>
 				@foreach ($components as $component)
-					<td>{{ $component->row($row)->render($component->localized) }}</td>
+					@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
+						<td>{{ $component->row($row)->render($component->localized) }}</td>
+					@endif
 				@endforeach
 
 				<td class="table-actions">

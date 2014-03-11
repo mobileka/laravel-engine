@@ -56,6 +56,11 @@ abstract class Component {
 	);
 
 	/**
+	 * @todo: explain this shit
+	 */
+	protected $relevantActions = array();
+
+	/**
 	 * Is i18n enabled for this component?
 	 */
 	protected $localized = false;

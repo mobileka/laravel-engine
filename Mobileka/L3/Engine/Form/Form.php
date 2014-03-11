@@ -14,7 +14,8 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 
 	protected $template = 'engine::form';
 	protected $rules = array();
-	protected $action, $method, $cancelUrl, $successUrl;
+	protected $actionUrl, $method, $cancelUrl, $successUrl;
+	protected $urls = array();
 
 	protected $attributes = array(
 		'class' => 'form-horizontal form-bordered form-wysiwyg form-validate',
@@ -47,12 +48,33 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 
 		$this->components = $this->processComponents($this->components, $this->order, $this->only, $this->except);
 
-		list($this->action, $this->method, $this->cancelUrl, $this->successUrl) = $this->detectUrls($model);
-
+		/*list($this->action, $this->method, $this->cancelUrl, $this->successUrl) = $this->detectUrls($model);
 		$this->action = $this->setUrl('action', $config);
 		$this->method = $this->setMethod($config);
 		$this->cancelUrl = $this->setUrl('cancelUrl', $config);
-		$this->successUrl = $this->setUrl('successUrl', $config);
+		$this->successUrl = $this->setUrl('successUrl', $config);*/
+	}
+
+	public function setActionUrls($action = 'any', $urls = array())
+	{
+		$this->urls = array($action => $urls);
+		return $this;
+	}
+
+	protected function detectUrls($model)
+	{
+		list($actionUrl, $method, $successUrl, $cancelUrl) = $this->detectDefaultUrls($model);
+		$action = \Controller::$route['action'];
+
+		if ($action = Arr::getItem($this->urls, $action) or $action = Arr::getItem($this->urls, 'any'))
+		{
+			$actionUrl = Arr::getItem($action, 'actionUrl') ? : $actionUrl;
+			$method = Arr::getItem($action, 'method') ? : $method;
+			$successUrl = Arr::getItem($action, 'successUrl') ? : $successUrl;;
+			$cancelUrl = Arr::getItem($action, 'cancelUrl') ? : $cancelUrl;;
+		}
+
+		return array($actionUrl, $method, $cancelUrl, $successUrl);
 	}
 
 	/**
@@ -61,7 +83,7 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 	 * @param Eloquent $model
 	 * @return array
 	 */
-	public function detectUrls($model)
+	protected function detectDefaultUrls($model)
 	{
 		$route = \Controller::$route;
 		$params = array();
@@ -179,5 +201,16 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Renders a form or a grid
+	 *
+	 * @return \Laravel\View
+	 */
+	public function render()
+	{
+		list($this->actionUrl, $this->method, $this->cancelUrl, $this->successUrl) = $this->detectUrls($this->model);
+		return parent::render();
 	}
 }

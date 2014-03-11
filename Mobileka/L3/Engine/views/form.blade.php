@@ -1,4 +1,4 @@
-{{ Form::open_for_files($crud->action, $crud->method, $crud->attributes) }}
+{{ Form::open_for_files($crud->actionUrl, $crud->method, $crud->attributes) }}
 
 <div class="box box-bordered">
 	@foreach ($components as $component)

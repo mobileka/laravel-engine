@@ -159,16 +159,27 @@ class Controller extends \Laravel\Routing\Controller {
 			$this->per_page
 		);
 
+		try
+		{
+			$grid = IoC::resolve('EngineGrid')->
+				setModel($this->model)->
+				setItems($data);
+		}
+		catch (\ReflectionException $e)
+		{
+			$grid = Grid::make(
+				$this->model,
+				Config::get($this->crudConfig['grid']),
+				$data
+			);
+		}
+
 		return $this->layout->renderView(
 				array(
 					'title' => $this->pageTitle,
 					'format' => $format,
 					'data' => $data,
-					'content' => Grid::make(
-						$this->model,
-						Config::get($this->crudConfig['grid']),
-						$data
-					)->render()
+					'content' => $grid->render()
 				)
 			)
 		;
@@ -201,13 +212,23 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function get_add()
 	{
+		try
+		{
+			$form = IoC::resolve('EngineForm')->
+				setModel($this->model);
+		}
+		catch (\ReflectionException $e)
+		{
+			$form = Form::make(
+				$this->model,
+				Config::get($this->crudConfig['form'])
+			);
+		}
+
 		$this->layout->renderView(
 			array(
 				'title' => $this->pageTitle,
-				'content' => Form::make(
-					$this->model,
-					Config::get($this->crudConfig['form'])
-				)->render()
+				'content' => $form->render()
 			)
 		);
 	}
@@ -219,13 +240,23 @@ class Controller extends \Laravel\Routing\Controller {
 			return Response::error('404');
 		}
 
+		try
+		{
+			$form = IoC::resolve('EngineForm')->
+				setModel($data);
+		}
+		catch (\ReflectionException $e)
+		{
+			$form = Form::make(
+				$data,
+				Config::get($this->crudConfig['form'])
+			);
+		}
+
 		$this->layout->renderView(
 			array(
 				'title' => $this->pageTitle,
-				'content' => Form::make(
-					$data,
-					Config::get($this->crudConfig['form'])
-				)->render()
+				'content' => $form->render()
 			)
 		);
 	}

@@ -93,6 +93,18 @@ abstract class Crud {
 		);
 	}
 
+	/**
+	 * Setter for the "model" property
+	 *
+	 * @param \Eloquent $model
+	 * @return Mobileka\L3\Engine\Base\Crud
+	 */
+	public function setModel(\Eloquent $model)
+	{
+		$this->model = $model;
+		return $this;
+	}
+
 	public function __get($property)
 	{
 		if (property_exists($this, $property))

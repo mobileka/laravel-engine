@@ -38,4 +38,16 @@ class Grid extends \Mobileka\L3\Engine\Base\Crud {
 		$this->sortable = \Arr::exceptValues($this->sortable, $this->unsortable);
 		$this->components = $this->processComponents($this->components, $this->order, $this->only, $this->except);
 	}
+
+	/**
+	 * Setter for the "items" property
+	 *
+	 * @param mixed $items
+	 * @return Mobileka\L3\Engine\Grid\Grid;
+	 */
+	public function setItems($items)
+	{
+		$this->items = $items;
+		return $this;
+	}
 }

@@ -308,7 +308,7 @@ class #Names#_Add_#Names#_Foreign {
 		unset($args[0]);
 
 		$this->prePath = $prePath;
-		$this->bandlePath = path('bundle').$prePath.DS.$this->Names.DS;
+		$this->bandlePath = ($this->prePath) ? path('bundle').$this->prePath.DS.$this->Names.DS : path('bundle').$this->Names.DS;
 		$this->fields = $args;
 
 		$this->section = ucfirst(end(explode(DS, $this->prePath)));

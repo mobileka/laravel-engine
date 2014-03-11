@@ -11,6 +11,7 @@ class Engine_Create_Uploads_Table {
 			$table->integer('object_id')->unsigned()->index();
 			$table->string('type')->index();
 			$table->string('token');
+			$table->string('fieldname');
 			$table->timestamps();
 		});
 	}

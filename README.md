@@ -188,7 +188,8 @@ password: 123456
 # Generating bundles with cli
 Laravel Engine includes a script for a fast bundle generation. This is very useful if you need to get a simple (yet powerful and flexible) administration interface in no time.
 
-There two possible ways to generate an administration interface:
+There are two possible ways to generate an administration interface:
+
 1. One by one specifying database fields for each bundle
 2. Mass bundle generation by reverse engineering of an existing SQL file
 

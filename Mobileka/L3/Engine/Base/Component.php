@@ -56,12 +56,15 @@ abstract class Component {
 	);
 
 	/**
-	 * @todo: explain this shit
+	 * If you need the component to be shown in a limited set of actions,
+	 * enumerate these actions here
+	 * @var array
 	 */
 	protected $relevantActions = array();
 
 	/**
 	 * Is i18n enabled for this component?
+	 * @var bool
 	 */
 	protected $localized = false;
 

@@ -109,19 +109,24 @@ abstract class Component {
 	{
 		$value = $this->row;
 
-		if ($this->localized)
-		{
-			$value = $this->row->localized($this->name, $lang);
-		}
-		else
-		{
-			$tokens = explode('.', $this->name);
+		$tokens = explode('.', $this->name);
 
-			foreach ($tokens as $token)
+		for ($i = 0, $count = count($tokens); $i < $count; $i++)
+		{
+			if ($this->localized and $i == ($count - 1))
 			{
-				$value = $value->{$token};
+				$value = $value->localized($tokens[$i], $lang);
+			}
+			else
+			{
+				$value = $value->{$tokens[$i]};
 			}
 		}
+/*
+		if ($this->localized)
+		{
+			$value = $value->localized($this->name, $lang);
+		}*/
 
 		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
 	}

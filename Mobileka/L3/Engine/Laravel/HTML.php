@@ -55,7 +55,7 @@ class HTML extends \Laravel\HTML {
 	{
 		$aliases = array_pluck(array_values(Router::$routes['GET']), 'as');
 
-		if (\Router::exists($name))
+		if (\Router::exists($name) and Acl::make()->checkByAlias($name))
 		{
 			return static::link_to_route($name, $title, $parameters, $attributes, $entities);
 		}
@@ -155,7 +155,10 @@ class HTML extends \Laravel\HTML {
 
 	public static function delete_button($delete_url)
 	{
-		return $delete_url ? HTML::link('#', '<i class="icon-remove-sign"></i>', array('title' => ___('default', 'destroy'), 'class' => 'btn btn-red delete-toggle', 'data-url' => $delete_url), null, false) : '';
+		return ($delete_url and $delete_url !== '#')
+			? HTML::link('#', '<i class="icon-remove-sign"></i>', array('title' => ___('default', 'destroy'), 'class' => 'btn btn-red delete-toggle', 'data-url' => $delete_url), null, false)
+			: ''
+		;
 	}
 
 }

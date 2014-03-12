@@ -48,7 +48,7 @@
 				</ul>
 				<div class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-toggle-username" data-toggle="dropdown">
-						{{ user()->name }}
+						{{ user()->fullname }}
 					</a>
 
 					<ul class="dropdown-menu pull-right">
@@ -62,12 +62,12 @@
 	</div>
 	<div class="container-fluid" id="content">
 		<div id="left">
-			<form action="search-results.html" method="GET" class='search-form'>
+			<!-- <form action="search-results.html" method="GET" class='search-form'>
 				<div class="search-pane">
 					<input type="text" name="search" placeholder="Search here...">
 					<button type="submit"><i class="icon-search"></i></button>
 				</div>
-			</form>
+			</form> -->
 
 			@include('engine::_system.layouts.inc.subnav')
 

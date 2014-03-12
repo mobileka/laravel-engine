@@ -18,6 +18,9 @@ class URL extends \Laravel\Url {
 
 	public static function to_existing_route($name, $parameters = array(), $method = 'GET')
 	{
-		return \Router::exists($name, $method) ? static::to_route($name, $parameters) : '';
+		return (\Router::exists($name, $method) and Acl::make()->checkByAlias($name))
+			? static::to_route($name, $parameters)
+			: '#'
+		;
 	}
 }

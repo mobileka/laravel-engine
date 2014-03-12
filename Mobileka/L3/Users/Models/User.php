@@ -21,6 +21,11 @@ class User extends Model {
 		return $this->belongs_to(\IoC::resolve('UserGroupModel'));
 	}
 
+	public function get_fullname()
+	{
+		return $this->name ? : 'Имя не указано';
+	}
+
 	public function beforeSave()
 	{
 		if ($this->changed('password'))

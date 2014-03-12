@@ -1,8 +1,10 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+use Laravel\IoC,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Helpers\Debug,
 	Mobileka\L3\Engine\Laravel\Str,
+	Mobileka\L3\Engine\Laravel\UrlConditionBuilder,
 	Input,
 	File;
 
@@ -58,7 +60,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public function __construct($attributes = array(), $exists = false)
 	{
-		$this->i18n = \IoC::resolve('i18n');
+		$this->i18n = IoC::resolve('i18n');
 		return parent::__construct($attributes, $exists);
 	}
 
@@ -359,7 +361,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	{
 		if (!$this->conditions)
 		{
-			$this->conditions = \Input::get('filters', array());
+			$this->conditions = Input::get('filters', array());
 		}
 
 		foreach ($this->conditions as $filter => $fields)
@@ -381,7 +383,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public function _order($order_by = array())
 	{
-		$order = \Input::get('order', array());
+		$order = Input::get('order', array());
 
 		if (!is_array($order))
 		{
@@ -451,15 +453,15 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		/**
 		 * @todo: look for bugz here
 		 */
-		//$relations = array_unique(array_merge($relations, array_keys($relation_conditions)));
+		$relations = array_unique(array_merge($relations, array_keys($relation_conditions)));
 
 		$per_page = (is_null($per_page))
-			? \Input::get('per_page', \Config::get('application.objects_per_page', 25))
+			? Input::get('per_page', \Config::get('application.objects_per_page', 25))
 			: $per_page;
 
-		$offset = $per_page * (\Input::get('page', 1) - 1);
+		$offset = $per_page * (Input::get('page', 1) - 1);
 
-		$cb = \UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
+		$cb = UrlConditionBuilder::make($query, $this, $relations, $conditions, $relation_conditions);
 
 		try {
 			foreach ($relations as $relation)
@@ -490,7 +492,6 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 				->not($not)
 				->not_in($not_in);
 
-			// $total = $results->count();
 			$total = $results->end()->distinct()->count($this->table() . '.id');
 
 			$results = $results->order_by($order_by)
@@ -536,7 +537,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return $this;
 		}
 
-		$query = \UrlConditionBuilder::make($query, $this)->get();
+		$query = UrlConditionBuilder::make($query, $this)->get();
 
 		if ($order_by and $query)
 		{
@@ -628,7 +629,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public function uploads()
 	{
-		return $this->has_many(\IoC::resolve('Uploader'), 'object_id')
+		return $this->has_many(IoC::resolve('Uploader'), 'object_id')
 			->where_type($this->table());
 	}
 

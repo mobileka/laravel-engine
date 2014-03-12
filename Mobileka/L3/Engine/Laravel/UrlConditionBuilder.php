@@ -1,5 +1,10 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Helpers\Misc,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
+use Laravel\Controller;
+
 class UrlConditionBuilder {
 
 	public static $registry;
@@ -78,7 +83,7 @@ class UrlConditionBuilder {
 		$this->related_models[$relation] = $result = $model->{$relation}();
 		$this->related_tables[$relation] = $result->model->table() . '.';
 
-		$model =  explode('\\', get_class($model));
+		$model = explode('\\', get_class($model));
 		$model = end($model);
 
 		$this->foreign_keys[$relation] = Misc::truthyValue($result->foreign, Str::lower($model . '_id'));
@@ -88,7 +93,8 @@ class UrlConditionBuilder {
 
 	protected function tableAlreadyJoined($table)
 	{
-		$joins = $this->query->joins ? : array() ;
+		$joins = $this->query->joins ? : array();
+
 		//Если таблица уже соединена, то не соединять еще раз
 		foreach ($joins as $join)
 		{
@@ -139,8 +145,8 @@ class UrlConditionBuilder {
 		}
 		elseif ($relation_type == 'Laravel\Database\Eloquent\Relationships\Has_Many_And_Belongs_To')
 		{
-			$pivot_table = \Misc::propertyValue($model, 'joining');
-			$second_fk = \Misc::truthyValue($model->foreign,  \Str::singular(\Str::lower($relation)) . '_id');
+			$pivot_table = Misc::propertyValue($model, 'joining');
+			$second_fk = Misc::truthyValue($model->foreign,  Str::singular(Str::lower($relation)) . '_id');
 
 			$master_key = $first_table . 'id';
 			$first_key = $pivot_table . '.' . $foreign_key;
@@ -171,7 +177,7 @@ class UrlConditionBuilder {
 	 * @param array $conditions
 	 * @return UrlConditionBuilder
 	 */
-	public function order_by(Array $conditions)
+	public function order_by(array $conditions)
 	{
 		foreach ($conditions as $column)
 		{
@@ -181,14 +187,23 @@ class UrlConditionBuilder {
 
 			$column = $tmp[0];
 
-			$direction = \Arr::getItem($tmp, 1, 'asc');
+			$direction = Arr::getItem($tmp, 1, 'asc');
 
 			//проверим, не относится ли сортировка к связанной таблице
 			if (strpos($column, '.') !== false)
 			{
 				//если относится, то поменяем таблицу
 				$column = explode('.', $column);
-				$table = $this->related_tables[$column[0]];
+
+				if (!$table = Arr::getItem($this->related_tables, $column[0]))
+				{
+					$relation = $column[0];
+					$field = $column[1];
+					$controller = Router::requestId(\Controller::$route);
+
+					throw new \Exception("In order to sort by \"$field\" field of the \"$relation\" relation, you need to add \"$relation\" to \"$controller\" controller's \$with static property");
+				}
+
 				$column = $column[1];
 			}
 
@@ -428,7 +443,7 @@ class UrlConditionBuilder {
 		return $this;
 	}
 
-	public function group_by(Array $fields)
+	public function group_by(array $fields)
 	{
 		foreach ($fields as $field)
 		{

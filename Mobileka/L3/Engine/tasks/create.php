@@ -75,7 +75,7 @@ class Engine_Create_Task extends G_Task {
 		$this->changeMenuConfig();
 		$this->changeBundlesPhp();
 
-		Laravel\CLI\Command::run(array('migrate'));
+		// Laravel\CLI\Command::run(array('migrate'));
 	}
 
 	public function application($args)
@@ -308,7 +308,7 @@ class #Names#_Add_#Names#_Foreign {
 		unset($args[0]);
 
 		$this->prePath = $prePath;
-		$this->bandlePath = ($this->prePath) ? path('bundle').$this->prePath.DS.$this->Names.DS : path('bundle').$this->Names.DS;
+		$this->bundlePath = ($this->prePath) ? path('bundle').$this->prePath.DS.$this->Names.DS : path('bundle').$this->Names.DS;
 		$this->fields = $args;
 
 		$this->section = ucfirst(end(explode(DS, $this->prePath)));
@@ -617,7 +617,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->config = str_replace('#RELATIONS#', $this->prepareIoCRelationsBlock(), $this->config);
 
 		static::$content = $this->config;
-		return $this->write_to_file($this->bandlePath.'config'.DS.'default.php');
+		return $this->write_to_file($this->bundlePath.'config'.DS.'default.php');
 	}
 
 	protected function makeController()
@@ -625,7 +625,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->controller = str_replace('#BUNDLE#', $this->Names, $this->controller);
 		$this->controller = str_replace('#Name#', $this->Name, $this->controller);
 		static::$content = $this->controller;
-		return $this->write_to_file($this->bandlePath.'controllers'.DS.'admin'.DS.'default.php');
+		return $this->write_to_file($this->bundlePath.'controllers'.DS.'admin'.DS.'default.php');
 	}
 
 	protected function makeLanguage()
@@ -637,7 +637,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->language = str_replace('#LABELS#', $this->prepareLanguageLabelsBlock(), $this->language);
 
 		static::$content = $this->language;
-		return $this->write_to_file($this->bandlePath.'language'.DS.'ru'.DS.'default.php');
+		return $this->write_to_file($this->bundlePath.'language'.DS.'ru'.DS.'default.php');
 	}
 
 	protected function makeModel()
@@ -650,7 +650,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->model = str_replace('#RELATIONS#', $this->prepareModelRelationsBlock(), $this->model);
 
 		static::$content = $this->model;
-		return $this->write_to_file($this->bandlePath.'Models'.DS.$this->Name.'.php');
+		return $this->write_to_file($this->bundlePath.'Models'.DS.$this->Name.'.php');
 	}
 
 	protected function makeRoutes()
@@ -658,7 +658,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->routes = str_replace('#BUNDLE#', $this->names, $this->routes);
 
 		static::$content = $this->routes;
-		return $this->write_to_file($this->bandlePath.'routes.php');
+		return $this->write_to_file($this->bundlePath.'routes.php');
 	}
 
 	protected function makeStart()
@@ -668,7 +668,7 @@ class #Names#_Add_#Names#_Foreign {
 		$this->start = str_replace('#names#', $this->names, $this->start);
 
 		static::$content = $this->start;
-		return $this->write_to_file($this->bandlePath.'start.php');
+		return $this->write_to_file($this->bundlePath.'start.php');
 	}
 
 	protected function changeBundlesPhp()
@@ -778,7 +778,7 @@ class #Names#_Add_#Names#_Foreign {
 
 		$args[0] = str_replace('/', '.', $this->prePath).'.'.$this->Names.'::create_'.$this->names.'_table';
 
-		if (is_dir($this->bandlePath.'migrations'))
+		if (is_dir($this->bundlePath.'migrations'))
 		{
 			echo "Warning: Migration already exists\n";
 		}
@@ -818,7 +818,7 @@ $down .= "\t\t\t".'$table->drop_foreign(\''.$this->names.'_'.$arg[0].'_foreign\'
 			$foreign = str_replace('#DOWN#', $down, $foreign);
 			static::$content = $foreign;
 			unset($foreign);
-			return $this->write_to_file($this->bandlePath.'migrations'.DS.date('Y_m_d_His', (time() + 1)).'_add_'.$this->names.'_foreign'.EXT);
+			return $this->write_to_file($this->bundlePath.'migrations'.DS.date('Y_m_d_His', (time() + 1)).'_add_'.$this->names.'_foreign'.EXT);
         }
 
 	}

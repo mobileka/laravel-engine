@@ -219,7 +219,6 @@ artisan engine::create:bundle app.Users username:string password:string role_id:
 	* ```app``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
 	* ```Users``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
 * Add this to application/bundles.php.
-* Run migrations (sometimes).
 
 Type ```fieldName:laravelColumnType:required``` and this column will be required.
 

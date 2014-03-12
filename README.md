@@ -209,16 +209,17 @@ artisan engine::create:bundle app.Users username:string password:string role_id:
 	* config/config.php
 	* controllers/admin/default.php
 	* language/ru/default.php
-	* migrations/xxx_create_users_table.php (with a foreign key for role_id)
+	* migrations/xxx_create_users_table.php
+	* migrations/xxx_add_users_foreign.php (with a foreign key for role_id)
 	* Models/User.php (with predefined belongs_to relation)
 	* routes.php
 	* start.php
 
 * Add this to Admin sidebar menu:
-	* ```bundle``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
-	* ```bundleName``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
+	* ```app``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
+	* ```Users``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
 * Add this to application/bundles.php.
-* Run migrations.
+* Run migrations (sometimes).
 
 Type ```fieldName:laravelColumnType:required``` and this column will be required.
 

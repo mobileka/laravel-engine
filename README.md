@@ -1,3 +1,23 @@
+# Table of contents
+
+- [Introduction](#introduction)
+- [Installation quest](#installation-quest)
+- [Conventions](#conventions)
+- [Base\Model](#basemodel)
+- [ACL](#acl)
+- [i18n](#i18n)
+- [Image uploading](#image-uploading)
+- [CRUD](#crud)
+- [Crud components](#crud-components)
+- [Admin sidebar menu configuration](#admin-sidebar-menu-configuration)
+- [Generating bundles with cli](#generating-bundles-with-cli)
+	- [Generating bundles with admin interface](#generating-bundles-with-admin-interface)
+		- [1. Generating a single bundle](#1-generating-a-single-bundle)
+		- [2. Generating bundles with SQL file](#2-generating-bundles-with-sql-file)
+	- [Other generator possibilities](#other-generator-possibilities)
+- [Authors](#authors)
+- [Licence](#licence)
+
 # Introduction
 
 Laravel Engine is a result of a constant evolution of a simple Laravel bundle which was originally written to make CRUD generation easier and faster.

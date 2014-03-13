@@ -11,9 +11,7 @@ We call this bricks "Components" and there are two types of them in the Engine:
 
 To make this possible and easy to implement, we needed to improve most of the standard Laravel 3 libraries adding new functionality that made us write less code and get better results.
 
-Some day we desided to share all this handy shit with everyone in the world, just in case somebody benefit from it.
-
-The best way to describe all possibilities of the Engine is to write a book but we will try to make this README a good starting point for newbies. 
+The most suiting way to describe all possibilities of the Engine is to write a book but we will try to make this README a good starting point for newbies. 
 
 # Installation quest
 
@@ -25,7 +23,7 @@ The best way to integrate the Engine with a Laravel 3 application is to create a
 
 This allows you to get updates with a simple `git pull` command in the Engine directory.
 
-*Please, make sure to .gitignore this folder in your main Laravel 3 project because it can potentially create problems with git.*
+> Please, make sure to .gitignore this folder in your main Laravel 3 project because it can potentially create problems with git.
 
 The Engine consists of three big parts:
 
@@ -65,7 +63,7 @@ $ php artisan migrate
 Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
 
-*Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.*
+> Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
 
 The Engine bundle contains a shitload of assets which must be published:
 
@@ -188,6 +186,8 @@ password: 123456
 # Generating bundles with cli
 Laravel Engine includes a script for a fast bundle generation. This is very useful if you need to get a simple (yet powerful and flexible) administration interface in no time.
 
+## Generating bundles with admin interface
+
 There are two possible ways to generate an administration interface:
 
 1. One by one specifying database fields for each bundle
@@ -205,46 +205,61 @@ Here is a simple example:
 artisan engine::create:bundle app.Users username:string password:string role_id:unsigned:index
 ```
 
-* This generates following files with proper contents in `bundles/app/Users` directory:
-	* config/config.php
-	* controllers/admin/default.php
-	* language/ru/default.php
-	* migrations/xxx_create_users_table.php
-	* migrations/xxx_add_users_foreign.php (with a foreign key for role_id)
-	* Models/User.php (with predefined belongs_to relation)
-	* routes.php
-	* start.php
+This generates following files with proper contents in `bundles/app/Users` directory:
+* config/default.php
+* controllers/admin/default.php
+* language/ru/default.php
+* migrations/xxx_create_users_table.php
+* migrations/xxx_add_users_foreign.php (with a foreign key for role_id)
+* Models/User.php (with predefined belongs_to relation)
+* routes.php
+* start.php
 
-* Add this to Admin sidebar menu:
-	* ```app``` will be Admin sidebar menu section (if ```addmenu``` is not passed)
-	* ```Users``` will be Admin sidebar menu item (if ```addmenu``` is not passed)
-* Add this to application/bundles.php.
+Generator will also automatically add the new bundle to the `application/bundles.php` file.
 
-Type ```fieldName:laravelColumnType:required``` and this column will be required.
+Finally, if `addmenu` argument was not passed, generator will add the new bundle to a menu considering these defaults:
+* The section will be called `app`
+* The menu item will be called  `Users`
 
-Type ```modelName_id:unsigned``` and create relations and foreign keys automatically.
+In order to override these defaults, you can pass `addmenu` argument as follows:
+```
+addmenu:SectionName:ItemName
+```
+
+To get more information about menu configuration, read the <a href="#admin-sidebar-menu-configuration">"Admin sidebar menu configuration"</a> section.
 
 
 ### 2. Generating bundles with SQL file
 
 As stated above, Laravel Engine is able to generate bundles by reading an existing SQL file. If you follow Laravel and Laravel Engine conventions while building an architecture of your database, you'll get a fully working administration interface as a gift.
 
-To use this functionality, you need to put the sql file into the  ```path('app')/schema``` directory and run a command:
+To use this functionality, you need to put the sql file into the  `path('app')/schema` directory and run a command:
 
 ```
 artisan engine::create:application[ schema_filename][ path_to_bundles]
 ```
 
-The ```schema.sql``` file will be expected by default. The second argument is for nesting your bundles in a separate directories inside of the ```bundnles``` directory.
+The `schema.sql` file will be expected by default. The second argument is for nesting your bundles in a separate directories inside of the `bundnles` directory.
 
 And here is an example:
 
-Lets assume that you saved a file ```my_super_puper_database_schema.sql``` in the ```path('app')/schema``` directory and you also want all of your generated bundles to reside in ```bundles/app``` directory. To do this, just run the following command:
+Lets assume that you saved a file `my_super_puper_database_schema.sql` in the `path('app')/schema` directory and you also want all of your generated bundles to reside in `bundles/app` directory. To do this, just run the following command:
 ```
 artisan engine::create:application my_super_puper_database_schema.sql app
 ```
 
-That's it! Now you have a fully functional administration interface with a grid (plus sorting and filtering possibilities) and CRUD with validations, Blackjack and Whores!
+That's it! Now you have a fully functional administration interface with a grid (plus sorting and filtering possibilities) and CRUD with automatic form validation!
 
-Write less code, go have beer sooner!
--------------------------------------
+## Other generator possibilities
+
+When generating bundles one by one, you have a lot of options to customize the generated code.
+
+For examplre, you can make a field to be unsigned, create an index on it or make it to be required (a rule will be added to a self-validating model):
+
+```
+artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required
+```
+
+# Authors
+
+# Licence

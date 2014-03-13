@@ -164,11 +164,15 @@ class ImageModel extends Model {
 				if ($images)
 				{
 					$filename = $images[0]->filename;
+					$created_at = $images[0]->created_at;
 				}
-			}
+				else
+				{
+					$created_at = date('Y-m');
+				}
 
-			$type = $this->table(); // Стабильность в 90% случаев
-			$created_at = $this->created_at;
+				$type = $this->table();
+			}
 		}
 		else
 		{
@@ -196,9 +200,6 @@ class ImageModel extends Model {
 				save($thumbnail);
 		}
 
-
 		return $thumbUrl;
-
 	}
-
 }

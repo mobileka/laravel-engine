@@ -242,7 +242,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		try
 		{
-			$form = IoC::resolve('EngineForm')->
+			$form = IoC::resolve(static::$route['bundle'].'EngineForm')->
 				setModel($data);
 		}
 		catch (\ReflectionException $e)

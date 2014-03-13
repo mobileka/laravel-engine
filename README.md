@@ -83,7 +83,7 @@ $ php artisan migrate
 Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
 
-> Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
+> Please, note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
 
 The Engine bundle contains a shitload of assets which must be published:
 
@@ -146,7 +146,7 @@ return array(
 );
 ```
 
-And you finally finished the freaking hard installation process and now should be able to go to `http://sitename.dev/admin` to see an authorization form. Just in case you want to log in, these are the default credentials:
+Now you finally finished the freaking hard installation process and you should be able to go to `http://sitename.dev/admin` to see an authorization form. Just in case you want to log in, these are the default credentials:
 
 ```
 email: admin@example.com

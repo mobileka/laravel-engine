@@ -1,8 +1,8 @@
-<?php try { ?>
-
 <?php
-$checked = ($component->value($lang) == $component->checkedValue ? 'checked="checked"' : '');
-$currentValue = $checked ? $component->checkedValue : $component->uncheckedValue;
+try
+{
+	$checked = ($component->value($lang) == $component->checkedValue ? 'checked="checked"' : '');
+	$currentValue = $checked ? $component->checkedValue : $component->uncheckedValue;
 ?>
 
 

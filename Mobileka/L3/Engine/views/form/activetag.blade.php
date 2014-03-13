@@ -46,8 +46,4 @@
 	});
 </script>
 
-<?php
-} catch(\Exception $e) {
-	exit($e->getMessage());
-}
-?>
+<?php } catch(\Exception $e) { exit($e->getMessage()); } ?>

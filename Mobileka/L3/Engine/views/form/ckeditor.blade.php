@@ -1,7 +1,8 @@
-<?php try { ?>
-
 <?php
 use Mobileka\L3\Engine\Form\Components\TextArea;
+
+try
+{
 
 $attributes = $component->attributes;
 $attributes['class'] = ($class = Arr::getItem($component->attributes, 'class')) ? $class . ' ckeditor' : 'ckeditor';

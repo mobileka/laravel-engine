@@ -123,8 +123,4 @@ $(ad.parent).change(function(){
 
 </script>
 
-<?php }
-catch (Exception $e) {
-	Mobileka\L3\Engine\Laravel\Helpers\Debug::pp($e->getMessage());
-}
-?>
+<?php } catch (Exception $e) { exit($e->getMessage()); } ?>

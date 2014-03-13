@@ -1,3 +1,5 @@
+<?php try { ?>
+
 <div class="control-group">
 	<label class="control-label" for="filter_{{ $component->name }}">
 		{{ $component->label }}
@@ -10,3 +12,5 @@
 		</div>
 	</div>
 </div>
+
+<?php } catch (Exception $e) { exit($e->getMessage()); } ?>

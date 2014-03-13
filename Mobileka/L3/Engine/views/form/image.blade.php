@@ -1,4 +1,4 @@
-<? try { ?>
+<?php try { ?>
 <div id="{{ $component->name }}_image" class="fileupload">
 
 	<div class="thumbnail">
@@ -100,5 +100,5 @@ $(document).ready(function()
 });
 </script>
 
-<? } catch(\Exception $e) { echo $e->getMessage();die('fe'); }
+<?php } catch(\Exception $e) { exit($e->getMessage(); } ?>
 

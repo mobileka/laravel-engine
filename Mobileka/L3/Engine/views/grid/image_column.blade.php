@@ -9,4 +9,4 @@ try {
 	<img src="{{ $component->value() }}" alt="{{ $component->row->name }}">
 </a>
 
-<?php } catch (\Exception $e) { die($e->getMessage()); } ?>
+<?php } catch (\Exception $e) { exit($e->getMessage()); } ?>

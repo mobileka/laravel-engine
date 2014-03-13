@@ -1,3 +1,5 @@
+<?php try { ?>
+
 @if (!$component->row->orderItems)
 	{{ ___('default', 'no_items') }}
 @else
@@ -24,3 +26,5 @@
 		</tbody>
 	</table>
 @endif
+
+<?php } catch (Exception $e) { exit($e->getMessage()); } ?>

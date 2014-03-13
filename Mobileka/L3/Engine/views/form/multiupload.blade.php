@@ -66,4 +66,4 @@ if (typeof window.PLUPLOAD_FEATURED_HANDLERS === 'undefined') {
 
 </script>
 
-<?php } catch (\Exception $e) { die($e->getMessage()); } ?>
+<?php } catch (\Exception $e) { exit($e->getMessage()); } ?>

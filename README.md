@@ -9,7 +9,7 @@
 - [Image uploading](#image-uploading)
 - [CRUD](#crud)
 - [Crud components](#crud-components)
-- [Admin sidebar menu configuration](#admin-sidebar-menu-configuration)
+- [Admin sidebar configuration](#admin-sidebar-configuration)
 - [Generating bundles with cli](#generating-bundles-with-cli)
 	- [Generating bundles with admin interface](#generating-bundles-with-admin-interface)
 		- [1. Generating a single bundle](#1-generating-a-single-bundle)
@@ -201,7 +201,55 @@ password: 123456
     * DropdownFilter
     * ...
 
-# Admin sidebar menu configuration
+# Admin sidebar configuration
+
+It's easy to configure the sidebar menu in administration interface.
+
+The sidebar menu consists of items devided by sections. In other words, sections are groups or categories of menu items.
+
+The first step is to create an `application/config/menu.php` file and fill it with configuration data according to this syntax:
+
+```
+return array(
+	'sections' => array(
+		array(
+			'label' => 'Section Name 1',
+			'items' => array(
+				array(
+					'label' => 'Item Name 1',
+					'route' => 'item_route_alias', //according to routing conventions
+					'icon' => 'glyphicon-user'
+				),
+				//...
+				array(
+					'label' => 'Item Name 2',
+					'route' => 'bundle_admin_controller_action',
+					'icon' => 'glyphicon-group'
+				),
+			)
+		),
+		array(
+			'label' => 'Section Name 2',
+			'items' => array(
+				array(
+					'label' => 'User management',
+					'route' => 'users_admin_default_index',
+					'icon' => 'glyphicon-user'
+				),
+			)
+		),
+	)
+);
+```
+
+There are two thigs we like about our menu:
+
+1. Integration with ACL which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about ACL in detail, go to [ACL](#acl) section.
+
+
+2. Cli generator generates menu items with proper routes and, if you pass additional information, proper section and item names too. The only thing you need to configure manually is icons.
+
+The generator is described in the next section.
 
 # Generating bundles with cli
 Laravel Engine includes a script for a fast bundle generation. This is very useful if you need to get a simple (yet powerful and flexible) administration interface in no time.
@@ -246,7 +294,7 @@ In order to override these defaults, you can pass `addmenu` argument as follows:
 addmenu:SectionName:ItemName
 ```
 
-To get more information about menu configuration, read the <a href="#admin-sidebar-menu-configuration">"Admin sidebar menu configuration"</a> section.
+To get more information about menu configuration, read the [Admin sidebar configuration](#admin-sidebar-configuration) section.
 
 
 ### 2. Generating bundles with SQL file

@@ -86,6 +86,8 @@ abstract class Component {
 	 */
 	protected $row;
 
+	protected $value;
+
 	/**
 	 * Manually set html attributes for a component
 	 * @var array
@@ -107,6 +109,13 @@ abstract class Component {
 	 */
 	public function value($lang = '')
 	{
+		if (!is_null($this->value))
+		{
+			if (is_callable($this->value)) {
+				return call_user_func($this->value, $this->row);
+			}
+			return $this->value;
+		}
 		$value = $this->row;
 
 		$tokens = explode('.', $this->name);
@@ -129,6 +138,12 @@ abstract class Component {
 		}*/
 
 		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
+	}
+
+	public function setValue($value)
+	{
+		$this->value = $value;
+		return $this;
 	}
 
 	/**

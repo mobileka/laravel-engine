@@ -4,7 +4,7 @@
 	@foreach ($components as $component)
 		@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
 			<?php $component->row($crud->model); ?>
-			@if ($component instanceof Mobileka\L3\Engine\Form\Components\Hidden)
+			@if ($component->isHidden())
 				@if ($component->localized)
 					@foreach (langs() as $lang)
 						{{ $this->validation($errors->get('localized: '.$component->name.'_'.$lang)) }}

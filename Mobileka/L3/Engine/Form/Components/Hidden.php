@@ -4,4 +4,9 @@ class Hidden extends BaseComponent {
 
 	protected $template = 'engine::form.hidden';
 
+	public function isHidden()
+	{
+		return true;
+	}
+
 }

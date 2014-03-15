@@ -4,7 +4,7 @@
 - [Installation quest](#installation-quest)
 - [Conventions](#conventions)
 - [Base\Model](#basemodel)
-- [ACL](#acl)
+- [Access control](#Access control)
 - [i18n](#i18n)
 - [Image uploading](#image-uploading)
 - [CRUD](#crud)
@@ -173,7 +173,7 @@ password: 123456
 * i18n field validation
 * Image fields
 
-# ACL
+# Access control
 
 # i18n
 
@@ -244,7 +244,7 @@ return array(
 
 There are two thigs we like about our menu:
 
-1. Integration with ACL which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about ACL in detail, go to [ACL](#acl) section.
+1. Integration with ACL which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about ACL in detail, go to [Access control](#Access control) section.
 
 
 2. Cli generator generates menu items with proper routes and, if you pass additional information, proper section and item names too. The only thing you need to configure manually is icons.

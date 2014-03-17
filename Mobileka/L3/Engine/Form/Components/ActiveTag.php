@@ -17,7 +17,6 @@ class ActiveTag extends BaseComponent {
 	protected $options;
 	protected $attachRoute;
 	protected $detachRoute;
-	protected $textAttribute = 'title';
 
 	public function value($lang = '')
 	{

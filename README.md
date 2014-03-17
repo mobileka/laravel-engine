@@ -242,7 +242,7 @@ return array(
 );
 ```
 
-There are two thigs we like about our menu:
+There are two things we like about our menu:
 
 1. Integration with ACL which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about ACL in detail, go to [Access control](#access-control) section.
 

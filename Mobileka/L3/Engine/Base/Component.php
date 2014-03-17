@@ -128,7 +128,10 @@ abstract class Component {
 			}
 			else
 			{
-				$value = $value->{$tokens[$i]};
+				if ($value)
+				{
+					$value = $value->{$tokens[$i]};
+				}
 			}
 		}
 /*

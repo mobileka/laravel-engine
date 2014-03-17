@@ -4,6 +4,12 @@ use Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Base\View,
 	\Str;
 
+/**
+ * Components represent majority of functionality needed to build forms and
+ * grids. In case of a form, each component renders an element (textfield,
+ * checkbox, etc) to manipulate model's value. In grids, components refer to
+ * columns used to display model values.
+ */
 abstract class Component {
 
 	/**
@@ -86,6 +92,8 @@ abstract class Component {
 	 */
 	protected $row;
 
+	protected $value;
+
 	/**
 	 * Manually set html attributes for a component
 	 * @var array
@@ -100,6 +108,15 @@ abstract class Component {
 		return $self;
 	}
 
+	protected function normalizeAttributeValue($value)
+	{
+		if (is_callable($value))
+		{
+			return call_user_func($value, $this->row, $this);
+		}
+		return $value;
+	}
+
 	/**
 	 * Returns a value of a component
 	 *
@@ -107,6 +124,10 @@ abstract class Component {
 	 */
 	public function value($lang = '')
 	{
+		if (!is_null($this->value))
+		{
+			return $this->normalizeAttributeValue($this->value);
+		}
 		$value = $this->row;
 
 		$tokens = explode('.', $this->name);
@@ -119,16 +140,20 @@ abstract class Component {
 			}
 			else
 			{
-				$value = $value->{$tokens[$i]};
+				if ($value)
+				{
+					$value = $value->{$tokens[$i]};
+				}
 			}
 		}
-/*
-		if ($this->localized)
-		{
-			$value = $value->localized($this->name, $lang);
-		}*/
 
 		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
+	}
+
+	public function setValue($value)
+	{
+		$this->value = $value;
+		return $this;
 	}
 
 	/**
@@ -142,20 +167,6 @@ abstract class Component {
 		$this->translate = true;
 		$this->languageFile = ($languageFile) ? : $this->languageFile;
 		return $this;
-	}
-
-	/**
-	 * This method is used to convert dots in component name to double underscores.
-	 * A string before a dot represents a relation name and a string after __ a name of an attribute of this relation.
-	 *
-	 * This hack is needed to make it possible to save related models automatically.
-	 *
-	 * @see Haven't tested yet, use at your own risk
-	 * @return string
-	 */
-	public function name()
-	{
-		return str_replace('.', '__', $this->name);
 	}
 
 	/**
@@ -256,14 +267,14 @@ abstract class Component {
 
 	public function __get($property)
 	{
-		if ($property === 'name')
+		$method = 'get' . ucfirst($property);
+		if (method_exists($this, $method))
 		{
-			return $this->name();
+			return $this->$method();
 		}
-
 		if (property_exists($this, $property))
 		{
-			return $this->{$property};
+			return $this->normalizeAttributeValue($this->$property);
 		}
 
 		throw new \Exception("Trying to get an undefined property \"$property\" of a " . get_class($this) . " class");

@@ -11,7 +11,8 @@ class Link extends BaseComponent {
 
 	public function label($value, $translate = false)
 	{
-		$this->label = $translate ? \Lang::findLine($translate, 'grid.' . $value) : $value;
+		$label = $translate ? \Lang::findLine($translate, 'grid.' . $value) : $value;
+		$this->label = HTML::entities($label);
 		return $this;
 	}
 

@@ -4,4 +4,6 @@ class Column extends BaseComponent {
 
 	protected $template = 'engine::grid.column';
 
+	protected $raw = false;
+
 }

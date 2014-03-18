@@ -1,7 +1,6 @@
-@if ($crud->filters)
-
 {{ Form::open(URL::to_route(Controller::$route['alias'], Controller::$route['parameters']), 'GET', array('class' => 'form-horizontal form-grid-filters')) }}
 
+@if ($crud->filters)
 	@foreach ($crud->model->_order() as $order)
 		{{ Form::hidden('order[]', $order) }}
 	@endforeach

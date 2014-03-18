@@ -84,7 +84,6 @@ class View extends \Laravel\View {
 			return $result;
 		}
 
-
 		$viewName = str_replace('@', '.', Controller::$route['uses']);
 
 		if ($this->viewName)

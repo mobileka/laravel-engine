@@ -33,4 +33,9 @@ class Validator extends \Laravel\Validator {
 		return $message;
 	}
 
+	public function replace_lenght($message, $attribute, $rule, $parameters)
+	{
+		return str_replace(':lenght', $parameters[0], $message);
+	}
+
 }

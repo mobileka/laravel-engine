@@ -1,7 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Base;
 
 use \Laravel\Messages,
-	\Larave\Validator;
+	\Mobileka\L3\Engine\Laravel\Validator;
 
 /**
  * Self-validating Laravel models

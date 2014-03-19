@@ -6,7 +6,7 @@
 	</label>
 
 	<div class="controls">
-		<div "{{ HTML::attributes($component->parentAttributes) }}">
+		<div {{ HTML::attributes($component->parentAttributes) }}>
 			{{ Form::select('filters[where]['.$component->name.']', $component->options, Input::old($component->name, $component->value($lang)), $component->attributes) }}
 		</div>
 	</div>

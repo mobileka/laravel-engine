@@ -4,6 +4,7 @@ use Laravel\IoC,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Helpers\Debug,
 	Mobileka\L3\Engine\Laravel\Str,
+	Mobileka\L3\Engine\Laravel\Config,
 	Mobileka\L3\Engine\Laravel\UrlConditionBuilder,
 	Input,
 	File;
@@ -390,7 +391,12 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			$order = array($order);
 		}
 
-		return array_merge($order_by, $order);
+		if (!$result = array_merge($order_by, $order))
+		{
+			$result = Config::get('application.default_sorting_rule', array());
+		}
+
+		return $result;
 	}
 
 	public function buildQuery(

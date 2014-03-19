@@ -4,16 +4,18 @@ class Link extends BaseComponent {
 
 	protected $template = 'engine::grid.link';
 	protected $params   = array();
-	protected $label    = '';
+	protected $label;
 	protected $route    = '';
 	protected $link;
 	protected $query_params = array();
 
-	public function label($value, $translate = false)
+	public function getLabel()
 	{
-		$label = $translate ? \Lang::findLine($translate, 'grid.' . $value) : $value;
-		$this->label = HTML::entities($label);
-		return $this;
+		if (!is_null($this->label))
+		{
+			return $this->normalizeAttributeValue($this->label);
+		}
+		return $this->row->{$this->name};
 	}
 
 	public function getLink()

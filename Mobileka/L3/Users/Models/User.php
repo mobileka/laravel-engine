@@ -26,13 +26,23 @@ class User extends Model {
 		return $this->name ? : 'Имя не указано';
 	}
 
-	public function beforeSave()
+	public function beforeValidation()
 	{
-		if ($this->changed('password'))
+		if ($this->exists and $this->password === '')
+		{
+			$this->password = $this->original['password'];
+		}
+
+		return parent::beforeValidation();
+	}
+
+	public function afterValidation()
+	{
+		if ($this->changed('password') or !$this->exists)
 		{
 			$this->password = \Hash::make($this->password);
 		}
 
-		return parent::beforeSave();
+		return true;
 	}
 }

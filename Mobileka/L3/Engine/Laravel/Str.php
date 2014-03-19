@@ -106,4 +106,51 @@ class Str extends \Laravel\Str {
 		return static::slug($str);
 	}
 
+	/**
+	 * Codeigniter Word Limiter
+	 *
+	 * Limits a string to X number of words.
+	 *
+	 * @param	string
+	 * @param	int
+	 * @param	string	the end character. Usually an ellipsis
+	 * @return	string
+	 */
+	public static function limitWords($str, $limit = 100, $end_char = '&#8230;')
+	{
+		if (trim($str) === '')
+		{
+			return $str;
+		}
+
+		preg_match('/^\s*+(?:\S++\s*+){1,'.(int) $limit.'}/', $str, $matches);
+
+		if (strlen($str) === strlen($matches[0]))
+		{
+			$end_char = '';
+		}
+
+		return rtrim($matches[0]).$end_char;
+	}
+
+	// ------------------------------------------------------------------------
+
+	/**
+	 * Character Limiter
+	 *
+	 * Limits the string based on the character count.
+	 *
+	 * @param	string
+	 * @param	int
+	 * @return	string
+	 */
+	public static function limitCharacters($str, $len = 500)
+	{
+		if (mb_strlen($str) > $len)
+		{
+			$str = mb_substr($str, 0, ($len - 3)) . '...';
+		}
+
+		return $str;
+	}
 }

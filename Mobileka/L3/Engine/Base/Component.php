@@ -2,7 +2,7 @@
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Base\View,
-	\Str;
+	Mobileka\L3\Engine\Laravel\Str;
 
 /**
  * Components represent majority of functionality needed to build forms and
@@ -18,6 +18,18 @@ abstract class Component {
 	 * @var string
 	 */
 	protected $name;
+	
+	/**
+	 * Limit characters to specified amount
+	 * @var int
+	 */
+	protected $limitCharacters = null;
+	
+	/**
+	 * Limit words to specified amount
+	 * @var int
+	 */
+	protected $limitWords = null;
 
 	/**
 	 * Type of a HTML element
@@ -146,6 +158,9 @@ abstract class Component {
 				}
 			}
 		}
+
+		$value = !is_null($limit = $this->limitCharacters) ? Str::limitCharacters($value, $limit) : $value;
+		$value = !is_null($limit = $this->limitWords) ? Str::limitWords($value, $limit) : $value;
 
 		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
 	}

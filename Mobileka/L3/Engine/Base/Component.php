@@ -18,7 +18,13 @@ abstract class Component {
 	 * @var string
 	 */
 	protected $name;
-	
+
+	/**
+	 * A value before limit words and characters
+	 * @var string
+	 */
+	protected $rawValue = null;
+
 	/**
 	 * Limit characters to specified amount
 	 * @var int
@@ -124,7 +130,7 @@ abstract class Component {
 	{
 		if ($value instanceof \Closure)
 		{
-			return call_user_func($value, $this->row, $this);
+			return $this->rawValue = call_user_func($value, $this->row, $this);
 		}
 		return $value;
 	}
@@ -159,6 +165,7 @@ abstract class Component {
 			}
 		}
 
+		$this->rawValue = $value;
 		$value = !is_null($limit = $this->limitCharacters) ? Str::limitCharacters($value, $limit) : $value;
 		$value = !is_null($limit = $this->limitWords) ? Str::limitWords($value, $limit) : $value;
 

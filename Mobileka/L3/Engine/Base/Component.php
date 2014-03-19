@@ -110,7 +110,7 @@ abstract class Component {
 
 	protected function normalizeAttributeValue($value)
 	{
-		if (is_callable($value))
+		if ($value instanceof \Closure)
 		{
 			return call_user_func($value, $this->row, $this);
 		}

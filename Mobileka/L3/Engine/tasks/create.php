@@ -311,7 +311,8 @@ class #Names#_Add_#Names#_Foreign {
 		$this->bundlePath = ($this->prePath) ? path('bundle').$this->prePath.DS.$this->Names.DS : path('bundle').$this->Names.DS;
 		$this->fields = $args;
 
-		$this->section = ucfirst(end(explode(DS, $this->prePath)));
+		if ($this->prePath) $this->section = ucfirst(end(explode(DS, $this->prePath)));
+		
 		$this->label = $this->Names;
 	}
 
@@ -695,6 +696,12 @@ class #Names#_Add_#Names#_Foreign {
 		}
 	}
 
+/*=====================================================================================
+
+	MENU
+
+=====================================================================================*/
+
 	protected function changeMenuConfig()
 	{
 		if (!empty($this->section) and !empty($this->label))
@@ -761,7 +768,7 @@ class #Names#_Add_#Names#_Foreign {
 
 			$result = "<?php\n\nreturn ".var_export($this->menu, true).';';
 
-			// Config::set('menu', $this->menu);
+			Config::set('menu', $this->menu);
 
 			file_put_contents(path('app').'config'.DS.'menu'.EXT, $result, LOCK_EX);
 

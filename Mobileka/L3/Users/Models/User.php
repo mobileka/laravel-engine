@@ -43,6 +43,6 @@ class User extends Model {
 			$this->password = \Hash::make($this->password);
 		}
 
-		return true;
+		return parent::afterValidation();
 	}
 }

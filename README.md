@@ -322,7 +322,7 @@ That's it! Now you have a fully functional administration interface with a grid 
 
 When generating bundles one by one, you have a lot of options to customize the generated code.
 
-For examplre, you can make a field to be unsigned, create an index on it or make it to be required (a rule will be added to a self-validating model):
+For example, you can make a field to be unsigned, create an index on it or make it to be required (a rule will be added to a self-validating model):
 
 ```
 artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required

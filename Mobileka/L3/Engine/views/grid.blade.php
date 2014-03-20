@@ -57,7 +57,7 @@
 					@endif
 				@endforeach
 
-				<td class="table-actions">
+				<td class="table-actions" style="text-align:right;">
 					{{-- Подробнее (view / show) --}}
 					{{ HTML::view_button($row->id) }}
 

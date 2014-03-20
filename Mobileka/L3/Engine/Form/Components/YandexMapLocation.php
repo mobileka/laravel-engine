@@ -4,6 +4,7 @@
  * Choose location on a map using Yandex maps
  */
 class YandexMapLocation extends BaseComponent {
+
 	protected $template = 'engine::form.location_yandex';
 
 	// Unique string identifying object whose latitude and longitude is
@@ -19,9 +20,11 @@ class YandexMapLocation extends BaseComponent {
 
 	public function render($lang = '')
 	{
-		if (!in_array($this->type, array('latitude', 'longitude'))) {
+		if (!in_array($this->type, array('latitude', 'longitude')))
+		{
 			throw new \RuntimeException('YandexMapLocation::$type must be either latitude or longitude');
 		}
+
 		\Asset::container('engine_assets')->add(
 			'yandex_maps',
 			'http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=' . \Config::get('application.language')
@@ -29,8 +32,10 @@ class YandexMapLocation extends BaseComponent {
 			'yandex_map_location',
 			'bundles/engine/admin/js/yandex_map_location.js'
 		);
+
 		$result = parent::render($lang);
 		static::$rendered[$this->mapId()] = true;
+
 		return $result;
 	}
 

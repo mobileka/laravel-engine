@@ -6,7 +6,7 @@ class Boolean extends BaseComponent {
 
 	public function value($lang = '')
 	{
-		if ((bool)parent::value())
+		if ((bool)parent::value($lang))
 		{
 			return 'Да';
 		}

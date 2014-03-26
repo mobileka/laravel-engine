@@ -115,14 +115,14 @@ class ImageModel extends Model {
 				{
 					throw new \PDOException('afterLocalizedSave() returned false', 12);
 				}
-
-				if ((bool)$this->errors->messages)
-				{
-					throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
-				}
-
-				\DB::connection()->pdo->commit();
 			}
+
+			if ((bool)$this->errors->messages)
+			{
+				throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
+			}
+
+			\DB::connection()->pdo->commit();
 		}
 		catch(\PDOException $e)
 		{

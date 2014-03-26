@@ -2,12 +2,18 @@
 
 class File extends \Laravel\File {
 
-	public static function upload($file, $type = null, $directory = null)
+	public static function upload($file, $type = null, $directory = null, $allowedFileTypes = array())
 	{
+		$allowedFileTypes = $allowedFileTypes ? : Input::get('image.allowedFileTypes', array('png', 'jpg', 'jpeg', 'gif'));
 		$directory = static::getDirectoryPath($file, $directory);
 		$extension = static::getFileExtension($file);
 		$filename = static::getFilename($file, $extension);
 		$path = static::getFilePath($file, $directory, $type);
+
+		if (!File::is($allowedFileTypes, $file['tmp_name']))
+		{
+			return false;
+		}
 
 		umask(0);
 		static::mkdir($path);
@@ -49,7 +55,7 @@ class File extends \Laravel\File {
 	public static function getDirectoryPath($file, $directory = null)
 	{
 		$file = is_array($file) ? $file['tmp_name'] : $file->filename;
-		return $directory ? : (!File::is(array('jpeg', 'png', 'gif'), $file)) ? 'docs' : 'images';
+		return $directory ? : (!File::is(array('jpg', 'jpeg', 'png', 'gif'), $file)) ? 'docs' : 'images';
 	}
 
 	public static function getFileExtension($file)

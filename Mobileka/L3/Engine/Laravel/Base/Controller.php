@@ -532,9 +532,17 @@ class Controller extends \Laravel\Routing\Controller {
 			$this->data['type'] . '/' . \Date::make($this->data['created_at'])->get('Y-m')
 		);
 
-
 		//Сохраняем запись в БД
-		return $this->_ajaxSave(false, $uploader);
+		return $this->data['filename']
+			? $this->_ajaxSave(false, $uploader)
+			: Response::json(
+				array(
+					'status' => 'error',
+					'data' => array(),
+					'errors' => array($fieldName => ___('default', 'incorrect file type'))
+				)
+			)
+		;
 	}
 
 	public function delete_destroy_file($id)

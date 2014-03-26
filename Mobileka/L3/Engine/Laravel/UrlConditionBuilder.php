@@ -201,7 +201,7 @@ class UrlConditionBuilder {
 					$field = $column[1];
 					$controller = Router::requestId(\Controller::$route);
 
-					throw new \Exception("In order to sort by \"$field\" field of the \"$relation\" relation, you need to add \"$relation\" to \"$controller\" controller's \$with static property");
+					throw new \Exception("In order to sort by \"$field\" field of the \"$relation\" relation, you need to add \"$relation\" to \"$controller\" controller's \$with property");
 				}
 
 				$column = $column[1];

@@ -526,7 +526,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return $this;
 		}
 
-		$appends = array('conditions' => $conditions, 'per_page' => $per_page, 'order' => $order_by);
+		$appends = array('filters' => $conditions, 'per_page' => $per_page, 'order' => $order_by);
 
 		$query = $this;
 

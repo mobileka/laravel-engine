@@ -2,6 +2,16 @@
 
 use \Mobileka\L3\Engine\Laravel\Lang;
 
+function getCurrentLang()
+{
+	return Config::get('application.language');
+}
+
+function langUrl($lang, $reset = false)
+{
+	return URL::to_language($lang, $reset);
+}
+
 function langs()
 {
 	return Config::get('application.languages', array());

@@ -29,9 +29,16 @@ function day()
 	return date('d');
 }
 
-function dateTimeToDate($datetime)
+function dateTimeToDate($datetime, $now = false)
 {
-	return ($datetime != '0000-00-00 00:00:00' and $datetime) ? Date::make($datetime)->get() : '';
+	$default = '';
+
+	if ($now)
+	{
+		$default = Date::make(date('Y-m-d H:i:s'))->get();
+	}
+
+	return ($datetime != '0000-00-00 00:00:00' and $datetime) ? Date::make($datetime)->get() : $default;
 }
 
 function translateDate($date, $lang = 'ru', $delimiter = '-', $dayIndex = 0, $monthIndex = 1)

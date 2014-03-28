@@ -1,7 +1,8 @@
 <?php
 try
 {
-	$checked = ($component->value($lang) == $component->checkedValue ? 'checked="checked"' : '');
+	$value = Input::old($component->name, $component->value($lang));
+	$checked = ($value == $component->checkedValue ? 'checked="checked"' : '');
 	$currentValue = $checked ? $component->checkedValue : $component->uncheckedValue;
 ?>
 

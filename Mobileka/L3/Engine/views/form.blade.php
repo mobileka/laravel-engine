@@ -1,7 +1,7 @@
 {{ Form::open_for_files($crud->actionUrl, $crud->method, $crud->attributes) }}
 
 <div class="box box-bordered">
-	@foreach ($components as $component)
+	@foreach ($components as $fieldName => $component)
 		@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
 			<?php $component->row($crud->model); ?>
 			@if ($component->isHidden())
@@ -15,7 +15,7 @@
 					{{ $component->render() }}
 				@endif
 			@else
-				<div class="control-group">
+				<div id="row_{{$fieldName}}" class="control-group">
 					<label for="{{ $component->name }}" class="control-label">{{ formLang($crud->languageFile, $component->name) . $component->required() }}</label>
 					<div class="controls">
 						@if ($component->localized)

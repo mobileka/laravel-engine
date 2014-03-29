@@ -14,7 +14,8 @@
   <script>
     var BASE = "{{ URL::base() }}";
     URL_KEEPER = {
-      upload_url : '{{ URL::to_upload(Controller::$route) }}'
+      upload_url : '{{ URL::to_upload(Controller::$route) }}',
+      admin_linked_list: '{{ route('admin_linked_list') }}'
     };
     var app = {
       URL_BASE: '{{ URL::base() }}',

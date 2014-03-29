@@ -34,7 +34,7 @@
 </head>
 <body class="login theme-darkblue">
 	<div class="wrapper">
-		<h1><a href="#"><img src="{{ URL::base() }}/bundles/engine/admin/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }}</a></h1>
+		<h1><a href="#"><img src="{{ URL::base() }}/bundles/engine/admin/img/logo-big.png" alt="" class='retina-ready' width="59" height="49">{{ configValue('application.project_name', 'application.project_name') }}</a></h1>
 		<div class="login-body">
 			<h2>Войти</h2>
 

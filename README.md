@@ -189,11 +189,74 @@ password: 123456
 
 # Crud components
 * Form
-	* ImageField
+    * ImageField
     * TextField
     * ...
+    * DropdownChosenLinked
+
+DropdownChosenLinked component exists for CRUD Form and Grid Filter. It allows you to create several selectboxes, values in which hierarchically depend on the values in the previous select boxes. For example, Country -> Region -> City -> Street -> Building. If we have a large number of buildings in the database, it is not rational to load them all in order to provide the user with thousands of options in a selectbox. It is not usable, and is very bad for performance, so you should use DropdownChosenLinked instead.
+
+Using it is slightly harder than a normal DropdownChosen component, but nothing too hard.
+
+First of all, make sure you have published all the assets of Laravel Engine. A new .js file was pushed to the repo recently, so run ``php artisan bundle:publish`` if you haven't done that for a while.
+
+Next, you will need to create a route for your ajax requests. Every time you select a value in one of the linked select boxes, an ajax request is sent in order to retrieve the selected element's children items, so we need to make sure we created the route for that. Just add this to your `application/routes.php` file, and specify the models that you need to work with in the `$possible_linked_items` array:
+
+```
+Route::get('admin/linked_list/(:any)/(:num)', array('as' => 'admin_linked_list', function($modelName, $id){
+
+	$result                = array();
+	$possible_linked_items = array('Geo', 'Product_Type', 'Feature');
+
+	if (in_array($modelName, $possible_linked_items))
+	{
+		$model = IoC::resolve($modelName . 'Model');
+		$data  = $model->getListByParent($id, 'name');
+
+		foreach ($data as $record)
+		{
+			$result[] = array(
+				'id'   => $record->id,
+				'name' => $record->name,
+			);
+		}
+
+		return Response::json($result);
+	}
+
+	throw new Exception("Incorrect value for passed model: $modelName");
+
+}));
+```
+
+Now all we need is to specify in the `config.php` for our form or filter the linked items. It must be an array, with its keys being the fields in the database (which we are saving values for in the case of the Form, or which we are filtering by in the case of Filter) and the values being the model class of the children. In the following example I have three levels of product types, followed by one level of product features:
+
+```
+$linked_items = array(
+	'product_type_id_1' => 'Product_Type',
+	'product_type_id_2' => 'Product_Type',
+	'product_type_id_3' => 'Feature',
+	'feature_id'        => 'Feature',
+);
+
+```
+
+And then in the config of the actual fields:
+
+```
+'product_type_id_1' => formDropdownChosenLinked::make('product_type_id_1')->options($product_type_1s)->linked_items($linked_items),
+'product_type_id_2' => formDropdownChosenLinked::make('product_type_id_2', array('disabled' => true))->options(array()),
+'product_type_id_3' => formDropdownChosenLinked::make('product_type_id_3', array('disabled' => true))->options(array()),
+'feature_id' => formDropdownChosenLinked::make('feature_id', array('disabled' => true))->options(array()),
+```
+
+We only need to fill the first selectbox with initial values, and the rest should be made disabled and empty. The component should do the rest to fill them when you are selecting a value in the first selectbox, or editing a record (all selectboxes will be filled and an appropriate option will be selected).
+
+One last thing: as you can see in the route, the children are retrieved using a model's getListByParent() method. By default, its a simple method of getting the records with their `parent_id` field equal to the specified value, but you can always override either the field (just specify static `$parentField` class variable in your model) or the whole method in your model to make sure you only return the actual children.
+
+
 * Grid
-	* ImageColumn
+    * ImageColumn
     * TextColumn
     * ...
 * Filters

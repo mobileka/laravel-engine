@@ -15,7 +15,7 @@
     var BASE = "{{ URL::base() }}";
     URL_KEEPER = {
       upload_url : '{{ URL::to_upload(Controller::$route) }}',
-      admin_linked_list: '{{ route('admin_linked_list') }}'
+      admin_linked_list: '{{ URL::to_existing_route("admin_linked_list") }}'
     };
     var app = {
       URL_BASE: '{{ URL::base() }}',

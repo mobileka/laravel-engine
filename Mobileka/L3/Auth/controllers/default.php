@@ -73,7 +73,7 @@ class Auth_Default_Controller extends Base_Controller {
 	public function post_register()
 	{
 		$data = Input::allBut('successUrl');
-		$data['group_id'] = $this->groupModel::getIdByCode('users');
+		$data['group_id'] = $this->groupModel->getIdByCode('users');
 
 		if (!$this->model->saveData($data))
 		{

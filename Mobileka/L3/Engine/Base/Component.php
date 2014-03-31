@@ -30,7 +30,7 @@ abstract class Component {
 	 * @var int
 	 */
 	protected $limitCharacters = null;
-	
+
 	/**
 	 * Limit words to specified amount
 	 * @var int

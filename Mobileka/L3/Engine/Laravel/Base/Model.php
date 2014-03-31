@@ -34,6 +34,8 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public $conditions;
 	public static $viewRoute = '';
 
+	public static $parentField = 'parent_id';
+
 	/**
 	 * List of polymorphic relations that should be saved differently from normal
 	 * properties. The key is the name of the relationship, the value is
@@ -720,5 +722,12 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public static function getProperty($object, $property, $defaultValue = null)
 	{
 		return ($object and isset($object, $property)) ? $object->{$property} : $defaultValue;
+	}
+
+	public static function getListByParent($parentValue, $valueField)
+	{
+		return static::where(static::$parentField, '=', $parentValue)
+			->order_by($valueField)
+			->get();
 	}
 }

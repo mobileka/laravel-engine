@@ -83,7 +83,7 @@ $ php artisan migrate
 Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
 
-> Please, note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
+> Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
 
 The Engine bundle contains a shitload of assets which must be published:
 
@@ -177,11 +177,6 @@ password: 123456
 
 # i18n
 
-# Image uploading
-* ImageField component
-* MultiUploadField component
-* ImageColumn component
-
 # CRUD
 * Structure
 * Form
@@ -263,6 +258,85 @@ One last thing: as you can see in the route, the children are retrieved using a 
 	* StartsWithFilter
     * DropdownFilter
     * ...
+
+# Image uploading
+Laravel Engine has a *kind of* a built-in possibility to upload images. To use this functionality you'll need to solve another quest which is even more complex than installation quest. But once you've done it, you'll get the following features:
+- Standardized way to save and manipulate images (and other types of files)
+- Asynchronous image uploading
+- Easy way to crop and resize images (with possibility to do this dynamically)
+- Multiuple image uploading (async, with previews, with possibility to remove them one by one and select a featured image)
+- Built-in caching
+- Other cool features that I forgot to mention
+
+## So, lets start
+
+I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
+
+1. Install composer: `curl -sS https://getcomposer.org/installer | php`
+2. Run: `php composer.phar require intervention/image dev-master`
+3. Add the following code to your `app/start.php` file:
+
+```
+if (!File::exists('vendor/autoload.php'))
+{
+	throw new Exception("You need to run composer update to complete installation of this project.");
+}
+
+require 'vendor/autoload.php';
+```
+
+If you want to make image uploading more efficient, you also have an option to install "intervention/imagecache":
+`php composer.phar require intervention/imagecache dev-master`
+
+## Usage
+Lets start from a simple example when you just need to upload an image and bind it to your, say, Article object.
+
+1. First, your Article model should extend `Mobileka\L3\Engine\Laravel\Base\ImageModel` (*this is confusing and should be fixed*).
+
+2. Then you need to enumerate image fields in your Article model like so:
+`public static $imageFields = array('img', 'another_image_field');`
+
+> Please note: right now there is a naming problem and you should not call your field `image` because this crashes image uploading mechanism. Of course, this is going to be fixed *some day*
+
+3. Now list all the accessible fields for of the model (because this is a good practice and Image component will add fields which shouldn't be saved to the database):
+`public static $accessible = array('title', 'description');` 
+
+4. To enable image uploading functionality, you need to create routes for this or ask the RestfulRouter to do it for you:
+`RestfulRouter::make()->with('images')->resource(array('bundle' => 'articles'));`
+
+> If you don't like how it sounds, you can pass one of these options istead of `images`: 'file', 'files', 'img', 'image', 'uploads'
+
+5. The last step is to configure a component for your form and, optionally, grid:
+
+```
+use Mobileka\L3\Engine\Form\Components\Image as ImageField,
+	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
+
+return array(
+	'form' => array(
+		'components' => array(
+			//...
+			'img' => ImageField::make('img'),
+			//...
+		)
+	),
+	grid' => array(
+		'components' => array(
+			//...
+			'img' => ImageColumn::make('img'),
+			//...
+		)
+	)
+);
+```
+
+And... **OH MY GOD!** you did it! :)
+
+## Component configuration
+*Write me*
+
+## Some insights
+*Write me*
 
 # Admin sidebar configuration
 

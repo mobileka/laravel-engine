@@ -83,7 +83,7 @@ $ php artisan migrate
 Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
 
-> Please, note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
+> Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
 
 The Engine bundle contains a shitload of assets which must be published:
 
@@ -177,11 +177,6 @@ password: 123456
 
 # i18n
 
-# Image uploading
-* ImageField component
-* MultiUploadField component
-* ImageColumn component
-
 # CRUD
 * Structure
 * Form
@@ -189,17 +184,159 @@ password: 123456
 
 # Crud components
 * Form
-	* ImageField
+    * ImageField
     * TextField
     * ...
+    * DropdownChosenLinked
+
+DropdownChosenLinked component exists for CRUD Form and Grid Filter. It allows you to create several selectboxes, values in which hierarchically depend on the values in the previous select boxes. For example, Country -> Region -> City -> Street -> Building. If we have a large number of buildings in the database, it is not rational to load them all in order to provide the user with thousands of options in a selectbox. It is not usable, and is very bad for performance, so you should use DropdownChosenLinked instead.
+
+Using it is slightly harder than a normal DropdownChosen component, but nothing too hard.
+
+First of all, make sure you have published all the assets of Laravel Engine. A new .js file was pushed to the repo recently, so run ``php artisan bundle:publish`` if you haven't done that for a while.
+
+Next, you will need to create a route for your ajax requests. Every time you select a value in one of the linked select boxes, an ajax request is sent in order to retrieve the selected element's children items, so we need to make sure we created the route for that. Just add this to your `application/routes.php` file, and specify the models that you need to work with in the `$possible_linked_items` array:
+
+```
+Route::get('admin/linked_list/(:any)/(:num)', array('as' => 'admin_linked_list', function($modelName, $id){
+
+	$result                = array();
+	$possible_linked_items = array('Geo', 'Product_Type', 'Feature');
+
+	if (in_array($modelName, $possible_linked_items))
+	{
+		$model = IoC::resolve($modelName . 'Model');
+		$data  = $model->getListByParent($id, 'name');
+
+		foreach ($data as $record)
+		{
+			$result[] = array(
+				'id'   => $record->id,
+				'name' => $record->name,
+			);
+		}
+
+		return Response::json($result);
+	}
+
+	throw new Exception("Incorrect value for passed model: $modelName");
+
+}));
+```
+
+Now all we need is to specify in the `config.php` for our form or filter the linked items. It must be an array, with its keys being the fields in the database (which we are saving values for in the case of the Form, or which we are filtering by in the case of Filter) and the values being the model class of the children. In the following example I have three levels of product types, followed by one level of product features:
+
+```
+$linked_items = array(
+	'product_type_id_1' => 'Product_Type',
+	'product_type_id_2' => 'Product_Type',
+	'product_type_id_3' => 'Feature',
+	'feature_id'        => 'Feature',
+);
+
+```
+
+And then in the config of the actual fields:
+
+```
+'product_type_id_1' => formDropdownChosenLinked::make('product_type_id_1')->options($product_type_1s)->linked_items($linked_items),
+'product_type_id_2' => formDropdownChosenLinked::make('product_type_id_2', array('disabled' => true))->options(array()),
+'product_type_id_3' => formDropdownChosenLinked::make('product_type_id_3', array('disabled' => true))->options(array()),
+'feature_id' => formDropdownChosenLinked::make('feature_id', array('disabled' => true))->options(array()),
+```
+
+We only need to fill the first selectbox with initial values, and the rest should be made disabled and empty. The component should do the rest to fill them when you are selecting a value in the first selectbox, or editing a record (all selectboxes will be filled and an appropriate option will be selected).
+
+One last thing: as you can see in the route, the children are retrieved using a model's getListByParent() method. By default, its a simple method of getting the records with their `parent_id` field equal to the specified value, but you can always override either the field (just specify static `$parentField` class variable in your model) or the whole method in your model to make sure you only return the actual children.
+
+
 * Grid
-	* ImageColumn
+    * ImageColumn
     * TextColumn
     * ...
 * Filters
 	* StartsWithFilter
     * DropdownFilter
     * ...
+
+# Image uploading
+Laravel Engine has a *kind of* a built-in possibility to upload images. To use this functionality you'll need to solve another quest which is even more complex than installation quest. But once you've done it, you'll get the following features:
+- Standardized way to save and manipulate images (and other types of files)
+- Asynchronous image uploading
+- Easy way to crop and resize images (with possibility to do this dynamically)
+- Multiuple image uploading (async, with previews, with possibility to remove them one by one and select a featured image)
+- Built-in caching
+- Other cool features that I forgot to mention
+
+## So, lets start
+
+I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
+
+1. Install composer: `curl -sS https://getcomposer.org/installer | php`
+2. Run: `php composer.phar require intervention/image dev-master`
+3. Add the following code to your `app/start.php` file:
+
+```
+if (!File::exists('vendor/autoload.php'))
+{
+	throw new Exception("You need to run composer update to complete installation of this project.");
+}
+
+require 'vendor/autoload.php';
+```
+
+If you want to make image uploading more efficient, you also have an option to install "intervention/imagecache":
+`php composer.phar require intervention/imagecache dev-master`
+
+## Usage
+Lets start from a simple example when you just need to upload an image and bind it to your, say, Article object.
+
+1. First, your Article model should extend `Mobileka\L3\Engine\Laravel\Base\ImageModel` (*this is confusing and should be fixed*).
+
+2. Then you need to enumerate image fields in your Article model like so:
+`public static $imageFields = array('img', 'another_image_field');`
+
+> Please note: right now there is a naming problem and you should not call your field `image` because this crashes image uploading mechanism. Of course, this is going to be fixed *some day*
+
+3. Now list all the accessible fields for of the model (because this is a good practice and Image component will add fields which shouldn't be saved to the database):
+`public static $accessible = array('title', 'description');` 
+
+4. To enable image uploading functionality, you need to create routes for this or ask the RestfulRouter to do it for you:
+`RestfulRouter::make()->with('images')->resource(array('bundle' => 'articles'));`
+
+> If you don't like how it sounds, you can pass one of these options istead of `images`: 'file', 'files', 'img', 'image', 'uploads'
+
+5. The last step is to configure a component for your form and, optionally, grid:
+
+```
+use Mobileka\L3\Engine\Form\Components\Image as ImageField,
+	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
+
+return array(
+	'form' => array(
+		'components' => array(
+			//...
+			'img' => ImageField::make('img'),
+			//...
+		)
+	),
+	grid' => array(
+		'components' => array(
+			//...
+			'img' => ImageColumn::make('img'),
+			//...
+		)
+	)
+);
+```
+
+And... **OH MY GOD!** you did it! :)
+
+## Component configuration
+*Write me*
+
+## Some insights
+*Write me*
 
 # Admin sidebar configuration
 

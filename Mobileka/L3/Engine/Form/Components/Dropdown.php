@@ -39,11 +39,19 @@ class Dropdown extends BaseComponent {
 	public function value($lang = '')
 	{
 		$value = $this->row;
-		$tokens = explode('.', $this->name);
 
-		foreach ($tokens as $token)
+		if (isset($this->attributes['multiple']) and $this->attributes['multiple'] === 'multiple')
 		{
-			$value = $value->{$token};
+			$value = $value->{$this->name}()->lists('id');
+		}
+		else
+		{
+			$tokens = explode('.', $this->name);
+
+			foreach ($tokens as $token)
+			{
+				$value = $value->{$token};
+			}
 		}
 
 		return $value;

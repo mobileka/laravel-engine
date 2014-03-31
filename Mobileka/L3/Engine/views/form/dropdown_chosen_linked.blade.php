@@ -13,11 +13,11 @@
 	<script>
 		app.current = {};
 
-		@foreach ($component->row->attributes as $name => $attribute)
+		@foreach ($component->linked_items as $attribute => $model)
 
-			@if ($attribute and isset($component->linked_items[$name]))
+			@if ($component->row->$attribute)
 
-				app.current.{{ $name }} = '{{ $attribute }}';
+				app.current.{{ $attribute }} = '{{ $component->row->$attribute }}';
 
 			@endif
 

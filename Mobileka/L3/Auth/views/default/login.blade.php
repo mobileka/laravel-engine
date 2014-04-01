@@ -2,7 +2,7 @@
 	<div class="span3 offset4">
 		<h2>{{ ___('default', 'login') }}</h2>
 
-		{{ Form::open(URL::to_route('auth_default_login'), 'POST', array('class' => 'form-validate', 'id' => 'loginform')) }}
+		{{ Form::open($crud->actionUrl, 'POST', array('class' => 'form-validate', 'id' => 'loginform')) }}
 
 		@if ($error = Session::get('error'))
 

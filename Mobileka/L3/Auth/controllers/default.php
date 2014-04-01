@@ -1,6 +1,6 @@
 <?php
 
-use Mobileka\Crud\Form\Form;
+use Mobileka\L3\Engine\Laravel\Lang;
 
 class Auth_Default_Controller extends Base_Controller {
 
@@ -10,7 +10,8 @@ class Auth_Default_Controller extends Base_Controller {
 	{
 		$this->model = IoC::resolve('UserModel');
 		$this->groupModel = IoC::resolve('UserGroupModel');
-		return parent::__construct();
+		$this->layout = Config::get('auth.layout', $this->layout);
+		parent::__construct();
 	}
 
 	public function get_login($format = 'html')
@@ -22,10 +23,7 @@ class Auth_Default_Controller extends Base_Controller {
 		}
 
 		$this->layout->renderView(array(
-			'content' => Form::make(
-				$this->model,
-				Config::get('auth::auth.login')
-			)->render()
+			'content' => IoC::resolve('authLoginForm')->render()
 		));
 	}
 
@@ -60,10 +58,7 @@ class Auth_Default_Controller extends Base_Controller {
 	public function get_register()
 	{
 		$this->layout->renderView(array(
-			'content' => Form::make(
-				$this->model,
-				Config::get('auth::auth.register')
-			)->render()
+			'content' => IoC::resolve('authRegisterForm')->render()
 		));
 	}
 

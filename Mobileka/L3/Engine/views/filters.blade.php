@@ -1,5 +1,12 @@
-{{ Form::open(URL::to_route(Controller::$route['alias'], Controller::$route['parameters']), 'GET', array('class' => 'form-horizontal form-grid-filters')) }}
+@if ($crud->filters)
+	<p class="text-right">
+		<a href="#" class="btn btn-primary filters-control" title="Скрыть фильтр" data-condition="visible" onClick="return false;">
+			<i class="icon-minus"></i>
+		</a>
+	</p>
+@endif
 
+{{ Form::open(URL::to_route(Controller::$route['alias'], Controller::$route['parameters']), 'GET', array('class' => 'form-horizontal form-grid-filters', 'style' => '')) }}
 @foreach ($crud->model->_order() as $order)
 	{{ Form::hidden('order[]', $order) }}
 @endforeach

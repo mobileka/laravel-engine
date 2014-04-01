@@ -3,7 +3,7 @@
 
 		<h2>{{ $crud->customData['title'] }}</h2>
 
-		{{ Form::open($crud->action, $crud->method, $crud->attributes) }}
+		{{ Form::open($crud->actionUrl, $crud->method, $crud->attributes) }}
 
 		<div class="box box-bordered">
 

@@ -5,11 +5,9 @@
 		{{ Form::open(URL::to_route('auth_default_password_recovery'), 'POST', array('class' => 'form-validate', 'id' => 'loginform')) }}
 
 		@if ($error = Session::get('error'))
-
 			<div class="alert alert-error">
 				{{ $error }}
 			</div>
-
 		@endif
 
 		<div class="box box-bordered">

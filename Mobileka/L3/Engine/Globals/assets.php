@@ -115,4 +115,7 @@
 	->add('iframe-transport', 'bundles/engine/admin/js/plugins/jquery_fileupload/jquery.iframe-transport.js')
 	->add('jquery_fileupload', 'bundles/engine/admin/js/plugins/jquery_fileupload/jquery.fileupload.js')
 
+	//filter_toggle
+	->add('filter_toggle', 'bundles/engine/admin/js/filter_toggle.js')
+
 ;

@@ -260,7 +260,7 @@ One last thing: as you can see in the route, the children are retrieved using a 
     * ...
 
 # Image uploading
-Laravel Engine has a *kind of* a built-in possibility to upload images. To use this functionality you'll need to solve another quest which is even more complex than installation quest. But once you've done it, you'll get the following features:
+Laravel Engine has a *kind of* a built-in possibility to upload images. To use this functionality you'll need to solve another difficult quest. But once you've done it, you'll get the following features:
 - Standardized way to save and manipulate images (and other types of files)
 - Asynchronous image uploading
 - Easy way to crop and resize images (with possibility to do this dynamically)
@@ -268,7 +268,7 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 - Built-in caching
 - Other cool features that I forgot to mention
 
-## So, lets start
+## Getting started
 
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
@@ -285,7 +285,7 @@ if (!File::exists('vendor/autoload.php'))
 require 'vendor/autoload.php';
 ```
 
-If you want to make image uploading more efficient, you also have an option to install "intervention/imagecache":
+If you want to make image uploading more efficient, you can also install "intervention/imagecache":
 `php composer.phar require intervention/imagecache dev-master`
 
 ## Usage
@@ -296,12 +296,12 @@ Lets start from a simple example when you just need to upload an image and bind 
 2. Then you need to enumerate image fields in your Article model like so:
 `public static $imageFields = array('img', 'another_image_field');`
 
-> Please note: right now there is a naming problem and you should not call your field `image` because this crashes image uploading mechanism. Of course, this is going to be fixed *some day*
+> Please note: right now there is a naming problem and you should not call your field `image` because this crashes the system. Of course, this is going to be fixed some day
 
-3. Now list all the accessible fields for of the model (because this is a good practice and Image component will add fields which shouldn't be saved to the database):
+3. Now list all the accessible fields of the model (because this is a good practice and Image component will add fields which shouldn't be saved to the database with `fill()` method):
 `public static $accessible = array('title', 'description');` 
 
-4. To enable image uploading functionality, you need to create routes for this or ask the RestfulRouter to do it for you:
+4. To enable image uploading functionality, you need to create routes which handle uploading requests. But it is better to ask the RestfulRouter to do it for you:
 `RestfulRouter::make()->with('images')->resource(array('bundle' => 'articles'));`
 
 > If you don't like how it sounds, you can pass one of these options istead of `images`: 'file', 'files', 'img', 'image', 'uploads'
@@ -330,9 +330,15 @@ return array(
 );
 ```
 
-And... **OH MY GOD!** you did it! :)
+And... **OH MY GOD!** you did it! :) Now you can upload images and bind them to your Article objects. The next section describes how to retrieve these images and work with them.
 
-## Component configuration
+## Working with uploaded images
+*Write me*
+
+## Multiple image uploading
+*Write me*
+
+## Advanced component configuration
 *Write me*
 
 ## Some insights
@@ -342,7 +348,7 @@ And... **OH MY GOD!** you did it! :)
 
 It's easy to configure the sidebar menu in administration interface.
 
-The sidebar menu consists of items devided by sections. In other words, sections are groups or categories of menu items.
+it consists of items devided by sections. In other words, sections are groups or categories of menu items.
 
 The first step is to create an `application/config/menu.php` file and fill it with configuration data according to this syntax:
 
@@ -381,12 +387,12 @@ return array(
 
 There are two things we like about our menu:
 
-1. Integration with ACL which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about ACL in detail, go to [Access control](#access-control) section.
+1. Integration with user access control library which automatically checks whether the current authorized user has an access to a menu item and hides it when access is denied. When the user has no access to all section items, the section will be hidden too. To read about access control in detail, go to [Access control](#access-control) section.
 
 
-2. Cli generator generates menu items with proper routes and, if you pass additional information, proper section and item names too. The only thing you need to configure manually is icons.
+2. Cli generator generates menu items with proper routes and, if you pass additional information, it generates proper section and item names too. The only thing you need to configure manually is an icon associated with the menu item.
 
-The generator is described in the next section.
+Read about generator in the next section.
 
 # Generating bundles with cli
 Laravel Engine includes a script for a fast bundle generation. This is very useful if you need to get a simple (yet powerful and flexible) administration interface in no time.
@@ -395,7 +401,7 @@ Laravel Engine includes a script for a fast bundle generation. This is very usef
 
 There are two possible ways to generate an administration interface:
 
-1. One by one specifying database fields for each bundle
+1. One by one, specifying database fields for each bundle
 2. Mass bundle generation by reverse engineering of an existing SQL file
 
 ### 1. Generating a single bundle

@@ -2,6 +2,8 @@
 
 class Validator extends \Laravel\Validator {
 
+	protected $languageFile = 'default.labels';
+
 	/**
 	 * Replace all error message place-holders with actual values.
 	 *
@@ -17,7 +19,7 @@ class Validator extends \Laravel\Validator {
 			':attribute',
 			\Str::wrap(
 				Lang::translateIfPossible(
-					'default.labels',
+					$this->languageFile,
 					str_replace(' ', '_', $this->attribute($attribute))
 				),
 				'"'
@@ -33,9 +35,20 @@ class Validator extends \Laravel\Validator {
 		return $message;
 	}
 
-	public function replace_lenght($message, $attribute, $rule, $parameters)
+	public function replace_length($message, $attribute, $rule, $parameters)
 	{
-		return str_replace(':lenght', $parameters[0], $message);
+		return str_replace(':length', $parameters[0], $message);
+	}
+
+	public function __call($method, $args)
+	{
+		if ($method === 'languageFile')
+		{
+			$this->languageFile = $args[0];
+			return $this;
+		}
+
+		return parent::__call($method, $args);
 	}
 
 }

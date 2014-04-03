@@ -15,6 +15,8 @@ abstract class Laramodel extends \Eloquent {
 	 */
 	public static $rules = array();
 
+	public static $validationLanguageFile = 'default.labels';
+
 	/**
 	 * Validation Messages
 	 *
@@ -74,7 +76,7 @@ abstract class Laramodel extends \Eloquent {
 			}
 
 			// construct the validator
-			$validator = \Validator::make($data, $rules, $messages);
+			$validator = Validator::make($data, $rules, $messages)->languageFile(static::$validationLanguageFile);
 			$valid = $validator->valid();
 
 			$this->errors->messages = ($valid && !$this->errors->all())

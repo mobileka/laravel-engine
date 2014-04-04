@@ -15,6 +15,13 @@ abstract class Laramodel extends \Eloquent {
 	 */
 	public static $rules = array();
 
+	/**
+	 * In order to make validation error messages friendlier,
+	 * Laravel Engine tries to traslate field names.
+	 * This property configures the translation file
+	 *
+	 * @var string $validationLanguageFile
+	 */
 	public static $validationLanguageFile = 'default.labels';
 
 	/**

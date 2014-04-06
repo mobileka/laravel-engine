@@ -1,6 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use \Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr'
 
 class HTML extends \Laravel\HTML {
 

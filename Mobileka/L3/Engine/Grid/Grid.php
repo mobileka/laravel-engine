@@ -35,7 +35,7 @@ class Grid extends \Mobileka\L3\Engine\Base\Crud {
 		}
 
 		$this->sortable = $this->sortable ? : array_keys($this->components);
-		$this->sortable = \Arr::exceptValues($this->sortable, $this->unsortable);
+		$this->sortable = Arr::exceptValues($this->sortable, $this->unsortable);
 		$this->components = $this->processComponents($this->components, $this->order, $this->only, $this->except);
 	}
 

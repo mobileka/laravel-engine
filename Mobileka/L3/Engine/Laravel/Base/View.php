@@ -103,6 +103,6 @@ class View extends \Laravel\View {
 	 */
 	public function __get($key)
 	{
-		return \Arr::getItem($this->data, $key);
+		return Arr::getItem($this->data, $key);
 	}
 }

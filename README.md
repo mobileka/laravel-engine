@@ -61,15 +61,6 @@ return array(
 );
 ```
 
-Also, the following alias should be defined in the `application/config/application.php` (*to be fixed soon*):
-
-```
-'aliases' => array(
-	// ... snip
-	'Helpers\Arr' => 'Mobileka\L3\Engine\Laravel\Helpers\Arr',
-),
-```
-
 Now run migrations:
 
 ```

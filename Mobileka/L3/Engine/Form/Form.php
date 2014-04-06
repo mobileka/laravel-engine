@@ -1,10 +1,10 @@
 <?php namespace Mobileka\L3\Engine\Form;
 
-use \Helpers\Misc,
-	\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Mobileka\L3\Engine\Laravel\Helpers\Misc;
 
 /**
- * Form class of a CRUD bundle
+ * CRUD form generation class
  *
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 1.0

@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Grid\Filters;
 
-use Mobileka\L3\Engine\Laravel\Lang;
+use Mobileka\L3\Engine\Laravel\Lang,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Dropdown extends BaseComponent {
 
@@ -8,7 +9,7 @@ class Dropdown extends BaseComponent {
 
 	public function value($lang = '')
 	{
-		return \Arr::searchRecursively($this->filters, 'where', $this->name);
+		return Arr::searchRecursively($this->filters, 'where', $this->name);
 	}
 
 	public function options($options, $defaultValue = true)

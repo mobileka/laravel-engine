@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Config;
+use Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
@@ -13,12 +14,12 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		$self->permissions = Config::get('acl.permissions', array());
 		$self->defaultResult = Config::get('acl.defaultResult', false);
 
-		foreach (\Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
+		foreach (Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
 		{
 			$self->aliases[\Router::wildcards($key)] = $value;
 		}
 
-		$self->paths = \Arr::getItem($self->permissions, 'paths', array());
+		$self->paths = Arr::getItem($self->permissions, 'paths', array());
 		$self->route = \Controller::$route;
 		$self->bundle = $self->route['bundle'];
 		$self->controller = $self->route['controller'];
@@ -75,7 +76,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		//если есть прямое совпадение, то отдаем ему приоритет
 		if (in_array($alias, $aliases))
 		{
-			return \Arr::haveIntersections(
+			return Arr::haveIntersections(
 				static::userAclGroups(),
 				$this->aliases[$alias]
 			);
@@ -86,7 +87,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		{
 			if (preg_match('#^' . $a . '#u', $alias))
 			{
-				return \Arr::haveIntersections(
+				return Arr::haveIntersections(
 					static::userAclGroups(),
 					$this->aliases[$a]
 				);
@@ -107,7 +108,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	{
 		if (isset($this->paths[$path]))
 		{
-			return \Arr::haveIntersections(
+			return Arr::haveIntersections(
 				static::userAclGroups(),
 				$this->paths[$path]
 			);
@@ -126,7 +127,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	 */
 	public static function can($action, $group = null)
 	{
-		if ($greenGroups = \Arr::getItem(Config::get('acl.actions', array()), $action, array()))
+		if ($greenGroups = Arr::getItem(Config::get('acl.actions', array()), $action, array()))
 		{
 			$group = static::userAclGroups($group);
 
@@ -190,7 +191,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 	{
 		if ($method == 'except')
 		{
-			$arguments = \Arr::getItem($args, 0, false);
+			$arguments = Arr::getItem($args, 0, false);
 			$this->except = is_array($arguments) ? $arguments : $args;
 			return $this;
 		}

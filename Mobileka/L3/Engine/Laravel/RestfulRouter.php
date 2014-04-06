@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
 class RestfulRouter {
 
 	public $actions = array(
@@ -19,9 +21,9 @@ class RestfulRouter {
 
 	public function resource(array $options)
 	{
-		$submodule = \Arr::getItem($options, 'submodule', '');
-		$bundle = \Arr::getItem($options, 'bundle', '');
-		$controller = \Arr::getItem($options, 'controller', 'default');
+		$submodule = Arr::getItem($options, 'submodule', '');
+		$bundle = Arr::getItem($options, 'bundle', '');
+		$controller = Arr::getItem($options, 'controller', 'default');
 
 		$as = $controller . '_';
 		$uses = ($submodule) ? $submodule . '.' . $controller . '@' : $controller . '@';
@@ -209,19 +211,19 @@ class RestfulRouter {
 
 		if ($method == 'except')
 		{
-			$this->actions = \Arr::exceptValues($this->actions, $args);
+			$this->actions = Arr::exceptValues($this->actions, $args);
 			return $this;
 		}
 
 		if ($method == 'only')
 		{
-			$this->actions = \Arr::onlyValues($this->actions, $args);
+			$this->actions = Arr::onlyValues($this->actions, $args);
 			return $this;
 		}
 
 		if ($method == 'with')
 		{
-			if (\Arr::haveIntersections($args, array('file', 'files', 'img', 'image', 'images', 'uploads')))
+			if (Arr::haveIntersections($args, array('file', 'files', 'img', 'image', 'images', 'uploads')))
 			{
 				$this->actions[] = 'uploads';
 				$this->actions[] = 'upload_file';

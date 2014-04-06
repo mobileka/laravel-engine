@@ -1,14 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
 # Table of contents
 
 - [Introduction](#introduction)
 - [Installation quest](#installation-quest)
 - [Conventions](#conventions)
-- [Base\Model](#basemodel)
+- [Base\Model](#base\model)
 - [Access control](#access-control)
 - [i18n](#i18n)
-- [Image uploading](#image-uploading)
 - [CRUD](#crud)
 - [Crud components](#crud-components)
+- [Image uploading](#image-uploading)
+	- [Getting started](#getting-started)
+	- [Usage](#usage)
+	- [Working with uploaded images](#working-with-uploaded-images)
+	- [Multiple image uploading](#multiple-image-uploading)
+	- [Advanced component configuration](#advanced-component-configuration)
+	- [How does this work?](#how-does-this-work)
 - [Admin sidebar configuration](#admin-sidebar-configuration)
 - [Generating bundles with cli](#generating-bundles-with-cli)
 	- [Generating bundles with admin interface](#generating-bundles-with-admin-interface)
@@ -321,10 +328,49 @@ return array(
 );
 ```
 
-And... **OH MY GOD!** you did it! :) Now you can upload images and bind them to your Article objects. The next section describes how to retrieve these images and work with them.
+And... **OH MY GOD!** you did it! :) Now you can upload images and bind them to your Article objects in administration panel.
+
+The next section describes how to retrieve these images and work with them.
 
 ## Working with uploaded images
-*Write me*
+Ok, it is time to show the uploaded image to a user. In order to get an original uploaded image you just need to call a `getImageSrc()` method on a model object as follows:
+
+```
+$article = Article::find(1);
+$article->getImageSrc('img'); // provide a name of an image field
+```
+
+But there are also other ways to get the image.
+If you were following the [installation quest](#installation-quest) carefully, you remember that it was required to create a `application/config/image.php` configuration file.
+
+Lets review the contents of this file:
+
+```
+<?php
+
+return array(
+	'aliases' => array(
+		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
+		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
+	),
+);
+```
+
+As you have already got from comments, in this file you can create aliases which reflect the image type (e.g. main_article_image) and provide dimensions for them.
+
+This alias can be passed to the `getImageSrc()` method as a second parameter: `$article->getImageSrc('img', 'main_article_image');`
+
+This means that the original image will be rezised according to alias dimensions. By default, the aspect ratio will be preserved, but if you want to change this, add a third boolean item to the alias dimensions array like so:
+
+```
+return array(
+	'aliases' => array(
+		'main_article_image' => array(220, 170, false) //do not preserve the aspect ratio and make the image exactly 220 x 170
+	),
+);
+```
+
+> Please note, that the Engine will generate and save the image for an each alias when you access it the first time: on every other call the image will be read from a filesystem
 
 ## Multiple image uploading
 *Write me*
@@ -332,7 +378,7 @@ And... **OH MY GOD!** you did it! :) Now you can upload images and bind them to 
 ## Advanced component configuration
 *Write me*
 
-## Some insights
+## How does this work?
 *Write me*
 
 # Admin sidebar configuration

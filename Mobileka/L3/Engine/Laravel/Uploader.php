@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Config;
+use Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Uploader extends \Model {
 
@@ -79,7 +80,7 @@ class Uploader extends \Model {
 			if (!\File::exists($thumbnail) and \File::exists($original))
 			{
 				\Image::make($original)->
-					resize($dimensions[0], $dimensions[1], true, false)->
+					resize($dimensions[0], $dimensions[1], Arr::getItem($dimensions, 2, true), false)->
 					save($thumbnail);
 			}
 

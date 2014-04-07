@@ -48,6 +48,13 @@ The best way to integrate the Engine with a Laravel 3 application is to create a
 
 `cd bundles && ln -s path/to/Laravel/Engine/Mobileka/directory`
 
+Or, if you are on Windows (Vista or newer):
+
+```
+cd bundle
+mklink /D Mobileka path\to\Laravel\Engine\Mobileka
+```
+
 This allows you to get updates with a simple `git pull` command in the Engine directory.
 
 > Please, make sure to .gitignore this folder in your main Laravel 3 project because it can potentially create problems with git.

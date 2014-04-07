@@ -36,7 +36,20 @@ function dateTimeToDate($datetime, $now = false)
 	return ($datetime != '0000-00-00 00:00:00' and $datetime) ? Date::make($datetime)->get() : $default;
 }
 
-function translateDate($date, $lang = 'ru', $delimiter = '-', $dayIndex = 0, $monthIndex = 1)
+function translateDate($date, $lang = 'ru', $delimiter = ' ')
 {
-	return \Date::translate($date, $lang, $delimiter, $dayIndex, $monthIndex);
+	$date = substr($date, 0, 10); 
+	$result = array();
+	$dayIndex = 2;
+	$monthIndex = 1;
+	$yearIndex = 0;
+	$date = explode('-', $date);
+
+	$result[0] = Arr::getItem($date, $dayIndex, '01');
+	$month = (int)Arr::getItem($date, $monthIndex, 1);
+	$result[1] = Lang::line('months.'.($month - 1), array(), $lang)->get();
+	$result[2] = Arr::getItem($date, $yearIndex, '1970');
+	ksort($result);
+
+	return implode($delimiter, $result);
 }

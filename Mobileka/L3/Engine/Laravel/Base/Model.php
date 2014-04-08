@@ -427,6 +427,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			'from',
 			'to',
 			'contains',
+			'or_contains',
 			'where',
 			'starts_with',
 			'ends_with',
@@ -483,6 +484,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 					->starts_with_related($relation)
 					->ends_with_related($relation)
 					->contains_related($relation)
+					->or_contains_related($relation)
 					->where_related($relation)
 					->or_where_related($relation)
 					->not_related($relation)
@@ -495,6 +497,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 				->starts_with($starts_with)
 				->ends_with($ends_with)
 				->contains($contains)
+				->or_contains($or_contains)
 				->where($where)
 				->or_where($or_where)
 				->not($not)

@@ -361,6 +361,27 @@ class UrlConditionBuilder {
 	}
 
 	/**
+	 * OR LIKE '%x%' (Contains a string)
+	 *
+	 * @param array $conditions
+	 * @return UrlConditionBuilder
+	 */
+	public function or_contains($conditions, $table = '')
+	{
+		$table = ($table) ? $table : $this->table;
+
+		foreach ($conditions as $column => $condition)
+		{
+			if ($condition != '')
+			{
+				$this->query->or_where($table . $column, 'LIKE', '%' . $condition . '%');
+			}
+		}
+
+		return $this;
+	}
+
+	/**
 	 * = x (equals to)
 	 *
 	 * @param array $conditions

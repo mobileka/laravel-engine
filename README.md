@@ -48,6 +48,13 @@ The best way to integrate the Engine with a Laravel 3 application is to create a
 
 `cd bundles && ln -s path/to/Laravel/Engine/Mobileka/directory`
 
+Or, if you are on Windows (Vista or newer):
+
+```
+cd bundle
+mklink /D Mobileka path\to\Laravel\Engine\Mobileka
+```
+
 This allows you to get updates with a simple `git pull` command in the Engine directory.
 
 > Please, make sure to .gitignore this folder in your main Laravel 3 project because it can potentially create problems with git.
@@ -89,7 +96,7 @@ The Engine bundle contains a shitload of assets which must be published:
 $ php artisan bundle:publish
 ```
 
-In order Auth component to work properly, add these ACL permissions to `application/config/acl.php`:
+In order Auth component to work properly, add these permissions to `application/config/acl.php`:
 
 ```
 <?php
@@ -373,7 +380,38 @@ return array(
 > Please note, that the Engine will generate and save the image for an each alias when you access it the first time: on every other call the image will be read from a filesystem
 
 ## Multiple image uploading
-*Write me*
+It's easy to upload multiple images with the Engine. The only difference between single image uploading and multiuploading is a component that performs this. So, the `Mobileka\L3\Engine\Form\Components\Image` component is used for a single image uploading and `Mobileka\L3\Engine\Form\Components\MultiUpload` for multiple image uploading:
+
+```
+use Mobileka\L3\Engine\Form\Components\MultiUpload,
+	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
+
+return array(
+	'form' => array(
+		'components' => array(
+			//...
+			'img' => MultiUpload::make('img'),
+			//...
+		)
+	),
+	grid' => array(
+		'components' => array(
+			//...
+			'img' => ImageColumn::make('img'),
+			//...
+		)
+	)
+);
+```
+
+When using a MultiUpload component, it is a common use case when you need to choose a main or, how it is called in Wordpress community, a featured image. If we take an example above, there are two steps to achieve this:
+1. Create `img` field in the `articles` table
+2. Call `featuredImageSelector()` method on your `MultiUpload` component like this:
+`MultiUpload::make('img')->featuredImageSelector()`
+
+As you've probably got, by default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this: `$article->img`. You can change this passing a field name as a parameter for the `featuredImageSelector()` method: `MultiUpload::make('img')->featuredImageSelector('featured_image')` and now you can access this image like `$article->featured_image` (and don't forget to rename a field name in the database table).
+
+Ok, it is time to go and check this in administration panel.
 
 ## Advanced component configuration
 *Write me*
@@ -511,3 +549,4 @@ artisan engine::create:bundle app.Users username:string:required role_id:unsigne
 # Authors
 
 # Licence
+ch

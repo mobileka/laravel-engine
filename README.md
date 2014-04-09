@@ -405,9 +405,9 @@ return array(
 ```
 
 When using a MultiUpload component, it is a common use case when you need to choose a main or, how it is called in Wordpress community, a featured image. If we take an example above, there are two steps to achieve this:
+
 1. Create `img` field in the `articles` table
-2. Call `featuredImageSelector()` method on your `MultiUpload` component like this:
-`MultiUpload::make('img')->featuredImageSelector()`
+2. Call `featuredImageSelector()` method on your `MultiUpload` component like this: `MultiUpload::make('img')->featuredImageSelector()`
 
 As you've probably got, by default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this: `$article->img`. You can change this passing a field name as a parameter for the `featuredImageSelector()` method: `MultiUpload::make('img')->featuredImageSelector('featured_image')` and now you can access this image like `$article->featured_image` (and don't forget to rename a field name in the database table).
 

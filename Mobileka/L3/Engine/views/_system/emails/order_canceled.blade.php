@@ -1,1 +1,0 @@
-{{ \Helpers\Debug::pp(array($order), false); }}

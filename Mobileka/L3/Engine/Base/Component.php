@@ -2,7 +2,9 @@
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Base\View,
-	Mobileka\L3\Engine\Laravel\Str;
+	Mobileka\L3\Engine\Laravel\Str,
+	Mobileka\L3\Engine\Laravel\HTML,
+	Laravel\IoC;
 
 /**
  * Components represent majority of functionality needed to build forms and
@@ -18,6 +20,30 @@ abstract class Component {
 	 * @var string
 	 */
 	protected $name;
+
+	/**
+	 * Do we need to escape the output of the Component?
+	 * @var bool
+	 */
+	protected $escape = true;
+
+	/**
+	 * Do we need to nl2br the output of the Component?
+	 * @var bool
+	 */
+	protected $nl2br = true;
+
+	/**
+	 * Do we need to purify the output of the Component?
+	 * @var bool
+	 */
+	protected $purify = false;
+
+	/**
+	 * Holds an instance of the HTMLPurifier class
+	 * @var null|HTMLPurifier
+	 */
+	protected $purifier = null;
 
 	/**
 	 * A value before limit words and characters
@@ -135,6 +161,37 @@ abstract class Component {
 		return $value;
 	}
 
+	protected function purify($value)
+	{
+		if ($config = $this->purify)
+		{
+			$this->purifier = $this->purifier ? : IoC::resolve('Purifier', $config);
+			$value = $this->purifier->purify($value);
+		}
+
+		return $value;
+	}
+
+	protected function escape($value)
+	{
+		if ($this->escape and !$this->purify)
+		{
+			$value = HTML::entities($value);
+		}
+
+		return $value;
+	}
+
+	protected function nl2br($value)
+	{
+		if ($this->nl2br and !$this->purify)
+		{
+			$value = nl2br($value);
+		}
+
+		return $value;
+	}
+
 	/**
 	 * Returns a value of a component
 	 *
@@ -146,6 +203,7 @@ abstract class Component {
 		{
 			return $this->normalizeAttributeValue($this->value);
 		}
+
 		$value = $this->row;
 
 		$tokens = explode('.', $this->name);
@@ -168,8 +226,13 @@ abstract class Component {
 		$this->rawValue = $value;
 		$value = !is_null($limit = $this->limitCharacters) ? Str::limitCharacters($value, $limit) : $value;
 		$value = !is_null($limit = $this->limitWords) ? Str::limitWords($value, $limit) : $value;
+		$value = ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
 
-		return ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
+		$value = $this->purify($value);
+		$value = $this->escape($value);
+		$value = $this->nl2br($value);
+
+		return $value;
 	}
 
 	public function setValue($value)

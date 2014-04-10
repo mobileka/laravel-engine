@@ -10,6 +10,7 @@ class Boolean extends BaseComponent {
 		{
 			return 'Да';
 		}
+
 		return 'Нет';
 	}
 }

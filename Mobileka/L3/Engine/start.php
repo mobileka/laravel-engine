@@ -10,6 +10,15 @@ IoC::register('i18n', function($injection = null)
 	return new \Mobileka\L3\Engine\i18n($injection);
 });
 
+IoC::register('Purifier', function($config = null) {
+	$config = (get_class($config) === 'HTMLPurifier_Config') 
+		? $config
+		: HTMLPurifier_Config::createDefault()
+	;
+
+	return new HTMLPurifier($config);
+});
+
 //Laravel.Base
 \Laravel\Autoloader::$aliases['BaseClass'] = 'Mobileka\L3\Engine\Laravel\Base\BClass';
 \Laravel\Autoloader::$aliases['Controller'] = 'Mobileka\L3\Engine\Laravel\Base\Controller';

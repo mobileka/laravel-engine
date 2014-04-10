@@ -1,6 +1,6 @@
 <?php try { ?>
 
-<div id="{{ $component->name }}" data-id="{{ $component->row->id }}" class="span12">
+<div id="{{ $component->name }}" data-id="{{{ $component->row->id }}}" class="span12">
 	{{ Form::select($component->name, $component->options, Input::old($component->name, $component->value()), $component->attributes) }}
 </div>
 
@@ -8,7 +8,7 @@
 	$(function(){
 		var masterKey = $('#{{ $component->name }}').data('id');
 
-		$(".{{ $component->requiredAttributes['class'] }}").select2({})
+		$("#{{ $component->name }} select.{{ $component->requiredAttributes['class'] }}").select2({})
 			.on('change', function(result)
 			{
 				if (typeof result.removed === "undefined")
@@ -21,9 +21,7 @@
 							'{{ $component->foreignKey() }}' : result.added.id,
 						},
 						success: function(data)
-						{
-							console.warn(data);
-						}
+						{}
 					});
 				}
 				else
@@ -37,9 +35,7 @@
 							'{{ $component->foreignKey() }}' : result.removed.id,
 						},
 						success: function(data)
-						{
-							console.warn(data);
-						}
+						{}
 					});
 				}
 			});

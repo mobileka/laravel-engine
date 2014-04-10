@@ -1,0 +1,1 @@
+<meta name="{{ Session::csrf_token }}" content="{{ token() }}">

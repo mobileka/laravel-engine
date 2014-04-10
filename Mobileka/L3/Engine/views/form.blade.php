@@ -1,5 +1,5 @@
 {{ Form::open_for_files($crud->actionUrl, $crud->method, $crud->attributes) }}
-
+{{ Form::token() }}
 <div class="box box-bordered">
 	@foreach ($components as $fieldName => $component)
 		@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))

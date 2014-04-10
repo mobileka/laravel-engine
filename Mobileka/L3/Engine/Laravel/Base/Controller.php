@@ -9,6 +9,7 @@ use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Date,
 	Mobileka\L3\Engine\Laravel\Lang,
 	Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Session,
 	Mobileka\L3\Engine\Laravel\Acl,
 	Mobileka\L3\Engine\Laravel\Base\View,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
@@ -100,6 +101,8 @@ class Controller extends \Laravel\Routing\Controller {
 	 */
 	public function __construct()
 	{
+		$this->ignoreField(Session::csrf_token);
+
 		if (!is_null($this->layout))
 		{
 			$this->layout = $this->layout();

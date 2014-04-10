@@ -14,6 +14,8 @@ class RestfulRouter {
 		'destroy'
 	);
 
+	public $csrf = true;
+
 	public static function make()
 	{
 		return new static;
@@ -85,9 +87,7 @@ class RestfulRouter {
 	protected function add($bundle, $controller, $uri, $as, $uses)
 	{
 		\Route::get(
-			array(
-				$uri . '/add',
-			),
+			$uri . '/add',
 			array(
 				'as' => $as . __FUNCTION__,
 				'uses' => $uses . __FUNCTION__
@@ -110,10 +110,7 @@ class RestfulRouter {
 	{
 		\Route::post(
 			$uri,
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
-			)
+			$this->generateAction($as, __FUNCTION__, $uses)
 		);
 	}
 
@@ -121,10 +118,7 @@ class RestfulRouter {
 	{
 		\Route::put(
 			$uri . '/(:num)',
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
-			)
+			$this->generateAction($as, __FUNCTION__, $uses)
 		);
 	}
 
@@ -182,10 +176,7 @@ class RestfulRouter {
 	{
 		\Route::post(
 			$uri . '/(:num)/uploads',
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
-			)
+			$this->generateAction($as, __FUNCTION__, $uses)
 		);
 	}
 
@@ -203,6 +194,21 @@ class RestfulRouter {
 				'uses' => $uses . __FUNCTION__
 			)
 		);
+	}
+
+	protected function generateAction($alias, $action, $uses)
+	{
+		$result = array(
+			'as' => $alias . $action,
+			'uses' => $uses . $action
+		);
+
+		if ($this->csrf)
+		{
+			$result['before'] = 'csrf';
+		}
+
+		return $result;
 	}
 
 	public function __call($method, $args)

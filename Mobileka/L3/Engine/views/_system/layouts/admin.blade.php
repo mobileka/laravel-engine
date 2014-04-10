@@ -8,25 +8,26 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<title>{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }}</title>
+	{{ csrf_meta_tag() }}
 
   {{ Asset::container('engine_assets')->styles() }}
   @yield('styles')
-  <script>
-    var BASE = "{{ URL::base() }}";
-    URL_KEEPER = {
-      upload_url : '{{ URL::to_upload(Controller::$route) }}',
-      admin_linked_list: '{{ URL::to_existing_route("admin_linked_list") }}'
-    };
-    var app = {
-      URL_BASE: '{{ URL::base() }}',
-      jcropParams: {}
-    };
+	<script>
+		var BASE = "{{ URL::base() }}";
+		URL_KEEPER = {
+		  upload_url : '{{ URL::to_upload(Controller::$route) }}',
+		  admin_linked_list: '{{ URL::to_existing_route("admin_linked_list") }}'
+		};
+		var app = {
+		  URL_BASE: '{{ URL::base() }}',
+		  jcropParams: {}
+		};
 
-    @yield('script_vars')
-  </script>
-  {{ Asset::container('engine_assets')->scripts() }}
-  @yield('plugins')
-  @yield('scripts')
+		@yield('script_vars')
+	</script>
+	{{ Asset::container('engine_assets')->scripts() }}
+	@yield('plugins')
+	@yield('scripts')
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico" />

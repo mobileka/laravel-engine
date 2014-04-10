@@ -6,7 +6,7 @@ try {
 ?>
 
 <a href="{{ URL::to_route($route, $component->row->id) }}">
-	<img src="{{ $component->value() }}" alt="{{ $component->row->name }}">
+	<img src="{{ $component->value() }}" alt="{{{ $component->row->name }}}">
 </a>
 
 <?php } catch (\Exception $e) { exit($e->getMessage()); } ?>

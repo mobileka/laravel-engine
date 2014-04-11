@@ -50,7 +50,7 @@
 				</ul>
 				<div class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-toggle-username" data-toggle="dropdown">
-						{{ user()->fullname }}
+						{{{ user()->fullname }}}
 					</a>
 
 					<ul class="dropdown-menu pull-right">

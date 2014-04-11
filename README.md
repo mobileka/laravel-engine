@@ -1,5 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-# Table of contents
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents** 
 
 - [Introduction](#introduction)
 - [Installation quest](#installation-quest)
@@ -16,6 +17,7 @@
 	- [Multiple image uploading](#multiple-image-uploading)
 	- [Advanced component configuration](#advanced-component-configuration)
 	- [How does this work?](#how-does-this-work)
+- [CSRF protection](#csrf-protection)
 - [Admin sidebar configuration](#admin-sidebar-configuration)
 - [Generating bundles with cli](#generating-bundles-with-cli)
 	- [Generating bundles with admin interface](#generating-bundles-with-admin-interface)
@@ -428,12 +430,12 @@ In order to make this work, you need to perform these steps:
 1. `php artisan bundle:publish`
 2. Add this JavaScript file to your layouts: `{{ HTML::script('bundles/engine/csrf.js') }}`
 3. Add a metatag to your layouts in `<head>` section: `{{ csrf_meta_tag() }}` 
-4. Add `csrf` before fileter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'))`
+4. Add `csrf` before filter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'));`
 
 If you are generating routes with `RestfulRouter` class, every `POST` and `PUT` request is being protected automatically.
-If you want to cancel this, call a `csrf()` method with `false` parameter before `resource()` method of the `RestfulRouter`:
+If you want to cancel this, call `csrf()` method with parameter `false` before `resource()` method of the `RestfulRouter`:
 
-`RestfulRouter::make()->csrf(false)->resource('bundle' => 'somebundle', 'module' => 'admin')`
+`RestfulRouter::make()->csrf(false)->resource('bundle' => 'somebundle', 'module' => 'admin');`
 
 > Please note that CSRF protection is enabled for the administration panel by default
 

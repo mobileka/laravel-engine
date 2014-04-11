@@ -419,6 +419,24 @@ Ok, it is time to go and check this in administration panel.
 ## How does this work?
 *Write me*
 
+# CSRF protection
+
+Laravel engine includes CSRF protection for simple forms as well as for ajax calls.
+
+In order to make this work, you need to perform these steps:
+
+1. `php artisan bundle:publish`
+2. Add this JavaScript file to your layouts: `{{ HTML::script('bundles/engine/csrf.js') }}`
+3. Add a metatag to your layouts in `<head>` section: `{{ csrf_meta_tag() }}` 
+4. Add `csrf` before fileter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'))`
+
+If you are generating routes with `RestfulRouter` class, every `POST` and `PUT` request is being protected automatically.
+If you want to cancel this, call a `csrf()` method with `false` parameter before `resource()` method of the `RestfulRouter`:
+
+`RestfulRouter::make()->csrf(false)->resource('bundle' => 'somebundle', 'module' => 'admin')`
+
+> Please note that CSRF protection is enabled for the administration panel by default
+
 # Admin sidebar configuration
 
 It's easy to configure the sidebar menu in administration interface.

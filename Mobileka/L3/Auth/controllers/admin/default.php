@@ -18,8 +18,7 @@ class Auth_Admin_Default_Controller extends BackendController {
 	{
 		if (uid())
 		{
-			return Redirect::to_route('admin_home')
-				->notify('Извините, но у Вас нет доступа к этому модулю', 'error');
+			return Redirect::to_route('admin_home');
 		}
 
 		$this->layout->renderView();

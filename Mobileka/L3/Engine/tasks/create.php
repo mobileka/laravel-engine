@@ -28,6 +28,11 @@ function s($string)
 	return Str::singular($string);
 }
 
+function str_replace_last($search, $replace, $subject)
+{
+    return preg_replace('~(.*)' . preg_quote($search, '~') . '~', '$1' . $replace, $subject, 1);
+}
+
 require Bundle::path('engine') . 'tasks/g.php';
 
 class Engine_Create_Task extends G_Task {
@@ -208,7 +213,8 @@ return array(
 	protected $model =
 '<?php namespace #BUNDLE#\Models;
 
-use Mobileka\L3\Engine\Laravel\Base\Model;
+use Mobileka\L3\Engine\Laravel\Base\Model,
+	Laravel\IoC;
 
 class #MODEL# extends Model {
 
@@ -564,7 +570,7 @@ class #Names#_Add_#Names#_Foreign {
 			}
 		}
 
-		return $result;
+		return str_replace_last(",\n", ',', $result);
 	}
 
 	protected function prepareModelRelationsBlock()
@@ -583,8 +589,8 @@ class #Names#_Add_#Names#_Foreign {
 				$result .=
 "\tpublic function $rel()
 \t{
-\t\treturn ".'$this'."->belongs_to('$bundle\\Models\\$model');
-\t}\n\n";
+\t\treturn ".'$this'."->belongs_to(IoC::resolve('{$model}Model'));
+\t}\n";
 			}
 		}
 

@@ -435,7 +435,7 @@ In order to make this work, you need to perform these steps:
 If you are generating routes with `RestfulRouter` class, every `POST` and `PUT` request is being protected automatically.
 If you want to cancel this, call `csrf()` method with parameter `false` before `resource()` method of the `RestfulRouter`:
 
-`RestfulRouter::make()->csrf(false)->resource('bundle' => 'somebundle', 'module' => 'admin');`
+`RestfulRouter::make()->csrf(false)->resource(array('bundle' => 'somebundle', 'module' => 'admin'));`
 
 > Please note that CSRF protection is enabled for the administration panel by default
 

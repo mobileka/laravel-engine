@@ -56,6 +56,11 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	protected static $polymorphicRelations = array();
 	public static $imageFields = array();
 
+	/**
+	 *
+	 */
+	public static $isNestedModel = false;
+
 	public static function getTableName()
 	{
 		return static::$table ?: strtolower(Str::plural(class_basename(get_called_class())));

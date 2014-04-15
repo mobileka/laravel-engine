@@ -401,6 +401,11 @@ class Controller extends \Laravel\Routing\Controller {
 		Event::fire('Model saved: ' . Router::requestId(Controller::$route, true), array($this->model, $oldModel));
 		Event::fire('bind-uploads', array($this->model->id, Input::get('upload_token', null)));
 
+		if (Misc::propertyValue($this->model, 'isNestedModel'))
+		{
+			Event::fire('Nested model saved', array($this->model, $oldModel));
+		}
+
 		return Redirect::to($successUrl)->notify($message, 'success');
 	}
 

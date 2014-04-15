@@ -79,8 +79,9 @@ return array(
 
 Some of Laravel Engine components use composer packages, so you need to install it and integrate with Laravel 3:
 
-- Install composer: `curl -sS https://getcomposer.org/installer | php`
-- Add the following code to your `app/start.php` file:
+-- Install composer: `curl -sS https://getcomposer.org/installer | php`
+
+-- Add the following code to your `app/start.php` file:
 
 ```
 if (!File::exists('vendor/autoload.php'))
@@ -90,7 +91,7 @@ if (!File::exists('vendor/autoload.php'))
 
 require 'vendor/autoload.php';
 ```
-- Create `composer.json` file in the root of your project and add these lines to it:
+-- Create `composer.json` file in the root of your project and add these lines to it:
 
 ```
 {
@@ -100,9 +101,11 @@ require 'vendor/autoload.php';
 	}
 }
 ```
-- Run `php composer.phar update`
+-- Run `php composer.phar update`
 
 > If you get the "allowed memory size exhausted" error try adding `-d memory_limit="1024M"` after `php` in the above command
+
+-- Add `composer.lock` and `vendor/*` to `.gitignore` in the root of your application
 
 Ok, lets continue. It is time to run migrations:
 
@@ -111,7 +114,7 @@ $ php artisan migrate:install
 $ php artisan migrate
 ```
 
-... and add a route to handle an access to an administration interface:
+... and add a route to handle the access to the administration interface:
 
 ```
 Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));

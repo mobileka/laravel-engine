@@ -184,7 +184,7 @@ class ImageModel extends Model {
 		$originalName = $crop ? 'crop_' . $filename : $filename;
 		$original = imagePath($originalName, $type, $created_at);
 
-		if (!File::exists($original))
+		if (!is_file($original))
 		{
 			return dummyThumbnail($alias);
 		}
@@ -193,7 +193,7 @@ class ImageModel extends Model {
 		$thumbnail = imagePath($name, $type, $created_at);
 		$thumbUrl = image($name, $type, $created_at);
 
-		if (!File::exists($thumbnail) and File::exists($original))
+		if (!is_file($thumbnail) and is_file($original))
 		{
 			\Image::make($original)->
 				resize($dimensions[0], $dimensions[1], true, false)->

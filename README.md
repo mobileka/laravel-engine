@@ -77,7 +77,34 @@ return array(
 );
 ```
 
-Now run migrations:
+Some of Laravel Engine components use composer packages, so you need to install it and integrate with Laravel 3:
+
+- Install composer: `curl -sS https://getcomposer.org/installer | php`
+- Add the following code to your `app/start.php` file:
+
+```
+if (!File::exists('vendor/autoload.php'))
+{
+	throw new Exception("You need to run composer update to complete installation of this project.");
+}
+
+require 'vendor/autoload.php';
+```
+- Create `composer.json` file in the root of your project and add these lines to it:
+
+```
+{
+	"require" : {
+		"nesbot/Carbon": "*",
+		"ezyang/htmlpurifier": "dev-master"
+	}
+}
+```
+- Run `php composer.phar update`
+
+> If you get the "allowed memory size exhausted" error try adding `-d memory_limit="1024M"` after `php` in the above command
+
+Ok, lets continue. It is time to run migrations:
 
 ```
 $ php artisan migrate:install
@@ -140,7 +167,14 @@ by a webserver and specify it in `paths.php`:
 $paths['uploads'] = 'public/uploads';
 ```
 
-And you probably will use the `ImageColumn` component, so create a `application/config/image.php` file with the following contents:
+Don't forget to create a `.gitignore` file in this folder with the following contents:
+
+```
+*
+!.gitignore
+```
+
+As you are probably going to use the `ImageColumn` component, create a `application/config/image.php` file and add these lines to it:
 
 ```
 <?php
@@ -153,7 +187,7 @@ return array(
 );
 ```
 
-Now you finally finished the freaking hard installation process and you should be able to go to `http://sitename.dev/admin` to see an authorization form. Just in case you want to log in, these are the default credentials:
+And you have finally finished the installation process. Now you should be able to go to `http://sitename.dev/admin` to see an authorization form. Just in case you want to log in, these are the default credentials:
 
 ```
 email: admin@example.com
@@ -279,18 +313,7 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
-1. Install composer: `curl -sS https://getcomposer.org/installer | php`
-2. Run: `php composer.phar require intervention/image dev-master`
-3. Add the following code to your `app/start.php` file:
-
-```
-if (!File::exists('vendor/autoload.php'))
-{
-	throw new Exception("You need to run composer update to complete installation of this project.");
-}
-
-require 'vendor/autoload.php';
-```
+Run: `php composer.phar require intervention/image dev-master`
 
 If you want to make image uploading more efficient, you can also install "intervention/imagecache":
 `php composer.phar require intervention/imagecache dev-master`
@@ -569,4 +592,3 @@ artisan engine::create:bundle app.Users username:string:required role_id:unsigne
 # Authors
 
 # Licence
-ch

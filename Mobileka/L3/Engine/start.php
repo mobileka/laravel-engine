@@ -1,7 +1,7 @@
 <?php
 
 \Autoloader::namespaces(array(
-  'Mobileka\L3\Engine' => __DIR__
+	'Mobileka\L3\Engine' => __DIR__
 ));
 
 IoC::register('i18n', function($injection = null)
@@ -11,7 +11,7 @@ IoC::register('i18n', function($injection = null)
 });
 
 IoC::register('Purifier', function($config = null) {
-	$config = (get_class($config) === 'HTMLPurifier_Config') 
+	$config = (get_class($config) === 'HTMLPurifier_Config')
 		? $config
 		: HTMLPurifier_Config::createDefault()
 	;
@@ -119,6 +119,6 @@ Route::filter('csrf', function()
 
 	if (Session::token() != $token)
 	{
-		return Response::error('500');
+		return Response::make('<h3 style="color:#d00">Invalid authenticity token</h3>', 403);
 	}
 });

@@ -14,8 +14,8 @@
 @yield('styles')
 <script>
 	var BASE = "{{ URL::base() }}";
-		URL_KEEPER = {
-		};
+	URL_KEEPER = {
+	};
 
 	@yield('script_vars')
 </script>
@@ -57,7 +57,7 @@
 	->add('admin',                            'bundles/engine/admin/css/admin.css')
 
 	->add('bootstrap',                        'bundles/engine/admin/js/bootstrap.min.js')
-	->add('csrf',                   	      'bundles/engine/csrf.js')
+	->add('csrf',                             'bundles/engine/csrf.js')
 	->add('alertify',                         'bundles/engine/bower_components/alertify/alertify.min.js')
 	->add('nicescroll',                       'bundles/engine/admin/js/plugins/nicescroll/jquery.nicescroll.min.js')
 	->add('imagesloaded',                     'bundles/engine/admin/js/plugins/imagesLoaded/jquery.imagesloaded.min.js')

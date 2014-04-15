@@ -6,9 +6,16 @@
 		@foreach ($sections as $section)
 			<li class="nav-header">{{ Arr::getItem($section, 'label', ___('default', 'no label')) }}</li>
 			@foreach (Arr::getItem($section, 'items', array()) as $item)
-				<?php $class = (\Router::isCurrentRoute($item['route'])) ? ' class="active"' : ''; ?>
-				<li{{ $class }}>
-					<a href="{{ route($item['route']).Arr::getItem($item, 'suffix', '') }}"><i class="{{ $item['icon'] }}"></i> {{ $item['label'] }}</a>
+<?php
+$query = Arr::getItem($item, 'query', '');
+$active = \Router::isCurrentRoute($item['route'])
+	&& ($query == \Request::foundation()->getQueryString());
+if ($query) {
+	$query = "?$query";
+}
+?>
+				<li class="{{ $active ? 'active' : '' }}">
+					<a href="{{ route($item['route']).$query }}"><i class="{{ $item['icon'] }}"></i> {{ $item['label'] }}</a>
 				</li>
 			@endforeach
 		@endforeach

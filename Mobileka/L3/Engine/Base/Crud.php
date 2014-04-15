@@ -61,6 +61,13 @@ abstract class Crud {
 	protected $languageFile = 'default';
 
 	/**
+ 	 * Custom data passed to view when rendering the Crud. Note that the following
+ 	 * array keys are reserved: 'crud', 'components'.
+ 	 * @var array
+ 	 */
+	protected $viewData = array();
+
+	/**
 	 * Filters and sorts components
 	 *
 	 * @param array $components
@@ -84,13 +91,11 @@ abstract class Crud {
 	 */
 	public function render()
 	{
-		return View::make(
-			$this->template,
-			array(
-				'crud' => $this,
-				'components' => $this->components
-			)
-		);
+		$viewData = array(
+			'crud' => $this,
+			'components' => $this->components
+		) + $this->viewData;
+		return View::make($this->template, $viewData);
 	}
 
 	/**

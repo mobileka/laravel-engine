@@ -119,7 +119,7 @@ Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@
 
 > Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
 
-The Engine bundle contains a shitload of assets which must be published:
+The Engine contains a shitload of assets which must be published:
 
 ```
 $ php artisan bundle:publish
@@ -174,7 +174,7 @@ Don't forget to create a `.gitignore` file in this folder with the following con
 !.gitignore
 ```
 
-As you are probably going to use the `ImageColumn` component, create a `application/config/image.php` file and add these lines to it:
+As you are probably going to use the `ImageColumn` component, create `application/config/image.php` file and add these lines to it:
 
 ```
 <?php
@@ -313,9 +313,10 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
-Run: `php composer.phar require intervention/image dev-master`
+`php composer.phar require intervention/image dev-master`
 
 If you want to make image uploading more efficient, you can also install "intervention/imagecache":
+
 `php composer.phar require intervention/imagecache dev-master`
 
 ## Usage

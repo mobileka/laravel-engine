@@ -26,6 +26,11 @@ class Date extends BaseComponent {
 			$value = $value->{$token};
 		}
 
+		if ($value == '0000-00-00 00:00:00')
+		{
+			return Lang::findLine($this->languageFile, 'not_specified');
+		}
+
 		if (is_array($this->format))
 		{
 			//ыы

@@ -217,6 +217,7 @@ $(document).ready(function() {
 			var $el = $(this);
 			var search = ($el.attr("data-nosearch") === "true") ? true : false,
 			opt = {
+				disable_search_threshold: 10,
 				placeholder_text_multiple: 'Введите или выберите значения',
 				no_results_text: "Ничего не найдено"
 			};

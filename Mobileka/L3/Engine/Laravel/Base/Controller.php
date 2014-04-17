@@ -292,6 +292,26 @@ class Controller extends \Laravel\Routing\Controller {
 		return $this->_destroy();
 	}
 
+	public function get_download($id, $field)
+	{
+		$file = $this->model->find($id);
+
+		if (!$file)
+		{
+			return Response::error('404');
+		}
+
+		if (isset($file->attributes['downloads']))
+		{
+			$file->downloads += 1;
+			$file->save();
+		}
+
+		$filename = \Str::transliterate($file->name) . '.' . File::extension($file->$field);
+
+		return Response::download($file->getDownloadPath($field), $filename);
+	}
+
 	/**
 	 * Delete a single model
 	 *

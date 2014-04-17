@@ -186,12 +186,21 @@ class RestfulRouter {
 	protected function destroy_file($bundle, $controller, $uri, $as, $uses)
 	{
 		\Route::delete(
-			array(
-				$uri . '/(:num)/uploads',
-			),
+			$uri . '/(:num)/uploads',
 			array(
 				'as' => $as . __FUNCTION__,
 				'uses' => $uses . __FUNCTION__
+			)
+		);
+	}
+
+	protected function download($bundle, $controller, $uri, $as, $uses)
+	{
+		\Route::get(
+			$uri . '/(:num)/download/(:any)',
+			array(
+				'as' => $as . __FUNCTION__,
+				'uses' => $uses . __FUNCTION__,
 			)
 		);
 	}
@@ -235,6 +244,11 @@ class RestfulRouter {
 				$this->actions[] = 'upload_file';
 				$this->actions[] = 'destroy_file';
 				$this->actions[] = 'view_file';
+			}
+
+			if (Arr::haveIntersections($args, array('download')))
+			{
+				$this->actions[] = 'download';
 			}
 
 			return $this;

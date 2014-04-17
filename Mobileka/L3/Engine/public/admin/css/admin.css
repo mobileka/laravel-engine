@@ -212,3 +212,16 @@ input.no-mb {
 .thumbnail > img.image-edit-thumbnail {
 	max-width: 500px;
 }
+
+.file-edit-thumbnail {
+	background: #f6f6f6;
+	color: #939393;
+	font-size: 18px;
+	font-weight: bold;
+	height: 100%;
+	line-height: 80px;
+	padding: 0 20px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+}

@@ -57,6 +57,20 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public static $imageFields = array();
 
 	/**
+	 * List of form fields that will have uploadable files (formFile component).
+	 * These should be the same as the fields in the model's DB table, because
+	 * the corresponding file names will be stored in them.
+	 *
+	 * For example: array('main_file', 'secondary_file')
+	 */
+	public static $fileFields = array();
+
+	/**
+	 * Allowed extensions of files.
+	 */
+	public static $allowedFileTypes = array('png', 'jpg', 'jpeg', 'gif');
+
+	/**
 	 *
 	 */
 	public static $isNestedModel = false;
@@ -212,6 +226,8 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			/* POLYMORPH */
 			$this->savePolymorphicData($polymorphicData);
 
+			$this->uploadFiles();
+
 			if (!$this->beforeLocalizedSave())
 			{
 				throw new \PDOException('beforeLocalizedSave() returned false', 12);
@@ -346,7 +362,12 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		{
 			$relationObject = $this->$relation();
 
-			$this->$relation()->delete();
+			$table = \Misc::propertyValue($this->$relation(), 'joining');
+
+			\DB::table($table)
+				->where_item_id($this->id)
+				->where_item_type($relationParams['polymorphic_value'])
+				->delete();
 
 			if (isset($polymorphicData[$relation]) and $polymorphicData[$relation])
 			{
@@ -362,6 +383,32 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 			}
 		}
+	}
+
+	protected function uploadFiles()
+	{
+		foreach (static::$fileFields as $field)
+		{
+			$file = Input::file($field);
+
+			if ($file['error'] != 4)
+			{
+				$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
+				$path = path('storage') . 'uploads/';
+
+				$this->$field = \Mobileka\L3\Engine\Laravel\File::upload($file, $type, null, static::$allowedFileTypes, $path);
+			}
+		}
+
+		$this->save();
+	}
+
+	public function getDownloadPath($field)
+	{
+		$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
+		$path = path('storage') . 'uploads/docs/' . $type . '/' . $this->$field;
+
+		return $path;
 	}
 
 

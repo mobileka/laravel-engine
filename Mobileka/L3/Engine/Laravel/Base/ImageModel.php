@@ -102,6 +102,8 @@ class ImageModel extends Model {
 					$this->save();
 				}
 
+				$this->uploadFiles();
+
 				$this->savePolymorphicData($polymorphicData);
 
 				if (!$this->beforeLocalizedSave())

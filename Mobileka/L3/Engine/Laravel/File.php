@@ -2,13 +2,13 @@
 
 class File extends \Laravel\File {
 
-	public static function upload($file, $type = null, $directory = null, $allowedFileTypes = array())
+	public static function upload($file, $type = null, $directory = null, $allowedFileTypes = array(), $path = null)
 	{
 		$allowedFileTypes = $allowedFileTypes ? : Input::get('image.allowedFileTypes', array('png', 'jpg', 'jpeg', 'gif'));
 		$directory = static::getDirectoryPath($file, $directory);
 		$extension = static::getFileExtension($file);
 		$filename = static::getFilename($file, $extension);
-		$path = static::getFilePath($file, $directory, $type);
+		$path = static::getFilePath($file, $directory, $type, $path);
 
 		if (!File::is($allowedFileTypes, $file['tmp_name']))
 		{
@@ -72,10 +72,10 @@ class File extends \Laravel\File {
 		;
 	}
 
-	public static function getFilePath($file, $directory, $type = null)
+	public static function getFilePath($file, $directory, $type = null, $path = null)
 	{
 		$directory = $directory ? : static::getDirectoryPath($file, $directory);
-		$path = path('uploads') . $directory;
+		$path = ($path ? : path('uploads')) . $directory;
 
 		//Если указана папка, в которую дополнительно необходимо вложить файл, то запишем ее в путь
 		return $path .= $type ? '/' . $type . '/' : '/';

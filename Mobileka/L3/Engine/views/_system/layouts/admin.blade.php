@@ -7,7 +7,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-	<title>{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }}</title>
+	<title>{{ configValue('application.project_name', 'application.project_name') }}</title>
 	{{ csrf_meta_tag() }}
 
   {{ Asset::container('engine_assets')->styles() }}
@@ -40,7 +40,7 @@
 	<div id="navigation">
 		<div class="container-fluid">
 			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
-			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ configValue('application.project_name', 'application.project_name') . ' | ' . $title }} | Панель администратора</a>
+			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ configValue('application.project_name', 'application.project_name') }}</a>
 
 			<div class="user">
 				<ul class="icon-nav">

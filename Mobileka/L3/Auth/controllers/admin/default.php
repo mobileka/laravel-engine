@@ -18,7 +18,7 @@ class Auth_Admin_Default_Controller extends BackendController {
 	{
 		if (uid())
 		{
-			return Redirect::to_route('auth_admin_default_login');
+			return Redirect::to_route('home');
 		}
 
 		$this->layout->renderView();

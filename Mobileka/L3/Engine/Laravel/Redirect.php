@@ -20,11 +20,12 @@ class Redirect extends \Laravel\Redirect {
 	 *
 	 * @param string $message - a messageto be shown to a user
 	 * @param string $type - notification type
+	 * @param string $id - identifier
 	 * @return \Redirect
 	 */
-	public function notify($message, $type = 'info')
+	public function notify($message, $type = 'info', $id = '')
 	{
-		\Notification::$type($message);
+		\Notification::$type($message, $id);
 		return $this;
 	}
 

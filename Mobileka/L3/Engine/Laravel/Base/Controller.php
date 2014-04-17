@@ -426,7 +426,7 @@ class Controller extends \Laravel\Routing\Controller {
 			Event::fire('Nested model saved', array($this->model, $oldModel));
 		}
 
-		return Redirect::to($successUrl)->notify($message, 'success');
+		return Redirect::to($successUrl)->notify($message, 'success', Arr::getItem($options, 'notification_id', ''));
 	}
 
 	/**

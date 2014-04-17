@@ -1,8 +1,8 @@
 <?php
 
-function notifications($view = 'engine::_system.notifications')
+function notifications($view = 'engine::_system.notifications', $id = '')
 {
-	return \Notification::printAll($view);
+	return \Notification::printAll($view, $id);
 }
 
 function money($number)

@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+
 class Notification {
 
 	/**
@@ -13,15 +15,17 @@ class Notification {
 	 * Prints all messages
 	 *
 	 * @param string $view - a view that will output error messages
+	 * @param string $id - notification identifier
 	 * @return \View
 	 */
-	public static function printAll($view = 'engine::_system.notifications')
+	public static function printAll($view = 'engine::_system.notifications', $id = '')
 	{
 		return \View::make(
 			$view,
 			array(
 				'notifications' => \Session::get('notifications', array()),
-				'permittedMessageTypes' => static::$permittedMessageTypes
+				'permittedMessageTypes' => static::$permittedMessageTypes,
+				'id' => $id
 			)
 		);
 	}
@@ -38,7 +42,7 @@ class Notification {
 	{
 		if (in_array($name, static::$permittedMessageTypes))
 		{
-			return \Session::flash(static::$namespace . $name, $arguments[0]);
+			return \Session::flash(static::$namespace . $name . Arr::getItem($arguments, 1, ''), $arguments[0]);
 		}
 
 		throw new \Exception("Trying to call an undefined static method \"$name\" of a " . __CLASS__ . ' class');

@@ -24,6 +24,7 @@ class RestfulRouter {
 	public function resource(array $options)
 	{
 		$submodule = Arr::getItem($options, 'submodule', '');
+		$uriPrefix = $submodule == 'admin' ? admin_uri() : $submodule;
 		$bundle = Arr::getItem($options, 'bundle', '');
 		$controller = Arr::getItem($options, 'controller', 'default');
 
@@ -43,9 +44,9 @@ class RestfulRouter {
 			$uri = ($uri) ? $bundle . '/' . $uri : $bundle;
 		}
 
-		if ($submodule)
+		if ($uriPrefix)
 		{
-			$uri = ($uri) ? $submodule . '/' . $uri : $submodule;
+			$uri = ($uri) ? $uriPrefix . '/' . $uri : $uriPrefix;
 		}
 
 		foreach ($this->actions as $action)

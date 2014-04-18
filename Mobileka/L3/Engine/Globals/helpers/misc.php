@@ -1,5 +1,10 @@
 <?php
 
+function admin_uri($append = '')
+{
+	return Config::get('application.admin_uri', 'admin') . $append;
+}
+
 function notifications($view = 'engine::_system.notifications', $id = '')
 {
 	return \Notification::printAll($view, $id);

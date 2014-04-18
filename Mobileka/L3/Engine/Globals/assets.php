@@ -102,7 +102,7 @@
 	->add('validation-additional',            'bundles/engine/admin/js/plugins/validation/additional-methods.min.js')
 	->add('touch-punch',                      'bundles/engine/admin/js/plugins/touch-punch/jquery.touch-punch.min.js')
 
-	/* @todo Добавить проверку языка и подключаbundles/engine/ть следующий файл только когда выбран русский язык */
+	/* @todo Добавить проверку языка и подключать следующий файл только когда выбран русский язык */
 
 	->add('validation-ru',                    'bundles/engine/admin/js/plugins/validation/messages_ru.js')
 	->add('quicksearch',                      'bundles/engine/admin/js/plugins/quicksearch/jquery.quicksearch.js')

@@ -71,7 +71,7 @@ You need to register these bundles in the `application/bundles.php`:
 
 ```
 return array(
-	'engine' => array('location' => 'Mobileka/L3/Engine', 'auto' => true),
+	'engine' => array('location' => 'Mobileka/L3/Engine'),
 	'auth' => array('location' => 'Mobileka/L3/Auth', 'auto' => true),
 	'users' => array('location' => 'Mobileka/L3/Users', 'auto' => true),
 );
@@ -114,10 +114,23 @@ $ php artisan migrate:install
 $ php artisan migrate
 ```
 
+... add the following line on top of your `application/routes.php` file:
+
+```
+Bundle::start('engine');
+```
+
 ... and add a route to handle the access to the administration interface:
 
 ```
-Route::get('admin', array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
+Route::get(admin_uri(), array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
+```
+
+The `admin_uri()` helper allows you to easily change the URI which handles access to admin interface (`admin` is the default one).
+To change this URI, you need to add `admin_uri` parameter to the `application/config/application.php` configuration file:
+
+```
+'admin_uri' => 'rulethesite'
 ```
 
 > Please note that the Engine requires every single route to have an alias. This means that other routes (including the default Laravel route) defined before integrating the Engine and not having an alias will break the application. In order to fix this, you either need to remove these routes or add an alias for all of them. We will discuss Laravel Engine routing more closely in an appropriate section.
@@ -190,7 +203,7 @@ return array(
 );
 ```
 
-And you have finally finished the installation process. Now you should be able to go to `http://sitename.dev/admin` to see an authorization form. Just in case you want to log in, these are the default credentials:
+And you have finally finished the installation process! Now you should be able to go to `http://sitename.dev/admin` (or `http://sitename.dev/whatever_you_have_in_application_config_under_admin_uri_param`) to see the authorization form. Just in case you want to log in, these are the default credentials:
 
 ```
 email: admin@example.com
@@ -207,6 +220,7 @@ password: 123456
 	* saveData()
 
 * CRUD
+CRUD is the fundomental component of the Engine. 
 	* Component configuration
 	* Language configuration
 	* Component value translation

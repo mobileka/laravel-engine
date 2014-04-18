@@ -49,6 +49,7 @@
 	->add('select2',                          'bundles/engine/admin/css/plugins/select2/select2.css')
 	->add('icheck',                           'bundles/engine/admin/css/plugins/icheck/all.css')
 	->add('jcrop',                            'bundles/engine/admin/css/plugins/jcrop/jquery.Jcrop.css')
+	->add('dynatree',                         'bundles/engine/admin/css/plugins/dynatree/ui.dynatree.css')
 	->add('alertify_core',                    'bundles/engine/bower_components/alertify/themes/alertify.core.css')
 	->add('alertify_theme',                   'bundles/engine/bower_components/alertify/themes/alertify.bootstrap.css')
 
@@ -101,6 +102,7 @@
 	->add('validation',                       'bundles/engine/admin/js/plugins/validation/jquery.validate.min.js')
 	->add('validation-additional',            'bundles/engine/admin/js/plugins/validation/additional-methods.min.js')
 	->add('touch-punch',                      'bundles/engine/admin/js/plugins/touch-punch/jquery.touch-punch.min.js')
+	->add('dynatree',                         'bundles/engine/admin/js/plugins/dynatree/min/jquery.dynatree.min.js')
 
 	/* @todo Добавить проверку языка и подключать следующий файл только когда выбран русский язык */
 
@@ -118,5 +120,8 @@
 
 	//filter_toggle
 	->add('filter_toggle', 'bundles/engine/admin/js/filter_toggle.js')
+
+	// App specific assets
+	->add('asi-admin.js', 'js/admin/scripts.js')
 
 ;

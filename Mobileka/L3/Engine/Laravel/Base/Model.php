@@ -71,7 +71,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public static $allowedFileTypes = array('png', 'jpg', 'jpeg', 'gif');
 
 	/**
-	 *
+	 *  Must be set to true if you require Nested Sets functionality
 	 */
 	public static $isNestedModel = false;
 

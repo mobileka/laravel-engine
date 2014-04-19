@@ -11,12 +11,12 @@
 - [CRUD](#crud)
 - [Crud components](#crud-components)
 - [Image uploading](#image-uploading)
-	- [Getting started](#getting-started)
-	- [Usage](#usage)
+	- [Getting started with image uploading](#getting-started-with-image-uploading)
+	- [Usage of image uploading](#usage-of-image-uploading)
+	- [Uploading images one by one](#uploading-images-one-by-one) 
 	- [Working with uploaded images](#working-with-uploaded-images)
 	- [Multiple image uploading](#multiple-image-uploading)
-	- [Advanced component configuration](#advanced-component-configuration)
-	- [How does this work?](#how-does-this-work)
+	- [How does image uploading work?](#how-does-image-uploading-work)
 - [CSRF protection](#csrf-protection)
 - [Admin sidebar configuration](#admin-sidebar-configuration)
 - [Generating bundles with cli](#generating-bundles-with-cli)
@@ -200,6 +200,7 @@ return array(
 		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
 		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
 	),
+	'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
 );
 ```
 
@@ -326,8 +327,7 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 - Built-in caching
 - Other cool features that I forgot to mention
 
-## Getting started
-
+## Getting started with image uploading
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
 `php composer.phar require intervention/image dev-master`
@@ -336,7 +336,7 @@ If you want to make image uploading more efficient, you can also install "interv
 
 `php composer.phar require intervention/imagecache dev-master`
 
-## Usage
+## Usage of image uploading
 Lets start from a simple example when you just need to upload an image and bind it to your, say, Article object.
 
 1. First, your Article model should extend `Mobileka\L3\Engine\Laravel\Base\ImageModel` (*this is confusing and should be fixed*).
@@ -380,6 +380,22 @@ return array(
 
 And... **OH MY GOD!** you did it! :) Now you can upload images and bind them to your Article objects in administration panel.
 
+> Please note that you can change file types that can be uploaded to a server in the `allowedFileTypes` parameter of the `application/config/image.php` config file.
+
+## Uploading images one by one
+
+You just saw the `Image` component usage example.
+
+This component is there to upload images one by one (though you can use several Image components on the same page).
+It is worth mentioning that you can add croppoing functionality to this component and that we use `Jcrop` JavaScript library for this.
+To enable image cropping you need to pass `asceptRatio` as a Jcrop option like this:
+
+```
+Image::make('img')->jcrop(array('aspectRatio' => 1));
+```
+
+You can set other [Jcrop options](http://deepliquid.com/content/Jcrop_Manual.html#Setting_Options) this way.
+
 The next section describes how to retrieve these images and work with them.
 
 ## Working with uploaded images
@@ -403,6 +419,7 @@ return array(
 		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
 		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
 	),
+	'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
 );
 ```
 
@@ -452,14 +469,12 @@ When using a MultiUpload component, it is a common use case when you need to cho
 1. Create `img` field in the `articles` table
 2. Call `featuredImageSelector()` method on your `MultiUpload` component like this: `MultiUpload::make('img')->featuredImageSelector()`
 
-As you've probably got, by default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this: `$article->img`. You can change this passing a field name as a parameter for the `featuredImageSelector()` method: `MultiUpload::make('img')->featuredImageSelector('featured_image')` and now you can access this image like `$article->featured_image` (and don't forget to rename a field name in the database table).
+As you've probably got, by default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this: `$article->img`. You can change this passing a field name as a parameter to the `featuredImageSelector()` method: `MultiUpload::make('img')->featuredImageSelector('featured_image')` and now you can access this image like `$article->featured_image` (and don't forget to rename the field in the database table).
 
-Ok, it is time to go and check this in administration panel.
 
-## Advanced component configuration
-*Write me*
+> BTW not only images can be uploaded with this component. To allow other file types, change the `allowedFileTypes` parameter in the `application/config/image.php` file.
 
-## How does this work?
+## How does image uploading work?
 *Write me*
 
 # CSRF protection

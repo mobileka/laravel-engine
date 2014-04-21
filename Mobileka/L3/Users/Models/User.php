@@ -13,7 +13,7 @@ class User extends Model {
 
 	public static $rules = array(
 		'email' => 'required|email|unique:users',
-		'password' => 'required|min:6',
+		'password' => 'required|min:8',
 	);
 
 	public function group()

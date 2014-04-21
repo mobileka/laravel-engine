@@ -35,7 +35,9 @@ var component = {
 	}
 };
 
-@foreach ($component->jcrop as $param => $value)
+<?php $jcrop = is_array($component->jcrop) ? $component->jcrop : array(); ?>
+
+@foreach ($jcrop as $param => $value)
 component.jcrop.{{ $param }} = {{ $value }};
 @endforeach
 

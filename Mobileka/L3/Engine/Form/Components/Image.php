@@ -4,6 +4,20 @@ class Image extends BaseUploadComponent {
 	protected $template = 'engine::form.image';
 	protected $jcrop = array();
 
+	public function jcrop($options = array())
+	{
+		if (is_array($options) and !$options)
+		{
+			$this->jcrop = true;
+		}
+		else
+		{
+			$this->jcrop = $options;
+		}
+
+		return $this;
+	}
+
 	public function value($lang = '')
 	{
 		if ($this->row->{$this->name})

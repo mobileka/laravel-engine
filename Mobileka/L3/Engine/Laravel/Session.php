@@ -16,4 +16,14 @@ class Session extends \Laravel\Session {
 		return static::put($key, $old);
 	}
 
+	public static function increase($key, $by = 1)
+	{
+		return static::put($key, ((int)static::get($key, 0) + $by));
+	}
+
+	public static function decrease($key, $by = 1)
+	{
+		return static::put($key, ((int)static::get($key, 0) - $by));
+	}
+
 }

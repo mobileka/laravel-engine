@@ -1,6 +1,7 @@
 <?php
 
 use Mobileka\L3\Engine\Laravel\Base\BackendController,
+	Mobileka\L3\Engine\Laravel\Acl,
 	Mobileka\L3\Engine\Laravel\Lang;
 
 class Auth_Admin_Default_Controller extends BackendController {
@@ -32,12 +33,22 @@ class Auth_Admin_Default_Controller extends BackendController {
 			'remember' => Input::get('remember', false)
 		);
 
+		if (Acl::isTooMuchLoginAttempts($credentials['username']))
+		{
+			return Redirect::to_route('auth_default_login')->
+				with_input()->
+				with('error', Lang::findLine('default', 'too_much_login_attempts'))->
+				notify(Lang::findLine('default', 'too_much_login_attempts'), 'error');
+		}
+
 		if (Auth::attempt($credentials))
 		{
 			Event::fire('successfully_logged_in');
 			return Redirect::back()->
 				notify(Lang::line('auth::default.successfully_logged_in')->get(), 'success');
 		}
+
+		Acl::incLoginAttempts($credentials['username']);
 
 		return Redirect::to_route('auth_admin_default_login')->
 			with_input()->

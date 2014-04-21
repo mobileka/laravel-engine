@@ -1,6 +1,8 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Config,
+use Laravel\Request,
+	Laravel\IoC,
+	Carbon\Carbon,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
@@ -16,7 +18,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 		foreach (Arr::getItem($self->permissions, 'aliases', array()) as $key => $value)
 		{
-			$self->aliases[\Router::wildcards($key)] = $value;
+			$self->aliases[Router::wildcards($key)] = $value;
 		}
 
 		$self->paths = Arr::getItem($self->permissions, 'paths', array());
@@ -57,7 +59,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		/**
 		 * Если доступ был заблокирован, запишем url, чтобы после авторизации вернуться назад.
 		 */
-		\Session::put('acl: last_blocked_url', \URL::current());
+		Session::put('acl: last_blocked_url', URL::current());
 
 		return false;
 	}
@@ -162,12 +164,12 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 
 	public function wildcardToLaravel($alias)
 	{
-		foreach (\Router::$optional as $key => $pattern)
+		foreach (Router::$optional as $key => $pattern)
 		{
 			$alias = str_replace($pattern, $key, $alias);
 		}
 
-		foreach (\Router::$patterns as $key => $pattern)
+		foreach (Router::$patterns as $key => $pattern)
 		{
 			$alias = str_replace($pattern, $key, $alias);
 		}
@@ -185,6 +187,76 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		}
 
 		return uid() === (int) $model->$field;
+	}
+
+	public static function isTooMuchLoginAttempts($username, $ip = null)
+	{
+		$ip = $ip ?: Request::ip();
+		$limit = Config::get('auth.allowed_login_attempts', 0);
+
+		return $limit 
+			? (int)$limit <= (int)static::getLoginAttempts($username, $ip = null) 
+			: false
+		;
+	}
+
+	public static function getLoginAttempts($username, $ip = null)
+	{
+		$ip = $ip ?: Request::ip();
+
+		//Если уже есть неудачные попытки
+		if ($model = IoC::resolve('UserLoginAttemptModel')->getByUsernameAndIp($username, $ip))
+		{
+			$last_fail = Carbon::parse($model->last_fail);
+			/**
+			 * Если она не меньше, чем один блокировочный период назад, то
+			 * продлеваем этот период и добавляем 1 к неудачным попыткам
+			 */
+			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('auth.login_attempts_block_duration', 15))
+			{
+				return $model->attempts;
+			}
+		}
+
+		//Если неудачных попыток нет или они просрочены, очистить ключ в сессии
+		static::clearLoginAttempts($username, $ip);
+		return 0;
+	}
+
+	public static function incLoginAttempts($username, $ip = null)
+	{
+		$ip = $ip ?: Request::ip();
+		$Attempt = IoC::resolve('UserLoginAttemptModel');
+
+		//Если уже есть неудачные попытки
+		if ($model = $Attempt->getByUsernameAndIp($username, $ip))
+		{
+			$last_fail = Carbon::parse($model->last_fail);
+			/**
+			 * Если она не меньше, чем один блокировочный период назад, то
+			 * продлеваем этот период и добавляем 1 к неудачным попыткам
+			 */
+			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('auth.login_attempts_block_duration', 15))
+			{
+				$attempts = $model->attempts + 1;
+				$last_fail = Carbon::now()->toDateTimeString();
+
+				$model->saveData(compact('attempts', 'last_fail'));
+			}
+		}
+
+		//Сюда мы попадаем только при первой ошибке или если ошибки просрочены
+		static::clearLoginAttempts($username, $ip);
+		$attempts = 1;
+		$last_fail = Carbon::now()->toDateTimeString();
+		
+		return $Attempt->saveData(compact('username', 'ip', 'attempts', 'last_fail'));
+	}
+
+	public static function clearLoginAttempts($username, $ip = null)
+	{
+		$ip = $ip ?: Request::ip();
+		return IoC::resolve('UserLoginAttemptModel')->getByUsernameAndIp($username, $ip);
 	}
 
 	public function __call($method, $args)

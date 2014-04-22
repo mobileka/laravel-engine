@@ -125,7 +125,6 @@ abstract class Laramodel extends \Eloquent {
 
 	/**
 	 * This method is being called everytime after the model is being saved
-	 * To cancel the save(), return false
 	 * @return bool
 	 */
 	public function afterSave()
@@ -204,6 +203,30 @@ abstract class Laramodel extends \Eloquent {
 		}
 
 		return !$this->errors->all();
+	}
+
+	public function beforeDelete()
+	{
+		return true;
+	}
+
+	public function delete()
+	{
+		if (!$this->beforeDelete())
+		{
+			return false;
+		}
+
+		$result = parent::delete();
+
+		$this->afterDelete();
+
+		return $result;
+	}
+
+	public function afterDelete()
+	{
+		return true;
 	}
 
 	protected function throwPdoException($code = 0, $message = 'Can\'t save model')

@@ -78,38 +78,10 @@ class UrlConditionBuilder {
 		return static::$registry = $self;
 	}
 
-	public function parseRelations($model, $relation)
-	{
-		$this->related_models[$relation] = $result = $model->{$relation}();
-		$this->related_tables[$relation] = $result->model->table() . '.';
-
-		$model = explode('\\', get_class($model));
-		$model = end($model);
-
-		$this->foreign_keys[$relation] = Misc::truthyValue($result->foreign, Str::lower($model . '_id'));
-
-		return $result->model;
-	}
-
-	protected function tableAlreadyJoined($table)
-	{
-		$joins = $this->query->joins ? : array();
-
-		//Если таблица уже соединена, то не соединять еще раз
-		foreach ($joins as $join)
-		{
-			if ($join->table == $table)
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
 	/**
 	 * Join a master model with a related model
 	 *
+	 * @todo this method should be protected but it's difficult to achieve without refactoring
 	 * @param string $relation
 	 * @return UrlConditionBuilder
 	 */
@@ -214,7 +186,7 @@ class UrlConditionBuilder {
 	}
 
 	/**
-	 * in_array(x) (Is contained in an array, WHERE IN() condition)
+	 * in_array(x): WHERE IN() condition
 	 *
 	 * @param array $conditions
 	 * @return UrlConditionBuilder
@@ -236,7 +208,7 @@ class UrlConditionBuilder {
 	}
 
 	/**
-	 * !in_array(x) (Is not contained in an array, WHERE NOT IN() condition)
+	 * !in_array(x): WHERE NOT IN() condition
 	 *
 	 * @param array $conditions
 	 * @return UrlConditionBuilder
@@ -492,5 +464,39 @@ class UrlConditionBuilder {
 	public function end()
 	{
 		return $this->query;
+	}
+
+	protected function parseRelations($model, $relation)
+	{
+		$this->related_models[$relation] = $result = $model->{$relation}();
+		$this->related_tables[$relation] = $result->model->table() . '.';
+
+		$model = explode('\\', get_class($model));
+		$model = end($model);
+
+		$this->foreign_keys[$relation] = Misc::truthyValue($result->foreign, Str::lower($model . '_id'));
+
+		return $result->model;
+	}
+
+	/**
+	 * Check if provided table is already joined 
+	 *
+	 * @param string $table
+	 * @return bool
+	 */
+	protected function tableAlreadyJoined($table)
+	{
+		$joins = $this->query->joins ? : array();
+
+		foreach ($joins as $join)
+		{
+			if ($join->table == $table)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

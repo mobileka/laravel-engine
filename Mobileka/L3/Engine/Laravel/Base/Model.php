@@ -358,6 +358,8 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	/* POLYMORPH */
 	protected function savePolymorphicData($polymorphicData)
 	{
+		if (!$polymorphicData) return false;
+
 		foreach (static::$polymorphicRelations as $relation => $relationParams)
 		{
 			$relationObject = $this->$relation();
@@ -391,7 +393,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		{
 			$file = Input::file($field);
 
-			if ($file['error'] != 4)
+			if ($file and $file['error'] != 4)
 			{
 				$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
 				$path = path('storage') . 'uploads/';

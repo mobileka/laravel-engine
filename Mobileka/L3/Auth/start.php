@@ -50,3 +50,5 @@ IoC::register('authRegisterForm', function()
 		'successUrl' => URL::to_route('home'),
 	));
 });
+
+Event::fire('engine: auth is ready');

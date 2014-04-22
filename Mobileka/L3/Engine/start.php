@@ -108,17 +108,4 @@ IoC::register('Purifier', function($config = null) {
 
 \Mobileka\L3\Engine\Laravel\Loader::requireDirectory(Bundle::path('engine') . 'Globals');
 
-Route::filter('csrf', function()
-{
-	$token = Input::get(Session::csrf_token);
-
-	if (Request::ajax())
-	{
-		$token = is_array($token = Request::header('x-csrf-token')) ? Arr::getItem($token, 0) : $token;
-	}
-
-	if (Session::token() != $token)
-	{
-		return Response::make('<h3 style="color:#d00">Invalid authenticity token</h3>', 403);
-	}
-});
+Event::fire('engine: ready');

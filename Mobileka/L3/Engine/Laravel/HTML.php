@@ -153,6 +153,13 @@ class HTML extends \Laravel\HTML {
 		return HTML::link_to_existing_route($route, '<i class="icon-edit"></i>', $params, array('title' => ___($languageFile, 'edit'), 'class' => 'crud-edit-button btn btn-darkblue'), false);
 	}
 
+	public static function edit_filenames_button($params = array(), $languageFile = 'default')
+	{
+		list($route, $params) = static::parse_params($params, 'edit_filenames');
+
+		return HTML::link_to_existing_route($route, '<i class="icon-font"></i>', $params, array('title' => ___($languageFile, 'edit_filenames'), 'class' => 'crud-edit-button btn btn-darkblue'), false);
+	}
+
 	public static function delete_button($delete_url)
 	{
 		return ($delete_url and $delete_url !== '#')

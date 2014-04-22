@@ -500,7 +500,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 	public function post_upload_file($object_id = 0)
 	{
-		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name', 'fieldName', 'modelName', 'single'));
+		$this->data = Input::allBut(array('_method', 'successUrl', 'upload_token', 'name', 'fieldName', 'modelName', 'single', 'csrf_token'));
 		$fieldName = Input::get('fieldName', 'file');
 		$single = Input::get('single', 0);
 		$modelName = str_replace('\\\\', '\\', Input::get('modelName'));

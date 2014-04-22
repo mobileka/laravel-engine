@@ -43,30 +43,6 @@ a.plupload-image-delete {
 	margin-bottom: 0;
 }
 
-.dynatree {
-	border-right: 3px double rgb(170, 170, 170);
-	float: left;
-	margin: 10px 0;
-	min-height: 285px;
-	width: 240px;
-}
-
-	.dynatree .ui-resizable-se {
-		display: none !important;
-	}
-
-ul.dynatree-container {
-	border: 0;
-	position: relative;
-}
-
-.node-lang-form {
-	display: none;
-	float: left;
-	margin: 0 0 20px 20px;
-	padding: 0 20px;
-}
-
 .places-map {
 	width:  500px;
 	height: 300px;
@@ -224,4 +200,17 @@ input.no-mb {
 	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
+}
+
+.menu-add-button {
+	margin-top: 5px;
+}
+
+.table tr th {
+	white-space: nowrap;
+}
+
+.table-actions {
+	text-align: right;
+	white-space: nowrap;
 }

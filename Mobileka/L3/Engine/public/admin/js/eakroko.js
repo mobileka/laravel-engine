@@ -304,6 +304,16 @@ $(document).ready(function() {
 				};
 			}
 
+			opt.fx = {
+				height: "toggle", duration: 200
+			};
+
+			if ($el.hasClass('filetree-menu')) {
+				opt.onActivate = function(node) {
+					// window.location.href = node.data.url;
+				};
+			}
+
 			$el.dynatree(opt);
 		});
 	}

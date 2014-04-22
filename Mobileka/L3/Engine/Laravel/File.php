@@ -6,7 +6,7 @@ class File extends \Laravel\File {
 	{
 		if (!$file) return false;
 
-		$allowedFileTypes = $allowedFileTypes ? : Input::get('image.allowedFileTypes', array('png', 'jpg', 'jpeg', 'gif'));
+		$allowedFileTypes = $allowedFileTypes ? : Config::get('image.allowedFileTypes', array('png', 'jpg', 'jpeg', 'gif'));
 		$directory = static::getDirectoryPath($file, $directory);
 		$extension = static::getFileExtension($file);
 		$filename = static::getFilename($file, $extension);
@@ -68,10 +68,17 @@ class File extends \Laravel\File {
 
 	public static function getFilename($file, $extension = null)
 	{
-		return is_array($file)
-			? md5(time() . $file['tmp_name']) . '.' . $extension
-			: $file->filename
-		;
+		if (is_array($file))
+		{
+			$arr = explode('.', $file['name']);
+			$filename = Str::transliterate($arr[0]) . '_' . time() . '.' . $extension;
+		}
+		else
+		{
+			$file->filename;
+		}
+
+		return $filename;
 	}
 
 	public static function getFilePath($file, $directory, $type = null, $path = null)

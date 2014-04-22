@@ -16,8 +16,9 @@ ul.dynatree-container
 
 ul.dynatree-container ul
 {
-	padding: 0 0 0 16px;
+	clear: left;
 	margin: 0;
+	padding: 0 0 0 16px;
 }
 
 ul.dynatree-container li
@@ -36,6 +37,8 @@ ul.dynatree-container li
 
 	margin:0;
 	padding:1px 0 0 0;
+	overflow: hidden;
+	position: relative;
 }
 /* Suppress lines for last child node */
 ul.dynatree-container li.dynatree-lastsib
@@ -80,6 +83,8 @@ span.dynatree-drag-helper-img,
 	background-position: left;
 	background-image: url("icons.gif");
 	background-position: 0 0;
+	float: left;
+	margin: 6px;
 }
 
 /** Used by 'icon' node option: */
@@ -278,11 +283,19 @@ span.dynatree-icon /* Default icon */
 
 /* @Chrome: otherwise hit area of node titles is broken (issue 133)
    Removed again for issue 165; (133 couldn't be reproduced) */
-span.dynatree-node
+.dynatree-node
 {
 /*	display: -moz-inline-box; /* issue 133, 165, 172, 192. removed for issue 221 */
 /*	-moz-box-align: start; /* issue 221 */
 /*  display: inline-block; /* Required to make a span sizeable */
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+.dynatree-node:hover {
+	background: #F2F7FD; /* light blue */
+	border-color: #B8D6FB; /* darker light blue */
 }
 
 
@@ -299,15 +312,14 @@ ul.dynatree-container a
 	/* Set transparent border to prevent jumping when active node gets a border
 	   (we can do this, because this theme doesn't use vertical lines)
 	   */
-	border: 1px solid white; /* Note: 'transparent' would not work in IE6 */
 
 }
 
 ul.dynatree-container a:hover
 {
 /*	text-decoration: underline; */
-	background: #F2F7FD; /* light blue */
-	border-color: #B8D6FB; /* darker light blue */
+	/* background: #F2F7FD; light blue
+	border-color: #B8D6FB; darker light blue */
 }
 
 span.dynatree-node a
@@ -317,6 +329,9 @@ span.dynatree-node a
 	padding-left: 3px;
 	padding-right: 3px; /* Otherwise italic font will be outside bounds */
 	/*	line-height: 16px; /* should be the same as img height, in case 16 px */
+	float: left;
+	width: 85%;
+	padding: 6px;
 }
 span.dynatree-folder a
 {
@@ -326,7 +341,7 @@ span.dynatree-folder a
 ul.dynatree-container a:focus,
 span.dynatree-focused a:link  /* @IE */
 {
-	background-color: #EFEBDE; /* gray */
+
 }
 
 span.dynatree-has-children a
@@ -346,7 +361,7 @@ span.dynatree-selected a
 
 span.dynatree-active a
 {
-	border: 1px solid #99DEFD;
+	/*border: 1px solid #99DEFD;*/
 	background-color: #D8F0FA;
 }
 
@@ -449,4 +464,11 @@ span.dynatree-drop-target.dynatree-drop-reject
 }
 span.dynatree-drop-target.dynatree-drop-after a
 {
+}
+
+.page-menu-actions {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 10;
 }

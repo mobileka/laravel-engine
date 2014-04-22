@@ -1,8 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Form\Components;
 
-class CKEditor extends BaseComponent {
-	protected $template = 'engine::form.ckeditor';
+class CKEditor extends TextArea {
 	protected $htmlElement = 'textarea';
-	protected $escape = false;
 	protected $nl2br = false;
+	protected $requiredAttributes = array('class' => 'ckeditor');
 }

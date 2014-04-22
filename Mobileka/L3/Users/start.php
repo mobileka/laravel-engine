@@ -19,7 +19,7 @@ IoC::register('UserGroupModel', function()
 
 IoC::register('UserLoginAttemptModel', function()
 {
-	return new Users\Models\Attempt;
+	return new Mobileka\L3\Users\Models\Attempt;
 });
 
 Event::fire('engine: users are ready');

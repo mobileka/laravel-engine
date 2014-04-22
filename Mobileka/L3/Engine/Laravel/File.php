@@ -4,6 +4,8 @@ class File extends \Laravel\File {
 
 	public static function upload($file, $type = null, $directory = null, $allowedFileTypes = array(), $path = null)
 	{
+		if (!$file) return false;
+
 		$allowedFileTypes = $allowedFileTypes ? : Input::get('image.allowedFileTypes', array('png', 'jpg', 'jpeg', 'gif'));
 		$directory = static::getDirectoryPath($file, $directory);
 		$extension = static::getFileExtension($file);

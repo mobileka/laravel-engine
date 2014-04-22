@@ -236,6 +236,12 @@ class RestfulRouter {
 	{
 		$args = is_array($args[0]) ? $args[0] : $args;
 
+		if ($method == 'csrf')
+		{
+			$this->csrf = $args[0];
+			return $this;
+		}
+
 		if ($method == 'except')
 		{
 			$this->actions = Arr::exceptValues($this->actions, $args);

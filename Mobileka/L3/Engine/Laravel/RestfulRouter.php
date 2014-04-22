@@ -14,10 +14,12 @@ class RestfulRouter {
 		'destroy'
 	);
 
+	public $https;
 	public $csrf = true;
 
 	public static function make()
 	{
+		$https = Config::get('application.ssl', true);
 		return new static;
 	}
 
@@ -51,11 +53,11 @@ class RestfulRouter {
 
 		foreach ($this->actions as $action)
 		{
-			$this->$action($bundle, $controller, $uri, $as, $uses);
+			$this->$action($bundle, $controller, $uri, $as, $uses, $https = null);
 		}
 	}
 
-	protected function index($bundle, $controller, $uri, $as, $uses)
+	protected function index($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			array(
@@ -65,12 +67,13 @@ class RestfulRouter {
 			),
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
 
-	protected function view($bundle, $controller, $uri, $as, $uses)
+	protected function view($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			array(
@@ -80,56 +83,60 @@ class RestfulRouter {
 			),
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
 
-	protected function add($bundle, $controller, $uri, $as, $uses)
+	protected function add($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			$uri . '/add',
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
 
-	protected function edit($bundle, $controller, $uri, $as, $uses)
+	protected function edit($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			$uri . '/(:num)/edit',
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
 
-	protected function create($bundle, $controller, $uri, $as, $uses)
+	protected function create($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::post(
 			$uri,
-			$this->generateAction($as, __FUNCTION__, $uses)
+			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
 		);
 	}
 
-	protected function update($bundle, $controller, $uri, $as, $uses)
+	protected function update($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::put(
 			$uri . '/(:num)',
-			$this->generateAction($as, __FUNCTION__, $uses)
+			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
 		);
 	}
 
-	protected function destroy($bundle, $controller, $uri, $as, $uses)
+	protected function destroy($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::delete(
 			$uri . '/(:num)',
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
@@ -137,7 +144,7 @@ class RestfulRouter {
 	/**
 	 * Список файлов
 	 */
-	protected function uploads($bundle, $controller, $uri, $as, $uses)
+	protected function uploads($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			array(
@@ -147,7 +154,8 @@ class RestfulRouter {
 			),
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
@@ -155,7 +163,7 @@ class RestfulRouter {
 	/**
 	 * Получить файл
 	 */
-	protected function view_file($bundle, $controller, $uri, $as, $uses)
+	protected function view_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			array(
@@ -165,7 +173,8 @@ class RestfulRouter {
 			),
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
@@ -173,29 +182,30 @@ class RestfulRouter {
 	/**
 	 * Залить файл и привязать его к объекту
 	 */
-	protected function upload_file($bundle, $controller, $uri, $as, $uses)
+	protected function upload_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::post(
 			$uri . '/(:num)/uploads',
-			$this->generateAction($as, __FUNCTION__, $uses)
+			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
 		);
 	}
 
 	/**
 	 * Удалить файл
 	 */
-	protected function destroy_file($bundle, $controller, $uri, $as, $uses)
+	protected function destroy_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::delete(
 			$uri . '/(:num)/uploads',
 			array(
 				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__
+				'uses' => $uses . __FUNCTION__,
+				'https' => is_null($https) ? $this->https : $https
 			)
 		);
 	}
 
-	protected function download($bundle, $controller, $uri, $as, $uses)
+	protected function download($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
 		\Route::get(
 			$uri . '/(:num)/download/(:any)',
@@ -206,11 +216,12 @@ class RestfulRouter {
 		);
 	}
 
-	protected function generateAction($alias, $action, $uses)
+	protected function generateAction($alias, $action, $uses, $https = null)
 	{
 		$result = array(
 			'as' => $alias . $action,
-			'uses' => $uses . $action
+			'uses' => $uses . $action,
+			'https' => is_null($https) ? $this->https : $https
 		);
 
 		if ($this->csrf)
@@ -254,5 +265,16 @@ class RestfulRouter {
 
 			return $this;
 		}
+	}
+
+	public static function __callStatic($method, $args)
+	{
+		if (in_array($method, array('get', 'post', 'put', 'delete', 'any')))
+		{
+			$args['https'] = Arr::getItem($args, 'https', true);
+			return forward_static_call_array(array('Route', $method), $args);
+		}
+
+		throw new \Exception("Trying to call an undefined static method $method of a ".get_called_class()." class");
 	}
 }

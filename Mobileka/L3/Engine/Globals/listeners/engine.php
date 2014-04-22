@@ -17,6 +17,12 @@ Event::listen('engine: ready', function()
 			return Response::make('<h3 style="color:#d00">Invalid authenticity token</h3>', 403);
 		}
 	});
+
+	if (Config::get('application.ssl') and !Request::secure())
+	{
+		header('Location: '.URL::to(URI::current(), true, false, false));
+		exit();
+	}
 });
 
 Event::listen('engine: users are ready', function()
@@ -46,9 +52,4 @@ Event::listen('engine: users are ready', function()
 		$user->last_activity_date = Carbon::now()->toDateTimeString();
 		$user->save();
 	}
-});
-
-Event::listen('engine: auth is ready', function()
-{
-
 });

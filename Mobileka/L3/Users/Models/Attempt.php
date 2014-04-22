@@ -1,4 +1,4 @@
-<?php namespace Users\Models;
+<?php namespace Mobileka\L3\Users\Models;
 
 use Mobileka\L3\Engine\Laravel\Base\Model;
 

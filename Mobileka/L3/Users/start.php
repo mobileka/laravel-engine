@@ -19,7 +19,7 @@ IoC::register('UserGroupModel', function()
 
 IoC::register('UserLoginAttemptModel', function()
 {
-	return new Users\Models\Attempt;
+	return new Mobileka\L3\Users\Models\Attempt;
 });
 
 if ($blockPeriod = Config::get('auth.block_period', 0))

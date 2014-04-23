@@ -75,7 +75,7 @@ class File extends \Laravel\File {
 		}
 		else
 		{
-			$file->filename;
+			$filename = $file->filename;
 		}
 
 		return $filename;

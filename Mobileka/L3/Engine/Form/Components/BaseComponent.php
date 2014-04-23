@@ -1,8 +1,3 @@
 <?php namespace Mobileka\L3\Engine\Form\Components;
 
-abstract class BaseComponent extends \Mobileka\L3\Engine\Base\Component {
-	public function isHidden()
-	{
-		return false;
-	}
-}
+abstract class BaseComponent extends \Mobileka\L3\Engine\Base\Component {}

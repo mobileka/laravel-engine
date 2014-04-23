@@ -255,6 +255,16 @@ abstract class Component {
 	}
 
 	/**
+	 * If component is hidden, it won't be shown in a template
+	 * Useful for hidden form fields which should exist but shouldn't be shown
+	 * @param bool
+	 */
+	public function isHidden()
+	{
+		return false;
+	}
+
+	/**
 	 * Render a template (view / $this->template) bound to a component
 	 *
 	 * @return \Laravel\View

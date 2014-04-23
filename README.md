@@ -204,6 +204,12 @@ return array(
 );
 ```
 
+If you don't use SSL, you need to set these configuration parameters to `false`:
+* `ssl` in `application.php`
+* `secure` in `session.php`
+
+> Use enviroment configuration files if these settings differ for your production server and local development machine
+
 And you have finally finished the installation process! Now you should be able to go to `http://sitename.dev/admin` (or `http://sitename.dev/whatever_you_have_in_application_config_under_admin_uri_param`) to see the authorization form. Just in case you want to log in, these are the default credentials:
 
 ```

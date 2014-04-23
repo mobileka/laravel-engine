@@ -51,4 +51,6 @@ IoC::register('authRegisterForm', function()
 	));
 });
 
+require 'listeners.php';
+
 Event::fire('engine: auth is ready');

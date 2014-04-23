@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Laravel\HTML;
 
 class Input extends \Laravel\Input {
 
@@ -13,6 +14,38 @@ class Input extends \Laravel\Input {
 	public static function allBut($except)
 	{
 		return static::except($except);
+	}
+
+	public static function safeGet($key = null, $default = null)
+	{
+		$get = static::get($key, $default);
+
+		if ($get === $default or (is_array($get) and !$get))
+		{
+			return $default;
+		}
+
+		if (!is_array($get))
+		{
+			return HTML::entities($get);
+		}
+
+		return static::recursiveSanitizer($get);
+	}
+
+	public static function recursiveSanitizer($sanitizeMe)
+	{
+		$result = array();
+
+		foreach ($sanitizeMe as $key => $value)
+		{
+			$result[$key] = is_array($value) 
+				? static::recursiveSanitizer($value) :
+				HTML::entities($value)
+			;
+		}
+
+		return $result;
 	}
 
 }

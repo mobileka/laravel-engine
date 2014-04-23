@@ -418,7 +418,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	{
 		if (!$this->conditions)
 		{
-			$this->conditions = Input::get('filters', array());
+			$this->conditions = Input::safeGet('filters', array());
 		}
 
 		foreach ($this->conditions as $filter => $fields)

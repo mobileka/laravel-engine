@@ -48,7 +48,7 @@ class Auth_Admin_Default_Controller extends BackendController {
 				notify(Lang::line('auth::default.successfully_logged_in')->get(), 'success');
 		}
 
-		Event::fire('unsuccessful_login_attempt', $credentials)
+		Event::fire('unsuccessful_login_attempt', $credentials);
 
 		return Redirect::to_route('auth_admin_default_login')->
 			with_input()->

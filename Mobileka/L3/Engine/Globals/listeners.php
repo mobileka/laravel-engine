@@ -4,7 +4,7 @@ Event::listen('engine: ready', function()
 {
 	Route::filter('engine_csrf', function()
 	{
-		$token = Input::get(Session::csrf_token);
+		$token = (!Request::ajax() and Request::method() === 'GET') ? Session::token()  : Input::get(Session::csrf_token);
 
 		if (Request::ajax())
 		{

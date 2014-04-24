@@ -65,11 +65,7 @@ class RestfulRouter {
 				$uri . '.(json)',
 				$uri . '.(ajax)'
 			),
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -81,11 +77,7 @@ class RestfulRouter {
 				$uri . '/(:num).(json)',
 				$uri . '/(:num).(ajax)'
 			),
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -93,11 +85,7 @@ class RestfulRouter {
 	{
 		\Route::get(
 			$uri . '/add',
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -105,11 +93,7 @@ class RestfulRouter {
 	{
 		\Route::get(
 			$uri . '/(:num)/edit',
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -153,11 +137,7 @@ class RestfulRouter {
 				$uri . '/(:num)/uploads.(json)',
 				$uri . '/(:num)/uploads.(ajax)'
 			),
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -172,11 +152,7 @@ class RestfulRouter {
 				$uri . '/(:num)/uploads/(:num).(json)',
 				$uri . '/(:num)/uploads/(:num).(ajax)'
 			),
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -198,11 +174,7 @@ class RestfulRouter {
 	{
 		\Route::delete(
 			$uri . '/(:num)/uploads',
-			array(
-				'as' => $as . __FUNCTION__,
-				'uses' => $uses . __FUNCTION__,
-				'https' => is_null($https) ? $this->https : $https
-			)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -245,12 +217,13 @@ class RestfulRouter {
 
 		if (in_array($method, array('get', 'post', 'put', 'delete', 'any')))
 		{
-			$args['https'] = Arr::getItem($args, 'https', true);
+			$args[1] = Arr::getItem($args, 1, array());
+			$args[1]['https'] = Arr::getItem($args[1], 'https', true);
 
-			$args['engine_csrf'] = ($this->csrf and Arr::getItem(array('post', 'put', 'delete'), $method)) 
-				? true
-				: false
-			;
+			if ($this->csrf)
+			{
+				$args[1]['before'] = 'engine_csrf';
+			}
 
 			return forward_static_call_array(array('Route', $method), $args);
 		}

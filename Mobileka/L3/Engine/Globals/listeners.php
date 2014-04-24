@@ -45,3 +45,11 @@ Event::listen('bind-uploads', function($id, $tokens)
 
 	return false;
 });
+
+Event::listen('engine: append headers', function($response, $headers = array())
+{
+	foreach ($headers as $header => $value)
+	{
+		$response->header($header, $value);		
+	}
+});

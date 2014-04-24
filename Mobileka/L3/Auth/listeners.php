@@ -1,6 +1,7 @@
 <?php
 
-use Mobileka\L3\Engine\Laravel\Config;
+use Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Lang;
 
 Event::listen('engine: auth is ready', function()
 {
@@ -11,7 +12,7 @@ Event::listen('engine: auth is ready', function()
 		if (!Acl::make()->except($allowed)->check())
 		{
 			return Redirect::to_route('auth_admin_default_login')
-				->with('error', ___('default', 'no_access'));
+				->with('error', Lang::findLine('default', 'no_access'));
 		}
 	});
 });

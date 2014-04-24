@@ -123,10 +123,9 @@ a.plupload-image-delete {
 	display: block;
 	font-size: 40px;
 	font-weight: bold;
-	padding-top: 30px;
+	padding: 30px 10px 0;
 	text-align: center;
 	text-transform: uppercase;
-	width: 99px;
 	height: 50px;
 }
 

@@ -117,7 +117,7 @@ class RestfulRouter {
 	{
 		\Route::post(
 			$uri,
-			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -125,7 +125,7 @@ class RestfulRouter {
 	{
 		\Route::put(
 			$uri . '/(:num)',
-			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 
@@ -133,11 +133,12 @@ class RestfulRouter {
 	{
 		\Route::delete(
 			$uri . '/(:num)',
-			array(
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
+			/*array(
 				'as' => $as . __FUNCTION__,
 				'uses' => $uses . __FUNCTION__,
 				'https' => is_null($https) ? $this->https : $https
-			)
+			)*/
 		);
 	}
 
@@ -186,7 +187,7 @@ class RestfulRouter {
 	{
 		\Route::post(
 			$uri . '/(:num)/uploads',
-			$this->generateAction($as, __FUNCTION__, $uses, $https = null)
+			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
 	}
 

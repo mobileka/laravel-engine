@@ -12,6 +12,7 @@
 
 	<div class="modal-footer">
 		{{ Form::open('', 'DELETE', array('id' => 'crud_delete_form')) }}
+		{{ Form::token() }}
 			<a data-toggle="modal" href="#delete_modal" class="btn">{{ ___($crud->languageFile, 'cancel') }}</a>
 			<input type="submit" class="btn btn-danger" value="{{ ___($crud->languageFile, 'labels.delete') }}">
 		{{ Form::close() }}

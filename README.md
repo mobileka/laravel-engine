@@ -492,9 +492,9 @@ In order to make this work, you need to perform these steps:
 1. `php artisan bundle:publish`
 2. Add this JavaScript file to your layouts: `{{ HTML::script('bundles/engine/csrf.js') }}`
 3. Add a metatag to your layouts in `<head>` section: `{{ csrf_meta_tag() }}` 
-4. Add `csrf` before filter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'));`
+4. Add `engine_csrf` before filter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'));`
 
-If you are generating routes with `RestfulRouter` class, every `POST` and `PUT` request is being protected automatically.
+If you are generating routes with `RestfulRouter` class, every `POST`, `PUT` and `DELETE` request is being protected automatically.
 If you want to cancel this, call `csrf()` method with parameter `false` before `resource()` method of the `RestfulRouter`:
 
 `RestfulRouter::make()->csrf(false)->resource(array('bundle' => 'somebundle', 'module' => 'admin'));`

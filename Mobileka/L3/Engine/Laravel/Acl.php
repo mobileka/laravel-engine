@@ -195,7 +195,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		$limit = Config::get('auth.allowed_login_attempts', 0);
 
 		return $limit 
-			? (int)$limit <= (int)static::getLoginAttempts($username, $ip = null) 
+			? (int)$limit <= (int)static::getLoginAttempts($username, $ip) 
 			: false
 		;
 	}
@@ -208,6 +208,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		if ($model = IoC::resolve('UserLoginAttemptModel')->getByUsernameAndIp($username, $ip))
 		{
 			$last_fail = Carbon::parse($model->last_fail);
+
 			/**
 			 * Если она не меньше, чем один блокировочный период назад, то
 			 * продлеваем этот период и добавляем 1 к неудачным попыткам
@@ -232,6 +233,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		if ($model = $Attempt->getByUsernameAndIp($username, $ip))
 		{
 			$last_fail = Carbon::parse($model->last_fail);
+
 			/**
 			 * Если она не меньше, чем один блокировочный период назад, то
 			 * продлеваем этот период и добавляем 1 к неудачным попыткам
@@ -241,7 +243,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 				$attempts = $model->attempts + 1;
 				$last_fail = Carbon::now()->toDateTimeString();
 
-				$model->saveData(compact('attempts', 'last_fail'));
+				return $model->saveData(compact('attempts', 'last_fail'));
 			}
 		}
 
@@ -249,7 +251,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		static::clearLoginAttempts($username, $ip);
 		$attempts = 1;
 		$last_fail = Carbon::now()->toDateTimeString();
-		
+
 		return $Attempt->saveData(compact('username', 'ip', 'attempts', 'last_fail'));
 	}
 

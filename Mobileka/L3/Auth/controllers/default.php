@@ -51,7 +51,7 @@ class Auth_Default_Controller extends Base_Controller {
 				notify(Lang::line('auth::default.successfully_logged_in')->get(), 'success');
 		}
 
-		Event::fire('unsuccessful_login_attempt', $credentials)
+		Event::fire('unsuccessful_login_attempt', array($credentials));
 
 		return Redirect::to_route('auth_default_login')->
 			with_input()->

@@ -221,7 +221,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 				$this->{$key} = $value;
 			}
 
-			$this->save();
+			$saved = $this->save();
 
 			/* POLYMORPH */
 			$this->savePolymorphicData($polymorphicData);
@@ -238,6 +238,11 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			if (!$this->afterLocalizedSave())
 			{
 				throw new \PDOException('afterLocalizedSave() returned false', 12);
+			}
+
+			if (!$saved)
+			{
+				throw new \PDOException('There was error while saving model', 12);
 			}
 
 			if ((bool)$this->errors->messages)

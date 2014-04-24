@@ -1,7 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr,
-	Laravel\HTML;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Input extends \Laravel\Input {
 

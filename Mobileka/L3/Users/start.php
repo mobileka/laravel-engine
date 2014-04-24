@@ -16,10 +16,11 @@ IoC::register('UserGroupModel', function()
 	return new Mobileka\L3\Users\Models\Group;
 });
 
-
 IoC::register('UserLoginAttemptModel', function()
 {
 	return new Mobileka\L3\Users\Models\Attempt;
 });
+
+require 'listeners.php';
 
 Event::fire('engine: users are ready');

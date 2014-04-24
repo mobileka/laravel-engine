@@ -2,7 +2,7 @@
 
 Event::listen('engine: ready', function()
 {
-	Route::filter('csrf', function()
+	Route::filter('engine_csrf', function()
 	{
 		$token = Input::get(Session::csrf_token);
 

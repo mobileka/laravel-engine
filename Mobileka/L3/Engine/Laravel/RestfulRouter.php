@@ -226,7 +226,7 @@ class RestfulRouter {
 
 		if ($this->csrf)
 		{
-			$result['before'] = 'csrf';
+			$result['before'] = 'engine_csrf';
 		}
 
 		return $result;
@@ -240,6 +240,18 @@ class RestfulRouter {
 		{
 			$this->csrf = $args[0];
 			return $this;
+		}
+
+		if (in_array($method, array('get', 'post', 'put', 'delete', 'any')))
+		{
+			$args['https'] = Arr::getItem($args, 'https', true);
+
+			$args['engine_csrf'] = ($this->csrf and Arr::getItem(array('post', 'put', 'delete'), $method)) 
+				? true
+				: false
+			;
+
+			return forward_static_call_array(array('Route', $method), $args);
 		}
 
 		if ($method == 'except')
@@ -275,12 +287,6 @@ class RestfulRouter {
 
 	public static function __callStatic($method, $args)
 	{
-		if (in_array($method, array('get', 'post', 'put', 'delete', 'any')))
-		{
-			$args['https'] = Arr::getItem($args, 'https', true);
-			return forward_static_call_array(array('Route', $method), $args);
-		}
-
 		throw new \Exception("Trying to call an undefined static method $method of a ".get_called_class()." class");
 	}
 }

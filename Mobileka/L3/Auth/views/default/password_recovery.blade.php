@@ -3,6 +3,7 @@
 		<h2>{{ ___('default', 'password_recovery') }}</h2>
 
 		{{ Form::open(URL::to_route('auth_default_password_recovery'), 'POST', array('class' => 'form-validate', 'id' => 'loginform')) }}
+		{{ Form::token() }}
 
 		@if ($error = Session::get('error'))
 			<div class="alert alert-error">

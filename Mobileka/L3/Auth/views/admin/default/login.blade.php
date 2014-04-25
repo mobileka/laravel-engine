@@ -12,6 +12,7 @@
 
 	<div class="control-group">
 		{{ Form::label('email', ___('default.labels', 'email'), array('class' => 'control-label'), false) }}
+		{{ Form::token() }}
 
 		<div class="controls">
 			{{ $this->validation($errors->get('email')) }}

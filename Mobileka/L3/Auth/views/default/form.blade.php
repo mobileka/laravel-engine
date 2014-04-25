@@ -4,6 +4,7 @@
 		<h2>{{ $crud->customData['title'] }}</h2>
 
 		{{ Form::open($crud->actionUrl, $crud->method, $crud->attributes) }}
+		{{ Form::token() }}
 
 		<div class="box box-bordered">
 

@@ -3,6 +3,7 @@
 		<h2>{{ ___('default', 'login') }}</h2>
 
 		{{ Form::open($crud->actionUrl, 'POST', array('class' => 'form-validate', 'id' => 'loginform')) }}
+		{{ Form::token() }}
 
 		@if ($error = Session::get('error'))
 

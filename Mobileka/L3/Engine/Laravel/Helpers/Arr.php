@@ -323,4 +323,20 @@ class Arr {
 		$array = array_values($array);
 		return array_combine($array, $array);
 	}
+
+	/**
+	 * Converts each element of array to integer
+	 *
+	 * @param array $array
+	 * @return array
+	 */
+	public static function toInt(array $array)
+	{
+		return array_map(function($elemnt)
+			{ 
+				return (int)$element;
+			}, 
+			$array
+		);
+	} 
 }

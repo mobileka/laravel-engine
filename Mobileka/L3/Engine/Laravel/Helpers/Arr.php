@@ -332,7 +332,7 @@ class Arr {
 	 */
 	public static function toInt(array $array)
 	{
-		return array_map(function($elemnt)
+		return array_map(function($element)
 			{ 
 				return (int)$element;
 			}, 

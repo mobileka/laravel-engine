@@ -9,6 +9,7 @@
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 	<title>{{ configValue('application.project_name', 'application.project_name') }} | Войти в панель администратора</title>
+	{{ csrf_meta_tag() }}
 
   {{ Asset::container('engine_assets')->styles() }}
   @yield('styles')

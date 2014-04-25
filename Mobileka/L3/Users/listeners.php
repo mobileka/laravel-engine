@@ -7,7 +7,7 @@ Event::listen('engine: users are ready', function()
 	 * If block_period is set in auth config file
 	 * then find users which are inactive for such period and remove them
 	 */
-	if ($blockPeriod = Config::get('auth.block_period', 0))
+	if (!Request::cli() and $blockPeriod = Config::get('auth.block_period', 0))
 	{
 		$users = IoC::resolve('UserModel')->where(
 			DB::raw("DATEDIFF('" . Carbon::now()->toDateTimeString() . "', last_activity_date)"),

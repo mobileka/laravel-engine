@@ -82,6 +82,12 @@ abstract class Component {
 	protected $attributes = array();
 
 	/**
+	 * A class that will be added to the component's parent
+	 * @var string
+	 */
+	protected $parentClass = '';
+
+	/**
 	 * A set of possible JavaScript validation rules
 	 * @var array
 	 */

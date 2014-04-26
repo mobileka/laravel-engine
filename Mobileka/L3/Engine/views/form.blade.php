@@ -17,7 +17,7 @@
 			@else
 				<div id="row_{{$fieldName}}" class="control-group">
 					<label for="{{ $component->name }}" class="control-label">{{ formLang($crud->languageFile, $component->name) . $component->required() }}</label>
-					<div class="controls">
+					<div class="controls {{ $component->parentClass ? : '' }}">
 						@if ($component->localized)
 							@foreach (langs() as $lang)
 								<label>

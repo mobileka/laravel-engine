@@ -213,3 +213,11 @@ input.no-mb {
 	text-align: right;
 	white-space: nowrap;
 }
+
+.long-multiselect .input-multiselect-heading {
+	width: 308px;
+}
+
+.long-multiselect .ms-container ul.ms-list {
+	width: 320px;
+}

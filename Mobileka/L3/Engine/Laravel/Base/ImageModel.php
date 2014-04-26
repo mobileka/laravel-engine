@@ -198,7 +198,7 @@ class ImageModel extends Model {
 		if (!is_file($thumbnail) and is_file($original))
 		{
 			\Image::make($original)->
-				resize($dimensions[0], $dimensions[1], true, false)->
+				resize($dimensions[0], $dimensions[1], (isset($dimensions[2]) ? $dimensions[2] : true), false)->
 				save($thumbnail);
 		}
 

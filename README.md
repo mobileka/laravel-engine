@@ -473,12 +473,27 @@ return array(
 When using a MultiUpload component, it is a common use case when you need to choose a main or, how it is called in Wordpress community, a featured image. If we take an example above, there are two steps to achieve this:
 
 1. Create `img` field in the `articles` table
-2. Call `featuredImageSelector()` method on your `MultiUpload` component like this: `MultiUpload::make('img')->featuredImageSelector()`
+2. Call `featuredImageSelector()` method on your `MultiUpload` component like this:
 
-As you've probably got, by default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this: `$article->img`. You can change this passing a field name as a parameter to the `featuredImageSelector()` method: `MultiUpload::make('img')->featuredImageSelector('featured_image')` and now you can access this image like `$article->featured_image` (and don't forget to rename the field in the database table).
+```
+MultiUpload::make('img')->featuredImageSelector()
+```
 
+By default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this:
 
-> BTW not only images can be uploaded with this component. To allow other file types, change the `allowedFileTypes` parameter in the `application/config/image.php` file.
+```
+$article->img
+```
+
+You can change this passing a field name as a parameter to the `featuredImageSelector()` method:
+
+```
+MultiUpload::make('img')->featuredImageSelector('featured_image')
+```
+
+Now you can access this image like `$article->featured_image` (and don't forget to rename the field in the database table).
+
+> BTW not only images can be uploaded with this component. Change the `allowedFileTypes` parameter in the `application/config/image.php` config to allow other file types to be uploaded.
 
 ## How does image uploading work?
 *Write me*
@@ -492,7 +507,7 @@ In order to make this work, you need to perform these steps:
 1. `php artisan bundle:publish`
 2. Add this JavaScript file to your layouts: `{{ HTML::script('bundles/engine/csrf.js') }}`
 3. Add a metatag to your layouts in `<head>` section: `{{ csrf_meta_tag() }}` 
-4. Add `engine_csrf` before filter for a route like this: `Route::get('something', array('before' => 'csrf', 'uses' => '...', 'as' => '...'));`
+4. Add `engine_csrf` *before* filter for a route like this: `Route::get('something', array('before' => 'engine_csrf', 'uses' => '...', 'as' => '...'));`
 
 If you are generating routes with `RestfulRouter` class, every `POST`, `PUT` and `DELETE` request is being protected automatically.
 If you want to cancel this, call `csrf()` method with parameter `false` before `resource()` method of the `RestfulRouter`:

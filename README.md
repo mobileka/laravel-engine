@@ -24,8 +24,8 @@
 		- [1. Generating a single bundle](#1-generating-a-single-bundle)
 		- [2. Generating bundles with SQL file](#2-generating-bundles-with-sql-file)
 	- [Other generator possibilities](#other-generator-possibilities)
-- [Authors](#authors)
-- [Licence](#licence)
+- [Contributors](#contributors)
+- [License](#license)
 
 # Introduction
 
@@ -628,6 +628,9 @@ For example, you can make a field to be unsigned, create an index on it or make 
 artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required
 ```
 
-# Authors
+# Contributors
 
-# Licence
+See [contributors](https://github.com/mobileka/laravel-engine/graphs/contributors)
+# License
+
+The Laravel Engine is open-source software licensed under the [MIT License](https://github.com/mobileka/laravel-engine/blob/master/LICENSE.txt)

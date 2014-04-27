@@ -55,13 +55,14 @@ class ImageModel extends Model {
 			}
 
 			$polymorphicData = array();
+
 			if (static::$polymorphicRelations)
 			{
 				foreach (static::$polymorphicRelations as $relation => $relationParams)
 				{
-					if (isset($data[$relation]) && $data[$relation])
+					if ($relationData = Arr::getItem($data, $relation))
 					{
-						$polymorphicData[$relation] = $data[$relation];
+						$polymorphicData[$relation] = $relationData;
 					}
 
 					unset($data[$relation]);
@@ -99,11 +100,11 @@ class ImageModel extends Model {
 					{
 						File::saveCroppedImage($img, $type, 'images', $cropData);
 					}
+
 					$this->save();
 				}
 
 				$this->uploadFiles();
-
 				$this->savePolymorphicData($polymorphicData);
 
 				if (!$this->beforeLocalizedSave())
@@ -198,7 +199,7 @@ class ImageModel extends Model {
 		if (!is_file($thumbnail) and is_file($original))
 		{
 			\Image::make($original)->
-				resize($dimensions[0], $dimensions[1], (isset($dimensions[2]) ? $dimensions[2] : true), false)->
+				resize($dimensions[0], $dimensions[1], Arr::getItem($dimensions, 2, true), false)->
 				save($thumbnail);
 		}
 

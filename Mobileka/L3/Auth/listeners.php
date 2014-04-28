@@ -34,3 +34,18 @@ Event::listen('unsuccessful_login_attempt', function($credentials)
 		Acl::incLoginAttempts($username);
 	}
 });
+
+Event::listen('A new user was created', function($model, $password)
+{
+
+});
+
+Event::listen('A new password recovery request was sent', function($user)
+{
+
+});
+
+Event::listen('A password was successfully recovered', function($user, $newPassword)
+{
+
+});

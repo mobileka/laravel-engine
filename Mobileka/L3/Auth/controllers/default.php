@@ -88,7 +88,7 @@ class Auth_Default_Controller extends Base_Controller {
 				with_errors($this->model->errors);
 		}
 
-		\Event::fire('A new user was created', array($this->model, $data['password']));
+		Event::fire('A new user was created', array($this->model, $data['password']));
 
 		//если пользователь был создан, то автоматически авторизуем его
 		$authenticated = \Auth::attempt(
@@ -154,7 +154,7 @@ class Auth_Default_Controller extends Base_Controller {
 		$user->recovery_request_date = date('Y-m-d H:i:s');
 		$user->save();
 
-		\Event::fire('A new password recovery request was sent', array($user));
+		Event::fire('A new password recovery request was sent', array($user));
 
 		return Redirect::to_route('auth_default_password_recovery_email_sent', compact('email'));
 	}

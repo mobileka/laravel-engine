@@ -16,7 +16,7 @@ class Grid extends \Mobileka\L3\Engine\Base\Crud {
 		return new static($model, $config, $items);
 	}
 
-	public function __construct(\Eloquent $model, $config = array(), $items = array())
+	public function __construct($model, $config = array(), $items = array())
 	{
 		$this->model = $model;
 		$this->items = $items;

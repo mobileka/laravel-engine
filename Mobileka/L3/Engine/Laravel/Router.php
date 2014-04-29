@@ -1,7 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
-use Laravel\Routing\Controller;
+use \Mobileka\L3\Engine\Laravel\Base\Controller;
 
 class Router extends \Laravel\Routing\Router {
 

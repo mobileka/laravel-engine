@@ -394,20 +394,23 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	protected function uploadFiles()
 	{
-		foreach (static::$fileFields as $field)
+		if (static::$fileFields)
 		{
-			$file = Input::file($field);
-
-			if ($file and $file['error'] != 4)
+			foreach (static::$fileFields as $field)
 			{
-				$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
-				$path = path('storage') . 'uploads/';
+				$file = Input::file($field);
 
-				$this->$field = \Mobileka\L3\Engine\Laravel\File::upload($file, $type, null, static::$allowedFileTypes, $path);
+				if ($file and $file['error'] != 4)
+				{
+					$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
+					$path = path('storage') . 'uploads/';
+
+					$this->$field = \Mobileka\L3\Engine\Laravel\File::upload($file, $type, null, static::$allowedFileTypes, $path);
+				}
 			}
-		}
 
-		$this->save();
+			$this->save();
+		}
 	}
 
 	public function getDownloadPath($field)

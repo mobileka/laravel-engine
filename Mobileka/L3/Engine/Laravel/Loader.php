@@ -4,7 +4,7 @@
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 1.0
  */
-class Loader extends \BaseClass {
+class Loader {
 	/**
 	 * Recursively load (require) files from a given $path
 	 *

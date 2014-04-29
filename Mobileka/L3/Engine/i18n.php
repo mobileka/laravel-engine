@@ -7,7 +7,7 @@ class i18n {
 	protected $i18n;
 	public static $lang;
 
-	public function __construct(\Eloquent $model)
+	public function __construct(\Laravel\Database\Eloquent\Model $model)
 	{
 		$this->i18n = $model;
 	}

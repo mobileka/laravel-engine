@@ -1,9 +1,9 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
-use Mobileka\L3\Engine\Laravel\Config,
-	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Base\Model;
 
-class Uploader extends \Model {
+class Uploader extends Model {
 
 	public static $table = 'uploads';
 	public static $rules = array('object_id' => 'integer');
@@ -58,12 +58,12 @@ class Uploader extends \Model {
 
 	public function get_extension()
 	{
-		return \File::extension($this->path);
+		return File::extension($this->path);
 	}
 
 	public function isImage()
 	{
-		return \File::exists($this->imagePath);
+		return File::exists($this->imagePath);
 	}
 
 	public function __get($name)
@@ -77,9 +77,9 @@ class Uploader extends \Model {
 			$thumbnail = imagePath($name, $this->type, $this->created_at);
 			$thumbUrl = image($name, $this->type, $this->created_at);
 
-			if (!\File::exists($thumbnail) and \File::exists($original))
+			if (!File::exists($thumbnail) and File::exists($original))
 			{
-				\Image::make($original)->
+				Image::make($original)->
 					resize($dimensions[0], $dimensions[1], Arr::getItem($dimensions, 2, true), false)->
 					save($thumbnail);
 			}

@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Laravel\Routing\Route;
 
 class RestfulRouter {
 
@@ -59,7 +60,7 @@ class RestfulRouter {
 
 	protected function index($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			array(
 				$uri,
 				$uri . '.(json)',
@@ -71,7 +72,7 @@ class RestfulRouter {
 
 	protected function view($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			array(
 				$uri . '/(:num)',
 				$uri . '/(:num).(json)',
@@ -83,7 +84,7 @@ class RestfulRouter {
 
 	protected function add($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			$uri . '/add',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -91,7 +92,7 @@ class RestfulRouter {
 
 	protected function edit($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			$uri . '/(:num)/edit',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -99,7 +100,7 @@ class RestfulRouter {
 
 	protected function create($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::post(
+		Route::post(
 			$uri,
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -107,7 +108,7 @@ class RestfulRouter {
 
 	protected function update($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::put(
+		Route::put(
 			$uri . '/(:num)',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -115,7 +116,7 @@ class RestfulRouter {
 
 	protected function destroy($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::delete(
+		Route::delete(
 			$uri . '/(:num)',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 			/*array(
@@ -131,7 +132,7 @@ class RestfulRouter {
 	 */
 	protected function uploads($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			array(
 				$uri . '/(:num)/uploads',
 				$uri . '/(:num)/uploads.(json)',
@@ -146,7 +147,7 @@ class RestfulRouter {
 	 */
 	protected function view_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			array(
 				$uri . '/(:num)/uploads/(:num)',
 				$uri . '/(:num)/uploads/(:num).(json)',
@@ -161,7 +162,7 @@ class RestfulRouter {
 	 */
 	protected function upload_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::post(
+		Route::post(
 			$uri . '/(:num)/uploads',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -172,7 +173,7 @@ class RestfulRouter {
 	 */
 	protected function destroy_file($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::delete(
+		Route::delete(
 			$uri . '/(:num)/uploads',
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -180,7 +181,7 @@ class RestfulRouter {
 
 	protected function download($bundle, $controller, $uri, $as, $uses, $https = null)
 	{
-		\Route::get(
+		Route::get(
 			$uri . '/(:num)/download/(:any)',
 			array(
 				'as' => $as . __FUNCTION__,
@@ -225,7 +226,7 @@ class RestfulRouter {
 				$args[1]['before'] = 'engine_csrf';
 			}
 
-			return forward_static_call_array(array('Route', $method), $args);
+			return forward_static_call_array(array('Laravel\Routing\Route', $method), $args);
 		}
 
 		if ($method == 'except')

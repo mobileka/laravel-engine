@@ -28,7 +28,7 @@
 
  */
 
-\Asset::container('engine_assets')
+Laravel\Asset::container('engine_assets')
 	->add('jquery',                           'bundles/engine/bower_components/jquery/jquery.min.js')
 	->add('bootstrap',                        'bundles/engine/admin/css/bootstrap.min.css')
 	->add('bootstrap-responsive',             'bundles/engine/admin/css/bootstrap-responsive.min.css')

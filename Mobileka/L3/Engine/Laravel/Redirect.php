@@ -10,8 +10,8 @@ class Redirect extends \Laravel\Redirect {
 	 */
 	public static function back($status = 302)
 	{
-		$url = \Session::get('acl: last_blocked_url', \Request::referrer());
-		\Session::forget('acl: last_blocked_url');
+		$url = Session::get('acl: last_blocked_url', \Laravel\Request::referrer());
+		Session::forget('acl: last_blocked_url');
 		return static::to($url, $status);
 	}
 
@@ -25,7 +25,7 @@ class Redirect extends \Laravel\Redirect {
 	 */
 	public function notify($message, $type = 'info', $id = '')
 	{
-		\Notification::$type($message, $id);
+		Notification::$type($message, $id);
 		return $this;
 	}
 
@@ -45,7 +45,7 @@ class Redirect extends \Laravel\Redirect {
 	 */
 	public function __call($name, $args)
 	{
-		if (in_array($name, \Notification::$permittedMessageTypes))
+		if (in_array($name, Notification::$permittedMessageTypes))
 		{
 			return $this->notify($args[0], $name);
 		}

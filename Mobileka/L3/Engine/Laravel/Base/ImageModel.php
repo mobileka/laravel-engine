@@ -1,9 +1,16 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Base;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr,
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Debug,
 	Mobileka\L3\Engine\Laravel\File,
+	Mobileka\L3\Engine\Laravel\Image,
+	Mobileka\L3\Engine\Laravel\Date,
 	Mobileka\L3\Engine\Laravel\Config,
-	Input;
+	Mobileka\L3\Engine\Laravel\Input;
+
+use Laravel\IoC;
+use Laravel\Database;
+use Laravel\Log;
 
 class ImageModel extends Model {
 
@@ -42,7 +49,7 @@ class ImageModel extends Model {
 
 		try
 		{
-			\DB::connection()->pdo->beginTransaction();
+			Database::connection()->pdo->beginTransaction();
 
 			foreach (array_unique($relations) as $relation)
 			{
@@ -84,7 +91,7 @@ class ImageModel extends Model {
 				{
 					if ($token = Arr::getItem($tokens, $field))
 					{
-						$uploader = \IoC::resolve('Uploader');
+						$uploader = IoC::resolve('Uploader');
 						$img = $uploader::where_token($token)->first();
 					}
 
@@ -93,7 +100,7 @@ class ImageModel extends Model {
 						continue;
 					}
 
-					$type = $this->table() . '/' . \Date::make($img->created_at)->get('Y-m');
+					$type = $this->table() . '/' . Date::make($img->created_at)->get('Y-m');
 					$cropData = Input::get($field, array());
 
 					if ($cropData)
@@ -125,16 +132,16 @@ class ImageModel extends Model {
 				throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
 			}
 
-			\DB::connection()->pdo->commit();
+			Database::connection()->pdo->commit();
 		}
 		catch(\PDOException $e)
 		{
 			if (!in_array($e->getCode(),array('42S22')))
 			{
-				\Log::info("\n\n\n###################################################################################################n");
-				\Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
-				\Debug::log_pp($e->getMessage(), false);
-				\Log::info("\n###################################################################################################n\n\n");
+				Log::info("\n\n\n###################################################################################################n");
+				Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
+				Debug::log_pp($e->getMessage(), false);
+				Log::info("\n###################################################################################################n\n\n");
 				return false;
 			}
 
@@ -198,7 +205,7 @@ class ImageModel extends Model {
 
 		if (!is_file($thumbnail) and is_file($original))
 		{
-			\Image::make($original)->
+			Image::make($original)->
 				resize($dimensions[0], $dimensions[1], Arr::getItem($dimensions, 2, true), false)->
 				save($thumbnail);
 		}

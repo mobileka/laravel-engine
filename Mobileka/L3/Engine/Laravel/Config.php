@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Base\Controller;
+
 class Config extends \Laravel\Config {
 	/**
 	 * Parse a key and return its bundle, file, and key segments.
@@ -60,7 +62,7 @@ class Config extends \Laravel\Config {
 	 */
 	public static function find($key, $default = null)
 	{
-		if (strpos($key, '::') === false and $bundle = \Controller::$route['bundle'])
+		if (strpos($key, '::') === false and $bundle = Controller::$route['bundle'])
 		{
 			$result = static::get($bundle . '::' . $key, 'blah________________blah');
 

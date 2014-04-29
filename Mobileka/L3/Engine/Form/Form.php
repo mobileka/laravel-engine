@@ -22,12 +22,12 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 		'id'    => 'form_validate'
 	);
 
-	public static function make(\Eloquent $model, $config = array())
+	public static function make(\Laravel\Database\Eloquent\Model $model, $config = array())
 	{
 		return new static($model, $config);
 	}
 
-	public function __construct(\Eloquent $model, $config = array())
+	public function __construct(\Laravel\Database\Eloquent\Model $model, $config = array())
 	{
 		$this->model = $model;
 		$this->rules = $model->rules;

@@ -4,7 +4,7 @@ class Database extends \Laravel\Database {
 
 	public static function tableExists($table)
 	{
-		$exists = \DB::only(
+		$exists = static::only(
 			'SELECT COUNT(*) as `exists`
 			FROM information_schema.tables
 			WHERE table_name IN (?)	AND table_schema = database()',

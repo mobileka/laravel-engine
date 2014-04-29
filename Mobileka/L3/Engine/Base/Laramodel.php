@@ -7,7 +7,7 @@ use \Laravel\Messages,
  * Self-validating Laravel models
  * Improved and fixed Aware Laravel bundle
  */
-abstract class Laramodel extends \Eloquent {
+abstract class Laramodel extends \Laravel\Database\Eloquent\Model {
 	/**
 	 * Validation Rules
 	 *

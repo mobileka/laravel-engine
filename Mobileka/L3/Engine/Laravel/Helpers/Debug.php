@@ -114,7 +114,7 @@ class Debug {
 	 */
 	public static function log_pp($what)
 	{
-		\Log::info(static::pp($what, false, true));
+		\Laravel\Log::info(static::pp($what, false, true));
 	}
 
 }

@@ -7,7 +7,7 @@ abstract class Crud {
 
 	/**
 	 * An instance of a main model for a module / bundle
-	 * @var \Aware
+	 * @var \Laravel\Database\Eloquent\Model
 	 */
 	protected $model;
 
@@ -104,7 +104,7 @@ abstract class Crud {
 	 * @param \Eloquent $model
 	 * @return Mobileka\L3\Engine\Base\Crud
 	 */
-	public function setModel(\Eloquent $model)
+	public function setModel(\Laravel\Database\Eloquent\Model $model)
 	{
 		$this->model = $model;
 		return $this;

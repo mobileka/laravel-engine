@@ -3,9 +3,10 @@
 use Laravel\Request,
 	Laravel\IoC,
 	Carbon\Carbon,
-	Mobileka\L3\Engine\Laravel\Helpers\Arr;
+	Mobileka\L3\Engine\Laravel\Helpers\Arr,
+	Mobileka\L3\Engine\Laravel\Base\Controller;
 
-class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
+class Acl {
 
 	public $aliases = array();
 	public $except = array();
@@ -22,7 +23,7 @@ class Acl extends \Mobileka\L3\Engine\Laravel\Base\Bclass {
 		}
 
 		$self->paths = Arr::getItem($self->permissions, 'paths', array());
-		$self->route = \Controller::$route;
+		$self->route = Controller::$route;
 		$self->bundle = $self->route['bundle'];
 		$self->controller = $self->route['controller'];
 		$self->action = $self->route['action'];

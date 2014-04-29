@@ -1,5 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel\Helpers;
 
+use Mobileka\L3\Engine\Laravel\Str;
+
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
  * @version 1.0
@@ -13,7 +15,7 @@ class Misc {
 	 */
 	public static function currentRoute()
 	{
-		$route = \Request::route();
+		$route = \Laravel\Request::route();
 
 		$uses = Arr::getItem($route->action, 'uses', '');
 		$alias = Arr::getItem($route->action, 'as', '');
@@ -96,7 +98,7 @@ class Misc {
 	public static function url(Array $route, $params = array())
 	{
 		$uri = static::actionUri($route);
-		return \URL::to_action($uri, $params);
+		return \Laravel\URL::to_action($uri, $params);
 	}
 
 
@@ -230,7 +232,7 @@ class Misc {
 	public static function randomPassword($length = 8, $characters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@#$%^&*()')
 	{
 		$password = '';
-		$size = \Str::length($characters);
+		$size = Str::length($characters);
 		$randomizer = (string)microtime();
 
 		for ($i = 0; $i < $length; $i++)
@@ -238,7 +240,7 @@ class Misc {
 			$password .= $characters[rand(0, $size - 1)] . $randomizer[rand(2, 9)];
 		}
 
-		return \Str::limit($password, $length, '');
+		return Str::limit($password, $length, '');
 	}
 }
 

@@ -3,11 +3,18 @@
 use Laravel\IoC,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\Helpers\Debug,
+	Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Str,
 	Mobileka\L3\Engine\Laravel\Config,
+	Mobileka\L3\Engine\Laravel\Date,
 	Mobileka\L3\Engine\Laravel\UrlConditionBuilder,
-	Input,
-	File;
+	Mobileka\L3\Engine\Laravel\Input,
+	Mobileka\L3\Engine\Laravel\Validator,
+	Mobileka\L3\Engine\Laravel\File;
+
+use Laravel\Database;
+use Laravel\Log;
+use Laravel\Paginator;
 
 /**
  * @author Armen Markossyan <a.a.markossyan@gmail.com>
@@ -185,7 +192,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 		try
 		{
-			\DB::connection()->pdo->beginTransaction();
+			Database::connection()->pdo->beginTransaction();
 
 			foreach (array_unique($relations) as $relation)
 			{
@@ -250,16 +257,16 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 				throw new \PDOException('There are '. count($this->errors->messages) . ' validation errors detected', 12);
 			}
 
-			\DB::connection()->pdo->commit();
+			Database::connection()->pdo->commit();
 		}
 		catch(\PDOException $e)
 		{
 			if (!in_array($e->getCode(),array('42S22')))
 			{
-				\Log::info("\n\n\n###################################################################################################n");
+				Log::info("\n\n\n###################################################################################################n");
 				Debug::log_pp("Exception code: " . $e->getCode() . "\n", false);
 				Debug::log_pp($e->getMessage(), false);
-				\Log::info("\n###################################################################################################n\n\n");
+				Log::info("\n###################################################################################################n\n\n");
 				return false;
 			}
 
@@ -278,7 +285,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	{
 		foreach ($translations as $lang => $fields)
 		{
-			$validation = \Validator::make($fields, Arr::getItem(static::$translatable, 'rules', array()));
+			$validation = Validator::make($fields, Arr::getItem(static::$translatable, 'rules', array()));
 
 			if ($validation->fails())
 			{
@@ -369,9 +376,9 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		{
 			$relationObject = $this->$relation();
 
-			$table = \Misc::propertyValue($this->$relation(), 'joining');
+			$table = Misc::propertyValue($this->$relation(), 'joining');
 
-			\DB::table($table)
+			Database::table($table)
 				->where_item_id($this->id)
 				->where_item_type($relationParams['polymorphic_value'])
 				->delete();
@@ -402,10 +409,10 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 				if ($file and $file['error'] != 4)
 				{
-					$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
+					$type = static::getTableName() . '/' . Date::make($this->created_at)->get('Y-m');
 					$path = path('storage') . 'uploads/';
 
-					$this->$field = \Mobileka\L3\Engine\Laravel\File::upload($file, $type, null, static::$allowedFileTypes, $path);
+					$this->$field = File::upload($file, $type, null, static::$allowedFileTypes, $path);
 				}
 			}
 
@@ -415,7 +422,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 
 	public function getDownloadPath($field)
 	{
-		$type = static::getTableName() . '/' . \Date::make($this->created_at)->get('Y-m');
+		$type = static::getTableName() . '/' . Date::make($this->created_at)->get('Y-m');
 		$path = path('storage') . 'uploads/docs/' . $type . '/' . $this->$field;
 
 		return $path;
@@ -482,7 +489,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		}
 
 		$order_by = $this->_order($order_by);
-		$query = \DB::table($this->table());
+		$query = Database::table($this->table());
 
 		$possible_conditions = array(
 			'in',
@@ -527,7 +534,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		$relations = array_unique(array_merge($relations, array_keys($relation_conditions)));
 
 		$per_page = (is_null($per_page))
-			? Input::get('per_page', \Config::get('application.objects_per_page', 25))
+			? Input::get('per_page', Config::get('application.objects_per_page', 25))
 			: $per_page;
 
 		$offset = $per_page * (Input::get('page', 1) - 1);
@@ -630,7 +637,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			$query = $results;
 		}
 
-		return \Paginator::make($query, $total, $per_page)->appends($appends);
+		return Paginator::make($query, $total, $per_page)->appends($appends);
 	}
 
 	public function setAttr($data, $key)
@@ -713,7 +720,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		{
 			return;
 		}
-		if (\Str::contains($name, '_uploads'))
+		if (Str::contains($name, '_uploads'))
 		{
 			$field = str_replace('_uploads', '', $name);
 
@@ -730,7 +737,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return static::$$name;
 		}
 
-		if (\Str::contains($name, '_uploads'))
+		if (Str::contains($name, '_uploads'))
 		{
 			if ($uploads = $this->$name())
 			{

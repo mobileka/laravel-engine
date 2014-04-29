@@ -1,5 +1,10 @@
 <?php
 
+use Laravel\Event;
+use Laravel\Routing\Route;
+use Laravel\Request;
+use Mobileka\L3\Engine\Laravel\Config;
+
 Event::listen('engine: ready', function()
 {
 	Route::filter('engine_csrf', function()
@@ -17,7 +22,7 @@ Event::listen('engine: ready', function()
 		}
 	});
 
-	if (Config::get('application.ssl') and !Request::secure())
+	if (Config::get('application.ssl') and !Request::secure() and !Request::cli())
 	{
 		header('Location: '.URL::to(URI::current(), true, false, false), true, 301);
 		exit();

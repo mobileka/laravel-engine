@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Laravel\Routing\Controller;
 
 class HTML extends \Laravel\HTML {
 
@@ -55,7 +56,7 @@ class HTML extends \Laravel\HTML {
 	{
 		$aliases = array_pluck(array_values(Router::$routes['GET']), 'as');
 
-		if (\Router::exists($name) and Acl::make()->checkByAlias($name))
+		if (Router::exists($name) and Acl::make()->checkByAlias($name))
 		{
 			return static::link_to_route($name, $title, $parameters, $attributes, $entities);
 		}
@@ -133,7 +134,7 @@ class HTML extends \Laravel\HTML {
 	{
 		$params = array($params);
 
-		$route = Arr::getItem($params, 'route', \Router::requestId(\Controller::$route, $action));
+		$route = Arr::getItem($params, 'route', Router::requestId(Controller::$route, $action));
 		unset($params['route']);
 
 		return array($route, $params);

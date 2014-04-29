@@ -6,6 +6,8 @@ use Mobileka\L3\Engine\Laravel\Helpers\Arr,
 	Mobileka\L3\Engine\Laravel\HTML,
 	Laravel\IoC;
 
+use Mobileka\L3\Engine\Laravel\Lang;
+
 /**
  * Components represent majority of functionality needed to build forms and
  * grids. In case of a form, each component renders an element (textfield,
@@ -232,7 +234,7 @@ abstract class Component {
 		$this->rawValue = $value;
 		$value = !is_null($limit = $this->limitCharacters) ? Str::limitCharacters($value, $limit) : $value;
 		$value = !is_null($limit = $this->limitWords) ? Str::limitWords($value, $limit) : $value;
-		$value = ($this->translate) ? \Lang::findLine($this->languageFile, $value) : $value;
+		$value = ($this->translate) ? Lang::findLine($this->languageFile, $value) : $value;
 
 		$value = $this->purify($value);
 		$value = $this->escape($value);
@@ -324,7 +326,7 @@ abstract class Component {
 
 			if (Str::contains($rules, 'required'))
 			{
-				$result = \View::make($view);
+				$result = View::make($view);
 			}
 		}
 

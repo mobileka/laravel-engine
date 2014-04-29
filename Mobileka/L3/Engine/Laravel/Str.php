@@ -31,7 +31,6 @@ class Str extends \Laravel\Str {
 		);
 	}
 
-
 	/**
 	 * Wrap a string with a given $wrapper
 	 *
@@ -132,8 +131,6 @@ class Str extends \Laravel\Str {
 
 		return rtrim($matches[0]).$end_char;
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Character Limiter

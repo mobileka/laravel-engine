@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Laravel\Routing\Controller;
 
 class Router extends \Laravel\Routing\Router {
 
@@ -26,7 +27,7 @@ class Router extends \Laravel\Routing\Router {
 	 */
 	public static function isCurrentRoute($route)
 	{
-		if ($currentRoute = Arr::getItem(\Controller::$route, 'alias'))
+		if ($currentRoute = Arr::getItem(Controller::$route, 'alias'))
 		{
 			return $currentRoute === $route;
 		}
@@ -43,7 +44,7 @@ class Router extends \Laravel\Routing\Router {
 	 */
 	public static function requestId(Array $route, $action = false)
 	{
-		$route = $route ? : \Controller::$route;
+		$route = $route ? : Controller::$route;
 
 		$result = str_replace('.', '_', $route['controller']);
 

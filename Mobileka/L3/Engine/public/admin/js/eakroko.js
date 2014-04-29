@@ -246,18 +246,18 @@ $(document).ready(function() {
 			var $el = $(this);
 			var selectableHeader = $el.data('selectableheader'),
 				selectionHeader	 = $el.data('selectionheader')
-				selectableId     = 'selectable' + $el.attr('id'),
-				selectionId      = 'selection' + $el.attr('id');
+				selectableId		 = 'selectable' + $el.attr('id'),
+				selectionId			= 'selection' + $el.attr('id');
 
 			$el.multiSelect({
-				selectableHeader : '<input id="' +  selectableId + '" type="text" class="search-input input-multiselect-heading" autocomplete="off" placeholder="' + selectableHeader + '">',
-				selectionHeader  : '<input id="' +  selectionId  + '" type="text" class="search-input input-multiselect-heading" autocomplete="off" placeholder="' + selectionHeader  + '">',
+				selectableHeader : '<input id="' +	selectableId + '" type="text" class="search-input input-multiselect-heading" autocomplete="off" placeholder="' + selectableHeader + '">',
+				selectionHeader	: '<input id="' +	selectionId	+ '" type="text" class="search-input input-multiselect-heading" autocomplete="off" placeholder="' + selectionHeader	+ '">',
 				afterInit: function(ms) {
-					var that                   = this,
-						$selectableSearch      = that.$selectableUl.prev(),
-						$selectionSearch       = that.$selectionUl.prev(),
+					var that									 = this,
+						$selectableSearch			= that.$selectableUl.prev(),
+						$selectionSearch			 = that.$selectionUl.prev(),
 						selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
-						selectionSearchString  = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+						selectionSearchString	= '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
 
 					that.qs1 = $selectableSearch.quicksearch(selectableSearchString);
 					that.qs2 = $selectionSearch.quicksearch(selectionSearchString);
@@ -301,6 +301,60 @@ $(document).ready(function() {
 						return "[" + node.data.key + "]: '" + node.data.title + "'";
 					});
 					$(".checkboxSelect").text(selKeys.join(", "));
+				};
+			}
+
+			if ($el.hasClass('filetree-menu')) {
+				opt.dnd = {
+					onDragStart: function(node) {
+						return true;
+					},
+					onDragStop: function(node) {
+
+					},
+
+					preventVoidMoves: true, // Prevent dropping nodes 'before self', etc.
+
+					onDragEnter: function(node, sourceNode) {
+						return true;
+					},
+
+					onDragOver: function(node, sourceNode, hitMode) {
+						// Prevent dropping a parent below it's own child
+						//
+						if (node.isDescendantOf(sourceNode)) {
+							return false;
+						}
+						// Prohibit creating childs in non-folders (only sorting allowed)
+						if( !node.data.isFolder && hitMode === "over" ){
+							return "after";
+						}
+					},
+
+					onDrop: function(node, sourceNode, hitMode, ui, draggable) {
+
+						if (hitMode === 'over') {
+							node.data.isFolder = true;
+							sourceNode.expand(true);
+						}
+
+						sourceNode.move(node, hitMode);
+
+						$.post( $el.data('move-url'), {
+							node_id   : sourceNode.data.id,
+							target_id : node.data.id,
+							mode      : hitMode
+						}, function(data) {
+							if (data.result == 'error') {
+								console.log(data.result);
+							}
+						});
+
+					},
+
+					onDragLeave: function(node, sourceNode) {
+
+					}
 				};
 			}
 
@@ -364,10 +418,10 @@ $(document).ready(function() {
 				max_file_size : '50mb',
 				chunk_size : '10mb',
 				unique_names : true,
-				filters : [
+				/*filters : [
 					{title : "Image files", extensions : "jpg,gif,png"},
 					{title : "Zip files", extensions : "zip"}
-				],
+				],*/
 				flash_swf_url : 'js/plupload/plupload.flash.swf',
 				silverlight_xap_url : 'js/plupload/plupload.silverlight.xap'
 			});
@@ -375,6 +429,7 @@ $(document).ready(function() {
 			$(".plupload_header").remove();
 			var upload = $el.pluploadQueue();
 			upload.settings.multipart_params = {
+				'csrf_token' : $('head [name=csrf_token]').attr('content'),
 				'upload_token' : $('[name="upload_token[' + fieldname + ']"]').val(),
 				'fieldName': fieldname,
 				'modelName' : modelName,
@@ -671,5 +726,3 @@ function resize_chosen(){
 		$el.find(".chzn-search input").css('width', ($el.parent().width()-37)+'px');
 	});
 }
-
-

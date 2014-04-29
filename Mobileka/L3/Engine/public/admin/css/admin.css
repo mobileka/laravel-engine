@@ -221,3 +221,26 @@ input.no-mb {
 .long-multiselect .ms-container ul.ms-list {
 	width: 320px;
 }
+
+.no-results,
+.table .no-results {
+	padding: 20px;
+	text-align: center;
+}
+
+.breadcrumbs {
+	margin-bottom: 20px;
+}
+
+.chosen-fixer {
+	width: 220px;
+}
+
+.table .text-center {
+	text-align: center;
+}
+
+.stats-switch-year {
+	margin: 0 auto;
+	width: 400px;
+}

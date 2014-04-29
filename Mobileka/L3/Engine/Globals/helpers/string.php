@@ -1,4 +1,20 @@
 <?php
+use Illuminate\Support\Str as LaraStr;
+
+function starts_with($haystack, $needles)
+{
+	return LaraStr::startsWith($haystack, $needles);
+}
+
+function ends_with($haystack, $needles)
+{
+	return LaraStr::endsWith($haystack, $needles);
+}
+
+function contains($haystack, $needles)
+{
+	return Str::contains($haystack, $needles);
+}
 
 function capitalize($string)
 {

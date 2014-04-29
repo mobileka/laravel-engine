@@ -53,7 +53,7 @@ class Str extends \Laravel\Str {
 	 */
 	public static function contains($haystack, $needle)
 	{
-		return (strpos($haystack, $needle) !== false);
+		return strpos($haystack, $needle) !== false;
 	}
 
 	/**

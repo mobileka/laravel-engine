@@ -24,3 +24,10 @@ function csrf_meta_tag($view = 'engine::_system.csrf')
 {
 	return View::make($view)->render();
 }
+
+function stats_format($number)
+{
+	$decimal = strpos($number, '.') !== false ? 1 : 0;
+
+	return number_format($number, $decimal, ', ', ' ');
+}

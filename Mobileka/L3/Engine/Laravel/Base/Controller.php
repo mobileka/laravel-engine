@@ -153,8 +153,15 @@ class Controller extends \Laravel\Routing\Controller {
 	public function after($response)
 	{}
 
+	public function beforeIndex()
+	{
+		return true;
+	}
+
 	public function get_index($format = 'html')
 	{
+		$beforeIndex = $this->beforeIndex();
+
 		$data = $this->model->buildQuery(
 			$this->with,
 			$this->conditions,
@@ -188,8 +195,15 @@ class Controller extends \Laravel\Routing\Controller {
 		;
 	}
 
+	public function beforeView()
+	{
+		return true;
+	}
+
 	public function get_view($id, $format = 'html')
 	{
+		$beforeView = $this->beforeView();
+
 		if ($this->with)
 		{
 			$this->model = $this->model->with(static::$with);
@@ -213,8 +227,15 @@ class Controller extends \Laravel\Routing\Controller {
 		;
 	}
 
+	public function beforeAdd()
+	{
+		return true;
+	}
+
 	public function get_add()
 	{
+		$beforeAdd = $this->beforeAdd();
+
 		try
 		{
 			$form = IoC::resolve(static::$route['bundle'].'EngineForm')->
@@ -236,8 +257,15 @@ class Controller extends \Laravel\Routing\Controller {
 		);
 	}
 
+	public function beforeEdit()
+	{
+		return true;
+	}
+
 	public function get_edit($id)
 	{
+		$beforeEdit = $this->beforeEdit();
+
 		if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data))
 		{
 			return Response::error('404');
@@ -264,14 +292,26 @@ class Controller extends \Laravel\Routing\Controller {
 		);
 	}
 
+	public function beforeCreate()
+	{
+		return true;
+	}
+
 	public function post_create()
 	{
+		$beforeCreate = $this->beforeCreate();
 		$this->data = Input::allBut(static::$fieldsToIgnore);
 		return $this->_save();
 	}
 
+	public function beforeUpdate()
+	{
+		return true;
+	}
+
 	public function put_update($id)
 	{
+		$beforeUpdate = $this->beforeUpdate();
 		$this->data = Input::allBut(static::$fieldsToIgnore);
 
 		if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model))
@@ -282,8 +322,15 @@ class Controller extends \Laravel\Routing\Controller {
 		return $this->_save();
 	}
 
+	public function beforeDestroy()
+	{
+		return true;
+	}
+
 	public function delete_destroy($id)
 	{
+		$beforeDestroy = $this->beforeDestroy();
+
 		if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model))
 		{
 			return Response::error('404');

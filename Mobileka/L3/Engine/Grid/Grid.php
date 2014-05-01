@@ -11,12 +11,12 @@ class Grid extends \Mobileka\L3\Engine\Base\Crud {
 	protected $sortable = array();
 	protected $unsortable = array();
 
-	public static function make($model, $config = array(), $items = array())
+	public static function make(\Laravel\Database\Eloquent\Model $model, $config = array(), $items = array())
 	{
 		return new static($model, $config, $items);
 	}
 
-	public function __construct($model, $config = array(), $items = array())
+	public function __construct(\Laravel\Database\Eloquent\Model $model, $config = array(), $items = array())
 	{
 		$this->model = $model;
 		$this->items = $items;

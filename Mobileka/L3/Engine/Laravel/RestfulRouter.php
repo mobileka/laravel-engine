@@ -20,8 +20,9 @@ class RestfulRouter {
 
 	public static function make()
 	{
-		$https = Config::get('application.ssl', true);
-		return new static;
+		$self = new static;
+		$self->https = Config::get('application.ssl', true);
+		return $self;
 	}
 
 	public function resource(array $options)
@@ -54,7 +55,7 @@ class RestfulRouter {
 
 		foreach ($this->actions as $action)
 		{
-			$this->$action($bundle, $controller, $uri, $as, $uses, $https = null);
+			$this->$action($bundle, $controller, $uri, $as, $uses, $this->https);
 		}
 	}
 

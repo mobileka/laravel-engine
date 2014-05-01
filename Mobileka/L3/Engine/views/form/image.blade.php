@@ -29,7 +29,7 @@ var component = {
 		$('#{{ $component->name }}_h').val(c.h);
 	},
 	jcrop : {
-		setSelect: [0, 0, 100, 50],
+		setSelect: [0, 0, 4000, 4000],
 		boxWidth: 500,
 		boxHeight: 500
 	}

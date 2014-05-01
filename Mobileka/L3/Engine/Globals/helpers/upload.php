@@ -27,12 +27,12 @@ function dummyThumbnail($alias = null)
 
 	if ($dimensions)
 	{
-		\Image::make(path('public').'bundles/engine/img/elements/dummy_thumbnail_original.png')->
+		\Image::make(path('public').'/bundles/engine/img/elements/dummy_thumbnail_original.png')->
 			resize($dimensions[0], $dimensions[1], true, false)->
-			save(path('public').'uploads/dummy_thumbnail_'.$alias.'.png');
+			save(path('public').'/uploads/dummy_thumbnail_'.$alias.'.png');
 
 		return \URL::base() . '/uploads/dummy_thumbnail_' . $alias . '.png';
 	}
 
-	return \URL::base() . 'bundles/engine/img/elements/dummy_thumbnail_original.png';
+	return \URL::base() . '/bundles/engine/img/elements/dummy_thumbnail_original.png';
 }

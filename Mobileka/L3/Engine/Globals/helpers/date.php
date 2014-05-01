@@ -36,14 +36,15 @@ function dateTimeToDate($datetime, $now = false)
 	return ($datetime != '0000-00-00 00:00:00' and $datetime) ? Date::make($datetime)->get() : $default;
 }
 
-function translateDate($date, $lang = 'ru', $delimiter = ' ')
+function translateDate($date, $lang = '', $delimiter = ' ')
 {
-	$date = substr($date, 0, 10); 
+	$date = substr($date, 0, 10);
 	$result = array();
 	$dayIndex = 2;
 	$monthIndex = 1;
 	$yearIndex = 0;
 	$date = explode('-', $date);
+	$lang = $lang ? : getCurrentLang();
 
 	$result[0] = Arr::getItem($date, $dayIndex, '01');
 	$month = (int)Arr::getItem($date, $monthIndex, 1);

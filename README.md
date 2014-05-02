@@ -48,7 +48,9 @@ Clone the Laravel Engine into a separate folder.
 
 The best way to integrate the Engine with a Laravel 3 application is to create a symlink in the `bundles/` directory:
 
-`cd bundles && ln -s path/to/Laravel/Engine/Mobileka/directory`
+```bash
+$ cd bundles && ln -s path/to/Laravel/Engine/Mobileka/directory`
+```
 
 Or, if you are on Windows (Vista or newer):
 
@@ -69,7 +71,7 @@ The Engine consists of three big parts:
 
 You need to register these bundles in the `application/bundles.php`:
 
-```
+```php
 return array(
 	'engine' => array('location' => 'Mobileka/L3/Engine'),
 	'auth' => array('location' => 'Mobileka/L3/Auth', 'auto' => true),
@@ -83,7 +85,7 @@ Some of Laravel Engine components use composer packages, so you need to install 
 
 -- Add the following code to your `app/start.php` file:
 
-```
+```php
 if (!File::exists('vendor/autoload.php'))
 {
 	throw new Exception("You need to run composer update to complete installation of this project.");
@@ -93,7 +95,7 @@ require 'vendor/autoload.php';
 ```
 -- Create `composer.json` file in the root of your project and add these lines to it:
 
-```
+```json
 {
 	"require" : {
 		"nesbot/Carbon": "*",
@@ -109,27 +111,27 @@ require 'vendor/autoload.php';
 
 Ok, lets continue. It is time to run migrations:
 
-```
+```bash
 $ php artisan migrate:install
 $ php artisan migrate
 ```
 
 ... add the following line on top of your `application/routes.php` file:
 
-```
+```php
 Bundle::start('engine');
 ```
 
 ... and add a route to handle the access to the administration interface:
 
-```
+```php
 Route::get(admin_uri(), array('as' => 'admin_home', 'uses' => 'users::admin.default@index'));
 ```
 
 The `admin_uri()` helper allows you to easily change the URI which handles access to admin interface (`admin` is the default one).
 To change this URI, you need to add `admin_uri` parameter to the `application/config/application.php` configuration file:
 
-```
+```php
 'admin_uri' => 'rulethesite'
 ```
 
@@ -137,13 +139,13 @@ To change this URI, you need to add `admin_uri` parameter to the `application/co
 
 The Engine contains a shitload of assets which must be published:
 
-```
+```bash
 $ php artisan bundle:publish
 ```
 
 In order Auth component to work properly, add these permissions to `application/config/acl.php`:
 
-```
+```php
 <?php
 
 return array(
@@ -172,14 +174,14 @@ return array(
 
 and specify a model which maps the `users` table `application/config/auth.php`:
 
-```
+```php
 'model' => IoC::resolve('UserModel'),
 ```
 
 If you are going to use an image uploading functionality, make sure to create a directory writable
 by a webserver and specify it in `paths.php`:
 
-```
+```php
 $paths['uploads'] = 'public/uploads';
 ```
 
@@ -192,7 +194,7 @@ Don't forget to create a `.gitignore` file in this folder with the following con
 
 As you are probably going to use the `ImageColumn` component, create `application/config/image.php` file and add these lines to it:
 
-```
+```php
 <?php
 
 return array(
@@ -258,11 +260,11 @@ DropdownChosenLinked component exists for CRUD Form and Grid Filter. It allows y
 
 Using it is slightly harder than a normal DropdownChosen component, but nothing too hard.
 
-First of all, make sure you have published all the assets of Laravel Engine. A new .js file was pushed to the repo recently, so run ``php artisan bundle:publish`` if you haven't done that for a while.
+First of all, make sure you have published all the assets of Laravel Engine. A new .js file was pushed to the repo recently, so run `php artisan bundle:publish` if you haven't done that for a while.
 
 Next, you will need to create a route for your ajax requests. Every time you select a value in one of the linked select boxes, an ajax request is sent in order to retrieve the selected element's children items, so we need to make sure we created the route for that. Just add this to your `application/routes.php` file, and specify the models that you need to work with in the `$possible_linked_items` array:
 
-```
+```php
 Route::get('admin/linked_list/(:any)/(:num)', array('as' => 'admin_linked_list', function($modelName, $id){
 
 	$result                = array();
@@ -291,7 +293,7 @@ Route::get('admin/linked_list/(:any)/(:num)', array('as' => 'admin_linked_list',
 
 Now all we need is to specify in the `config.php` for our form or filter the linked items. It must be an array, with its keys being the fields in the database (which we are saving values for in the case of the Form, or which we are filtering by in the case of Filter) and the values being the model class of the children. In the following example I have three levels of product types, followed by one level of product features:
 
-```
+```php
 $linked_items = array(
 	'product_type_id_1' => 'Product_Type',
 	'product_type_id_2' => 'Product_Type',
@@ -303,7 +305,7 @@ $linked_items = array(
 
 And then in the config of the actual fields:
 
-```
+```php
 'product_type_id_1' => formDropdownChosenLinked::make('product_type_id_1')->options($product_type_1s)->linked_items($linked_items),
 'product_type_id_2' => formDropdownChosenLinked::make('product_type_id_2', array('disabled' => true))->options(array()),
 'product_type_id_3' => formDropdownChosenLinked::make('product_type_id_3', array('disabled' => true))->options(array()),
@@ -336,11 +338,15 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 ## Getting started with image uploading
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
-`php composer.phar require intervention/image dev-master`
+```bash
+$ php composer.phar require intervention/image dev-master
+```
 
 If you want to make image uploading more efficient, you can also install "intervention/imagecache":
 
-`php composer.phar require intervention/imagecache dev-master`
+```bash
+$ php composer.phar require intervention/imagecache dev-master
+```
 
 ## Usage of image uploading
 Lets start from a simple example when you just need to upload an image and bind it to your, say, Article object.
@@ -362,7 +368,7 @@ Lets start from a simple example when you just need to upload an image and bind 
 
 5. The last step is to configure a component for your form and, optionally, grid:
 
-```
+```php
 use Mobileka\L3\Engine\Form\Components\Image as ImageField,
 	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
 
@@ -396,7 +402,7 @@ This component is there to upload images one by one (though you can use several 
 It is worth mentioning that you can add croppoing functionality to this component and that we use `Jcrop` JavaScript library for this.
 To enable image cropping you need to pass `asceptRatio` as a Jcrop option like this:
 
-```
+```php
 Image::make('img')->jcrop(array('aspectRatio' => 1));
 ```
 
@@ -407,7 +413,7 @@ The next section describes how to retrieve these images and work with them.
 ## Working with uploaded images
 Ok, it is time to show the uploaded image to a user. In order to get an original uploaded image you just need to call a `getImageSrc()` method on a model object as follows:
 
-```
+```php
 $article = Article::find(1);
 $article->getImageSrc('img'); // provide a name of an image field
 ```
@@ -417,7 +423,7 @@ If you were following the [installation quest](#installation-quest) carefully, y
 
 Lets review the contents of this file:
 
-```
+```php
 <?php
 
 return array(
@@ -435,7 +441,7 @@ This alias can be passed to the `getImageSrc()` method as a second parameter: `$
 
 This means that the original image will be rezised according to alias dimensions. By default, the aspect ratio will be preserved, but if you want to change this, add a third boolean item to the alias dimensions array like so:
 
-```
+```php
 return array(
 	'aliases' => array(
 		'main_article_image' => array(220, 170, false) //do not preserve the aspect ratio and make the image exactly 220 x 170
@@ -448,7 +454,7 @@ return array(
 ## Multiple image uploading
 It's easy to upload multiple images with the Engine. The only difference between single image uploading and multiuploading is a component that performs this. So, the `Mobileka\L3\Engine\Form\Components\Image` component is used for a single image uploading and `Mobileka\L3\Engine\Form\Components\MultiUpload` for multiple image uploading:
 
-```
+```php
 use Mobileka\L3\Engine\Form\Components\MultiUpload,
 	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
 
@@ -475,19 +481,19 @@ When using a MultiUpload component, it is a common use case when you need to cho
 1. Create `img` field in the `articles` table
 2. Call `featuredImageSelector()` method on your `MultiUpload` component like this:
 
-```
+```php
 MultiUpload::make('img')->featuredImageSelector()
 ```
 
 By default the featured image path will be saved in a field with a name of a component (`img` in our case) and then can be accesses like this:
 
-```
+```php
 $article->img
 ```
 
 You can change this passing a field name as a parameter to the `featuredImageSelector()` method:
 
-```
+```php
 MultiUpload::make('img')->featuredImageSelector('featured_image')
 ```
 
@@ -524,7 +530,7 @@ it consists of items devided by sections. In other words, sections are groups or
 
 The first step is to create an `application/config/menu.php` file and fill it with configuration data according to this syntax:
 
-```
+```php
 return array(
 	'sections' => array(
 		array(
@@ -579,13 +585,13 @@ There are two possible ways to generate an administration interface:
 ### 1. Generating a single bundle
 
 To create a new bundle run this command:
-```
-artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType:option[ fieldName:laravelColumnType:option ...][ addmenu:section:item]
+```bash
+$ php artisan engine::create:bundle path.to.bundle.bundleName fieldName:laravelColumnType:option[ fieldName:laravelColumnType:option ...][ addmenu:section:item]
 ```
 
 Here is a simple example:
-```
-artisan engine::create:bundle app.Users username:string password:string role_id:unsigned:index
+```bash
+$ php artisan engine::create:bundle app.Users username:string password:string role_id:unsigned:index
 ```
 
 This generates following files with proper contents in `bundles/app/Users` directory:
@@ -618,8 +624,8 @@ As stated above, Laravel Engine is able to generate bundles by reading an existi
 
 To use this functionality, you need to put the sql file into the  `path('app')/schema` directory and run a command:
 
-```
-artisan engine::create:application[ schema_filename][ path_to_bundles]
+```bash
+$ artisan engine::create:application[ schema_filename][ path_to_bundles]
 ```
 
 The `schema.sql` file will be expected by default. The second argument is for nesting your bundles in a separate directories inside of the `bundnles` directory.
@@ -627,8 +633,8 @@ The `schema.sql` file will be expected by default. The second argument is for ne
 And here is an example:
 
 Lets assume that you saved a file `my_super_puper_database_schema.sql` in the `path('app')/schema` directory and you also want all of your generated bundles to reside in `bundles/app` directory. To do this, just run the following command:
-```
-artisan engine::create:application my_super_puper_database_schema.sql app
+```bash
+$ artisan engine::create:application my_super_puper_database_schema.sql app
 ```
 
 That's it! Now you have a fully functional administration interface with a grid (plus sorting and filtering possibilities) and CRUD with automatic form validation!
@@ -639,8 +645,8 @@ When generating bundles one by one, you have a lot of options to customize the g
 
 For example, you can make a field to be unsigned, create an index on it or make it to be required (a rule will be added to a self-validating model):
 
-```
-artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required
+```bash
+$ artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required
 ```
 
 # Contributors

@@ -1,6 +1,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents** 
+**Table of Contents**
 
 - [Introduction](#introduction)
 - [Installation quest](#installation-quest)
@@ -13,7 +13,7 @@
 - [Image uploading](#image-uploading)
 	- [Getting started with image uploading](#getting-started-with-image-uploading)
 	- [Usage of image uploading](#usage-of-image-uploading)
-	- [Uploading images one by one](#uploading-images-one-by-one) 
+	- [Uploading images one by one](#uploading-images-one-by-one)
 	- [Working with uploaded images](#working-with-uploaded-images)
 	- [Multiple image uploading](#multiple-image-uploading)
 	- [How does image uploading work?](#how-does-image-uploading-work)
@@ -24,8 +24,11 @@
 		- [1. Generating a single bundle](#1-generating-a-single-bundle)
 		- [2. Generating bundles with SQL file](#2-generating-bundles-with-sql-file)
 	- [Other generator possibilities](#other-generator-possibilities)
+- [Running tests](#running-tests)
 - [Contributors](#contributors)
 - [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Introduction
 
@@ -73,9 +76,9 @@ You need to register these bundles in the `application/bundles.php`:
 
 ```php
 return array(
-	'engine' => array('location' => 'Mobileka/L3/Engine'),
-	'auth' => array('location' => 'Mobileka/L3/Auth', 'auto' => true),
-	'users' => array('location' => 'Mobileka/L3/Users', 'auto' => true),
+    'engine' => array('location' => 'Mobileka/L3/Engine'),
+    'auth' => array('location' => 'Mobileka/L3/Auth', 'auto' => true),
+    'users' => array('location' => 'Mobileka/L3/Users', 'auto' => true),
 );
 ```
 
@@ -88,7 +91,7 @@ Some of Laravel Engine components use composer packages, so you need to install 
 ```php
 if (!File::exists('vendor/autoload.php'))
 {
-	throw new Exception("You need to run composer update to complete installation of this project.");
+    throw new Exception("You need to run composer update to complete installation of this project.");
 }
 
 require 'vendor/autoload.php';
@@ -97,17 +100,17 @@ require 'vendor/autoload.php';
 
 ```json
 {
-	"require" : {
-		"nesbot/Carbon": "*",
-		"ezyang/htmlpurifier": "dev-master"
-	}
+    "require" : {
+        "nesbot/Carbon": "*",
+        "ezyang/htmlpurifier": "dev-master"
+    }
 }
 ```
 -- Run `php composer.phar update`
 
 > If you get the "allowed memory size exhausted" error try adding `-d memory_limit="1024M"` after `php` in the above command
 
--- Add `composer.lock` and `vendor/*` to `.gitignore` in the root of your application
+-- Add `composer.lock` and `/vendor/` to `.gitignore` in the root of your application
 
 Ok, lets continue. It is time to run migrations:
 
@@ -149,26 +152,26 @@ In order Auth component to work properly, add these permissions to `application/
 <?php
 
 return array(
-	'defaultResult' => false,
+    'defaultResult' => false,
 
-	'allowedRoutes' => array(
-		'auth_admin_default_login',
-		'auth_admin_default_logout',
-	),
+    'allowedRoutes' => array(
+        'auth_admin_default_login',
+        'auth_admin_default_logout',
+    ),
 
-	'permissions' => array(
+    'permissions' => array(
 
-		'aliases' => array(
-			'(:any)_admin_(:any)' => array('admins'),
-			'admin_home' => array('admins'),
-		),
+        'aliases' => array(
+            '(:any)_admin_(:any)' => array('admins'),
+            'admin_home' => array('admins'),
+        ),
 
-		'paths' => array(),
-	),
+        'paths' => array(),
+    ),
 
-	'actions' => array(
-		'upload_files_without_restrictions' => array('admins')
-	),
+    'actions' => array(
+        'upload_files_without_restrictions' => array('admins')
+    ),
 );
 ```
 
@@ -198,11 +201,11 @@ As you are probably going to use the `ImageColumn` component, create `applicatio
 <?php
 
 return array(
-	'aliases' => array(
-		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
-		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
-	),
-	'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
+    'aliases' => array(
+        'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
+        'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
+    ),
+    'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
 );
 ```
 
@@ -221,18 +224,18 @@ password: 123456
 
 # Conventions
 * Routing
-	* Route aliases
-	* RESTful urls (RestfulRouter class)
-	* .json and .ajax
+    * Route aliases
+    * RESTful urls (RestfulRouter class)
+    * .json and .ajax
 * Models
-	* naming
-	* saveData()
+    * naming
+    * saveData()
 
 * CRUD
 CRUD is the fundomental component of the Engine. 
-	* Component configuration
-	* Language configuration
-	* Component value translation
+    * Component configuration
+    * Language configuration
+    * Component value translation
 
 # Base\Model
 * Events
@@ -267,26 +270,26 @@ Next, you will need to create a route for your ajax requests. Every time you sel
 ```php
 Route::get('admin/linked_list/(:any)/(:num)', array('as' => 'admin_linked_list', function($modelName, $id){
 
-	$result                = array();
-	$possible_linked_items = array('Geo', 'Product_Type', 'Feature');
+    $result                = array();
+    $possible_linked_items = array('Geo', 'Product_Type', 'Feature');
 
-	if (in_array($modelName, $possible_linked_items))
-	{
-		$model = IoC::resolve($modelName . 'Model');
-		$data  = $model->getListByParent($id, 'name');
+    if (in_array($modelName, $possible_linked_items))
+    {
+        $model = IoC::resolve($modelName . 'Model');
+        $data  = $model->getListByParent($id, 'name');
 
-		foreach ($data as $record)
-		{
-			$result[] = array(
-				'id'   => $record->id,
-				'name' => $record->name,
-			);
-		}
+        foreach ($data as $record)
+        {
+            $result[] = array(
+                'id'   => $record->id,
+                'name' => $record->name,
+            );
+        }
 
-		return Response::json($result);
-	}
+        return Response::json($result);
+    }
 
-	throw new Exception("Incorrect value for passed model: $modelName");
+    throw new Exception("Incorrect value for passed model: $modelName");
 
 }));
 ```
@@ -295,10 +298,10 @@ Now all we need is to specify in the `config.php` for our form or filter the lin
 
 ```php
 $linked_items = array(
-	'product_type_id_1' => 'Product_Type',
-	'product_type_id_2' => 'Product_Type',
-	'product_type_id_3' => 'Feature',
-	'feature_id'        => 'Feature',
+    'product_type_id_1' => 'Product_Type',
+    'product_type_id_2' => 'Product_Type',
+    'product_type_id_3' => 'Feature',
+    'feature_id'        => 'Feature',
 );
 
 ```
@@ -322,7 +325,7 @@ One last thing: as you can see in the route, the children are retrieved using a 
     * TextColumn
     * ...
 * Filters
-	* StartsWithFilter
+    * StartsWithFilter
     * DropdownFilter
     * ...
 
@@ -370,23 +373,23 @@ Lets start from a simple example when you just need to upload an image and bind 
 
 ```php
 use Mobileka\L3\Engine\Form\Components\Image as ImageField,
-	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
+    Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
 
 return array(
-	'form' => array(
-		'components' => array(
-			//...
-			'img' => ImageField::make('img'),
-			//...
-		)
-	),
-	grid' => array(
-		'components' => array(
-			//...
-			'img' => ImageColumn::make('img'),
-			//...
-		)
-	)
+    'form' => array(
+        'components' => array(
+            //...
+            'img' => ImageField::make('img'),
+            //...
+        )
+    ),
+    grid' => array(
+        'components' => array(
+            //...
+            'img' => ImageColumn::make('img'),
+            //...
+        )
+    )
 );
 ```
 
@@ -427,11 +430,11 @@ Lets review the contents of this file:
 <?php
 
 return array(
-	'aliases' => array(
-		'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
-		'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
-	),
-	'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
+    'aliases' => array(
+        'multiupload_thumb' => array(99, 112), // Dimensions of thumbnails in multiupload
+        'admin_grid_thumb' => array(80, 80), // Dimensions of thumbnails in grid
+    ),
+    'allowedFileTypes' => array('jpg', 'jpeg', 'png', 'gif') //modify for your needs
 );
 ```
 
@@ -443,9 +446,9 @@ This means that the original image will be rezised according to alias dimensions
 
 ```php
 return array(
-	'aliases' => array(
-		'main_article_image' => array(220, 170, false) //do not preserve the aspect ratio and make the image exactly 220 x 170
-	),
+    'aliases' => array(
+        'main_article_image' => array(220, 170, false) //do not preserve the aspect ratio and make the image exactly 220 x 170
+    ),
 );
 ```
 
@@ -456,23 +459,23 @@ It's easy to upload multiple images with the Engine. The only difference between
 
 ```php
 use Mobileka\L3\Engine\Form\Components\MultiUpload,
-	Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
+    Mobileka\L3\Engine\Grid\Components\Image as ImageColumn;
 
 return array(
-	'form' => array(
-		'components' => array(
-			//...
-			'img' => MultiUpload::make('img'),
-			//...
-		)
-	),
-	grid' => array(
-		'components' => array(
-			//...
-			'img' => ImageColumn::make('img'),
-			//...
-		)
-	)
+    'form' => array(
+        'components' => array(
+            //...
+            'img' => MultiUpload::make('img'),
+            //...
+        )
+    ),
+    grid' => array(
+        'components' => array(
+            //...
+            'img' => ImageColumn::make('img'),
+            //...
+        )
+    )
 );
 ```
 
@@ -532,34 +535,34 @@ The first step is to create an `application/config/menu.php` file and fill it wi
 
 ```php
 return array(
-	'sections' => array(
-		array(
-			'label' => 'Section Name 1',
-			'items' => array(
-				array(
-					'label' => 'Item Name 1',
-					'route' => 'item_route_alias', //according to routing conventions
-					'icon' => 'glyphicon-user'
-				),
-				//...
-				array(
-					'label' => 'Item Name 2',
-					'route' => 'bundle_admin_controller_action',
-					'icon' => 'glyphicon-group'
-				),
-			)
-		),
-		array(
-			'label' => 'Section Name 2',
-			'items' => array(
-				array(
-					'label' => 'User management',
-					'route' => 'users_admin_default_index',
-					'icon' => 'glyphicon-user'
-				),
-			)
-		),
-	)
+    'sections' => array(
+        array(
+            'label' => 'Section Name 1',
+            'items' => array(
+                array(
+                    'label' => 'Item Name 1',
+                    'route' => 'item_route_alias', //according to routing conventions
+                    'icon' => 'glyphicon-user'
+                ),
+                //...
+                array(
+                    'label' => 'Item Name 2',
+                    'route' => 'bundle_admin_controller_action',
+                    'icon' => 'glyphicon-group'
+                ),
+            )
+        ),
+        array(
+            'label' => 'Section Name 2',
+            'items' => array(
+                array(
+                    'label' => 'User management',
+                    'route' => 'users_admin_default_index',
+                    'icon' => 'glyphicon-user'
+                ),
+            )
+        ),
+    )
 );
 ```
 
@@ -648,6 +651,22 @@ For example, you can make a field to be unsigned, create an index on it or make 
 ```bash
 $ artisan engine::create:bundle app.Users username:string:required role_id:unsigned:index:required
 ```
+
+# Running tests
+
+Add following to you composer.json and run `composer update`:
+
+```json
+{
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    }
+}
+```
+
+Now you can run tests by typing `vendor/bin/phpspec run`.
+
+To get more information about [phpspec](http://www.phpspec.net/) visit this [Github page](https://github.com/phpspec/phpspec)
 
 # Contributors
 

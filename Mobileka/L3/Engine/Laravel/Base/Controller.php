@@ -410,6 +410,20 @@ class Controller extends \Laravel\Routing\Controller {
 				->success(Lang::findLine('default.messages', 'mass_destroy'));
 	}
 
+	protected function generateSuccessUrl($route, $options, $params)
+	{
+		$result = Input::get('successUrl', '');
+
+		$parsedUrl = parse_url($result);
+
+		if (!$result or Arr::getItem($parsedUrl, 'host') !== URL::base())
+		{
+			$result = URL::to_action($this->generateUrl($route, $options), $params);
+		}
+
+		return $result;
+	}
+
 	/**
 	 * Save a model
 	 *
@@ -432,10 +446,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		$route = static::$route;
 
-		$successUrl = Input::get(
-			'successUrl',
-			URL::to_action($this->generateUrl($route, $options), $params)
-		);
+		$successUrl = $this->generateSuccessUrl($route, $options, $params);
 
 		$errorUrl = Input::get('errorUrl', null);
 

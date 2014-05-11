@@ -24,12 +24,12 @@
 		@foreach (Input::get('filters.where', array()) as $name => $attribute)
 
 			@if ($attribute and isset($component->linked_items[$name]))
-
-				app.current.{{ $name }} = '{{ $attribute }}';
-
+				app.current.{{{ $name }}} = '{{{ $attribute }}}';
 			@endif
 
 		@endforeach
+
+		console.warn(app.current);
 
 		app.linked_items    = {{ json_encode($component->linked_items) }};
 		app.selectorPrefix  = 'select[name="filters[where][',

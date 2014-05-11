@@ -3,7 +3,7 @@
 use Mobileka\L3\Engine\Laravel\Helpers\Misc,
 	Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
-use Laravel\Controller;
+use Laravel\Routing\Controller;
 
 class UrlConditionBuilder {
 

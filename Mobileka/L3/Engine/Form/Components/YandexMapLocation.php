@@ -27,7 +27,7 @@ class YandexMapLocation extends BaseComponent {
 
 		\Asset::container('engine_assets')->add(
 			'yandex_maps',
-			'http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=' . \Config::get('application.language')
+			'https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=' . \Config::get('application.language')
 		)->add(
 			'yandex_map_location',
 			'bundles/engine/admin/js/yandex_map_location.js'

@@ -25,7 +25,7 @@ Event::listen('engine: ready', function()
 	if (Config::get('application.ssl') and !Request::secure() and !Request::cli())
 	{
 		header('Location: '.URL::to(URI::current(), true, false, false), true, 301);
-		exit();
+		exit;
 	}
 });
 

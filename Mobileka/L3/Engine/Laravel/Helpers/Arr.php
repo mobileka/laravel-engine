@@ -27,6 +27,24 @@ class Arr {
 		return false;
 	}
 
+	/**
+	 * Implode an array recursively
+	 *
+	 * @param array $array
+	 * @param string $glue
+	 * @return string
+	 */
+	public static function implodeRecursively(Array $array, $glue)
+	{
+		$result = '';
+
+		foreach ($array as $item)
+		{
+			$result .= is_array($item) ? static::implodeRecursively($item, $glue) . $glue : $item . $glue;
+		}
+
+		return substr($result, 0, 0 - strlen($glue));
+	}
 
 	/**
 	 * Return the first truthy element of an array.

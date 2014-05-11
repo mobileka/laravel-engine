@@ -151,7 +151,7 @@ class ImageModel extends Model {
 		return true;
 	}
 
-	public function getImageSrc($image, $alias = '', $crop = false)
+	public function getImageSrc($image, $alias = '', $crop = false, $dummy = true)
 	{
 		$dimensions = Config::find('image.aliases.'.$alias, array());
 		$alias = ($alias == 'original' ? '' : $alias);
@@ -196,7 +196,7 @@ class ImageModel extends Model {
 
 		if (!is_file($original))
 		{
-			return dummyThumbnail($alias);
+			return $dummy ? dummyThumbnail($alias) : null;
 		}
 
 		$name = ($crop ? 'crop_' : '') . ($alias ? $alias . '_' : '') . $filename;

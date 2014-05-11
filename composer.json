@@ -1,0 +1,15 @@
+{
+    "require": {
+        "intervention/image": "dev-master",
+        "intervention/imagecache": "dev-master",
+        "nesbot/Carbon": "*"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mobileka\\": ["Mobileka"]
+        }
+    }
+}

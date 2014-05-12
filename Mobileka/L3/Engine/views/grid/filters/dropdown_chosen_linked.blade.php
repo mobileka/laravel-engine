@@ -29,12 +29,9 @@
 
 		@endforeach
 
-		console.warn(app.current);
-
 		app.linked_items    = {{ json_encode($component->linked_items) }};
 		app.selectorPrefix  = 'select[name="filters[where][',
 		app.selectorPostfix = ']"]';
-
 	</script>
 
 @endif

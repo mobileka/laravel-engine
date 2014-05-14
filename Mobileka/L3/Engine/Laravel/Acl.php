@@ -193,7 +193,7 @@ class Acl {
 	public static function isTooMuchLoginAttempts($username, $ip = null)
 	{
 		$ip = $ip ?: Request::ip();
-		$limit = Config::get('auth.allowed_login_attempts', 0);
+		$limit = Config::get('security.allowed_login_attempts', 0);
 
 		return $limit 
 			? (int)$limit <= (int)static::getLoginAttempts($username, $ip) 
@@ -214,7 +214,7 @@ class Acl {
 			 * Если она не меньше, чем один блокировочный период назад, то
 			 * продлеваем этот период и добавляем 1 к неудачным попыткам
 			 */
-			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('auth.login_attempts_block_duration', 15))
+			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('security.login_attempts_block_duration', 15))
 			{
 				return $model->attempts;
 			}
@@ -239,7 +239,7 @@ class Acl {
 			 * Если она не меньше, чем один блокировочный период назад, то
 			 * продлеваем этот период и добавляем 1 к неудачным попыткам
 			 */
-			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('auth.login_attempts_block_duration', 15))
+			if (Carbon::now()->diffInMinutes($last_fail) <= Config::get('security.login_attempts_block_duration', 15))
 			{
 				$attempts = $model->attempts + 1;
 				$last_fail = Carbon::now()->toDateTimeString();

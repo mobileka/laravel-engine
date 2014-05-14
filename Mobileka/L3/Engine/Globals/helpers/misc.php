@@ -2,7 +2,11 @@
 
 function admin_uri($append = '')
 {
-	return Config::get('application.admin_uri', 'admin') . $append;
+	$uri = Config::get('security.admin_uri', 'admin');
+	$port = Config::get('security.admin_port', false);
+	$uri = $port ? $uri.':'.$port : $uri;
+
+	return  $uri . $append;
 }
 
 function notifications($view = 'engine::_system.notifications', $id = '')

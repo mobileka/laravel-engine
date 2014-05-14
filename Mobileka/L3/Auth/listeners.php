@@ -7,6 +7,21 @@ Event::listen('engine: auth is ready', function()
 {
 	Route::filter('adminAuth', function()
 	{
+		$restrictByIp = ($ip = Config::get('security.admin_ip'))
+			? !(Request::ip() == $ip)
+			: false
+		;
+
+		$restrictByPort = ($port = Config::get('security.admin_port', false))
+			? !(Request::foundation()->getPort() == $port)
+			: false
+		;
+
+		if ($restrictByIp or $restrictByPort)
+		{
+			return Response::error('404');
+		}
+
 		$allowed = Config::get('acl.allowedRoutes', array());
 
 		if (!Acl::make()->except($allowed)->check())

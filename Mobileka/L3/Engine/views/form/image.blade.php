@@ -1,7 +1,7 @@
 <?php try { ?>
 
 <div id="{{ $component->name }}_image" class="fileupload">
-
+	<div class="progress"></div>
 	<div class="thumbnail">
 
 		<img class="jcrop-image image-edit-thumbnail" src="{{ $component->value() ?: 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image' }}">
@@ -49,6 +49,10 @@ $(document).ready(function()
 	$('[name={{ $component->name }}]').fileupload({
 		type: 'post',
 		singleFileUploads: true,
+		progress: function (e, data) {
+			var progress = parseInt(data.loaded / data.total * 100, 10);
+			$('#{{$component->name}}_image .progress').text(progress + '%');
+		},
 		formData: function(form)
 		{
 			return [

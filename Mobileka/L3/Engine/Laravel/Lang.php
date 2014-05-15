@@ -18,6 +18,15 @@ class Lang extends \Laravel\Lang {
 		$file = $file . '.' . $word;
 		$route = Controller::$route;
 
+		// Check if $file already starts with bundle name, to prevent prepending
+		// bundle name twice
+		if (($p = strpos($file, '::')) !== false)
+		{
+			if (array_key_exists(substr($file, 0, $p), \Bundle::$bundles))
+			{
+				return $file;
+			}
+		}
 		if ($bundle = Arr::getItem($route, 'bundle'))
 		{
 			return $key = $bundle . '::' . $file;

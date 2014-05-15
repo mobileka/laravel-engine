@@ -3,8 +3,6 @@
 function admin_uri($append = '')
 {
 	$uri = Config::get('security.admin_uri', 'admin');
-	$port = Config::get('security.admin_port', false);
-	$uri = $port ? $uri.':'.$port : $uri;
 
 	return  $uri . $append;
 }

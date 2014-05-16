@@ -3,6 +3,19 @@
 use Mobileka\L3\Engine\Laravel\Config,
 	Mobileka\L3\Engine\Laravel\Lang;
 
+/**
+ * Regenerate csrf_token on logout and login
+ */
+Event::listen('laravel.auth: login', function()
+{
+	Session::put(Session::csrf_token, Str::random(40));
+});
+
+Event::listen('laravel.auth: logout', function()
+{
+	Session::put(Session::csrf_token, Str::random(40));
+});
+
 Event::listen('engine: auth is ready', function()
 {
 	Route::filter('adminAuth', function()

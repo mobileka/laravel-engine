@@ -4,7 +4,7 @@
 	<div class="progress"></div>
 	<div class="thumbnail">
 
-		<img class="jcrop-image image-edit-thumbnail" src="{{ $component->value() ?: 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image' }}">
+		<img class="jcrop-image image-edit-thumbnail" src="{{ $component->value() ?: imagePlaceholder() }}">
 
 	</div> <!-- .thumbnail -->
 

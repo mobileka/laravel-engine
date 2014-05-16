@@ -36,3 +36,8 @@ function dummyThumbnail($alias = null)
 
 	return \URL::base() . '/bundles/engine/img/elements/dummy_thumbnail_original.png';
 }
+
+function imagePlaceholder()
+{
+	return \URL::base() . '/bundles/engine/img/elements/placeholder.gif';
+}

@@ -1,6 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
 use Mobileka\L3\Engine\Laravel\Base\Controller;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 
 class Config extends \Laravel\Config {
 	/**
@@ -62,7 +63,7 @@ class Config extends \Laravel\Config {
 	 */
 	public static function find($key, $default = null)
 	{
-		if (strpos($key, '::') === false and $bundle = Controller::$route['bundle'])
+		if (strpos($key, '::') === false and $bundle = Arr::getItem(Controller::$route, 'bundle', false))
 		{
 			$result = static::get($bundle . '::' . $key, 'blah________________blah');
 

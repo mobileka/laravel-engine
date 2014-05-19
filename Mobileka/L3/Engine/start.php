@@ -11,7 +11,7 @@ Laravel\IoC::register('i18n', function($injection = null)
 });
 
 Laravel\IoC::register('Purifier', function($config = null) {
-	$config = (get_class($config) === 'HTMLPurifier_Config')
+	$config = (is_object($config) and get_class($config) === 'HTMLPurifier_Config')
 		? $config
 		: HTMLPurifier_Config::createDefault()
 	;

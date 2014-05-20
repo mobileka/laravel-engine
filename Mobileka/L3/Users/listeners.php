@@ -26,6 +26,6 @@ Event::listen('engine: users are ready', function()
 	{
 		$user = user();
 		$user->last_activity_date = Carbon::now()->toDateTimeString();
-		$user->save();
+		$user->save($user::$rules, array(), null, null, null, function(){ return true; });
 	}
 });

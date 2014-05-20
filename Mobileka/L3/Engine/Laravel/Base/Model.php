@@ -26,6 +26,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 	public static $timestamps = true;
 	public static $column_registry = array();
 	public static $translatable = array();
+	public static $simpleFileFields = array();
 
 	public static $data = array(
 		'data' => array(),
@@ -713,6 +714,82 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			->where_type($this->table());
 	}
 
+	public function get_simpleFilePath()
+	{
+		return path('uploads') . $this->table() . '/' . Date::make($this->created_at)->get('Y-m');
+	}
+
+	public function getSimpleFileUrl($field, $alias = null)
+	{
+		return $this->{$field}($alias);
+	}
+
+	public function afterSave()
+	{
+		if ($this->exists and Input::file())
+		{
+			foreach (static::$simpleFileFields as $filename => $validations)
+			{
+				$path = $this->simpleFilePath;
+				File::mkdir($path);
+
+				$mimetypes = Config::get(
+					'image.mimes',
+					array('image/png', 'image/jpeg', 'image/pjpeg', 'image/gif')
+				);
+
+				$max_size = Config::get('image.max_size', '5M'); 
+
+				if (is_string($validations))
+				{
+					$filename = $validations;
+				}
+				else
+				{
+					$mimetypes = Arr::getItem($validations, 'mimes', $mimetypes);
+					$max_size = Arr::getItem($validations, 'max_size', $max_size);
+				}
+
+				$storage = new \Upload\Storage\FileSystem($path);
+
+				try
+				{
+					if (Arr::searchRecursively(Input::file(), $filename, 'error'))
+					{
+						continue;
+					}
+
+					$file = new \Upload\File($filename, $storage);
+				}
+				catch(\Exception $e)
+				{
+					continue;
+				}
+
+				$file->addValidations(array(
+					new \Upload\Validation\Mimetype($mimetypes),
+					new \Upload\Validation\Size($max_size)
+				));
+
+				try
+				{
+					$file->upload(uniqid());
+					$this->$filename = $file->getNameWithExtension();
+					$this->save(array(), array(), null, null, null, function(){ return true; });
+				}
+				catch (\Exception $e)
+				{
+					foreach ($file->getErrors() as $error)
+					{
+						$this->addError($filename, $error);
+					}
+				}
+			}
+		}
+
+		return parent::afterSave();
+	}
+
 
 	public function __call($name, $args)
 	{
@@ -720,6 +797,33 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 		{
 			return;
 		}
+
+		if (in_array($name, static::$simpleFileFields))
+		{
+			$filename = $this->{$name};
+
+			if ($alias = Arr::getItem($args, 0))
+			{
+				if (array_key_exists($alias, Config::get('image.aliases', array())))
+				{
+					$dimensions = Config::get('image.aliases.'.$alias);
+					$original = $this->simpleFilePath . '/' .$filename;
+					$resizedFile = $this->simpleFilePath . '/' .$alias . '_' . $filename;
+
+					if (!is_file($resizedFile) and is_file($original))
+					{
+						\Image::make($original)->
+							resize($dimensions[0], $dimensions[1], Arr::getItem($dimensions, 2, true), false)->
+							save($resizedFile);
+					}
+
+					$filename = $alias . '_' . $filename;
+				}
+			}
+
+			return \URL::base().'/uploads/'.$this->table() . '/' . Date::make($this->created_at)->get('Y-m') .'/'. $filename;
+		}
+
 		if (Str::contains($name, '_uploads'))
 		{
 			$field = str_replace('_uploads', '', $name);

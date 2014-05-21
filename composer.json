@@ -1,8 +1,9 @@
 {
     "require": {
-        "intervention/image": "dev-master",
-        "intervention/imagecache": "dev-master",
-        "nesbot/Carbon": "*"
+        "intervention/image": "1.*",
+        "nesbot/Carbon": "*",
+        "codeguy/upload": "*",
+        "ezyang/htmlpurifier": "dev-master"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"

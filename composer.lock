@@ -3,44 +3,33 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "87ab32be76e7569ae1ad3d8e01af76ef",
+    "hash": "1b845df371b1f9496cd6397468e9217d",
     "packages": [
         {
-            "name": "illuminate/cache",
-            "version": "v4.1.28",
-            "target-dir": "Illuminate/Cache",
+            "name": "codeguy/upload",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/cache.git",
-                "reference": "e896940c3232d96bd802734184164fae5cdb2141"
+                "url": "https://github.com/codeguy/Upload.git",
+                "reference": "6a9e5e1fb58d65346d0e557db2d46fb25efd3e37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/e896940c3232d96bd802734184164fae5cdb2141",
-                "reference": "e896940c3232d96bd802734184164fae5cdb2141",
+                "url": "https://api.github.com/repos/codeguy/Upload/zipball/6a9e5e1fb58d65346d0e557db2d46fb25efd3e37",
+                "reference": "6a9e5e1fb58d65346d0e557db2d46fb25efd3e37",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.1.*",
-                "nesbot/carbon": "1.*",
+                "ext-fileinfo": "*",
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "illuminate/database": "4.1.*",
-                "illuminate/encryption": "4.1.*",
-                "illuminate/filesystem": "4.1.*",
-                "illuminate/redis": "4.1.*",
-                "phpunit/phpunit": "4.0.*"
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.1-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Illuminate\\Cache": ""
+                    "Upload": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -49,75 +38,78 @@
             ],
             "authors": [
                 {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "name": "Josh Lockhart",
+                    "email": "info@joshlockhart.com",
+                    "homepage": "https://github.com/codeguy/"
                 }
             ],
-            "time": "2014-04-16 14:40:58"
+            "description": "Handle file uploads with extensible validation and storage strategies",
+            "homepage": "http://github.com/codeguy/Upload",
+            "keywords": [
+                "file",
+                "upload",
+                "validation"
+            ],
+            "time": "2013-07-07 17:01:41"
         },
         {
-            "name": "illuminate/filesystem",
-            "version": "v4.1.28",
-            "target-dir": "Illuminate/Filesystem",
+            "name": "ezyang/htmlpurifier",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "3b81b7825065328ea9be926bf80f3253bdf94244"
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "80ebd4322e3b98bc25c3ed3effe99a1653bc00fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/3b81b7825065328ea9be926bf80f3253bdf94244",
-                "reference": "3b81b7825065328ea9be926bf80f3253bdf94244",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/80ebd4322e3b98bc25c3ed3effe99a1653bc00fc",
+                "reference": "80ebd4322e3b98bc25c3ed3effe99a1653bc00fc",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.1.*",
-                "php": ">=5.3.0",
-                "symfony/finder": "2.4.*"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.0.*"
+                "php": ">=5.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.1-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
-                    "Illuminate\\Filesystem": ""
-                }
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "LGPL"
             ],
             "authors": [
                 {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com",
+                    "role": "Developer"
                 }
             ],
-            "time": "2014-03-22 20:12:48"
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2014-02-04 20:17:24"
         },
         {
             "name": "illuminate/support",
-            "version": "v4.1.28",
+            "version": "v4.1.29",
             "target-dir": "Illuminate/Support",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "69b248f240719e8d764ee6ec0384819fa57d60bb"
+                "reference": "7716337401e573ba69923d335c0ee01fd5448df7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/69b248f240719e8d764ee6ec0384819fa57d60bb",
-                "reference": "69b248f240719e8d764ee6ec0384819fa57d60bb",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7716337401e573ba69923d335c0ee01fd5448df7",
+                "reference": "7716337401e573ba69923d335c0ee01fd5448df7",
                 "shasum": ""
             },
             "require": {
@@ -155,11 +147,11 @@
                     "role": "Creator of Laravel"
                 }
             ],
-            "time": "2014-03-22 20:29:54"
+            "time": "2014-05-02 18:11:11"
         },
         {
             "name": "intervention/image",
-            "version": "dev-master",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
@@ -211,103 +203,6 @@
             "time": "2014-04-29 14:50:43"
         },
         {
-            "name": "intervention/imagecache",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Intervention/imagecache.git",
-                "reference": "a5b052010de1d8c8732a5f17d60936c4e38e18fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/imagecache/zipball/a5b052010de1d8c8732a5f17d60936c4e38e18fc",
-                "reference": "a5b052010de1d8c8732a5f17d60936c4e38e18fc",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/cache": "4.*",
-                "illuminate/filesystem": "4.*",
-                "illuminate/support": "4.*",
-                "intervention/image": ">=1.3",
-                "jeremeamia/superclosure": "1.*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Intervention\\Image": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oliver Vogel",
-                    "email": "oliver@olivervogel.net",
-                    "homepage": "http://olivervogel.net/"
-                }
-            ],
-            "description": "Caching extension for the Intervention Image Class",
-            "homepage": "http://intervention.olivervogel.net/image/advanced/caching",
-            "keywords": [
-                "cache",
-                "gd",
-                "image",
-                "laravel"
-            ],
-            "time": "2014-04-06 14:48:23"
-        },
-        {
-            "name": "jeremeamia/SuperClosure",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/d05400085f7d4ae6f20ba30d36550836c0d061e8",
-                "reference": "d05400085f7d4ae6f20ba30d36550836c0d061e8",
-                "shasum": ""
-            },
-            "require": {
-                "nikic/php-parser": "~0.9",
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Jeremeamia\\SuperClosure": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jeremy Lindblom"
-                }
-            ],
-            "description": "Doing interesting things with closures like serialization.",
-            "homepage": "https://github.com/jeremeamia/super_closure",
-            "keywords": [
-                "closure",
-                "function",
-                "parser",
-                "serializable",
-                "serialize",
-                "tokenizer"
-            ],
-            "time": "2013-10-09 04:20:00"
-        },
-        {
             "name": "nesbot/carbon",
             "version": "1.9.0",
             "source": {
@@ -352,99 +247,6 @@
                 "time"
             ],
             "time": "2014-05-13 02:29:30"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v0.9.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.9-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "PHPParser": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2013-08-25 17:11:40"
-        },
-        {
-            "name": "symfony/finder",
-            "version": "v2.4.4",
-            "target-dir": "Symfony/Component/Finder",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/Finder.git",
-                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
-                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Symfony\\Component\\Finder\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com",
-            "time": "2014-04-27 13:34:57"
         }
     ],
     "packages-dev": [
@@ -721,6 +523,55 @@
             "time": "2014-04-16 10:34:31"
         },
         {
+            "name": "symfony/finder",
+            "version": "v2.4.4",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
+                "reference": "25e1e7d5e7376f8a92ae3b1d714d956edf33a730",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-04-27 13:34:57"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v2.4.4",
             "target-dir": "Symfony/Component/Yaml",
@@ -773,8 +624,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "intervention/image": 20,
-        "intervention/imagecache": 20,
+        "ezyang/htmlpurifier": 20,
         "phpspec/phpspec": 20
     },
     "platform": [],

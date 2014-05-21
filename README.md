@@ -101,8 +101,10 @@ require 'vendor/autoload.php';
 ```json
 {
     "require" : {
+        "intervention/image": "1.*",
         "nesbot/Carbon": "*",
-        "ezyang/htmlpurifier": "dev-master"
+        "ezyang/htmlpurifier": "dev-master",
+        "codeguy/upload": "*"
     }
 }
 ```
@@ -342,13 +344,7 @@ Laravel Engine has a *kind of* a built-in possibility to upload images. To use t
 I wrote *kind of*, because this functionality depends on a composer package which you need to install before using image uploading:
 
 ```bash
-$ php composer.phar require intervention/image dev-master
-```
-
-If you want to make image uploading more efficient, you can also install "intervention/imagecache":
-
-```bash
-$ php composer.phar require intervention/imagecache dev-master
+$ php composer.phar require intervention/image 1.*
 ```
 
 ## Usage of image uploading

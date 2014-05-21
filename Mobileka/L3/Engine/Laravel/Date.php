@@ -26,6 +26,7 @@ class Date {
 	public static function make($date = '')
 	{
 		$self = new static;
+		$date = $date ? : '';
 		$self->date = (is_string($date)) ? date_create($date) : $date;
 		return $self;
 	}

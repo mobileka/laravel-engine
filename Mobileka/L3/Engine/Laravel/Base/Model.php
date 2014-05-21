@@ -738,7 +738,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 					array('image/png', 'image/jpeg', 'image/pjpeg', 'image/gif')
 				);
 
-				$max_size = Config::get('image.max_size', '5M'); 
+				$max_size = Config::get('image.max_size', '5M');
 
 				if (is_string($validations))
 				{
@@ -798,7 +798,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel {
 			return;
 		}
 
-		if (in_array($name, static::$simpleFileFields))
+		if (in_array($name, static::$simpleFileFields) || isset(static::$simpleFileFields[$name]))
 		{
 			$filename = $this->{$name};
 

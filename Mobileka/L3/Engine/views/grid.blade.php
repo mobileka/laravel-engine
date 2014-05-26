@@ -33,7 +33,7 @@
 	<thead>
 		<tr>
 			@foreach ($components as $heading => $value)
-				@if (!$value->relevantActions or in_array(Controller::$route['action'], $value->relevantActions))
+				@if ($value->active and !$value->relevantActions or in_array(Controller::$route['action'], $value->relevantActions))
 					<th>
 						@if (in_array($heading, $crud->sortable))
 						<a href="#" data-order="{{ $value->name }}" class="th-sortable">
@@ -53,7 +53,7 @@
 		@forelse ($crud->items->results as $row)
 			<tr>
 				@foreach ($components as $component)
-					@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
+					@if ($component->active and !$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
 						<td>{{ $component->row($row)->render($component->localized) }}</td>
 					@endif
 				@endforeach

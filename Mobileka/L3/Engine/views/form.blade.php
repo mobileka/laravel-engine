@@ -2,7 +2,7 @@
 {{ Form::token() }}
 <div class="box box-bordered">
 	@foreach ($components as $fieldName => $component)
-		@if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
+		@if ($component->active and !$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
 			<?php $component->row($crud->model); ?>
 			@if ($component->isHidden())
 				@if ($component->localized)

@@ -2,7 +2,7 @@
 $languages = langs();
 $localized = $common = array();
 foreach ($components as $fieldName => $component) {
-	if (!$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions)) {
+	if ($component->active and !$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions)) {
 		$component->row($crud->model);
 		if ($component->localized) {
 			$localized[$fieldName] = $component;

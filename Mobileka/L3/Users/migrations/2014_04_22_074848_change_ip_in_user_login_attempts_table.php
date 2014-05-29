@@ -1,6 +1,6 @@
 <?php
 
-class Engine_Change_Ip_In_User_Login_Attempts_Table {	
+class Users_Change_Ip_In_User_Login_Attempts_Table {	
 
 	public function up()
 	{

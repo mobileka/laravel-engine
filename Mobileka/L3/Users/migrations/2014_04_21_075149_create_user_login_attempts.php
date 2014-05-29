@@ -9,8 +9,8 @@ class Users_Create_User_Login_Attempts {
 			$table->increments('id')->unsigned();
 			$table->string('username');
 			$table->integer('attempts')->unsigned();
+			$table->string('ip', 15)->default('x');
 			$table->date('last_fail');
-			$table->date('ip');
 			$table->timestamps();
 		});
 	}

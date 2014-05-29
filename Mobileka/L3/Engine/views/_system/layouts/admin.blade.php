@@ -39,7 +39,7 @@
 <body class="theme-darkblue" data-theme="theme-darkblue">
 	<div id="navigation">
 		<div class="container-fluid">
-			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
+			<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Показать/Скрыть меню"><i class="icon-reorder"></i></a>
 			<a href="{{ URL::to_route('users_admin_default_index') }}" id="brand">{{ configValue('application.project_name', 'application.project_name') }}</a>
 
 			<div class="user">

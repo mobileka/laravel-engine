@@ -102,7 +102,7 @@ Laravel\Asset::container('engine_assets')
 	->add('validation',                       'bundles/engine/admin/js/plugins/validation/jquery.validate.min.js')
 	->add('validation-additional',            'bundles/engine/admin/js/plugins/validation/additional-methods.min.js')
 	->add('touch-punch',                      'bundles/engine/admin/js/plugins/touch-punch/jquery.touch-punch.min.js')
-	//->add('dynatree',                         'bundles/engine/admin/js/plugins/dynatree/min/jquery.dynatree.min.js')
+	->add('dynatree',                         'bundles/engine/admin/js/plugins/dynatree/min/jquery.dynatree.min.js')
 
 	/* @todo Добавить проверку языка и подключать следующий файл только когда выбран русский язык */
 
@@ -122,6 +122,6 @@ Laravel\Asset::container('engine_assets')
 	->add('filter_toggle', 'bundles/engine/admin/js/filter_toggle.js')
 
 	// App specific assets
-	//->add('asi-admin.js', 'js/admin/scripts.js')
+	// ->add('asi-admin.js', 'js/admin/scripts.js')
 
 ;

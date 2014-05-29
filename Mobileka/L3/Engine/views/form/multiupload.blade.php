@@ -6,7 +6,7 @@ $fileTemplate = $uploader::$template;
 ?>
 
 <div class="plupload" data-thumbnail-url="{{ URL::to_thumbnail(Controller::$route) }}" data-upload-url="{{ URL::to_upload(Controller::$route) }}" data-fieldname="{{$component->name}}" data-modelname="{{ $component->getModelName() }}"></div>
-{{ Form::hidden('upload_token[' . $component->name . ']', Input::old('upload_token', uniqid())) }}
+{{ Form::hidden('upload_token[' . $component->name . ']', Input::old('upload_token.' . $component->name, uniqid())) }}
 
 @if ($fis = $component->featuredImageSelector)
 	{{ Form::hidden($fis, $component->row->{$fis}, array('id' => $fis)) }}

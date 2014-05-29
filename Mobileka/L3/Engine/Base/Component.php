@@ -152,6 +152,12 @@ abstract class Component {
 	 */
 	protected $requiredAttributes = array();
 
+	/**
+	 * Show or hide the whole component in the form.
+	 * @var boolean
+	 */
+	protected $active = true;
+
 	public static function make($name, $attributes = array())
 	{
 		$self = new static;

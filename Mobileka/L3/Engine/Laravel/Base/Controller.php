@@ -416,7 +416,7 @@ class Controller extends \Laravel\Routing\Controller {
 
 		$parsedUrl = parse_url($result);
 
-		if (!$result or Arr::getItem($parsedUrl, 'host') !== URL::base())
+		if (!$result or Arr::getItem($parsedUrl, 'host') !== Request::foundation()->getHost())
 		{
 			$result = URL::to_action($this->generateUrl($route, $options), $params);
 		}

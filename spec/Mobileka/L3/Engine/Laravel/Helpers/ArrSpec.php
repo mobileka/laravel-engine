@@ -28,7 +28,7 @@ class ArrSpec extends ObjectBehavior
 		$this::implodeRecursively(['Hello'], ', ')->shouldReturn('Hello');
 	}
 
-	public function it_shpuld_return_the_first_truthy_element_of_an_array()
+	public function it_should_return_the_first_truthy_element_of_an_array()
 	{
 		$this::find([false, null, '', 0, 'YEAH!'])->shouldReturn('YEAH!');
 		$this::find([false, null, '', 0])->shouldReturn(null);

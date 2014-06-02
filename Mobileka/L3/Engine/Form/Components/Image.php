@@ -27,7 +27,7 @@ class Image extends BaseUploadComponent {
 
 		$name = $this->name . '_uploads';
 
-		if ($image = $this->row->{$name}()->first() and in_array(strtolower(\File::extension($image->path)), \Config::get('image.image_extensions')))
+		if ($image = $this->row->{$name}()->first() and in_array(strtolower(\File::extension($image->path)), array('jpg', 'jpeg', 'gif', 'png')))
 		{
 			return $this->jcrop ? $image->croppedImage : $image->image;
 		}

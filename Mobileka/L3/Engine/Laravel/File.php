@@ -37,6 +37,9 @@ class File extends \Laravel\File {
 	public static function saveCroppedImage($file, $type = null, $directory = null, $cropData)
 	{
 		$extension = static::getFileExtension($file);
+		
+		if (!in_array(strtolower($extension), array('jpg', 'jpeg', 'gif', 'png'))) return false;
+
 		$filename = static::getFilename($file, $extension);
 		$path = static::getFilePath($file, $directory, $type);
 		$img = Image::make($path.$filename);

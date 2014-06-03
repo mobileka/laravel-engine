@@ -34,4 +34,16 @@ class Image extends BaseUploadComponent {
 
 		return '';
 	}
+
+	public function upload_id()
+	{
+		$name = $this->name . '_uploads';
+
+		if ($image = $this->row->{$name}()->first())
+		{
+			return $image->id;
+		}
+
+		return 0;
+	}
 }

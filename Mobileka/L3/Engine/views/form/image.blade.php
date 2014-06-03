@@ -4,21 +4,36 @@
 	<div class="progress"></div>
 	<div class="thumbnail">
 
-		<img class="jcrop-image image-edit-thumbnail" src="{{ $component->value() ?: imagePlaceholder() }}">
+		<img class="jcrop-image image-edit-thumbnail" data-placeholder-src="{{ imagePlaceholder() }}" src="{{ $component->value() ?: imagePlaceholder() }}">
 
 	</div> <!-- .thumbnail -->
 
+	<div>
+
+		<input id="fileupload" type="file" name="{{ $component->name }}" data-url="{{ URL::to_upload(Controller::$route) }}">
+
+	</div>
+
+	<div>
+
+		<a href="{{ URL::to_route(Router::requestId(Controller::$route, 'destroy_file'), $component->upload_id()) }}" class="btn btn-lightred btn-image-delete {{ $component->value() ? '' : 'hidden' }}">
+
+			{{ formLang($component->languageFile, 'delete') }}
+
+		</a>
+
+	</div>
+
+	{{ Form::hidden('upload_token[' . $component->name . ']', Input::old('upload_token.' . $component->name, uniqid())) }}
+
+	{{ Form::hidden($component->name . '[x]', '', array('id' => $component->name . '_x')) }}
+	{{ Form::hidden($component->name . '[y]', '', array('id' => $component->name . '_y')) }}
+	{{ Form::hidden($component->name . '[w]', '', array('id' => $component->name . '_w')) }}
+	{{ Form::hidden($component->name . '[h]', '', array('id' => $component->name . '_h')) }}
+
+	<div class="alert alert-error hide" id="cropError"></div>
+
 </div>
-
-<input id="fileupload" type="file" name="{{$component->name}}" data-url="{{ URL::to_upload(Controller::$route) }}">
-{{ Form::hidden('upload_token[' . $component->name . ']', Input::old('upload_token.' . $component->name, uniqid())) }}
-
-{{ Form::hidden($component->name . '[x]', '', array('id' => $component->name . '_x')) }}
-{{ Form::hidden($component->name . '[y]', '', array('id' => $component->name . '_y')) }}
-{{ Form::hidden($component->name . '[w]', '', array('id' => $component->name . '_w')) }}
-{{ Form::hidden($component->name . '[h]', '', array('id' => $component->name . '_h')) }}
-
-<div class="alert alert-error hide" id="cropError"></div>
 
 <script>
 var component = {
@@ -81,11 +96,10 @@ $(document).ready(function()
 			{
 				var appendTo = $('[name={{ $component->name }}]').parent(),
 					jcrop = {{ $component->jcrop ? 1 : 0 }},
-					img = $('div#{{$component->name}}_image .jcrop-image').removeClass('image-edit-thumbnail')
+					img = $('div#{{ $component->name }}_image .jcrop-image').removeClass('image-edit-thumbnail')
 						.attr('src', data.result.data.url);
 
 				img.load(function() {
-
 					$(this).css('max-width', 'none');
 					$(this).css('width', 'auto');
 					$(this).css('height', 'auto');
@@ -103,6 +117,23 @@ $(document).ready(function()
 				$('#cropError').text(errorString).show();
 			}
 		}
+	});
+
+	$('body').on('click', '.btn-image-delete', function(e) {
+		e.preventDefault();
+
+		var _this = $(this),
+			url   = _this.attr('href'),
+			thumb = _this.closest('.fileupload').find('.jcrop-image');
+
+		$.ajax({
+			url: url,
+			type: 'DELETE',
+			success: function() {
+				thumb.attr('src', thumb.data('placeholder-src'));
+				_this.addClass('hidden');
+			}
+		});
 	});
 });
 </script>

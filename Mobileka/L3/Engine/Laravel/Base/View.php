@@ -54,6 +54,23 @@ class View extends \Laravel\View {
 						'viewData' => $this->viewData
 					)
 				);
+
+			case 'pdf':
+				if (!class_exists('mPDF')) throw new \Exception('You need to add "mpdf/mpdf": "v6.0-beta" to your composer.json file and run "composer update"');
+
+				error_reporting(0); // Without this mPDF might throw a fatal error
+
+				$header = '<div style="font-size: 10px; line-height: 20px">' . ___('front', 'site_title') . '</div>';
+				$html   = static::make($this->data['content']->view, $this->data['content']->data)->render();
+				$title  = \Str::transliterate((isset($options['viewData']['item']) ? $options['viewData']['item']->name : $options['title']));
+
+				$mpdf = new \mPDF;
+				$mpdf->SetHTMLHeader($header);
+				$mpdf->SetFooter('{PAGENO}');
+				$mpdf->WriteHTML($html);
+				$mpdf->Output($title, 'D');
+
+				exit;
 		}
 	}
 

@@ -566,22 +566,27 @@ class Controller extends \Laravel\Routing\Controller {
 
 		if (!Acl::can('upload_files_without_restrictions') and $object_id)
 		{
-			$controller = Router::resolve(Controller::$route['alias']);
-			$field = Arr::getItem($controller::$personalActions, __FUNCTION__) ?: Arr::getItem($controller::$personalActions, 'all');
-
-			if ($field)
+			if ($controller = Router::resolve(static::$route['alias']))
 			{
-				$isOwner = Acl::isOwnerOfObject($modelName, $field, $object_id);
+				$field = Arr::getItem($controller::$personalActions, __FUNCTION__) 
+					?
+					: Arr::getItem($controller::$personalActions, 'all')
+				;
 
-				if (!$isOwner)
+				if ($field)
 				{
-					return Response::json(array(
-						'status' => 'error',
-						'errors' => array(
-							$fieldName => Lang::findLine('default', 'errors.not_owner'),
-						),
-						'data' => array(),
-					));
+					$isOwner = Acl::isOwnerOfObject($modelName, $field, $object_id);
+
+					if (!$isOwner)
+					{
+						return Response::json(array(
+							'status' => 'error',
+							'errors' => array(
+								$fieldName => Lang::findLine('default', 'errors.not_owner'),
+							),
+							'data' => array(),
+						));
+					}
 				}
 			}
 		}

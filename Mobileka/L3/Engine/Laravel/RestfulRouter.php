@@ -65,7 +65,8 @@ class RestfulRouter {
 			array(
 				$uri,
 				$uri . '.(json)',
-				$uri . '.(ajax)'
+				$uri . '.(ajax)',
+				$uri . '.(pdf)',
 			),
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -77,7 +78,8 @@ class RestfulRouter {
 			array(
 				$uri . '/(:num)',
 				$uri . '/(:num).(json)',
-				$uri . '/(:num).(ajax)'
+				$uri . '/(:num).(ajax)',
+				$uri . '/(:num).(pdf)',
 			),
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -137,7 +139,8 @@ class RestfulRouter {
 			array(
 				$uri . '/(:num)/uploads',
 				$uri . '/(:num)/uploads.(json)',
-				$uri . '/(:num)/uploads.(ajax)'
+				$uri . '/(:num)/uploads.(ajax)',
+				$uri . '/(:num)/uploads.(pdf)',
 			),
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);
@@ -152,7 +155,8 @@ class RestfulRouter {
 			array(
 				$uri . '/(:num)/uploads/(:num)',
 				$uri . '/(:num)/uploads/(:num).(json)',
-				$uri . '/(:num)/uploads/(:num).(ajax)'
+				$uri . '/(:num)/uploads/(:num).(ajax)',
+				$uri . '/(:num)/uploads/(:num).(pdf)',
 			),
 			$this->generateAction($as, __FUNCTION__, $uses, $https)
 		);

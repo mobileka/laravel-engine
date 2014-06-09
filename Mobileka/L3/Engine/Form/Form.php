@@ -1,7 +1,7 @@
 <?php namespace Mobileka\L3\Engine\Form;
 
-use Mobileka\L3\Engine\Laravel\Helpers\Arr,
-	Mobileka\L3\Engine\Laravel\Helpers\Misc;
+use Mobileka\L3\Engine\Laravel\Helpers\Arr;
+use Mobileka\L3\Engine\Laravel\Helpers\Misc;
 
 /**
  * CRUD form generation class
@@ -47,14 +47,17 @@ class Form extends \Mobileka\L3\Engine\Base\Crud {
 		}
 
 		$this->components = $this->processComponents($this->components, $this->order, $this->only, $this->except);
-
-		/*list($this->action, $this->method, $this->cancelUrl, $this->successUrl) = $this->detectUrls($model);
-		$this->action = $this->setUrl('action', $config);
-		$this->method = $this->setMethod($config);
-		$this->cancelUrl = $this->setUrl('cancelUrl', $config);
-		$this->successUrl = $this->setUrl('successUrl', $config);*/
 	}
 
+	/**
+	 * Customize URLs such as form action, successUrl and cancelUrl
+	 *
+	 * Usage: ->setActionUrls('edit', ['cancelUrl' => 'http://example.com', 'actionUrl' => '...', 'method' => 'POST'])
+	 * 
+	 * @param string $action
+	 * @param array $urls
+	 * @return Mobileka\L3\Engine\Form\Form
+	 */
 	public function setActionUrls($action = 'any', $urls = array())
 	{
 		$this->urls = array($action => $urls);

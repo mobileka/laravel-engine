@@ -13,11 +13,9 @@ $fileTemplate = $uploader::$template;
 @endif
 
 <div class="plupload-images {{ $component->featuredImageSelector ? 'plupload-images-featured-selector' : '' }}">
-	@if (count($component->files))
-		@foreach ($component->files as $file)
-			@include($fileTemplate)
-		@endforeach
-	@endif
+	@foreach ($component->files as $file)
+		@include($fileTemplate)
+	@endforeach
 </div>
 
 <script>

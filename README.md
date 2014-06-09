@@ -127,6 +127,24 @@ $ php artisan migrate
 Bundle::start('engine');
 ```
 
+Create `application/config/security.php` with the following content:
+
+```php
+return array(
+    'admin_uri' => 'admin',
+    'admin_port' => false, //restrict access to admin interface by port, false to disable
+    'admin_ip' => false, //restrict access to admin interface by ip, false to disable
+    'allowed_login_attempts' => 5, //0 or false to disable this limit
+    'login_attempts_block_duration' => 15, //in minutes
+
+    /*
+    * if anybody doesn't use your web-application for a specefied below amount of days, his account will be deleted.
+    * false to disable
+    */
+    'block_period' => 365,
+);
+```
+
 ... and add a route to handle the access to the administration interface:
 
 ```php
@@ -134,7 +152,7 @@ Route::get(admin_uri(), array('as' => 'admin_home', 'uses' => 'users::admin.defa
 ```
 
 The `admin_uri()` helper allows you to easily change the URI which handles access to admin interface (`admin` is the default one).
-To change this URI, you need to add `admin_uri` parameter to the `application/config/application.php` configuration file:
+To change this URI, you need to add `admin_uri` parameter to the `application/config/security.php` configuration file:
 
 ```php
 'admin_uri' => 'rulethesite'

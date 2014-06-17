@@ -11,7 +11,7 @@ $(document).ready(function() {
 	$('.delete-toggle').each(function(index,elem) {
 		$(elem).click(function(e) {
 			e.preventDefault();
-			var row_id = $(this).data('row_id');
+			var row_id = $(elem).data('row_id');
 			$('#crud_delete_form').attr('action', $(elem).data('url'));
 
 			var selector = '#delete_modal';

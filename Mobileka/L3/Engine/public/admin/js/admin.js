@@ -14,9 +14,9 @@ $(document).ready(function() {
 			var row_id = $(this).data('row_id');
 			$('#crud_delete_form').attr('action', $(elem).data('url'));
 
-			var selector = '#delete_model';
-			console.warn(row_id);
-			if (row_id)
+			var selector = '#delete_modal';
+
+			if (typeof row_id !== 'undefined')
 			{
 				selector = '.delete_' + row_id;
 			}

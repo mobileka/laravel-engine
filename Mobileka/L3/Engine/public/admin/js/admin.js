@@ -13,7 +13,15 @@ $(document).ready(function() {
 			e.preventDefault();
 			var row_id = $(this).data('row_id');
 			$('#crud_delete_form').attr('action', $(elem).data('url'));
-			$('.delete_' + row_id).modal('show');
+
+			var selector = '#delete_model';
+			console.warn(row_id);
+			if (row_id)
+			{
+				selector = '.delete_' + row_id;
+			}
+
+			$(selector).modal('show');
 		});
 	});
 

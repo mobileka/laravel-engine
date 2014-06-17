@@ -114,14 +114,14 @@ abstract class Crud
         return $this;
     }
 
-    public function deleteConfirmationMessage($row)
+    public function deleteConfirmationMessage($row = null)
     {
         $message = Lang::findLine($this->languageFile, 'sure');
 
-        if ($label = $row->getLabel()) {
-            $message = str_replace(':label', $label, $message);
-        } else {
+        if (!$row or !($label = $row->getLabel())) {
             $message = str_replace(', что хотите удалить из базы :label', '', $message);
+        } else {
+            $message = str_replace(':label', $label, $message);
         }
 
         return $message;

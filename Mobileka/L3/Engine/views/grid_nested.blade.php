@@ -3,7 +3,7 @@
 <div class="modal hide fade" id="delete_modal">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">&times;</a>
-		<h3>{{ ___($crud->languageFile, 'sure') }}</h3>
+		<h3>{{ $crud->deleteConfirmationMessage() }}</h3>
 	</div>
 
 	<div class="modal-body">

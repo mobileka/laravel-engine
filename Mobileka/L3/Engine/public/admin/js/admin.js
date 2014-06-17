@@ -8,20 +8,19 @@
 	};
 
 $(document).ready(function() {
-
 	$('.delete-toggle').each(function(index,elem) {
-			$(elem).click(function(e) {
-				e.preventDefault();
-				$('#crud_delete_form').attr('action', $(elem).data('url'));
-				$('#delete_modal').modal('show');
-			});
+		$(elem).click(function(e) {
+			e.preventDefault();
+			var row_id = $(this).data('row_id');
+			$('#crud_delete_form').attr('action', $(elem).data('url'));
+			$('.delete_' + row_id).modal('show');
+		});
 	});
 
 	$('#module_name').change(function() {
 		$.get(BASE+'/admin/returnviews/'+this.value, function(data) {
 			$('#tmp_name').html(data);
 		});
-
 	});
 
 	$('.ibecTranslit_ru').keypress(function(event)
@@ -131,9 +130,6 @@ $(document).ready(function() {
 			return text;
 		}
 	}
-
-
-
 
 	$(".categoryTree").each(function() {
 		var $el = $(this),

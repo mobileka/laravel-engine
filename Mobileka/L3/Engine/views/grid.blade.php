@@ -1,24 +1,5 @@
 @include('engine::filters')
 
-<div class="modal hide fade" id="delete_modal">
-	<div class="modal-header">
-		<a class="close" data-dismiss="modal">&times;</a>
-		<h3>{{ ___($crud->languageFile, 'sure') }}</h3>
-	</div>
-
-	<div class="modal-body">
-		<p>{{ ___($crud->languageFile, 'delete_confirmation') }}</p>
-	</div>
-
-	<div class="modal-footer">
-		{{ Form::open('', 'DELETE', array('id' => 'crud_delete_form')) }}
-		{{ Form::token() }}
-			<a data-toggle="modal" href="#delete_modal" class="btn">{{ ___($crud->languageFile, 'cancel') }}</a>
-			<input type="submit" class="btn btn-danger" value="{{ ___($crud->languageFile, 'labels.delete') }}">
-		{{ Form::close() }}
-	</div>
-</div>
-
 {{-- Paginator --}}
 <div class="text-center">
 	{{ $crud->items->links() }}
@@ -52,6 +33,24 @@
 		{{-- Содержание таблицы --}}
 		@forelse ($crud->items->results as $row)
 			<tr>
+				<div class="modal hide fade delete_{{ $row->id }}" id="delete_modal">
+					<div class="modal-header">
+						<a class="close" data-dismiss="modal">&times;</a>
+						<h3>{{ ___($this->languageFile, 'delete_confirmation'); }}</h3>
+					</div>
+
+					<div class="modal-body">
+						<p>{{ $crud->deleteConfirmationMessage($row) }}</p>
+					</div>
+
+					<div class="modal-footer">
+						{{ Form::open('', 'DELETE', array('id' => 'crud_delete_form')) }}
+						{{ Form::token() }}
+							<a data-toggle="modal" href="#delete_modal" class="btn">{{ ___($crud->languageFile, 'cancel') }}</a>
+							<input type="submit" class="btn btn-danger" value="{{ ___($crud->languageFile, 'labels.delete') }}">
+						{{ Form::close() }}
+					</div>
+				</div>
 				@foreach ($components as $component)
 					@if ($component->active and !$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
 						<td>{{ $component->row($row)->render($component->localized) }}</td>
@@ -66,7 +65,7 @@
 					{{ HTML::edit_button($row->id) }}
 
 					{{-- Удалить (destroy) --}}
-					{{ HTML::delete_button(URL::to_existing_route(Router::requestId(Controller::$route, 'destroy'), $row->id, 'DELETE')) }}
+					{{ HTML::delete_button(URL::to_existing_route(Router::requestId(Controller::$route, 'destroy'), $row->id, 'DELETE'), array('data-label' => $row->getLabel(), 'data-row_id' => $row->id)) }}
 				</td>
 			</tr>
 		@empty

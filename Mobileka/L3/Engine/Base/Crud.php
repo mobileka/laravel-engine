@@ -2,6 +2,7 @@
 
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 use Mobileka\L3\Engine\Laravel\Base\View;
+use Mobileka\L3\Engine\Laravel\Lang;
 use Exception;
 
 abstract class Crud
@@ -111,6 +112,19 @@ abstract class Crud
         $this->model = $model;
 
         return $this;
+    }
+
+    public function deleteConfirmationMessage($row)
+    {
+        $message = Lang::findLine($this->languageFile, 'sure');
+
+        if ($label = $row->getLabel()) {
+            $message = str_replace(':label', $label, $message);
+        } else {
+            $message = str_replace(', что хотите удалить из базы :label', '', $message);
+        }
+
+        return $message;
     }
 
     public function __get($property)

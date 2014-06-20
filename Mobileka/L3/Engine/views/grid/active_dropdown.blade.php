@@ -5,7 +5,7 @@
 <?php } catch (Exception $e) { exit($e->getMessage()); } ?>
 
 <script type="text/javascript">
-	$('select[name={{ $component->name }}').change(function(){
+	$('#grid_row_{{ $component->row->id }} select[name={{ $component->name }}').change(function(){
 		var value = $(this).val();
 
 		$.ajax({

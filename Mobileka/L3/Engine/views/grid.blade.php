@@ -53,7 +53,7 @@
 				</div>
 				@foreach ($components as $component)
 					@if ($component->active and !$component->relevantActions or in_array(Controller::$route['action'], $component->relevantActions))
-						<td>{{ $component->row($row)->render($component->localized) }}</td>
+						<td id="grid_row_{{ $row->id }}">{{ $component->row($row)->render($component->localized) }}</td>
 					@endif
 				@endforeach
 

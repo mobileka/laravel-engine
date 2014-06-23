@@ -1,22 +1,22 @@
 <?php
 
 Laravel\Autoloader::namespaces(array(
-	'Mobileka\L3\Engine' => __DIR__
+    'Mobileka\L3\Engine' => __DIR__
 ));
 
-Laravel\IoC::register('i18n', function($injection = null)
-{
-	$injection = $injection ? $injection : new \Mobileka\L3\Engine\Models\i18n;
-	return new \Mobileka\L3\Engine\i18n($injection);
+Laravel\IoC::register('i18n', function ($injection = null) {
+    $injection = $injection ? $injection : new \Mobileka\L3\Engine\Models\i18n;
+
+    return new \Mobileka\L3\Engine\i18n($injection);
 });
 
-Laravel\IoC::register('Purifier', function($config = null) {
-	$config = (is_object($config) and get_class($config) === 'HTMLPurifier_Config')
-		? $config
-		: HTMLPurifier_Config::createDefault()
-	;
+Laravel\IoC::register('Purifier', function ($config = null) {
+    $config = (is_object($config) and get_class($config) === 'HTMLPurifier_Config')
+        ? $config
+        : HTMLPurifier_Config::createDefault()
+    ;
 
-	return new HTMLPurifier($config);
+    return new HTMLPurifier($config);
 });
 
 //Laravel.Base
@@ -63,7 +63,6 @@ Laravel\Autoloader::$aliases['FormBuilder'] = 'Mobileka\L3\Engine\Form\Form';
 //Vendor
 Laravel\Autoloader::$aliases['Carbon'] = 'Carbon\Carbon';
 
-
 //Form Components
 Laravel\Autoloader::$aliases['AutocompleteField'] = 'Mobileka\L3\Engine\Form\Components\Autocomplete';
 Laravel\Autoloader::$aliases['CKEditorField'] = 'Mobileka\L3\Engine\Form\Components\CKEditor';
@@ -86,6 +85,7 @@ Laravel\Autoloader::$aliases['TextareaField'] = 'Mobileka\L3\Engine\Form\Compone
 Laravel\Autoloader::$aliases['CheckboxField'] = 'Mobileka\L3\Engine\Form\Components\Checkbox';
 Laravel\Autoloader::$aliases['HiddenField'] = 'Mobileka\L3\Engine\Form\Components\Hidden';
 Laravel\Autoloader::$aliases['YandexMapLocationField'] = 'Mobileka\L3\Engine\Form\Components\YandexMapLocation';
+Laravel\Autoloader::$aliases['PhoneField'] = 'Mobileka\L3\Engine\Form\Components\Phone';
 
 //Grid Components
 Laravel\Autoloader::$aliases['TextColumn'] = 'Mobileka\L3\Engine\Grid\Components\Column';

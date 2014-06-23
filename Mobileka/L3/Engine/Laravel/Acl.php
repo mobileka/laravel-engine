@@ -123,7 +123,7 @@ class Acl
      */
     public static function can($action, $group = null)
     {
-        if ($greenGroups = Arr::searchRecursively(Config::get('acl.actions', array()), $action, 'allow', array())) {
+        if ($greenGroups = Arr::getItem(Config::get('acl.actions', array()), $action, array())) {
             $group = static::userAclGroups($group);
 
             foreach ($greenGroups as $groups) {

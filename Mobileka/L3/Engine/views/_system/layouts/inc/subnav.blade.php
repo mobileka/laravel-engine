@@ -8,7 +8,7 @@
 			@foreach (Arr::getItem($section, 'items', array()) as $item)
 <?php
 $query = Arr::getItem($item, 'query', '');
-$active = \Router::isCurrentRoute($item['route'])
+$active = \Router::isCurrentBundle($item['route'])
 	&& ($query == \Request::foundation()->getQueryString());
 if ($query) {
 	$query = "?$query";

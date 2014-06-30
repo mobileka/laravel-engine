@@ -5,9 +5,9 @@
 	vertical-align: top;
 }
 
-	.thumbnail-plupload a {
-		text-decoration: none;
-	}
+.thumbnail-plupload a {
+	text-decoration: none;
+}
 
 a.plupload-image-delete {
 	color: #b21000;
@@ -243,4 +243,9 @@ input.no-mb {
 .stats-switch-year {
 	margin: 0 auto;
 	width: 400px;
+}
+
+.dropdown_ajax_separator{
+	clear: both;
+	height: 5px
 }

@@ -3,7 +3,7 @@
 
 {{ Form::select($component->name, $component->options, $value, $component->attributes) }}
 
-<div class="dropdown_ajax_separater"></div>
+<div class="dropdown_ajax_separator"></div>
 
 <?php $component->boundElement->row($component->row); ?>
 

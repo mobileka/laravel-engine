@@ -157,7 +157,13 @@ class ImageModel extends Model
                 }
 
                 $type = $this->table();
+            } elseif (!is_object($filename)) {
+                $image = IoC::resolve('Uploader')->find($filename);
+                $filename = $image->filename;
+                $type = $image->type;
+                $created_at = $image->created_at;
             }
+
         } else {
             $filename = $image->filename;
             $type = $image->type;

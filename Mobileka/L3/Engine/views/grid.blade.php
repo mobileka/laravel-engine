@@ -61,6 +61,9 @@
 					{{-- Подробнее (view / show) --}}
 					{{ HTML::view_button($row->id) }}
 
+					{{-- Клонировать (clone) --}}
+					{{ HTML::clone_button($row->id) }}
+
 					{{-- Редактировать (edit) --}}
 					{{ HTML::edit_button($row->id) }}
 

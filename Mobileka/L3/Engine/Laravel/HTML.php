@@ -141,14 +141,21 @@ class HTML extends \Laravel\HTML
         return array($route, $params);
     }
 
-    public static function view_button($params = array(), $languageFile = 'default')
+    public static function clone_button($params, $languageFile = 'engine::default')
+    {
+        list($route, $params) = static::parse_params($params, 'clone');
+
+        return HTML::link_to_existing_route($route, '<i class="icon-copy"></i>', $params, array('title' => ___($languageFile, 'clone'), 'class' => 'crud-view-button btn btn-orange'), false);
+    }
+
+    public static function view_button($params = array(), $languageFile = 'engine::default')
     {
         list($route, $params) = static::parse_params($params, 'view');
 
         return HTML::link_to_existing_route($route, '<i class="icon-eye-open"></i>', $params, array('title' => ___($languageFile, 'view'), 'class' => 'crud-view-button btn btn-darkblue'), false);
     }
 
-    public static function edit_button($params = array(), $languageFile = 'default')
+    public static function edit_button($params = array(), $languageFile = 'engine::default')
     {
         list($route, $params) = static::parse_params($params, 'edit');
 

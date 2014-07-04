@@ -274,6 +274,37 @@ class Controller extends \Laravel\Routing\Controller
         );
     }
 
+    public function beforeClone()
+    {
+        return true;
+    }
+
+    public function get_clone($id)
+    {
+        $beforeClone = $this->beforeClone();
+
+        if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data)) {
+            return Response::error('404');
+        }
+
+        try {
+            $form = IoC::resolve(static::$route['bundle'].'EngineForm')->
+                setModel($data);
+        } catch (\ReflectionException $e) {
+            $form = Form::make(
+                $data,
+                Config::get($this->crudConfig['form'])
+            );
+        }
+
+        $this->layout->renderView(
+            array(
+                'title' => $this->pageTitle,
+                'content' => $form->render()
+            )
+        );
+    }
+
     public function beforeCreate()
     {
         return true;

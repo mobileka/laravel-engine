@@ -7,14 +7,13 @@
 			<li class="nav-header">{{ Arr::getItem($section, 'label', ___('default', 'no label')) }}</li>
 			@foreach (Arr::getItem($section, 'items', array()) as $item)
 <?php
-$query = Arr::getItem($item, 'query', '');
-$active = \Router::isCurrentBundle($item['route'])
-	&& ($query == \Request::foundation()->getQueryString());
-if ($query) {
-	$query = "?$query";
-}
+	$active = Router::isCurrentRequestId($item['route']) ? ' class="active"' : '';
+
+	if ($query = Arr::getItem($item, 'query', '')) {
+		$query = "?$query";
+	}
 ?>
-				<li class="{{ $active ? 'active' : '' }}">
+				<li{{ $active }}>
 					<a href="{{ route($item['route']).$query }}"><i class="{{ $item['icon'] }}"></i> {{ $item['label'] }}</a>
 				</li>
 			@endforeach

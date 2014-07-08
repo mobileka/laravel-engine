@@ -24,7 +24,7 @@ class Form extends \Mobileka\L3\Engine\Base\Crud
 
     protected $attributes = array(
         'class' => 'form-horizontal form-bordered form-wysiwyg form-validate',
-        'id'    => 'form_validate'
+        'id' => 'form_validate'
     );
 
     public static function make($model, $config = array())

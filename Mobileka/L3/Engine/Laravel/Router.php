@@ -20,8 +20,18 @@ class Router extends \Laravel\Routing\Router
     }
 
     /**
-     * Checks whether a provided $bundle
-     * is currently being processed by the Request
+     * Checks whether provided $requestId is currently being processed by the Request
+     *
+     * @param  string $requestId
+     * @return bool
+     */
+    public static function isCurrentRequestId($requestId)
+    {
+        return $requestId === static::requestId(Controller::$route, true);
+    }
+
+    /**
+     * Checks whether provided $bundle is currently being processed by the Request
      *
      * @param  string                                                                                  $bundle
      * @param  bool parse - parse bundle name by getting everything before the first "_" symbol in the $bundle
@@ -64,7 +74,7 @@ class Router extends \Laravel\Routing\Router
      * @param  bool|string $action - do we need an action name to be appended at the end of the line?
      * @return string
      */
-    public static function requestId($route, $action = false)
+    public static function requestId($route = null, $action = false)
     {
         $route = $route ? : Controller::$route;
 

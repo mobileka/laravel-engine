@@ -58,7 +58,7 @@ $ cd bundles && ln -s path/to/Laravel/Engine/Mobileka/directory`
 Or, if you are on Windows (Vista or newer):
 
 ```
-cd bundle
+cd bundles
 mklink /D Mobileka path\to\Laravel\Engine\Mobileka
 ```
 

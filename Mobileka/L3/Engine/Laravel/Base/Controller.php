@@ -108,7 +108,7 @@ class Controller extends \Laravel\Routing\Controller
 
         static::$route = Misc::currentRoute();
 
-        $this->pageTitle = Lang::findLine('default.controllers.' . static::$route['controller'] . '.titles', static::$route['action']);
+        $this->layout->title = Lang::findLine('default.controllers.' . static::$route['controller'] . '.titles', static::$route['action']);
 
         $this->crudConfig = array(
             'form' => Misc::filePath('default.form'),

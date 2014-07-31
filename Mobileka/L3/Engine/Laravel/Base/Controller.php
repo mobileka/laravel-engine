@@ -189,14 +189,14 @@ class Controller extends \Laravel\Routing\Controller
         ));
     }
 
-    public function beforeView()
+    public function beforeView($id)
     {
         return true;
     }
 
     public function get_view($id, $format = 'html')
     {
-        $beforeView = $this->beforeView();
+        $beforeView = $this->beforeView($id);
 
         if ($this->with) {
             $this->model = $this->model->with($this->with);
@@ -243,14 +243,14 @@ class Controller extends \Laravel\Routing\Controller
         );
     }
 
-    public function beforeEdit()
+    public function beforeEdit($id)
     {
         return true;
     }
 
     public function get_edit($id)
     {
-        $beforeEdit = $this->beforeEdit();
+        $beforeEdit = $this->beforeEdit($id);
 
         if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data)) {
             return Response::error('404');
@@ -260,6 +260,7 @@ class Controller extends \Laravel\Routing\Controller
             $form = IoC::resolve(static::$route['bundle'].'EngineForm')->
                 setModel($data);
         } catch (\ReflectionException $e) {
+            exit('sych');
             $form = Form::make(
                 $data,
                 Config::get($this->crudConfig['form'])
@@ -274,14 +275,14 @@ class Controller extends \Laravel\Routing\Controller
         );
     }
 
-    public function beforeClone()
+    public function beforeClone($id)
     {
         return true;
     }
 
     public function get_clone($id)
     {
-        $beforeClone = $this->beforeClone();
+        $beforeClone = $this->beforeClone($id);
 
         if (!$data = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $data)) {
             return Response::error('404');
@@ -318,14 +319,14 @@ class Controller extends \Laravel\Routing\Controller
         return $this->_save();
     }
 
-    public function beforeUpdate()
+    public function beforeUpdate($id)
     {
         return true;
     }
 
     public function put_update($id)
     {
-        $beforeUpdate = $this->beforeUpdate();
+        $beforeUpdate = $this->beforeUpdate($id);
         $this->data = Input::allBut(static::$fieldsToIgnore);
 
         if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model)) {
@@ -335,14 +336,14 @@ class Controller extends \Laravel\Routing\Controller
         return $this->_save();
     }
 
-    public function beforeDestroy()
+    public function beforeDestroy($id)
     {
         return true;
     }
 
     public function delete_destroy($id)
     {
-        $beforeDestroy = $this->beforeDestroy();
+        $beforeDestroy = $this->beforeDestroy($id);
 
         if (!$this->model = $this->model->find($id) or !$this->checkPersonalAccess(__FUNCTION__, $this->model)) {
             return Response::error('404');

@@ -260,7 +260,7 @@ class Controller extends \Laravel\Routing\Controller
             $form = IoC::resolve(static::$route['bundle'].'EngineForm')->
                 setModel($data);
         } catch (\ReflectionException $e) {
-            exit('sych');
+            // exit('sych');
             $form = Form::make(
                 $data,
                 Config::get($this->crudConfig['form'])

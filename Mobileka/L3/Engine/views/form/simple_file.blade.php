@@ -5,7 +5,9 @@
 	<div class="simple_file_thumbnail">
 
 		<div class="file-edit-thumbnail">
-			<img src="{{ $component->value() }}"> 
+			<a href="{{ $component->url() }}" download>
+				<img src="{{ $component->value() }}">
+			</a>
 		</div>
 
 	</div> <!-- .thumbnail -->

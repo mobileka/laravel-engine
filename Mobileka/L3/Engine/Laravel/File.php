@@ -37,7 +37,7 @@ class File extends \Laravel\File {
 	public static function saveCroppedImage($file, $type = null, $directory = null, $cropData)
 	{
 		$extension = static::getFileExtension($file);
-		
+
 		if (!in_array(strtolower($extension), array('jpg', 'jpeg', 'gif', 'png'))) return false;
 
 		$filename = static::getFilename($file, $extension);
@@ -91,5 +91,10 @@ class File extends \Laravel\File {
 
 		//Если указана папка, в которую дополнительно необходимо вложить файл, то запишем ее в путь
 		return $path .= $type ? '/' . $type . '/' : '/';
+	}
+
+	public static function getExtensionIcon($path)
+	{
+		return URL::base() . '/bundles/engine/img/dummy_extensions/' . static::extension($path) . '.png';
 	}
 }

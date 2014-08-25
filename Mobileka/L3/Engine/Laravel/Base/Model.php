@@ -89,6 +89,12 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel
      */
     public static $isNestedModel = false;
 
+    /**
+     * Specifies the tags relationship
+     * @var string
+     */
+    public static $tagsRelation = '';
+
     public static function getTableName()
     {
         return static::$table ?: strtolower(Str::plural(class_basename(get_called_class())));
@@ -212,6 +218,14 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel
             }
             /* POLYMORPH */
 
+            $tags = array();
+            if ($tagsRelation = static::$tagsRelation and isset($data[static::$tagsRelation]))
+            {
+                $tags = explode(',', $data[$tagsRelation]);
+
+                unset($data[$tagsRelation]);
+            }
+
             $this->fill($data);
 
             foreach ($safe as $key => $value) {
@@ -222,6 +236,11 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel
 
             /* POLYMORPH */
             $this->savePolymorphicData($polymorphicData);
+
+            if ($this->id and static::$tagsRelation)
+            {
+                $this->saveTags($tags);
+            }
 
             $this->uploadFiles();
 
@@ -391,6 +410,20 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel
         return $path;
     }
 
+    protected function saveTags($tags)
+    {
+        $model_tags = $this->{static::$tagsRelation}()->delete();
+
+        foreach ($tags as $tag) {
+            if ($tag) {
+                $this->{static::$tagsRelation}()->insert(array(
+                    'tag'       => $tag,
+                    'item_id'   => $this->id,
+                    'item_type' => $this->table(),
+                ));
+            }
+        }
+    }
 
     public function conditions($conditions = array())
     {
@@ -687,6 +720,7 @@ class Model extends \Mobileka\L3\Engine\Base\Laramodel
                     if (Arr::searchRecursively(Input::file(), $filename, 'error')) {
                         continue;
                     }
+
 
                     $file = new \Upload\File($filename, $storage);
                 } catch (\Exception $e) {

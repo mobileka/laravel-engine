@@ -27,9 +27,15 @@ class Image extends BaseUploadComponent {
 
 		$name = $this->name . '_uploads';
 
+
 		if ($image = $this->row->{$name}()->first() and in_array(strtolower(\File::extension($image->path)), array('jpg', 'jpeg', 'gif', 'png')))
 		{
 			return $this->jcrop ? $image->croppedImage : $image->image;
+		}
+
+		if ($image and !\File::is(array('jpg', 'gif', 'png'), $image->path))
+		{
+			return \Mobileka\L3\Engine\Laravel\File::getExtensionIcon($image->path);
 		}
 
 		return '';

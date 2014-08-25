@@ -219,6 +219,7 @@ abstract class Component
 
         $tokens = explode('.', $this->name);
 
+
         for ($i = 0, $count = count($tokens); $i < $count; $i++) {
             if ($this->localized and $i == ($count - 1)) {
                 $value = $value->localized($tokens[$i], $lang);
@@ -233,8 +234,12 @@ abstract class Component
         $value = ($this->translate) ? Lang::findLine($this->languageFile, $value) : $value;
 
         $value = $this->purify($value);
-        $value = $this->escape($value);
-        $value = $this->nl2br($value);
+
+        if (!is_array($value))
+        {
+            $value = $this->escape($value);
+            $value = $this->nl2br($value);
+        }
 
         return $value;
     }

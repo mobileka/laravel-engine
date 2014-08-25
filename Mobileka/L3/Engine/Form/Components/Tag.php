@@ -6,4 +6,16 @@ class Tag extends BaseComponent {
 	protected $htmlElement = 'textarea';
 	protected $requiredAttributes = array('class' => 'tagsinput');
 
+	public function value($lang = '')
+	{
+		$tags = array();
+
+		foreach (parent::value($lang) as $tag)
+		{
+			$tags[] = $tag->tag;
+		}
+
+		return implode(',', $tags);
+	}
+
 }

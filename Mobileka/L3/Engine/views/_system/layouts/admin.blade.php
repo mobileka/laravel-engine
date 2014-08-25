@@ -107,6 +107,10 @@
 		</div>
 	</div>
 
+<script>
+	@yield('script_vars_footer')
+</script>
+
 </body>
 
 </html>

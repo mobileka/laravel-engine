@@ -32,7 +32,7 @@ class View extends \Laravel\View
 		 * Иначе взять из $options['title'], если он задан.
 		 * Если ничего не задано, то будет использовано значение $this->title по умолчанию
 		 */
-        $this->data['title'] = $projectName . Misc::truthyValue($this->title, Arr::getItem($options, 'title', $this->title));
+        $this->data['title'] = Misc::truthyValue($this->title, Arr::getItem($options, 'title', $this->title));
 
         $this->viewData = Misc::truthyValue($this->viewData, Arr::getItem($options, 'viewData', $this->viewData));
         $this->viewName = Arr::getItem($options, 'viewName', '');

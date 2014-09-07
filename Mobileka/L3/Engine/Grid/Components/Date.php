@@ -26,7 +26,7 @@ class Date extends BaseComponent {
 			$value = $value->{$token};
 		}
 
-		if ($value == '0000-00-00 00:00:00')
+		if (!$value or $value == '0000-00-00 00:00:00')
 		{
 			return Lang::findLine($this->languageFile, 'not_specified');
 		}
@@ -47,6 +47,8 @@ class Date extends BaseComponent {
 			$format[$yearIndex] = '%Y';
 
 			$format = implode($delimiter, $format);
+
+			if (strlen($value) === 10) $value .= ' 00:00:00';
 
 			$value = \Carbon::createFromFormat($this->inputFormat, $value)->formatLocalized($format);
 			$value = \Date::translate($value, $lang, $delimiter, $dayIndex, $monthIndex);

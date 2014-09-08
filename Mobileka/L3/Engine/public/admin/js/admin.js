@@ -11,17 +11,12 @@ $(document).ready(function() {
 	$('.delete-toggle').each(function(index,elem) {
 		$(elem).click(function(e) {
 			e.preventDefault();
-			var row_id = $(elem).data('row_id');
+			var confirm_message = $(elem).data('confirm_message');
 			$('#crud_delete_form').attr('action', $(elem).data('url'));
 
-			var selector = '#delete_modal';
+			$('p.modal-confirm-message').html(confirm_message);
 
-			if (typeof row_id !== 'undefined')
-			{
-				selector = '.delete_' + row_id;
-			}
-
-			$(selector).modal('show');
+			$('#delete_modal').modal('show');
 		});
 	});
 

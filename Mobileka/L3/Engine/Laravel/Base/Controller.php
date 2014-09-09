@@ -62,7 +62,7 @@ class Controller extends \Laravel\Routing\Controller
     /**
      * How many records should be displayed per page
      */
-    protected $per_prage = null;
+    protected $per_page = null;
 
     /**
      * Data to be saved by saveData() model method

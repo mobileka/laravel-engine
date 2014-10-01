@@ -23,11 +23,12 @@ class Acl
 
         $self->paths = Arr::getItem($self->permissions, 'paths', array());
         $self->route = Controller::$route;
-        $self->bundle = $self->route['bundle'];
-        $self->controller = $self->route['controller'];
-        $self->action = $self->route['action'];
-        $self->alias = $self->route['alias'];
-        $self->path = $self->route['uses'];
+
+        $self->bundle     = $self->route ? $self->route['bundle']     : '';
+        $self->controller = $self->route ? $self->route['controller'] : '';
+        $self->action     = $self->route ? $self->route['action']     : '';
+        $self->alias      = $self->route ? $self->route['alias']      : '';
+        $self->path       = $self->route ? $self->route['uses']       : '';
 
         return $self;
     }

@@ -5,7 +5,7 @@ try {
 	$route = \Router::requestId($route, true);
 ?>
 
-<a href="{{ URL::to_route($route, $component->row->id) }}">
+<a href="{{ URL::to_existing_route($route, $component->row->id) }}">
 	<img src="{{ $component->value() }}" alt="{{{ $component->row->name }}}">
 </a>
 

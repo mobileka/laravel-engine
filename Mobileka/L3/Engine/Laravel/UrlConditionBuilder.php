@@ -1,5 +1,6 @@
 <?php namespace Mobileka\L3\Engine\Laravel;
 
+use Mobileka\L3\Engine\Laravel\Base\Model;
 use Mobileka\L3\Engine\Laravel\Helpers\Misc;
 use Mobileka\L3\Engine\Laravel\Helpers\Arr;
 use Mobileka\L3\Engine\Laravel\Base\Controller;
@@ -63,6 +64,7 @@ class UrlConditionBuilder
 
         foreach ($relations as $relation) {
             $rels = explode('.', $relation);
+            /** @var Model $model */
             $result = clone $model;
 
             for ($i = 0, $count = count($rels); $i < $count; $i++) {
@@ -197,7 +199,7 @@ class UrlConditionBuilder
     {
         foreach ($conditions as $column => $condition) {
             if ($condition != '') {
-                $values = (is_array($condition)) ? $values : explode(',', $condition);
+                $values = (is_array($condition)) ? $condition : explode(',', $condition);
                 $this->query->where_not_in($table . $column, $values);
             }
         }

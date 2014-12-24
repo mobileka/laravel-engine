@@ -209,7 +209,7 @@ input.no-mb {
 	white-space: nowrap;
 }
 
-.table-actions {
+td.table-actions {
 	text-align: right;
 	white-space: nowrap;
 }

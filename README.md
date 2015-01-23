@@ -688,7 +688,7 @@ Instalation
 Before all you must add Cook bundle to your `bundles.php` file like this:
 ```php
 return array(
-    'cook' => array('location' => 'Mobileka/L3/Engine'),
+    'cook' => array('location' => 'Mobileka/L3/Cook'),
 );
 ```
 After this start Cook manually in your main route.php file:

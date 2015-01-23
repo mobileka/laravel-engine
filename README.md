@@ -707,7 +707,7 @@ Usage
 -----
 
 > Cook allready have template for [Laravel
-> Engine](https://github.com/mobileka/laravel-engine), but can write
+> Engine](https://github.com/mobileka/laravel-engine), but you can write
 > your own template (looks next paragraph) for any purpose, even for
 > nativ Larevel3.
 
@@ -741,7 +741,9 @@ To afford Cook generating code for this bundle - replace native Laravel Schema b
 use Cook\Laravel\Schema;
 ``` 
 
-And then you wil run you migration, just add `--tpl=EngineBundle` after `migrate` command. And Cook create all code for you! 
+And then you wil run you migration, just add `--tpl=EngineBundle` after `migrate` command. 
+
+**Done! Cook create all code for you!**
 
 > **EngineBundle** - is name of template folder.
 

@@ -106,16 +106,16 @@ class Template {
 		foreach ($this->templates as $i => $template) 
 		{
 			$replacerPath = $template->root . DS . $template->name . 'Replacer.php';
-			
+
 			if (File::exists($replacerPath))
 			{
 				if ($template->path)
 				{
-					$replacerClass = '\\Cook\\Templates\\' . $this->templateName . '\\' . $template->path . '\\' . Str::title($template->name) . 'Replacer';
+					$replacerClass = '\\Cook\\Templates\\' . str_replace('/', '\\', $this->templateName) . '\\' . str_replace('/', '\\', $template->path) . '\\' . Str::title($template->name) . 'Replacer';
 				}
 				else
 				{
-					$replacerClass = '\\Cook\\Templates\\' . $this->templateName . '\\' . Str::title($template->name) . 'Replacer';
+					$replacerClass = '\\Cook\\Templates\\' . str_replace('/', '\\', $this->templateName) . '\\' . Str::title($template->name) . 'Replacer';
 				}
 
 				$template->replacerObject = new $replacerClass;

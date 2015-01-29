@@ -101,7 +101,7 @@ class Constructor extends Fluent {
 		{
 			$nakedToken = substr($token, 1, -1);
 
-			if (!isset($template->replacers[$i]) and is_object($template->replacerObject))
+			if (!array_key_exists($i, $template->replacers) and is_object($template->replacerObject))
 			{
 				$this->result->tabs = str_repeat(T, $template->tabs[$i]);
 

@@ -1,6 +1,6 @@
 <?php
 
-use Base\Controllers\Backend\Controller as BackendController;
+use Mobileka\L3\Engine\Laravel\Base\BackendController as BackendController;
 
 class <controllerPrefix>_Admin_<Tables>_Controller extends BackendController {
 
@@ -13,7 +13,6 @@ class <controllerPrefix>_Admin_<Tables>_Controller extends BackendController {
 		$this->model = IoC::resolve('<Table>Model');
 
 		<with>
-
 	}
 
 } 

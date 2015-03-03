@@ -7,6 +7,13 @@ echo Form::hidden($name, $defaultValue, array('id' => $inputId));
 
 <script>
 app.map = app.map || {};
+if (!app.map.default) {
+	app.map.default = {
+		latitude:  parseFloat('{{ Config::get('application.default_latitude', '43.2499541711441') }}'),
+		longitude: parseFloat('{{ Config::get('application.default_longitude', '76.9193172454834') }}'),
+		zoom: parseInt('{{ Config::get('application.default_zoom', 10) }}')
+	};
+}
 app.map['{{ $id }}'] = app.map['{{ $id }}'] || {};
 app.map['{{ $id }}'].{{ $component->type }} = '{{ $component->value($lang) }}';
 
@@ -31,10 +38,6 @@ jQuery(function($) {
 
 	if (initMap) {
 		googleMapInit('{{ $id }}');
-
-		/*ymaps.ready(function() {
-			$mapContainer.yandexMapLocation();
-		});*/
 	}
 });
 </script>

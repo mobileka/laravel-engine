@@ -1,18 +1,15 @@
 var googleMapInit = function(field) {
-	if (field === 'default') {
-		continue;
-	}
-
 	var lat = parseFloat(app.map[field].latitude) ? parseFloat(app.map[field].latitude) : app.map.default.latitude,
-		lon = parseFloat(app.map[field].longitude) ? parseFloat(app.map[field].longitude) : app.map.default.longitude;
+		lon = parseFloat(app.map[field].longitude) ? parseFloat(app.map[field].longitude) : app.map.default.longitude,
+		zoom = ($('#zoom').length && $('#zoom').val() ? $('#zoom').val() : app.map.default.zoom);
 
 	if (lat && lon) {
 		latlng = new google.maps.LatLng(lat, lon);
 	}
 
-	var map = new google.maps.Map(document.getElementById('form_map_' + field), {
+	var map = new google.maps.Map(document.getElementById(field), {
 		center: latlng,
-		zoom: 14,
+		zoom: parseInt(zoom),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
 
@@ -24,7 +21,11 @@ var googleMapInit = function(field) {
 	});
 
 	google.maps.event.addListener(marker, 'dragend', function(a) {
-		$('#lat_' + field).val(a.latLng.lat());
-		$('#lon_' + field).val(a.latLng.lng());
+		$('#' + field + '_latitude').val(a.latLng.lat());
+		$('#' + field + '_longitude').val(a.latLng.lng());
+	});
+
+	google.maps.event.addListener(map, 'zoom_changed', function() {
+		$('#zoom').val(this.zoom);
 	});
 };

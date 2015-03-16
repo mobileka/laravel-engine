@@ -15,7 +15,8 @@ class GoogleMapLocation extends YandexMapLocation {
 		}
 
 		\Asset::container('engine_assets')
-			->add('google-map', 'http://maps.google.com/maps/api/js?sensor=false')
+			->add('google-map-styles', 'bundles/engine/admin/css/google-map-location.css')
+			->add('google-map', 'http://maps.google.com/maps/api/js?sensor=false&libraries=places')
 			->add('google_map_location', 'bundles/engine/admin/js/google_map_location.js');
 
 		$result = parent::render($lang);

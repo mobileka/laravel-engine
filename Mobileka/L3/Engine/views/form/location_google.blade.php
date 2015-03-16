@@ -5,11 +5,12 @@ $defaultValue = Input::old($inputOldName, $component->value($lang));
 echo Form::hidden($name, $defaultValue, array('id' => $inputId));
 ?>
 
+<input id="pac-input" class="map-controls" type="text" placeholder="Search Box">
 <script>
 app.map = app.map || {};
 if (!app.map.default) {
 	app.map.default = {
-		latitude:  parseFloat('{{ Config::get('application.default_latitude', '43.2499541711441') }}'),
+		latitude:parseFloat('{{ Config::get('application.default_latitude', '43.2499541711441') }}'),
 		longitude: parseFloat('{{ Config::get('application.default_longitude', '76.9193172454834') }}'),
 		zoom: parseInt('{{ Config::get('application.default_zoom', 10) }}')
 	};
